@@ -1,5 +1,5 @@
-CONDA_INC = $(CONDA_PREFIX)/lib/
-CONDA_LIB = $(CONDA_PREFIX)/lib/
+CONDA_INC = $(BUILD_PREFIX)/include
+CONDA_LIB = $(BUILD_PREFIX)/lib
 
 # BLAS_LIB = -L$(CONDA_LIB) -lmkl_core_dll -lmkl_rt
 # LAPACK_LIB = -L$(CONDA_LIB) -lmkl_core_dll -lmkl_rt
@@ -13,7 +13,7 @@ LAPACK_LIB = -L$(CONDA_LIB) -lopenblas
 PTHREAD_INC = -DHAVE_UNISTD_H
 # PTHREAD_LIB = -lpthread
 
-CHOLMOD_INC = -I$(CONDA_INC)
+CHOLMOD_INC = -I$(CONDA_INC) -I$(CONDA_INC)/suitesparse
 CHOLMOD_LIB = -L$(CONDA_LIB) -lcholmod -lamd -lcolamd -lcamd -lccolamd
 
 BOOST_INC = -I$(CONDA_PREFIX)/include

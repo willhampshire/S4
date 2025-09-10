@@ -16,7 +16,7 @@ requirements:
     - python
     - setuptools
     - numpy
-    - libboost
+    - boost
     - suitesparse
     - mkl-devel [win]
     - openblas [unix]
@@ -24,7 +24,7 @@ requirements:
   host:
     - python
     - numpy
-    - libboost
+    - boost
     - suitesparse
     - mkl-devel [win]
     - openblas [unix]
@@ -32,7 +32,7 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-#    - {{ pin_compatible('boost') }}
+    - {{ pin_compatible('boost') }}
     - {{ pin_compatible('suitesparse') }}
     - {{ pin_compatible('mkl') }} [win]
     - {{ pin_compatible('openblas') }} [unix]
