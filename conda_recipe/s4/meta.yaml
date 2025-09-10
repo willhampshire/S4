@@ -50,6 +50,8 @@ about:
 
   # The remaining entries in this section are optional, but recommended.
   description: |
+    Forked from: https://github.com/[paulgoulain and/or marcus-o]/S4:
+    
     These are conda packages of the below software. 
     Victor Liu wrote the initial code but is not responsible for these packages.
     A program for computing electromagnetic fields in periodic, layered
@@ -59,9 +61,14 @@ about:
     description of the package and its user interface, as well as
     installation instructions, the license and copyright, contact
     addresses, and other important information.
+    
+    Modified to build using Python 3.10 and 3.12, with NumPy 1.26.
+    Repaired errors generated during build in C source files.
+    Replaced dependencies throwing errors (libboost).
+    Repaired Makefile variables.
+    
+    See git repo https://github.com/willhampshire/S4
+
   doc_url: https://web.stanford.edu/group/fan/S4/index.html
   dev_url: https://web.stanford.edu/group/fan/S4/index.html
 
-extra:
-  recipe-maintainers:
-    - marcus-o
