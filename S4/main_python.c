@@ -671,10 +671,10 @@ static PyObject *S4Sim_LoadSolution(S4Sim *self, PyObject *args, PyObject *kwds)
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "s:LoadSolution", kwlist, &fname)){ return NULL; }
     //printf"Parsed args!\n");
     int err;
-    err = Simulation_LoadSolution(&(self->S), fname);
-    // if (err != 0){
-    //     HandleSolutionErrorCode("Simulation_LoadSolution", err);
-    // }
+//    err = Simulation_LoadSolution(&(self->S), fname);
+//     if (err != 0){
+//         HandleSolutionErrorCode("Simulation_LoadSolution", err);
+//     }
 	Py_RETURN_NONE;
 }
 
@@ -683,10 +683,10 @@ static PyObject *S4Sim_SaveSolution(S4Sim *self, PyObject *args, PyObject *kwds)
 	const char *fname;
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "s:SaveSolution", kwlist, &fname)){ return NULL; }
     int err;
-    err = Simulation_SaveSolution(&(self->S), fname);
-    if (err != 0){
-        HandleSolutionErrorCode("Simulation_SaveSolution", err);
-    }
+//    err = Simulation_SaveSolution(&(self->S), fname);
+//    if (err != 0){
+//        HandleSolutionErrorCode("Simulation_SaveSolution", err);
+//    }
 	Py_RETURN_NONE;
 }
 
@@ -1164,11 +1164,11 @@ static PyObject *S4Sim_GetBasisSet(S4Sim *self, PyObject *args){
 	int n, i, ret;
 	PyObject *rv;
 
-	ret = Simulation_InitSolution(&(self->S));
-	if(0 != ret){
-		HandleSolutionErrorCode("GetBasisSet", ret);
-		return NULL;
-	}
+//	ret = Simulation_InitSolution(&(self->S));
+//	if(0 != ret){
+//		HandleSolutionErrorCode("GetBasisSet", ret);
+//		return NULL;
+//	}
 
 	n = Simulation_GetNumG(&(self->S), &G);
 	if(NULL == G){
@@ -1486,7 +1486,7 @@ static PyObject *S4Sim_GetFieldsOnGridNumpy(S4Sim *self, PyObject *args, PyObjec
   /* strides[0] = strides[1]; */
   /* strides[1] = temp; */
   /* PyArray_UpdateFlags(Earr, NPY_ARRAY_UPDATE_ALL); */
-  PyArray_ENABLEFLAGS(Earr, NPY_ARRAY_OWNDATA);
+  PyArray_ENABLEFLAGS((PyArrayObject *)Earr, NPY_ARRAY_OWNDATA);
   /* PyArray_ENABLEFLAGS(Earr,  NPY_ARRAY_F_CONTIGUOUS); */
   PyObject *Harr;
   Harr = PyArray_SimpleNewFromData(3, dims, NPY_COMPLEX128, Hfields);
@@ -1497,7 +1497,7 @@ static PyObject *S4Sim_GetFieldsOnGridNumpy(S4Sim *self, PyObject *args, PyObjec
   /* strides[1] = temp; */
 
   /* PyArray_UpdateFlags(Harr, NPY_ARRAY_UPDATE_ALL); */
-  PyArray_ENABLEFLAGS(Harr, NPY_ARRAY_OWNDATA);
+  PyArray_ENABLEFLAGS((PyArrayObject *)Harr, NPY_ARRAY_OWNDATA);
   /* Harr->flags |= NPY_OWNDATA */
 
   /* PyArray_ENABLEFLAGS(Harr,  NPY_ARRAY_F_CONTIGUOUS); */
