@@ -172,11 +172,4 @@ $(OBJDIR)/S4k/convert.o: S4/convert.c
 $(OBJDIR)/S4k/Eigensystems.o: S4/RNP/Eigensystems.cpp
 	$(CXX) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
-#### Python extension
 
-S4_pyext: objdir $(S4_LIBNAME)
-	sh conda_recipe/s4/gensetup.py.sh $(OBJDIR) $(S4_LIBNAME) "$(LIBS)" $(CONDA_LIB)
-	$(PYTHON) setup.py install
-
-clean:
-	rm -rf $(OBJDIR)

@@ -1,4 +1,3 @@
-
 package:
   name: s4
   version: 1.1
@@ -7,35 +6,55 @@ source:
   path: ../../
 
 build:
-  number: 2
+  number: 0
+  script: |
+    # .env vars (abs paths)
+    export SRC_DIR="$SRC_DIR"
+    export OBJDIR="$SRC_DIR/conda_recipe/s4/build"
+    export CONDA_INC="$BUILD_PREFIX/include"
+    export CONDA_LIB="$BUILD_PREFIX/lib"
+    export NUMPY_INCLUDE=$(python -c "import numpy; print(numpy.get_include())")
+
+    # Build the static library, exectuing from SRC_DIR (IMPORTANT)
+    make -C $SRC_DIR -f conda_recipe/s4/Makefile all
+    
+    # Copy libS4.a into conda build dir
+    cp "$SRC_DIR/build/libS4.a" "$SRC_DIR/conda_recipe/s4/"
+
+    # Build and install the wheel
+    $PYTHON -m pip wheel "$SRC_DIR/conda_recipe/s4" -w dist
+    $PYTHON -m pip install dist/*.whl --no-deps -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - python
+    - python {{ python }}
+    - numpy {{ numpy }}
     - setuptools
-    - numpy
+    - wheel
     - boost
     - suitesparse
     - mkl-devel [win]
     - openblas [unix]
 
   host:
-    - python
-    - numpy
+    - python {{ python }}
+    - numpy {{ numpy }}
+    - setuptools
+    - wheel
     - boost
     - suitesparse
-    - mkl-devel [win]
-    - openblas [unix]
+    - mkl-devel # [win]
+    - openblas # [unix]
 
   run:
-    - python
+    - {{ pin_compatible('python') }}
     - {{ pin_compatible('numpy') }}
     - {{ pin_compatible('boost') }}
     - {{ pin_compatible('suitesparse') }}
-    - {{ pin_compatible('mkl') }} [win]
-    - {{ pin_compatible('openblas') }} [unix]
+    - {{ pin_compatible('mkl') }} # [win]
+    - {{ pin_compatible('openblas') }} # [unix]
 
 test:
   imports:
@@ -50,7 +69,7 @@ about:
 
   # The remaining entries in this section are optional, but recommended.
   description: |
-    Forked from: https://github.com/[paulgoulain and/or marcus-o]/S4:
+    Forked from https://github.com/paulgoulain/S4:
     
     These are conda packages of the below software. 
     Victor Liu wrote the initial code but is not responsible for these packages.
@@ -62,10 +81,12 @@ about:
     installation instructions, the license and copyright, contact
     addresses, and other important information.
     
-    Modified to build using Python 3.10 and 3.12, with NumPy 1.26.
+    Modified to build using Python 3.10 to 3.12, with NumPy 1.26 (max supported by conda currently).
     Repaired errors generated during build in C source files.
     Replaced dependencies throwing errors (libboost).
-    Repaired Makefile variables.
+    Rewrote build configuration to PEP 517/518; kept modified Makefile and meta.yaml, 
+    created setup.cfg, setup.py (no gensetup.py.sh), pyproject.toml. 
+    All other files in recipe are redundant and may interfere with build so are deleted.
     
     See git repo https://github.com/willhampshire/S4
 
