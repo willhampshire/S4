@@ -69,7 +69,7 @@ about:
 
   # The remaining entries in this section are optional, but recommended.
   description: |
-    Forked from https://github.com/paulgoulain/S4:
+    Forked https://github.com/willhampshire/S4 from https://github.com/paulgoulain/S4:
     
     These are conda packages of the below software. 
     Victor Liu wrote the initial code but is not responsible for these packages.
@@ -87,8 +87,6 @@ about:
     Rewrote build configuration to PEP 517/518; kept modified Makefile and meta.yaml, 
     created setup.cfg, setup.py (no gensetup.py.sh), pyproject.toml. 
     All other files in recipe are redundant and may interfere with build so are deleted.
-    
-    See git repo https://github.com/willhampshire/S4
 
   doc_url: https://web.stanford.edu/group/fan/S4/index.html
   dev_url: https://web.stanford.edu/group/fan/S4/index.html
