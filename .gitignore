@@ -1,6 +1,6 @@
 boost*
 S4/lib
 S4/include
-setup.py
 OpenBLAS
 doc/build
+*.idea*
