@@ -236,9 +236,9 @@ typedef struct
 	Bool parallelize;
 }S4SpectrumSampler_Data;
 
-static PyTypeObject S4Sim_Type;
-static PyTypeObject S4Interpolator_Type;
-static PyTypeObject S4SpectrumSampler_Type;
+extern PyTypeObject S4Sim_Type;
+extern PyTypeObject S4Interpolator_Type;
+extern PyTypeObject S4SpectrumSampler_Type;
 
 int bool_converter(PyObject *obj, int *b){
 	if(PyBool_Check(obj)){

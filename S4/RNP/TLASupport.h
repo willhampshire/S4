@@ -646,9 +646,9 @@ struct ApplyElementaryReflectorBlocked{ // zlarfb, dlarfb, clarfb, slarfb
 		int c_offset, t_offset, v_offset, work_offset;
 
 		// Local variables
-		int i, j;
-		int lastc;
-		int lastv;
+		size_t i, j;
+		size_t lastc;
+		size_t lastv;
 
 		// Parameter adjustments
 		v_offset = 1 + ldv;

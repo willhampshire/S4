@@ -1,0 +1,136 @@
+!IFDEF BUILD_PREFIX
+CONDA_INC = $(BUILD_PREFIX)\Library\include
+CONDA_LIB = $(BUILD_PREFIX)\Library\lib
+!ELSE
+CONDA_INC = C:\Users\WilliamHampshire\miniconda3\envs\build-env\Library\include
+CONDA_LIB = C:\Users\WilliamHampshire\miniconda3\envs\build-env\Library\lib
+!ENDIF
+
+BLAS_LIB = /LIBPATH:$(CONDA_LIB) openblas.lib
+LAPACK_LIB = /LIBPATH:$(CONDA_LIB) openblas.lib
+
+CHOLMOD_INC = /I$(CONDA_INC) /I$(CONDA_INC)\suitesparse
+CHOLMOD_LIB = /LIBPATH:$(CONDA_LIB) cholmod.lib amd.lib colamd.lib camd.lib ccolamd.lib
+
+BOOST_INC = /I$(CONDA_INC)
+BOOST_LIBS = /LIBPATH:$(CONDA_LIB) boost_serialization.lib
+
+CXX = cl
+CC  = cl
+
+CFLAGS = /nologo /O2 /MD /D_CRT_SECURE_NO_WARNINGS /W3 /EHsc /DWIN32
+CPPFLAGS = /I. /IS4 /IS4\RNP /IS4\kiss_fft $(BOOST_INC) $(CHOLMOD_INC) /DBOOST_ALL_NO_LIB
+
+OBJDIR = $(SRC_DIR)\conda_recipe\s4\build
+S4_LIBNAME = $(OBJDIR)\libS4.lib
+
+ALL_OBJS = \
+    $(OBJDIR)\S4k\S4.obj \
+    $(OBJDIR)\S4k\rcwa.obj \
+    $(OBJDIR)\S4k\fmm_common.obj \
+    $(OBJDIR)\S4k\fmm_FFT.obj \
+    $(OBJDIR)\S4k\fmm_kottke.obj \
+    $(OBJDIR)\S4k\fmm_closed.obj \
+    $(OBJDIR)\S4k\fmm_PolBasisNV.obj \
+    $(OBJDIR)\S4k\fmm_PolBasisVL.obj \
+    $(OBJDIR)\S4k\fmm_PolBasisJones.obj \
+    $(OBJDIR)\S4k\fmm_experimental.obj \
+    $(OBJDIR)\S4k\fft_iface.obj \
+    $(OBJDIR)\S4k\pattern.obj \
+    $(OBJDIR)\S4k\intersection.obj \
+    $(OBJDIR)\S4k\predicates.obj \
+    $(OBJDIR)\S4k\numalloc.obj \
+    $(OBJDIR)\S4k\gsel.obj \
+    $(OBJDIR)\S4k\sort.obj \
+    $(OBJDIR)\S4k\kiss_fft.obj \
+    $(OBJDIR)\S4k\kiss_fftnd.obj \
+    $(OBJDIR)\S4k\SpectrumSampler.obj \
+    $(OBJDIR)\S4k\cubature.obj \
+    $(OBJDIR)\S4k\Interpolator.obj \
+    $(OBJDIR)\S4k\convert.obj \
+    $(OBJDIR)\S4k\Eigensystems.obj
+
+all: dirs $(S4_LIBNAME)
+
+dirs:
+	if not exist $(OBJDIR) mkdir $(OBJDIR)
+	if exist $(OBJDIR) if not exist $(OBJDIR)\S4k mkdir $(OBJDIR)\S4k
+	if exist $(OBJDIR) if not exist $(OBJDIR)\S4r mkdir $(OBJDIR)\S4r
+	if exist $(OBJDIR) if not exist $(OBJDIR)\modules mkdir $(OBJDIR)\modules
+
+$(S4_LIBNAME): $(ALL_OBJS)
+	lib /OUT:$@ $(ALL_OBJS) $(BOOST_LIBS)
+
+# --- Compilation rules ---
+
+$(OBJDIR)\S4k\S4.obj: S4\S4.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\rcwa.obj: S4\rcwa.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_common.obj: S4\fmm\fmm_common.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_FFT.obj: S4\fmm\fmm_FFT.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_kottke.obj: S4\fmm\fmm_kottke.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_closed.obj: S4\fmm\fmm_closed.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_PolBasisNV.obj: S4\fmm\fmm_PolBasisNV.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_PolBasisVL.obj: S4\fmm\fmm_PolBasisVL.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_PolBasisJones.obj: S4\fmm\fmm_PolBasisJones.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fmm_experimental.obj: S4\fmm\fmm_experimental.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\fft_iface.obj: S4\fmm\fft_iface.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\pattern.obj: S4\pattern\pattern.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\intersection.obj: S4\pattern\intersection.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\predicates.obj: S4\pattern\predicates.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\numalloc.obj: S4\numalloc.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\gsel.obj: S4\gsel.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\sort.obj: S4\sort.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\kiss_fft.obj: S4\kiss_fft\kiss_fft.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\kiss_fftnd.obj: S4\kiss_fft\tools\kiss_fftnd.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\SpectrumSampler.obj: S4\SpectrumSampler.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\cubature.obj: S4\cubature.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\Interpolator.obj: S4\Interpolator.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\convert.obj: S4\convert.c
+	$(CC) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**
+
+$(OBJDIR)\S4k\Eigensystems.obj: S4\RNP\Eigensystems.cpp
+	$(CXX) /c $(CFLAGS) $(CPPFLAGS) /Fo$@ $**

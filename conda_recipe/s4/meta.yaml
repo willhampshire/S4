@@ -5,9 +5,14 @@ package:
 source:
   path: ../../
 
+
 build:
   number: 0
   script: |
+    {% if win %}
+    call "%SRC_DIR%\conda_recipe\s4\build.bat"
+    {% else %}
+
     # .env vars (abs paths)
     export SRC_DIR="$SRC_DIR"
     export OBJDIR="$SRC_DIR/conda_recipe/s4/build"
@@ -16,7 +21,7 @@ build:
     export NUMPY_INCLUDE=$(python -c "import numpy; print(numpy.get_include())")
 
     # Build the static library, exectuing from SRC_DIR (IMPORTANT)
-    make -C $SRC_DIR -f conda_recipe/s4/Makefile all
+    make -C $SRC_DIR -f conda_recipe/s4/Makefile.unix all
     
     # Copy libS4.a into conda build dir
     cp "$SRC_DIR/build/libS4.a" "$SRC_DIR/conda_recipe/s4/"
@@ -25,18 +30,21 @@ build:
     $PYTHON -m pip wheel "$SRC_DIR/conda_recipe/s4" -w dist
     $PYTHON -m pip install dist/*.whl --no-deps -vv
 
+    {% endif %}
+
 requirements:
   build:
-    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - python {{ python }}
     - numpy {{ numpy }}
+    - libarchive
     - setuptools
     - wheel
     - boost
     - suitesparse
     - mkl-devel [win]
     - openblas [unix]
+
 
   host:
     - python {{ python }}

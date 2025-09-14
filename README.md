@@ -16,3 +16,27 @@ Refer to `marcus-o`'s [repo](https://github.com/marcus-o/S4) for more info.
 
 See above repos / original forked repos for detailed instructions.
 The Makefile will need paths adjusting - I only adjusted the conda recipe.
+
+
+## Developer Build Instructions
+
+### Windows
+
+Install Visual Studio developer tools to access ```nmake```.
+Create ```conda create -n "build-env" python=3.12```.
+Activate build-env.
+Requires ```conda install```: 
+- ```boost```, ```boost-cpp```? 
+- ```libarchive``` from -c conda-forge
+- ```setuptools```
+- ```wheel```
+- ```suitesparse```
+  
+Configure VS build tools file location in ```buuld.bat```.
+
+
+
+## Patch Notes
+
+- Rewrote the build config PEP 517/518
+- Updated some int to size_t in RNP/TLASupport.h ApplyElementaryReflectorBlocked
