@@ -39,7 +39,7 @@ if sys.platform == "win32":
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")] # win requires cpp compilation
     libraries = ["S4", "libboost_serialization", "cholmod"]
     # extra_link_args = [str(BUILD_PREFIX / "Library" / "lib" / "libboost_serialization.lib"),
-    #                     str(BUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
+    #                     str(BsUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
     
 else:
     sys_extra_compile_args=["-Wall", "-O3", "-fPIC"]
