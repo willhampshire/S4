@@ -5,7 +5,7 @@ Refer to `willhampshire` in place of `paulgoulain` when installing conda package
 
 ## Installation instructions
 Conda package created due to platform independence.
-- Create new conda environment using `conda create -n s4-venv-name python=3.12` (or 3.10)
+- Create new conda environment using `conda create -n s4-venv-name python=3.12` (3.10 to 3.12 available)
 - `conda activate s4-venv-name`
 - `conda install -c willhampshire s4`
 
@@ -22,23 +22,29 @@ The Makefile will need paths adjusting - I only adjusted the conda recipe.
 
 ### Windows
 
-Install Visual Studio developer tools to access ```nmake```.
+Install Visual Studio developer tools to access ```nmake```, ```cl``` and ```lib```.
 Create ```conda create -n "build-env" python=3.12```.
 Activate build-env.
-Requires ```conda install```: 
+Requires ```conda install``` of:
 - ```boost``` 
-- ```boost-cpp``` FROM DEFAULT CHANNEL! (gets static .lib called libboost_serialization.lib)
-- ```libarchive``` from -c conda-forge
+- ```boost-cpp``` from default channel (gets static .lib called libboost_serialization.lib)
+- ```libarchive``` from conda-forge channel
 - ```setuptools```
 - ```wheel```
 - ```suitesparse```
+- ```conda-build```
   
-Configure VS build tools file location in ```build.bat```.
+Configure VS build tools file location in ```build.bat```, if using different version.
+Run the commands in the build script manually to check filepaths and tools are installed.
+Verify valid contents of .lib files using ```lib /LIST <.lib file>```, where to use lib, 
+build tools must be activated (open Developer Command Prompt or run the ```vcvars__``` file manually).
 
+To build the conda packages, run ```conda build conda_recipe\s4```.
 
 
 ## Patch Notes
 
-- Rewrote most of the build config PEP 517/518 for modern build tools
+- Rewrote build config PEP 517/518
+- Compilation on Windows now works, after configuring a conda env as above
 - Updated some int to size_t in RNP/TLASupport.h ApplyElementaryReflectorBlocked
 

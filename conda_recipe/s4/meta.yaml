@@ -11,6 +11,18 @@ build:
   script: |
     {% if win %}
     call "%SRC_DIR%\conda_recipe\s4\build.bat"
+
+    # move to script from .bat
+    echo PYTHON: %PYTHON%
+    %PYTHON% -m pip wheel "%SRC_DIR%\conda_recipe\s4" -w dist --no-deps --verbose
+    
+    dir %SRC_DIR%\dist
+
+    for %%F in ("%SRC_DIR%\dist\*.whl") do (
+    echo Installing wheel: %%F
+    %PYTHON% -m pip install "%%F" --no-deps -vv
+    )
+
     {% else %}
 
     # .env vars (abs paths)

@@ -32,9 +32,5 @@ echo LDFLAGS: %LDFLAGS%
 set DISTUTILS_USE_SDK=1
 set MSSdk=1
 
-REM --- Build and install the wheel ---
-echo PYTHON: %PYTHON%
-%PYTHON% -m pip wheel "%SRC_DIR%\conda_recipe\s4" -w dist --no-deps --verbose
-
 REM exit with success
 exit /b 0
