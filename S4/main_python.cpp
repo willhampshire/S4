@@ -1463,7 +1463,7 @@ static PyObject *S4Sim_GetFieldsOnGridNumpy(S4Sim *self, PyObject *args, PyObjec
   Hfields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
   if (0 != (ret = Simulation_GetFieldPlane(&(self->S), snxy, z, Efields, Hfields))) {
     HandleSolutionErrorCode("GetFieldsOnGrid", ret);
-    goto fail;
+    return NULL;
   }
   /* npy_intp *dims */
   /* void *data; */
@@ -1514,9 +1514,9 @@ static PyObject *S4Sim_GetFieldsOnGridNumpy(S4Sim *self, PyObject *args, PyObjec
   /* return Py_BuildValue("(OO)", Earr, Harr); */
   return Py_BuildValue("(NN)", Earr, Harr);
 
- fail:
-  /* Py_XDECREF(EHfields); */
-  return NULL;
+// fail:
+//  /* Py_XDECREF(EHfields); */
+//  return NULL;
 }
 
 
@@ -2018,7 +2018,8 @@ static PyMethodDef S4Sim_methods[] = {
 	{NULL, NULL}
 };
 
-static PyTypeObject S4Sim_Type = {
+// remove static declaration so accessable outside of file, as defined by extern
+PyTypeObject S4Sim_Type = {
 	/* The ob_type field must be initialized in the module init function
 	 * to be portable to Windows without using C++. */
 	PyVarObject_HEAD_INIT(NULL, 0)
@@ -2064,7 +2065,8 @@ static PyTypeObject S4Sim_Type = {
 	0,                  /*tp_is_gc*/
 };
 
-static PyTypeObject S4Interpolator_Type = {
+// remove static declaration so accessable outside of file, as defined by extern
+PyTypeObject S4Interpolator_Type = {
 	/* The ob_type field must be initialized in the module init function
 	* to be portable to Windows without using C++. */
 	PyVarObject_HEAD_INIT(NULL, 0)
@@ -2110,7 +2112,8 @@ static PyTypeObject S4Interpolator_Type = {
 	0,                  /*tp_is_gc*/
 };
 
-static PyTypeObject S4SpectrumSampler_Type = {
+// remove static declaration so accessable outside of file, as defined by extern
+PyTypeObject S4SpectrumSampler_Type = {
 	/* The ob_type field must be initialized in the module init function
 	* to be portable to Windows without using C++. */
 	PyVarObject_HEAD_INIT(NULL, 0)

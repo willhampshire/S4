@@ -2,7 +2,7 @@
 Shim setup.py, remove redundant gensetup.py.sh in favour of this file.
 Uses config in setup.cfg (toml file)
 
-Workflow:
+Win:
 
 Uses precompiled lib file, which should contain paths to .obj files from Makefile
 e.g. run lib /LIST conda_recipe\s4\libS4.lib (lib.exe is part of VS build tools, available in Developer CMD,
@@ -15,6 +15,11 @@ C:\...\S4\conda_recipe\s4\build\S4k\rcwa.obj
 boost_serialization.dll
 
 Then, setup.py compiles main_python, using the functions in the lib file, to a Python package.
+
+Unix:
+
+Same largely but with .a/.o instead of .lib/.obj. Compilation is more forgiving.
+
 """
 
 from setuptools import setup, Extension
@@ -45,7 +50,7 @@ else:
     sys_extra_compile_args=["-Wall", "-O3", "-fPIC"]
     package_data = {"": ["libS4.a"]} # unix compiles to .a
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")]
-    libraries = ["S4", "boost_serialization", "cholmod"]
+    libraries = ["S4", "boost_serialization", "cholmod", "stdc++"]
 
 ext_modules = [
     Extension(
@@ -55,6 +60,8 @@ ext_modules = [
             str(SRC_DIR / "S4"),
             str(SRC_DIR / "S4" / "RNP"),
             str(SRC_DIR / "S4" / "kiss_fft"),
+            str(SRC_DIR / "S4" / "fmm"),
+            str(SRC_DIR / "S4" / "pattern"),
             numpy.get_include(),
             str(BUILD_PREFIX / "include"),
         ],

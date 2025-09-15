@@ -29,6 +29,7 @@ CFLAGS = -Wall -O3 -m64 -msse3 -msse2 -msse -fPIC
 OPTFLAGS = -O3
 
 OBJDIR = ./build
+
 S4_BINNAME = $(OBJDIR)/S4
 S4_LIBNAME = $(OBJDIR)/libS4.a
 S4r_LIBNAME = $(OBJDIR)/libS4r.a
@@ -36,7 +37,7 @@ S4r_LIBNAME = $(OBJDIR)/libS4r.a
 CPPFLAGS = -Wall -I. -IS4 -IS4/RNP -IS4/kiss_fft 
  
 ifdef BOOST_INC
-	CPPFLAGS += $(BOOST_INC) $(BOOST_LIBS)
+CPPFLAGS += $(BOOST_INC) $(BOOST_LIBS)
 endif
 
 ifdef BLAS_LIB
@@ -70,6 +71,7 @@ LIBS = $(BLAS_LIB) $(LAPACK_LIB) $(FFTW3_LIB) $(PTHREAD_LIB) $(CHOLMOD_LIB) $(MP
 all: $(S4_LIBNAME)
 
 objdir:
+	rm -rf $(OBJDIR)
 	mkdir -p $(OBJDIR)
 	mkdir -p $(OBJDIR)/S4k
 	mkdir -p $(OBJDIR)/S4r

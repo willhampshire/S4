@@ -39,7 +39,7 @@ build:
     cp "$SRC_DIR/build/libS4.a" "$SRC_DIR/conda_recipe/s4/"
 
     # Build and install the wheel
-    $PYTHON -m pip wheel "$SRC_DIR/conda_recipe/s4" -w dist
+    $PYTHON -m pip wheel "$SRC_DIR/conda_recipe/s4" -w dist --no-deps --verbose
     $PYTHON -m pip install dist/*.whl --no-deps -vv
 
     {% endif %}
