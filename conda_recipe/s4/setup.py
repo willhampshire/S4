@@ -1,7 +1,6 @@
 """
-Shim setup.py, remove redundant gensetup.py.sh in favour of static file.
+Shim setup.py, remove redundant gensetup.py.sh in favour of this file.
 Uses config in setup.cfg (toml file)
-
 
 Workflow:
 
@@ -39,18 +38,18 @@ if sys.platform == "win32":
     package_data = {"": ["libS4.lib"]} # win compiles to .lib
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")] # win requires cpp compilation
     libraries = ["S4", "libboost_serialization", "cholmod"]
-    extra_link_args = [str(BUILD_PREFIX / "Library" / "lib" / "libboost_serialization.lib"),
-                        str(BUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
+    # extra_link_args = [str(BUILD_PREFIX / "Library" / "lib" / "libboost_serialization.lib"),
+    #                     str(BUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
     
 else:
     sys_extra_compile_args=["-Wall", "-O3", "-fPIC"]
     package_data = {"": ["libS4.a"]} # unix compiles to .a
-    sources=[str(SRC_DIR / "S4" / "main_python.c")]
+    sources=[str(SRC_DIR / "S4" / "main_python.cpp")]
     libraries = ["S4", "boost_serialization", "cholmod"]
 
 ext_modules = [
     Extension(
-        "S4", # Python importable module name
+        "S4", # Python import module name
         sources=sources,
         include_dirs=[
             str(SRC_DIR / "S4"),
