@@ -1456,7 +1456,11 @@ static PyObject *S4Sim_GetFieldsOnGridNumpy(S4Sim *self, PyObject *args, PyObjec
   if (!PyArg_ParseTupleAndKeywords(args, kwds, "d(nn):GetFieldsOnGrid", kwlist, &z, &nxy[0], &nxy[1])) {
     return NULL;
   }
-  int snxy[2] = {nxy[0], nxy[1]};
+
+  //  int snxy[2] = {nxy[0], nxy[1]};
+  // cast nxy as int from Py_ssize_t
+  int snxy[2] = {static_cast<int>(nxy[0]), static_cast<int>(nxy[1])};
+
   /* double* Efields = PyArray_DATA(EHfields); */
   /* double* Hfields = (double*)(PyArray_BYTES(EHfields) + PyArray_STRIDE(EHfields, 0)); */
   Efields = (double*)malloc(sizeof(double) * 2*3 * nxy[0] * nxy[1]);
