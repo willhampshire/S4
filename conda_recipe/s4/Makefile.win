@@ -18,7 +18,7 @@ BOOST_LIBS = /LIBPATH:$(CONDA_LIB) boost_serialization.lib
 CXX = cl
 CC  = cl
 
-CFLAGS = /nologo /O2 /MD /D_CRT_SECURE_NO_WARNINGS /W3 /EHsc /DWIN32
+CFLAGS = /nologo /O2 /MD /D_CRT_SECURE_NO_WARNINGS /W3 /EHsc /DWIN32 /DBOOST_ALL_NO_LIB
 CPPFLAGS = /I. /IS4 /IS4\RNP /IS4\kiss_fft $(BOOST_INC) $(CHOLMOD_INC) /DBOOST_ALL_NO_LIB
 
 OBJDIR = $(SRC_DIR)\conda_recipe\s4\build

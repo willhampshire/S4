@@ -26,17 +26,19 @@ Install Visual Studio developer tools to access ```nmake```.
 Create ```conda create -n "build-env" python=3.12```.
 Activate build-env.
 Requires ```conda install```: 
-- ```boost```, ```boost-cpp```? 
+- ```boost``` 
+- ```boost-cpp``` FROM DEFAULT CHANNEL! (gets static .lib called libboost_serialization.lib)
 - ```libarchive``` from -c conda-forge
 - ```setuptools```
 - ```wheel```
 - ```suitesparse```
   
-Configure VS build tools file location in ```buuld.bat```.
+Configure VS build tools file location in ```build.bat```.
 
 
 
 ## Patch Notes
 
-- Rewrote the build config PEP 517/518
+- Rewrote most of the build config PEP 517/518 for modern build tools
 - Updated some int to size_t in RNP/TLASupport.h ApplyElementaryReflectorBlocked
+

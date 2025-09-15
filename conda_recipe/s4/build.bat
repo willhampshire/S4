@@ -26,21 +26,15 @@ echo CFLAGS: %CFLAGS%
 echo CPPFLAGS: %CPPFLAGS%
 echo LDFLAGS: %LDFLAGS%
 
+@REM set CPPFLAGS=/DBOOST_ALL_NO_LIB
+@REM set CFLAGS=/DBOOST_ALL_NO_LIB
+
 set DISTUTILS_USE_SDK=1
 set MSSdk=1
 
 REM --- Build and install the wheel ---
 echo PYTHON: %PYTHON%
-%PYTHON% -m pip wheel "%SRC_DIR%\conda_recipe\s4" -w dist --verbose
+%PYTHON% -m pip wheel "%SRC_DIR%\conda_recipe\s4" -w dist --no-deps --verbose
 
-REM --- Find the built wheel ---
-for %%f in (dist\*.whl) do set WHEEL=%%f
-
-REM --- Install the wheel if found ---
-if defined WHEEL (
-    %PYTHON% -m pip install "%WHEEL%" --no-deps -vv
-) else (
-    echo ERROR: No wheel file found in dist\
-    exit /b 1
-)
-
+REM exit with success
+exit /b 0

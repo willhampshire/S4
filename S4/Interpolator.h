@@ -20,6 +20,10 @@
 #ifndef _INTERPOLATOR_H_
 #define _INTERPOLATOR_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct Interpolator_* Interpolator;
 typedef enum Interpolator_type_{
 	Interpolator_LINEAR,
@@ -30,5 +34,9 @@ typedef enum Interpolator_type_{
 Interpolator Interpolator_New(int n, int ny, double *xy, Interpolator_type type);
 void Interpolator_Destroy(Interpolator I);
 double* Interpolator_Get(const Interpolator I, double x, int *ny);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _INTERPOLATOR_H_ */

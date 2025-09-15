@@ -1,0 +1,9 @@
+numpy
+boost
+suitesparse
+
+[:sys_platform != "win32"]
+openblas
+
+[:sys_platform == "win32"]
+mkl

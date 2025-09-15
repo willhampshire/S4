@@ -35,5 +35,13 @@ void fft_plan_destroy(fft_plan plan);
 
 int fft_next_fast_size(int n);
 
-extern "C" void fft_init();
-extern "C" void fft_destroy();
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void fft_init();
+void fft_destroy();
+
+#ifdef __cplusplus
+}
+#endif

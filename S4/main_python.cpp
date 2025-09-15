@@ -50,9 +50,9 @@
 #define Bool unsigned char
 #endif
 
-
-void fft_init(void);
-void fft_destroy(void);
+// void fft_init(void);
+// void fft_destroy(void);
+#include "fmm/fft_iface.h"
 
 
 #ifdef __cplusplus

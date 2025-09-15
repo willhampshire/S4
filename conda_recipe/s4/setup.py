@@ -1,6 +1,21 @@
 """
 Shim setup.py, remove redundant gensetup.py.sh in favour of static file.
-setup() call uses config in setup.cfg (toml file)
+Uses config in setup.cfg (toml file)
+
+
+Workflow:
+
+Uses precompiled lib file, which should contain paths to .obj files from Makefile
+e.g. run lib /LIST conda_recipe\s4\libS4.lib (lib.exe is part of VS build tools, available in Developer CMD,
+    or by activating vcvars64 etc.)
+and observe:
+
+C:\...\S4\conda_recipe\s4\build\S4k\S4.obj
+C:\...\S4\conda_recipe\s4\build\S4k\rcwa.obj
+...
+boost_serialization.dll
+
+Then, setup.py compiles main_python, using the functions in the lib file, to a Python package.
 """
 
 from setuptools import setup, Extension
@@ -15,22 +30,27 @@ BUILD_PREFIX = Path(os.environ.get("BUILD_PREFIX", "."))
 # use pathlib to normalise all paths for different OS avoiding mixed slashes etc
 
 sys_extra_compile_args: list[str]
+extra_link_args: list[str]
 package_data: dict
 sources: list
 
 if sys.platform == "win32":
     sys_extra_compile_args = ['/O2', '/EHsc', "-DBOOST_ALL_NO_LIB"]  # MSVC optimization flag
     package_data = {"": ["libS4.lib"]} # win compiles to .lib
-    sources=[str(SRC_DIR / "S4" / "main_python.cpp")]
+    sources=[str(SRC_DIR / "S4" / "main_python.cpp")] # win requires cpp compilation
+    libraries = ["S4", "libboost_serialization", "cholmod"]
+    extra_link_args = [str(BUILD_PREFIX / "Library" / "lib" / "libboost_serialization.lib"),
+                        str(BUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
     
 else:
     sys_extra_compile_args=["-Wall", "-O3", "-fPIC"]
     package_data = {"": ["libS4.a"]} # unix compiles to .a
     sources=[str(SRC_DIR / "S4" / "main_python.c")]
+    libraries = ["S4", "boost_serialization", "cholmod"]
 
 ext_modules = [
     Extension(
-        "S4",
+        "S4", # Python importable module name
         sources=sources,
         include_dirs=[
             str(SRC_DIR / "S4"),
@@ -41,10 +61,12 @@ ext_modules = [
         ],
         library_dirs=[
             str(SRC_DIR / "conda_recipe" / "s4"),
-            str(BUILD_PREFIX / "lib"),
+            str(BUILD_PREFIX / "Library" / "lib"),
         ],
-        libraries=["S4", "boost_serialization", "cholmod"],  # S4 => libS4.a
+        libraries=libraries,  # S4 => libS4.a
         extra_compile_args=sys_extra_compile_args,
+        # extra_link_args=extra_link_args,
+        define_macros=[("BOOST_ALL_NO_LIB", None)],
     )
 ]
 

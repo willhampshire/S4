@@ -20,6 +20,10 @@
 #ifndef _SPECTRUM_SAMPLER_H_
 #define _SPECTRUM_SAMPLER_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct SpectrumSampler_* SpectrumSampler;
 typedef struct{
 	int initial_num_points;
@@ -45,5 +49,9 @@ int SpectrumSampler_SubmitResults(SpectrumSampler sampler);
 typedef void* SpectrumSampler_Enumerator;
 SpectrumSampler_Enumerator SpectrumSampler_GetPointEnumerator(const SpectrumSampler sampler);
 int SpectrumSampler_Enumerator_Get(SpectrumSampler_Enumerator, double pt[2]);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _SPECTRUM_SAMPLER_H_ */
