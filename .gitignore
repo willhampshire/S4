@@ -4,3 +4,4 @@ S4/include
 OpenBLAS
 doc/build
 *.idea*
+*build*

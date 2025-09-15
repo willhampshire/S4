@@ -55,8 +55,6 @@ all: dirs $(S4_LIBNAME)
 dirs:
 	if not exist $(OBJDIR) mkdir $(OBJDIR)
 	if exist $(OBJDIR) if not exist $(OBJDIR)\S4k mkdir $(OBJDIR)\S4k
-	if exist $(OBJDIR) if not exist $(OBJDIR)\S4r mkdir $(OBJDIR)\S4r
-	if exist $(OBJDIR) if not exist $(OBJDIR)\modules mkdir $(OBJDIR)\modules
 
 $(S4_LIBNAME): $(ALL_OBJS)
 	lib /OUT:$@ $(ALL_OBJS) $(BOOST_LIBS)

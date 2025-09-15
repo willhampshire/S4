@@ -1,9 +1,0 @@
-pyproject.toml
-setup.cfg
-setup.py
-C:/repos/S4/S4/S4/main_python.cpp
-s4.egg-info/PKG-INFO
-s4.egg-info/SOURCES.txt
-s4.egg-info/dependency_links.txt
-s4.egg-info/requires.txt
-s4.egg-info/top_level.txt

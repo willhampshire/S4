@@ -1,9 +1,0 @@
-Metadata-Version: 2.4
-Name: s4
-Version: 1.1
-Summary: Stanford Stratified Structure Solver (S4)
-Requires-Dist: numpy
-Requires-Dist: boost
-Requires-Dist: suitesparse
-Requires-Dist: mkl; sys_platform == "win32"
-Requires-Dist: openblas; sys_platform != "win32"
