@@ -74,8 +74,6 @@ objdir:
 	rm -rf $(OBJDIR)
 	mkdir -p $(OBJDIR)
 	mkdir -p $(OBJDIR)/S4k
-	mkdir -p $(OBJDIR)/S4r
-	mkdir -p $(OBJDIR)/modules
 	
 S4_LIBOBJS = \
 	$(OBJDIR)/S4k/S4.o \
@@ -102,24 +100,8 @@ S4_LIBOBJS = \
 	$(OBJDIR)/S4k/Interpolator.o \
 	$(OBJDIR)/S4k/convert.o
 
-S4r_LIBOBJS = \
-	$(OBJDIR)/S4r/Material.o \
-	$(OBJDIR)/S4r/LatticeGridRect.o \
-	$(OBJDIR)/S4r/LatticeGridArb.o \
-	$(OBJDIR)/S4r/POFF2Mesh.o \
-	$(OBJDIR)/S4r/PeriodicMesh.o \
-	$(OBJDIR)/S4r/Shape.o \
-	$(OBJDIR)/S4r/Simulation.o \
-	$(OBJDIR)/S4r/Layer.o \
-	$(OBJDIR)/S4r/Pseudoinverse.o \
-	$(OBJDIR)/S4r/Eigensystems.o \
-	$(OBJDIR)/S4r/IRA.o \
-	$(OBJDIR)/S4r/intersection.o \
-	$(OBJDIR)/S4r/predicates.o \
-	$(OBJDIR)/S4r/periodic_off2.o
-
 ifndef LAPACK_LIB
-  S4_LIBOBJS += $(OBJDIR)/S4k/Eigensystems.o
+S4_LIBOBJS += $(OBJDIR)/S4k/Eigensystems.o
 endif
 
 $(S4_LIBNAME): objdir $(S4_LIBOBJS)
