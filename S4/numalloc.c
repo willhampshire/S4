@@ -22,8 +22,9 @@
 
 #ifdef _WIN32
 # include <malloc.h>
-void * _aligned_malloc(size_t size, size_t alignment);
-void _aligned_free(void *ptr);
+// these are probably redefinitions, causing MVSC warning C4273
+// void * _aligned_malloc(size_t size, size_t alignment);
+// void _aligned_free(void *ptr);
 #else
 #include <inttypes.h>
 typedef uintptr_t malloc_aligned_ULONG_PTR;
@@ -34,7 +35,7 @@ typedef uintptr_t malloc_aligned_ULONG_PTR;
 // alignment : the alignment boundary
 void *malloc_aligned(size_t size, size_t alignment){
 #ifdef _WIN32
-	return (void*)_aligned_malloc(size, alignment);
+	return _aligned_malloc(size, alignment);
 #else
 	void *pa, *ptr;
 

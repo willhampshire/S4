@@ -39,7 +39,7 @@ package_data: dict
 sources: list
 
 if sys.platform == "win32":
-    sys_extra_compile_args = ['/O2', '/EHsc', "-DBOOST_ALL_NO_LIB"]  # MSVC optimization flag
+    sys_extra_compile_args = ['/O2', '/EHsc', "/DBOOST_ALL_NO_LIB"]  # MSVC optimization flag
     package_data = {"": ["libS4.lib"]} # win compiles to .lib
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")] # win requires cpp compilation
     libraries = ["S4", "libboost_serialization", "cholmod"]
@@ -72,7 +72,7 @@ ext_modules = [
         libraries=libraries,  # S4 => libS4.a
         extra_compile_args=sys_extra_compile_args,
         # extra_link_args=extra_link_args,
-        define_macros=[("BOOST_ALL_NO_LIB", None)],
+        # define_macros=[("BOOST_ALL_NO_LIB", None)],
     )
 ]
 

@@ -48,6 +48,9 @@ extern "C" {
 #endif
 
 
+#ifdef _MSC_VER
+    #define strdup _strdup // POSIX name deprecated in favour of _strdup
+#endif
 
 
 #define S4_VERB(verb,...) \
@@ -68,12 +71,14 @@ void* S4_malloc(size_t size);
 void S4_free(void *ptr);
 
 typedef struct Material_{
-	char *name;    // name of material
-	struct Material_ *next; // linked-list next pointer
+	char *name;	// name of material
+	struct Material_ *next;	// linked-list next pointer
 	int type; // 0 = scalar epsilon, 1 = tensor
-	union{
-		double s[2]; // real and imaginary parts of epsilon
+	struct { // ----- Sep 25 ----- change union to struct to avoid memory errors
+		double s[2]; 
+		// real and imaginary parts of epsilon
 		double abcde[10];
+		// reduced 9 tensor elements to 5 (complex)
 		// [ a b 0 ]
 		// [ c d 0 ]
 		// [ 0 0 e ]

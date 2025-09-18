@@ -48,6 +48,9 @@ extern "C" {
 
 #include <iostream>
 #include <fstream>
+#include <boost/version.hpp>
+#pragma message("Boost version: " BOOST_LIB_VERSION)
+#include <boost/throw_exception.hpp> // ← this is required in Boost ≥ 1.75
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/complex.hpp>
 #include <boost/archive/text_iarchive.hpp>
@@ -62,9 +65,10 @@ namespace bs = boost::serialization;
 
 void* S4_malloc(size_t size){ // for debugging
 	void* ret = malloc_aligned(size, 16);
-	// memset(ret, 0x0, size);
+	if (ret) memset(ret, 0x0, size);
 	return ret;
-}
+};
+
 void S4_free(void *ptr){
 	free_aligned(ptr);
 }
@@ -2376,6 +2380,8 @@ Material* Simulation_GetMaterialByName(const Simulation *S, const char *name, in
 	Material *M = S->material;
 	int i = 0;
 	while(NULL != M){
+		S4_TRACE("  strcmp('%s', '%s') = %d\n", M->name ? M->name : "null", name ? name : "null", strcmp(M->name, name));
+		// POSIX strcmp deprecated - debugging statement
 		if(0 == strcmp(M->name, name)){
 			if(NULL != index){ *index = i; }
 			S4_TRACE("< Simulation_GetMaterialByName returning %s [omega=%f]\n", M->name, S->omega[0]);

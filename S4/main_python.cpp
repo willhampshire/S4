@@ -723,18 +723,25 @@ static PyObject *S4Sim_SetMaterial(S4Sim *self, PyObject *args, PyObject *kwds){
 	}
 
 	if(0 == epsdata.type){
+		M->type = 0;
 		M->eps.s[0] = epsdata.eps[0];
 		M->eps.s[1] = epsdata.eps[1];
 	}else{
+		M->type = 1;
 		/* [ a b c ]    [ a b   ]
 		 * [ d e f ] -> [ d e   ]
 		 * [ g h i ]    [     i ]
-		 */
-		M->eps.abcde[0] = epsdata.eps[ 0]; M->eps.abcde[1] = epsdata.eps[ 1];
-		M->eps.abcde[2] = epsdata.eps[ 2]; M->eps.abcde[3] = epsdata.eps[ 3];
-		M->eps.abcde[4] = epsdata.eps[ 6]; M->eps.abcde[5] = epsdata.eps[ 7];
-		M->eps.abcde[6] = epsdata.eps[ 8]; M->eps.abcde[7] = epsdata.eps[ 9];
-		M->eps.abcde[8] = epsdata.eps[16]; M->eps.abcde[9] = epsdata.eps[17];
+		*/
+		double abcde[10];
+		abcde[0] = epsdata.eps[ 0]; abcde[1] = epsdata.eps[ 1];
+		abcde[2] = epsdata.eps[ 2]; abcde[3] = epsdata.eps[ 3];
+		abcde[4] = epsdata.eps[ 6]; abcde[5] = epsdata.eps[ 7];
+		abcde[6] = epsdata.eps[ 8]; abcde[7] = epsdata.eps[ 9];
+		abcde[8] = epsdata.eps[16]; abcde[9] = epsdata.eps[17];
+
+		for(int i = 0; i < 10; ++i) {
+			M->eps.abcde[i] = abcde[i];
+		}
 	}
 
 	Py_RETURN_NONE;
