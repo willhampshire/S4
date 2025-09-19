@@ -1,0 +1,67 @@
+\doxysection{S4/kiss\+\_\+fft/tools/kiss\+\_\+fftr.h File Reference}
+\hypertarget{kiss__fftr_8h}{}\label{kiss__fftr_8h}\index{S4/kiss\_fft/tools/kiss\_fftr.h@{S4/kiss\_fft/tools/kiss\_fftr.h}}
+{\ttfamily \#include "{}../kiss\+\_\+fft.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{kiss__fftr_8h_a6885422c822dff503165060c22779559}{kiss\+\_\+fftr\+\_\+free}}~free
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structkiss__fftr__state}{kiss\+\_\+fftr\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}} \mbox{\hyperlink{kiss__fftr_8h_aead7aaed139f58158b446ea623a8b8cb}{kiss\+\_\+fftr\+\_\+alloc}} (int \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}}, int inverse\+\_\+fft, void \texorpdfstring{$\ast$}{*}mem, size\+\_\+t \texorpdfstring{$\ast$}{*}lenmem)
+\item 
+void \mbox{\hyperlink{kiss__fftr_8h_a10fb9f5b5d83d074766cb54aa7269000}{kiss\+\_\+fftr}} (\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}} cfg, const \mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\+\_\+fft\+\_\+scalar}} \texorpdfstring{$\ast$}{*}timedata, \mbox{\hyperlink{structkiss__fft__cpx}{kiss\+\_\+fft\+\_\+cpx}} \texorpdfstring{$\ast$}{*}freqdata)
+\item 
+void \mbox{\hyperlink{kiss__fftr_8h_a16dc872f6d9d4a613cea584cf86eae2e}{kiss\+\_\+fftri}} (\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}} cfg, const \mbox{\hyperlink{structkiss__fft__cpx}{kiss\+\_\+fft\+\_\+cpx}} \texorpdfstring{$\ast$}{*}freqdata, \mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\+\_\+fft\+\_\+scalar}} \texorpdfstring{$\ast$}{*}timedata)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{kiss__fftr_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{kiss__fftr_8h_a6885422c822dff503165060c22779559}\index{kiss\_fftr.h@{kiss\_fftr.h}!kiss\_fftr\_free@{kiss\_fftr\_free}}
+\index{kiss\_fftr\_free@{kiss\_fftr\_free}!kiss\_fftr.h@{kiss\_fftr.h}}
+\doxysubsubsection{\texorpdfstring{kiss\_fftr\_free}{kiss\_fftr\_free}}
+{\footnotesize\ttfamily \label{kiss__fftr_8h_a6885422c822dff503165060c22779559} 
+\#define kiss\+\_\+fftr\+\_\+free~free}
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{kiss__fftr_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}\index{kiss\_fftr.h@{kiss\_fftr.h}!kiss\_fftr\_cfg@{kiss\_fftr\_cfg}}
+\index{kiss\_fftr\_cfg@{kiss\_fftr\_cfg}!kiss\_fftr.h@{kiss\_fftr.h}}
+\doxysubsubsection{\texorpdfstring{kiss\_fftr\_cfg}{kiss\_fftr\_cfg}}
+{\footnotesize\ttfamily \label{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8} 
+typedef struct \mbox{\hyperlink{structkiss__fftr__state}{kiss\+\_\+fftr\+\_\+state}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{kiss__fftr_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{kiss__fftr_8h_a10fb9f5b5d83d074766cb54aa7269000}\index{kiss\_fftr.h@{kiss\_fftr.h}!kiss\_fftr@{kiss\_fftr}}
+\index{kiss\_fftr@{kiss\_fftr}!kiss\_fftr.h@{kiss\_fftr.h}}
+\doxysubsubsection{\texorpdfstring{kiss\_fftr()}{kiss\_fftr()}}
+{\footnotesize\ttfamily \label{kiss__fftr_8h_a10fb9f5b5d83d074766cb54aa7269000} 
+void kiss\+\_\+fftr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}}}]{cfg}{, }\item[{const \mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\+\_\+fft\+\_\+scalar}} \texorpdfstring{$\ast$}{*}}]{timedata}{, }\item[{\mbox{\hyperlink{structkiss__fft__cpx}{kiss\+\_\+fft\+\_\+cpx}} \texorpdfstring{$\ast$}{*}}]{freqdata}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kiss__fftr_8h_aead7aaed139f58158b446ea623a8b8cb}\index{kiss\_fftr.h@{kiss\_fftr.h}!kiss\_fftr\_alloc@{kiss\_fftr\_alloc}}
+\index{kiss\_fftr\_alloc@{kiss\_fftr\_alloc}!kiss\_fftr.h@{kiss\_fftr.h}}
+\doxysubsubsection{\texorpdfstring{kiss\_fftr\_alloc()}{kiss\_fftr\_alloc()}}
+{\footnotesize\ttfamily \label{kiss__fftr_8h_aead7aaed139f58158b446ea623a8b8cb} 
+\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}} kiss\+\_\+fftr\+\_\+alloc (\begin{DoxyParamCaption}\item[{int}]{nfft}{, }\item[{int}]{inverse\+\_\+fft}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{mem}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{lenmem}{}\end{DoxyParamCaption})}
+
+\Hypertarget{kiss__fftr_8h_a16dc872f6d9d4a613cea584cf86eae2e}\index{kiss\_fftr.h@{kiss\_fftr.h}!kiss\_fftri@{kiss\_fftri}}
+\index{kiss\_fftri@{kiss\_fftri}!kiss\_fftr.h@{kiss\_fftr.h}}
+\doxysubsubsection{\texorpdfstring{kiss\_fftri()}{kiss\_fftri()}}
+{\footnotesize\ttfamily \label{kiss__fftr_8h_a16dc872f6d9d4a613cea584cf86eae2e} 
+void kiss\+\_\+fftri (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kiss__fftr_8h_a9770a73a2aed969522b253322d069fb8}{kiss\+\_\+fftr\+\_\+cfg}}}]{cfg}{, }\item[{const \mbox{\hyperlink{structkiss__fft__cpx}{kiss\+\_\+fft\+\_\+cpx}} \texorpdfstring{$\ast$}{*}}]{freqdata}{, }\item[{\mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\+\_\+fft\+\_\+scalar}} \texorpdfstring{$\ast$}{*}}]{timedata}{}\end{DoxyParamCaption})}
+

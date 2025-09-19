@@ -1,0 +1,184 @@
+\doxysection{RNP\+::TLASupport Namespace Reference}
+\hypertarget{namespace_r_n_p_1_1_t_l_a_support}{}\label{namespace_r_n_p_1_1_t_l_a_support}\index{RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_apply_elementary_reflector}{Apply\+Elementary\+Reflector}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_apply_elementary_reflector_blocked}{Apply\+Elementary\+Reflector\+Blocked}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_apply_orthognal_matrix_from_elementary_reflectors}{Apply\+Orthognal\+Matrix\+From\+Elementary\+Reflectors}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_apply_permutations}{Apply\+Permutations}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_cheap_hessenberg_norm}{Cheap\+Hessenberg\+Norm}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_cheap_matrix_norm}{Cheap\+Matrix\+Norm}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_generalized_hessenberg_reduction}{Generalized\+Hessenberg\+Reduction}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_l_u_solve}{LUSolve}}
+\item 
+struct \mbox{\hyperlink{struct_r_n_p_1_1_t_l_a_support_1_1_rescale_matrix}{Rescale\+Matrix}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T$>$ }\\T \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a5c95efeb9b8ec4c214da60f398061eb4}{Pythag2}} (T \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, T y)
+\item 
+{\footnotesize template$<$class T$>$ }\\T \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ae094203c8ebbbb902f2bb73081242d9b}{Pythag3}} (T \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, T y, T z)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a17c1d164251a0b0bf740a111264a8e54}{Complex\+Divide}} (const std\+::complex$<$ T $>$ \&num, const std\+::complex$<$ T $>$ \&den, std\+::complex$<$ T $>$ \texorpdfstring{$\ast$}{*}result)
+\item 
+{\footnotesize template$<$class T$>$ }\\std\+::complex$<$ T $>$ \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ada8aceeeb056a351c622524306d1c183}{Complex\+Divide}} (const std\+::complex$<$ T $>$ \&num, const std\+::complex$<$ T $>$ \&den)
+\item 
+{\footnotesize template$<$class T$>$ }\\size\+\_\+t \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a3031767d840dd00df498d2d21b64933e}{Last\+Nonzero\+Column}} (size\+\_\+t m, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}})
+\item 
+{\footnotesize template$<$class T$>$ }\\size\+\_\+t \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a3d89d7b329d55fc7ec1727b8331e8f83}{Last\+Nonzero\+Row}} (size\+\_\+t m, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}})
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_acca3145aed1d2b4a2273e2c184e918ee}{Generate\+Elementary\+Reflector}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}alpha, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, size\+\_\+t incx, T \texorpdfstring{$\ast$}{*}tau)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ab7fb6d92d88e7617b3da6e0ecb374b84}{Generate\+Elementary\+Reflector\+Positive}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}alpha, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, size\+\_\+t incx, T \texorpdfstring{$\ast$}{*}tau)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a0eedb731b5d2dd8e3b90cc3db4be087b}{Generate\+Orthognal\+Matrix\+From\+Elementary\+Reflectors}} (size\+\_\+t m, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, size\+\_\+t k, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, int \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, const T \texorpdfstring{$\ast$}{*}tau, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}})
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a50c28decfeb689f2f0efebed4ccc94ab}{QRFactorization}} (size\+\_\+t m, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, T \texorpdfstring{$\ast$}{*}tau, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}})
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a3d4e71d15e777a81d2998b5f7643b641}{Generate\+Plane\+Rotation}} (const T \&f, const T \&g, typename \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1___real_or_complex_chooser}{RNP\+::\+TBLAS\+::\+\_\+\+Real\+Or\+Complex\+Chooser}}$<$ T $>$\+::real\+\_\+type \texorpdfstring{$\ast$}{*}cs, T \texorpdfstring{$\ast$}{*}sn, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}})
+\item 
+{\footnotesize template$<$class T, class TC, class TS$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a1f70b93590f590de824e3f9e95fe8314}{Apply\+Plane\+Rotation}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}cx, size\+\_\+t incx, T \texorpdfstring{$\ast$}{*}cy, size\+\_\+t incy, const TC \&\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}, const TS \&s)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_a52f61525420d451f434f2e11619852de}{Hessenberg\+Reduction\+Unblocked}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, size\+\_\+t ilo, size\+\_\+t ihi, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, T \texorpdfstring{$\ast$}{*}tau, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}})
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ac354f48c0be738ff5d0bc16f75ecd2d8}{Hessenberg\+Reduction\+Blocked}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, size\+\_\+t k, size\+\_\+t nb, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, T \texorpdfstring{$\ast$}{*}tau, T \texorpdfstring{$\ast$}{*}t, size\+\_\+t ldt, T \texorpdfstring{$\ast$}{*}y, size\+\_\+t ldy)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_acaf9f98344ec06f4ef65a8cc43a4c93d}{Hessenberg\+Reduction}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, size\+\_\+t ilo, size\+\_\+t ihi, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, T \texorpdfstring{$\ast$}{*}tau, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}})
+\item 
+{\footnotesize template$<$class T$>$ }\\int \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ae203f28fb47c06437ef734d904f9cc42}{LUDecomposition}} (size\+\_\+t m, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, size\+\_\+t \texorpdfstring{$\ast$}{*}pivots)
+\item 
+{\footnotesize template$<$class T$>$ }\\void \mbox{\hyperlink{namespace_r_n_p_1_1_t_l_a_support_ae4dc4ea1576a8f1062bf178cebafeefc}{Determinant}} (size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, T \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}, T \texorpdfstring{$\ast$}{*}mant, typename \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1___real_or_complex_chooser}{RNP\+::\+TBLAS\+::\+\_\+\+Real\+Or\+Complex\+Chooser}}$<$ T $>$\+::real\+\_\+type \texorpdfstring{$\ast$}{*}base, int \texorpdfstring{$\ast$}{*}expo, size\+\_\+t \texorpdfstring{$\ast$}{*}pivots=NULL)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a1f70b93590f590de824e3f9e95fe8314}\index{RNP::TLASupport@{RNP::TLASupport}!ApplyPlaneRotation@{ApplyPlaneRotation}}
+\index{ApplyPlaneRotation@{ApplyPlaneRotation}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{ApplyPlaneRotation()}{ApplyPlaneRotation()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a1f70b93590f590de824e3f9e95fe8314} 
+template$<$class T, class TC, class TS$>$ \\
+void RNP\+::\+TLASupport\+::\+Apply\+Plane\+Rotation (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{cx}{, }\item[{size\+\_\+t}]{incx}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{cy}{, }\item[{size\+\_\+t}]{incy}{, }\item[{const TC \&}]{c}{, }\item[{const TS \&}]{s}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ada8aceeeb056a351c622524306d1c183}\index{RNP::TLASupport@{RNP::TLASupport}!ComplexDivide@{ComplexDivide}}
+\index{ComplexDivide@{ComplexDivide}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{ComplexDivide()}{ComplexDivide()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ada8aceeeb056a351c622524306d1c183} 
+template$<$class T$>$ \\
+std\+::complex$<$ T $>$ RNP\+::\+TLASupport\+::\+Complex\+Divide (\begin{DoxyParamCaption}\item[{const std\+::complex$<$ T $>$ \&}]{num}{, }\item[{const std\+::complex$<$ T $>$ \&}]{den}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a17c1d164251a0b0bf740a111264a8e54}\index{RNP::TLASupport@{RNP::TLASupport}!ComplexDivide@{ComplexDivide}}
+\index{ComplexDivide@{ComplexDivide}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{ComplexDivide()}{ComplexDivide()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a17c1d164251a0b0bf740a111264a8e54} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Complex\+Divide (\begin{DoxyParamCaption}\item[{const std\+::complex$<$ T $>$ \&}]{num}{, }\item[{const std\+::complex$<$ T $>$ \&}]{den}{, }\item[{std\+::complex$<$ T $>$ \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ae4dc4ea1576a8f1062bf178cebafeefc}\index{RNP::TLASupport@{RNP::TLASupport}!Determinant@{Determinant}}
+\index{Determinant@{Determinant}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{Determinant()}{Determinant()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ae4dc4ea1576a8f1062bf178cebafeefc} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Determinant (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{mant}{, }\item[{typename \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1___real_or_complex_chooser}{RNP\+::\+TBLAS\+::\+\_\+\+Real\+Or\+Complex\+Chooser}}$<$ T $>$\+::real\+\_\+type \texorpdfstring{$\ast$}{*}}]{base}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{expo}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{pivots}{ = {\ttfamily NULL}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_acca3145aed1d2b4a2273e2c184e918ee}\index{RNP::TLASupport@{RNP::TLASupport}!GenerateElementaryReflector@{GenerateElementaryReflector}}
+\index{GenerateElementaryReflector@{GenerateElementaryReflector}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{GenerateElementaryReflector()}{GenerateElementaryReflector()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_acca3145aed1d2b4a2273e2c184e918ee} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Generate\+Elementary\+Reflector (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{alpha}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{size\+\_\+t}]{incx}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ab7fb6d92d88e7617b3da6e0ecb374b84}\index{RNP::TLASupport@{RNP::TLASupport}!GenerateElementaryReflectorPositive@{GenerateElementaryReflectorPositive}}
+\index{GenerateElementaryReflectorPositive@{GenerateElementaryReflectorPositive}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{GenerateElementaryReflectorPositive()}{GenerateElementaryReflectorPositive()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ab7fb6d92d88e7617b3da6e0ecb374b84} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Generate\+Elementary\+Reflector\+Positive (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{alpha}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{size\+\_\+t}]{incx}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a0eedb731b5d2dd8e3b90cc3db4be087b}\index{RNP::TLASupport@{RNP::TLASupport}!GenerateOrthognalMatrixFromElementaryReflectors@{GenerateOrthognalMatrixFromElementaryReflectors}}
+\index{GenerateOrthognalMatrixFromElementaryReflectors@{GenerateOrthognalMatrixFromElementaryReflectors}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{GenerateOrthognalMatrixFromElementaryReflectors()}{GenerateOrthognalMatrixFromElementaryReflectors()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a0eedb731b5d2dd8e3b90cc3db4be087b} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Generate\+Orthognal\+Matrix\+From\+Elementary\+Reflectors (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m}{, }\item[{size\+\_\+t}]{n}{, }\item[{size\+\_\+t}]{k}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{int}]{lda}{, }\item[{const T \texorpdfstring{$\ast$}{*}}]{tau}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{work}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a3d4e71d15e777a81d2998b5f7643b641}\index{RNP::TLASupport@{RNP::TLASupport}!GeneratePlaneRotation@{GeneratePlaneRotation}}
+\index{GeneratePlaneRotation@{GeneratePlaneRotation}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{GeneratePlaneRotation()}{GeneratePlaneRotation()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a3d4e71d15e777a81d2998b5f7643b641} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Generate\+Plane\+Rotation (\begin{DoxyParamCaption}\item[{const T \&}]{f}{, }\item[{const T \&}]{g}{, }\item[{typename \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1___real_or_complex_chooser}{RNP\+::\+TBLAS\+::\+\_\+\+Real\+Or\+Complex\+Chooser}}$<$ T $>$\+::real\+\_\+type \texorpdfstring{$\ast$}{*}}]{cs}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{sn}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{r}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_acaf9f98344ec06f4ef65a8cc43a4c93d}\index{RNP::TLASupport@{RNP::TLASupport}!HessenbergReduction@{HessenbergReduction}}
+\index{HessenbergReduction@{HessenbergReduction}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{HessenbergReduction()}{HessenbergReduction()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_acaf9f98344ec06f4ef65a8cc43a4c93d} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Hessenberg\+Reduction (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{size\+\_\+t}]{ilo}{, }\item[{size\+\_\+t}]{ihi}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{work}{, }\item[{size\+\_\+t}]{lwork}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ac354f48c0be738ff5d0bc16f75ecd2d8}\index{RNP::TLASupport@{RNP::TLASupport}!HessenbergReductionBlocked@{HessenbergReductionBlocked}}
+\index{HessenbergReductionBlocked@{HessenbergReductionBlocked}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{HessenbergReductionBlocked()}{HessenbergReductionBlocked()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ac354f48c0be738ff5d0bc16f75ecd2d8} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Hessenberg\+Reduction\+Blocked (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{size\+\_\+t}]{k}{, }\item[{size\+\_\+t}]{nb}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{t}{, }\item[{size\+\_\+t}]{ldt}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{size\+\_\+t}]{ldy}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a52f61525420d451f434f2e11619852de}\index{RNP::TLASupport@{RNP::TLASupport}!HessenbergReductionUnblocked@{HessenbergReductionUnblocked}}
+\index{HessenbergReductionUnblocked@{HessenbergReductionUnblocked}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{HessenbergReductionUnblocked()}{HessenbergReductionUnblocked()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a52f61525420d451f434f2e11619852de} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+Hessenberg\+Reduction\+Unblocked (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n}{, }\item[{size\+\_\+t}]{ilo}{, }\item[{size\+\_\+t}]{ihi}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{work}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a3031767d840dd00df498d2d21b64933e}\index{RNP::TLASupport@{RNP::TLASupport}!LastNonzeroColumn@{LastNonzeroColumn}}
+\index{LastNonzeroColumn@{LastNonzeroColumn}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{LastNonzeroColumn()}{LastNonzeroColumn()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a3031767d840dd00df498d2d21b64933e} 
+template$<$class T$>$ \\
+size\+\_\+t RNP\+::\+TLASupport\+::\+Last\+Nonzero\+Column (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m}{, }\item[{size\+\_\+t}]{n}{, }\item[{const T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a3d89d7b329d55fc7ec1727b8331e8f83}\index{RNP::TLASupport@{RNP::TLASupport}!LastNonzeroRow@{LastNonzeroRow}}
+\index{LastNonzeroRow@{LastNonzeroRow}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{LastNonzeroRow()}{LastNonzeroRow()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a3d89d7b329d55fc7ec1727b8331e8f83} 
+template$<$class T$>$ \\
+size\+\_\+t RNP\+::\+TLASupport\+::\+Last\+Nonzero\+Row (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m}{, }\item[{size\+\_\+t}]{n}{, }\item[{const T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ae203f28fb47c06437ef734d904f9cc42}\index{RNP::TLASupport@{RNP::TLASupport}!LUDecomposition@{LUDecomposition}}
+\index{LUDecomposition@{LUDecomposition}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{LUDecomposition()}{LUDecomposition()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ae203f28fb47c06437ef734d904f9cc42} 
+template$<$class T$>$ \\
+int RNP\+::\+TLASupport\+::\+LUDecomposition (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m}{, }\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{pivots}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a5c95efeb9b8ec4c214da60f398061eb4}\index{RNP::TLASupport@{RNP::TLASupport}!Pythag2@{Pythag2}}
+\index{Pythag2@{Pythag2}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{Pythag2()}{Pythag2()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a5c95efeb9b8ec4c214da60f398061eb4} 
+template$<$class T$>$ \\
+T RNP\+::\+TLASupport\+::\+Pythag2 (\begin{DoxyParamCaption}\item[{T}]{x}{, }\item[{T}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_ae094203c8ebbbb902f2bb73081242d9b}\index{RNP::TLASupport@{RNP::TLASupport}!Pythag3@{Pythag3}}
+\index{Pythag3@{Pythag3}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{Pythag3()}{Pythag3()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_ae094203c8ebbbb902f2bb73081242d9b} 
+template$<$class T$>$ \\
+T RNP\+::\+TLASupport\+::\+Pythag3 (\begin{DoxyParamCaption}\item[{T}]{x}{, }\item[{T}]{y}{, }\item[{T}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespace_r_n_p_1_1_t_l_a_support_a50c28decfeb689f2f0efebed4ccc94ab}\index{RNP::TLASupport@{RNP::TLASupport}!QRFactorization@{QRFactorization}}
+\index{QRFactorization@{QRFactorization}!RNP::TLASupport@{RNP::TLASupport}}
+\doxysubsubsection{\texorpdfstring{QRFactorization()}{QRFactorization()}}
+{\footnotesize\ttfamily \label{namespace_r_n_p_1_1_t_l_a_support_a50c28decfeb689f2f0efebed4ccc94ab} 
+template$<$class T$>$ \\
+void RNP\+::\+TLASupport\+::\+QRFactorization (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m}{, }\item[{size\+\_\+t}]{n}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{size\+\_\+t}]{lda}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{tau}{, }\item[{T \texorpdfstring{$\ast$}{*}}]{work}{}\end{DoxyParamCaption})}
+

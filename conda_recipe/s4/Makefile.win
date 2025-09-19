@@ -1,26 +1,22 @@
-!IFDEF BUILD_PREFIX
-CONDA_INC = $(BUILD_PREFIX)\Library\include
-CONDA_LIB = $(BUILD_PREFIX)\Library\lib
-!ELSE
-CONDA_INC = C:\Users\WilliamHampshire\miniconda3\envs\build-env\Library\include
-CONDA_LIB = C:\Users\WilliamHampshire\miniconda3\envs\build-env\Library\lib
-!ENDIF
+CONDA_INC = C:\Users\WilliamHampshire\miniconda3\envs\mkl-cpp-build\Library\include
+CONDA_LIB = C:\Users\WilliamHampshire\miniconda3\envs\mkl-cpp-build\Library\lib
 
-BLAS_LIB = "C:\Users\WilliamHampshire\miniconda3\envs\build-env\Library\lib\openblas.lib"
-# LAPACK_LIB = /LIBPATH:$(CONDA_LIB) liblapack.lib libblas.lib
+# use mkl instead of openblas, cholmod, lapack separately - good compat for msvc
+BLAS_LIB = mkl_rt.lib
+LAPACK_LIB = mkl_rt.lib
+FFTW3_LIB = mkl_rt.lib
+CHOLMOD_LIBS = cholmod.lib amd.lib colamd.lib camd.lib ccolamd.lib suitesparseconfig.lib metis.lib
+BOOST_LIB = boost_serialization.lib libboost_exception.lib
 
-CHOLMOD_INC = /I$(CONDA_INC) /I$(CONDA_INC)\suitesparse
-CHOLMOD_LIB = /LIBPATH:$(CONDA_LIB) cholmod.lib amd.lib colamd.lib camd.lib ccolamd.lib
+INCLUDES = /I. /IS4 /IS4\RNP /IS4\kiss_fft /IS4\fmm /IS4\pattern /I$(CONDA_INC) /I$(CONDA_INC)\suitesparse /I$(CONDA_INC)\fftw /DBOOST_ALL_NO_LIB
+LIBPATHS = /LIBPATH:$(CONDA_LIB)
 
-BOOST_INC = /I$(CONDA_INC)
-BOOST_LIB = /LIBPATH:$(CONDA_LIB) boost_serialization.lib
+CPPFLAGS = /nologo /O2 /MD /W4 /EHsc /DWIN32 $(INCLUDES)
+CFLAGS = $(CPPFLAGS)
 
+# compiler msvc
 CXX = cl
 CC  = cl
-
-CFLAGS = /nologo /O2 /MT /D_CRT_SECURE_NO_WARNINGS /W3 /EHsc /DWIN32 /W4 /fp:precise /EHsc /DBOOST_ALL_NO_LIB
-# CFLAGS = /nologo /O2 /MD /D_CRT_SECURE_NO_WARNINGS /W4 /EHsc /fp:precise /DWIN32
-CPPFLAGS = /I. /IS4 /IS4\RNP /IS4\kiss_fft /IS4\fmm /IS4\pattern $(BOOST_INC) $(CHOLMOD_INC) /MT /DENABLE_S4_TRACE /DBOOST_ALL_NO_LIB
 
 OBJDIR = $(SRC_DIR)\conda_recipe\s4\build
 S4_LIBNAME = $(OBJDIR)\libS4.lib
@@ -58,7 +54,8 @@ dirs:
 	if exist $(OBJDIR) if not exist $(OBJDIR)\S4k mkdir $(OBJDIR)\S4k
 
 $(S4_LIBNAME): $(ALL_OBJS)
-	lib /OUT:$@ $(ALL_OBJS) $(BOOST_LIB) $(BLAS_LIB) $(CHOLMOD_LIB)
+	lib /OUT:$@ $(ALL_OBJS) $(LIBPATHS) $(BLAS_LIB) $(LAPACK_LIB) $(FFTW3_LIB) $(CHOLMOD_LIBS) $(BOOST_LIB)
+
 
 # --- Compilation rules ---
 

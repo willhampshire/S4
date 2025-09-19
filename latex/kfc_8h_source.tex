@@ -1,0 +1,52 @@
+\doxysection{kfc.\+h}
+\hypertarget{kfc_8h_source}{}\label{kfc_8h_source}\index{S4/kiss\_fft/tools/kfc.h@{S4/kiss\_fft/tools/kfc.h}}
+\mbox{\hyperlink{kfc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KFC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KFC\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kiss__fft_8h}{../kiss\_fft.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00010\ \textcolor{comment}{KFC\ -\/-\/\ Kiss\ FFT\ Cache}}
+\DoxyCodeLine{00011\ \textcolor{comment}{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{Not\ needing\ to\ deal\ with\ kiss\_fft\_alloc\ and\ a\ config\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{object\ may\ be\ handy\ for\ a\ lot\ of\ programs.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{KFC\ uses\ the\ underlying\ KISS\ FFT\ functions,\ but\ caches\ the\ config\ object.\ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{The\ first\ time\ kfc\_fft\ or\ kfc\_ifft\ for\ a\ given\ FFT\ size,\ the\ cfg\ }}
+\DoxyCodeLine{00017\ \textcolor{comment}{object\ is\ created\ for\ it.\ \ All\ subsequent\ calls\ use\ the\ cached\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{configuration\ object.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ \textcolor{comment}{NOTE:}}
+\DoxyCodeLine{00021\ \textcolor{comment}{You\ should\ probably\ not\ use\ this\ if\ your\ program\ will\ be\ using\ a\ lot\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{of\ various\ sizes\ of\ FFTs.\ \ There\ is\ a\ linear\ search\ through\ the}}
+\DoxyCodeLine{00023\ \textcolor{comment}{cached\ objects.\ \ If\ you\ are\ only\ using\ one\ or\ two\ FFT\ sizes,\ this}}
+\DoxyCodeLine{00024\ \textcolor{comment}{will\ be\ negligible.\ Otherwise,\ you\ may\ want\ to\ use\ another\ method\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{of\ managing\ the\ cfg\ objects.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ There\ is\ no\ automated\ cleanup\ of\ the\ cached\ objects.\ \ This\ could\ lead\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{to\ large\ memory\ usage\ in\ a\ program\ that\ uses\ a\ lot\ of\ *DIFFERENT*\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{sized\ FFTs.\ \ If\ you\ want\ to\ force\ all\ cached\ cfg\ objects\ to\ be\ freed,}}
+\DoxyCodeLine{00030\ \textcolor{comment}{call\ kfc\_cleanup.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{/*forward\ complex\ FFT\ */}}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kfc_8h_afc7f881fb5f7c5180ab06e55e595fc29}{kfc\_fft}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *\ \mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}},\mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *\ \mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}});}
+\DoxyCodeLine{00036\ \textcolor{comment}{/*reverse\ complex\ FFT\ */}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kfc_8h_a6533b61c315cb8a1084ea1261eacf258}{kfc\_ifft}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *\ \mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}},\mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *\ \mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{/*free\ all\ cached\ objects*/}}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kfc_8h_ad1bf869680b07ad0fe00a3ecf2a40ac8}{kfc\_cleanup}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

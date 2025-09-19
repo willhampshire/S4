@@ -1,0 +1,413 @@
+\doxysection{S4.\+h}
+\hypertarget{_s4_8h_source}{}\label{_s4_8h_source}\index{S4/S4.h@{S4/S4.h}}
+\mbox{\hyperlink{_s4_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ \_S4\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ \_S4\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Note:\ the\ interface\ described\ in\ this\ file\ must\ be\ kept\ C-\/compatible.}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pattern_8h}{pattern/pattern.h}}"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#ifdef\ ENABLE\_S4\_TRACE}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#\ ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#\ \ include\ <cstdio>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#\ \ include\ <stdio.h>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#\ define\ S4\_TRACE(...)\ fprintf(stderr,\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#\ define\ S4\_CHECK\ if(1)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#\ define\ S4\_TRACE(...)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#\ define\ S4\_CHECK\ if(0)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \#define\ strdup\ \_strdup\ }\textcolor{comment}{//\ POSIX\ name\ deprecated\ in\ favour\ of\ \_strdup}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ S4\_VERB(verb,...)\ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ do\{\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if(S-\/>options.verbosity\ >=\ verb)\{\ \(\backslash\)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ "{}[\%d]\ "{},\ verb);\ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \_\_VA\_ARGS\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ \}while(0)}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#\ include\ <cstdlib>}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#\ include\ <stdlib.h>}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{_s4_8h_a87ad951bb4791300fa9246249e08f316}{S4\_malloc}}(\textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_af0f3219ede8f17cafb0ea44b4bbc620d}{S4\_free}}(\textcolor{keywordtype}{void}\ *ptr);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_material__}{Material\_}}\{}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_material___aa622674f442f3902cb2963e1706e9a90}{name}};\ \textcolor{comment}{//\ name\ of\ material}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_material__}{Material\_}}\ *\mbox{\hyperlink{struct_material___aa63eb7a999fcdd36bc7b96466c3b6ad4}{next}};\ \ \ \ \textcolor{comment}{//\ linked-\/list\ next\ pointer}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_material___a8c012881e0ac600e16002181841be9bd}{type}};\ \textcolor{comment}{//\ 0\ =\ scalar\ epsilon,\ 1\ =\ tensor}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{struct\ }\{\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ Sep\ 25\ -\/-\/-\/-\/-\/\ change\ union\ to\ struct\ to\ avoid\ memory\ errors}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_material___a301f3f02048c7f8907346b3346fd4d2e}{s}}[2];\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ real\ and\ imaginary\ parts\ of\ epsilon}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_material___a1992bafe3851e5f7b8a6db7d0da44330}{abcde}}[10];}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reduced\ 9\ tensor\ elements\ to\ 5\ (complex)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ a\ b\ 0\ ]}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ c\ d\ 0\ ]}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ 0\ 0\ e\ ]}}
+\DoxyCodeLine{00085\ \ \ \ \ \}\ \mbox{\hyperlink{struct_material___a51b5c15174cfefcadb1e8d5d3f49de31}{eps}};}
+\DoxyCodeLine{00086\ \}\ \mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_layer__}{Layer\_}}\{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_layer___a24bb32d3bd80176df0793303f915b31d}{name}};\ \ \ \ \ \ \ \textcolor{comment}{//\ name\ of\ layer}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_layer___afa0459c427797166c12cf0880dab911c}{thickness}};\ \textcolor{comment}{//\ thickness\ of\ layer}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_layer___ae997e8886d3997605fe16abf20a8490e}{material}};\ \ \ \textcolor{comment}{//\ name\ of\ background\ material}}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ \mbox{\hyperlink{struct_layer___a8d87c089160e93fb75b98a4a6579126a}{pattern}};\ \ \textcolor{comment}{//\ See\ pattern.h}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_layer___a52da2b05068eabcd2a9e3fbe549c1b4d}{copy}};\ \ \ \ \ \ \ \textcolor{comment}{//\ See\ below.}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_layer__}{Layer\_}}\ *\mbox{\hyperlink{struct_layer___a61bccc412d29332996be10b8284f8416}{next}};\ \textcolor{comment}{//\ linked-\/list\ next\ pointer}}
+\DoxyCodeLine{00095\ \}\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}};}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ If\ a\ layer\ is\ a\ copy,\ then\ \`{}copy'\ is\ the\ name\ of\ the\ layer\ that\ should}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ be\ copied,\ and\ \`{}material'\ and\ \`{}pattern'\ are\ inherited,\ and\ so\ they\ can}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ be\ arbitrary.\ For\ non-\/copy\ layers,\ copy\ should\ be\ NULL.}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_options__}{Options\_}}\{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a42efa9a79ff9df52bb7a2de30f133d80}{use\_discretized\_epsilon}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_subpixel\_smoothing\ to\ nonzero\ if\ subpixel\ smoothing\ should}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ be\ done\ on\ the\ Fourier\ transform\ of\ the\ dielectric\ functions.}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ This\ will\ cause\ the\ dielectric\ function\ to\ be\ discretized\ instead}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ of\ using\ the\ analytic\ Fourier\ transforms\ of\ specified\ shapes.}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___ad7fdb7c05ab1179542e112d353a89af3}{use\_subpixel\_smoothing}};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_Lanczos\_smoothing\ to\ nonzero\ if\ Lanczos\ smoothing\ should}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ be\ done\ on\ the\ Fourier\ transform\ of\ the\ dielectric\ functions.}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a91bbc2197186f262a765de65ee0253f5}{use\_Lanczos\_smoothing}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_polarization\_basis\ to\ nonzero\ if\ a\ decomposition\ into\ the}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ structure\ conforming\ polarization\ basis\ should\ be\ performed.\ By}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ default,\ the\ basis\ is\ not\ everywhere-\/unit-\/normalized\ and\ purely}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ real\ unless\ one\ of\ the\ following\ two\ options\ are\ used.}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a1d68f981c3ae8a7f31bfedc97674f920}{use\_polarization\_basis}};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_jones\_vector\_basis\ to\ nonzero\ if\ a\ complex\ Jones}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ vector\ polarization\ basis\ should\ be\ used.\ This\ setting\ has\ no}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ effect\ if\ use\_polarization\_basis\ is\ zero.}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a56439edc23dce65af98eff41a2b826df}{use\_jones\_vector\_basis}};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_normal\_vector\_basis\ to\ nonzero\ if\ a\ normalized\ normal}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ vector\ polarization\ basis\ should\ be\ used.\ This\ setting\ has\ no}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ effect\ if\ use\_polarization\_basis\ is\ zero.}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___ae870e7c8e9a9231ba2f915152ae47134}{use\_normal\_vector\_basis}};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_normal\_vector\_field\ to\ nonzero\ if\ a\ normal\ vector\ field}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ should\ be\ generated.\ The\ field\ is\ everywhere\ normal\ to\ material}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ interfaces\ and\ forced\ to\ have\ unit\ magnitude\ everywhere.}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a16347251492b52dc7a88e0922d3fa8e9}{use\_normal\_vector\_field}};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Set\ resolution\ to\ be\ the\ multiple\ of\ the\ reciprocal\ lattice\ order}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ extent\ by\ which\ the\ polarization\ basis\ vector\ field\ should\ be}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ discretized.\ For\ example,\ if\ the\ reciprocal\ lattice\ orders\ go\ up}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ to\ G\ =\ \{2,1\},\ then\ the\ vector\ field\ will\ be\ generated\ on\ a\ grid}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ of\ dimension\ 2*f\ x\ 1*f,\ where\ f\ is\ this\ value.}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ It\ is\ preferable\ to\ set\ this\ value\ to\ have\ small\ integer\ factors}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ in\ order\ to\ make\ the\ FFT\ more\ efficient.\ Powers\ of\ 2\ are\ best.}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ The\ default\ value\ is\ 64,\ and\ must\ be\ at\ least\ 2\ to\ satisfy\ the}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ Nyquist\ sampling\ criterion.}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a0118fe740e75a9ca717f97b494723cb8}{resolution}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Set\ vector\_field\_dump\_filename\_prefix\ to\ non-\/NULL\ if\ the}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ automatically\ generated\ vector\ field\ in\ the\ polarization}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ decomposition\ should\ be\ output\ to\ files\ whose\ prefix\ is\ the}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ specified\ string\ (suffix\ is\ layer\ name).}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_options___a0f521b41756d83352c7e7a833df78d38}{vector\_field\_dump\_filename\_prefix}};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ Specifies\ how\ G\ vectors\ should\ be\ chosen\ (currently\ not\ used)}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ 0\ =\ Circular\ truncation}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ 1\ =\ Parallelogramic\ truncation}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a71ed0af06f9e9a855517216e430d16c8}{lattice\_truncation}};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Specifies\ how\ much\ simulation\ output\ progress\ to\ output\ to\ stdout}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a170839dc3aafab22b245f04a8da9711e}{verbosity}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_experimental\_fmm\ to\ nonzero\ if\ the\ experimental\ FMM}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ formulation\ should\ be\ used.\ (For\ experimental/debug\ purposes)}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___a0299da012bc3c8457bce521347ba4889}{use\_experimental\_fmm}};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ Set\ use\_less\_memory\ to\ nonzero\ if\ intermediate\ matrices\ should\ not}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ be\ stored\ in\ memory\ when\ possible.}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___aa0686cd746b451a51e88378f54022723}{use\_less\_memory}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//\ Use\ Weismann's\ improved\ formulation\ for\ the\ fields}}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___ab1a0b083a717c11d06c8eb1c9ab78e6b}{use\_weismann\_formulation}};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_options___a837c1203c3279fa8d1b3ba7f7699a4bd}{lanczos\_smoothing\_width}};}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_options___adde49b277918b73f581e94bf655e4bd7}{lanczos\_smoothing\_power}};}
+\DoxyCodeLine{00172\ \}\ \mbox{\hyperlink{_s4_8h_a244a9997736c2de7120b56a16d7db0a9}{Options}};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_solution__}{Solution\_}}\{}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_solution___a4eb4dfb27b4777352a50ad4b12a9f2d6}{n\_G}};}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_solution___af6b899cfc745155a31c7320695583e8a}{layer\_count}};}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{struct_solution___a8084d481beaacd5784a017e84d7775a1}{G}};\ \textcolor{comment}{//\ length\ 2*n\_G;\ uv\ coordinates\ of\ Lk}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{struct_solution___ac497eb9907268f716861b64d5a13b374}{layer\_bands}};\ \ \ \ \textcolor{comment}{//\ opaque\ pointer\ to\ the\ layer\ band\ structure}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{struct_solution___afef177c50b7c90ed69933a58f3120897}{layer\_solution}};\ \textcolor{comment}{//\ opaque\ pointer\ to\ the\ layer\ solution\ vector}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{struct_solution___a4932fdff1133b30d4e48695135418660}{kx}},\ *\mbox{\hyperlink{struct_solution___aacb0dacbb8b874fa8d5839a858eddd96}{ky}};\ \textcolor{comment}{//\ each\ length\ n\_G}}
+\DoxyCodeLine{00181\ \}\ \mbox{\hyperlink{_s4_8h_a488a398e38edf55fe5f2b21aeec656cb}{Solution}};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_field_cache}{FieldCache}};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_excitation___planewave__}{Excitation\_Planewave\_}}\{}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_excitation___planewave___a93b7c029dd418a98a026a5ab626e9698}{hx}}[2],\mbox{\hyperlink{struct_excitation___planewave___a28f66546c959855dd2804045800af52b}{hy}}[2];\ \textcolor{comment}{//\ re,im\ components\ of\ H\_x,H\_y\ field}}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_excitation___planewave___a36f7890ca55123424a2636453b3b1a5c}{order}};}
+\DoxyCodeLine{00188\ \}\ \mbox{\hyperlink{_s4_8h_a851187853e49c592f4bb549d26eb2f27}{Excitation\_Planewave}};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_excitation___dipole__}{Excitation\_Dipole\_}}\{}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_excitation___dipole___a2954856ac3fc29d31fa178b4722910cc}{pos}}[2];}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_excitation___dipole___a3fa84310edcc4e4e8983533059bd47cb}{moment}}[6];\ \textcolor{comment}{//\ dipole\ moment\ (jxr,\ jxi,\ jyr,\ jyi,\ jzr,\ jzi)}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ The\ source\ is\ at\ the\ layer\ interface\ after\ the\ layer\ specified\ by\ ex\_layer.}}
+\DoxyCodeLine{00194\ \}\ \mbox{\hyperlink{_s4_8h_a52fd7f26a6419883309024d03245b60d}{Excitation\_Dipole}};}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_excitation___exterior__}{Excitation\_Exterior\_}}\{}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_excitation___exterior___a542f51e0e66510c7e6bf831358c8555d}{n}};}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{struct_excitation___exterior___a0c343a68a4a1adafa585949a9d7d98d1}{Gindex1}};\ \textcolor{comment}{/*\ 1-\/based\ G\ index,\ negative\ means\ backwards\ (length\ n)\ */}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{struct_excitation___exterior___aee884fb59249d7d2dfcbefae8d6269fd}{coeff}};\ \textcolor{comment}{/*\ complex\ coefficients\ of\ each\ G\ index\ (length\ 2n)\ */}}
+\DoxyCodeLine{00200\ \}\ \mbox{\hyperlink{_s4_8h_a5e0c9ac179a69c70b08848ab35a4efc2}{Excitation\_Exterior}};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_excitation__}{Excitation\_}}\{}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{union}\{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_s4_8h_a851187853e49c592f4bb549d26eb2f27}{Excitation\_Planewave}}\ \mbox{\hyperlink{struct_excitation___ae810344be1819248a00b49d98ce40b54}{planewave}};\ \textcolor{comment}{//\ type\ 0}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_s4_8h_a52fd7f26a6419883309024d03245b60d}{Excitation\_Dipole}}\ \mbox{\hyperlink{struct_excitation___a7e1e14463dc139655de309363c235832}{dipole}};\ \textcolor{comment}{//\ type\ 1}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_s4_8h_a5e0c9ac179a69c70b08848ab35a4efc2}{Excitation\_Exterior}}\ \mbox{\hyperlink{struct_excitation___a3327d751e57f29db3684ca1b1c54b5eb}{exterior}};\ \textcolor{comment}{//\ type\ 2}}
+\DoxyCodeLine{00207\ \ \ \ \ \}\ \mbox{\hyperlink{struct_excitation___a4d18cb049ad8366b15ffc493c58b336d}{sub}};}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_excitation___a19d15d6edbe395ae86f813ca75c5b875}{type}};}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_excitation___a0b63ba2a74083245c8b9e85f8816e447}{layer}};\ \textcolor{comment}{//\ name\ of\ layer\ after\ which\ excitation\ is\ applied}}
+\DoxyCodeLine{00210\ \}\ \mbox{\hyperlink{_s4_8h_ae3c3e6218de8ee74327441b4beaa1348}{Excitation}};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_simulation__}{Simulation\_}}\{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_simulation___a7d20b5d867edd93ea83b893bd65c8108}{Lr}}[4];\ \textcolor{comment}{//\ real\ space\ lattice:}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \{Lr[0],Lr[1]\}\ is\ the\ first\ basis\ vector's\ x\ and\ y\ coords.}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \{Lr[2],Lr[3]\}\ is\ the\ second\ basis\ vector's\ x\ and\ y\ coords.}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_simulation___a34833925629067e0ff977793372398ae}{Lk}}[4];\ \textcolor{comment}{//\ reciprocal\ lattice:}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ 2pi*\{Lk[0],Lk[1]\}\ is\ the\ first\ basis\ vector's\ x\ and\ y\ coords.}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ 2pi*\{Lk[2],Lk[3]\}\ is\ the\ second\ basis\ vector's\ x\ and\ y\ coords.}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Computed\ by\ taking\ the\ inverse\ of\ Lr\ as\ a\ 2x2\ column-\/major\ matrix.}}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_simulation___a3861dd15dbe57cf0f9e4c29e10d90695}{n\_G}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ G-\/vectors\ (Fourier\ planewave\ orders).}}
+\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}\ *\mbox{\hyperlink{struct_simulation___adadb7b6df5e382f7b1991046169e0226}{material}};\ \textcolor{comment}{//\ linked\ list\ of\ materials}}
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_simulation___a91374a03458305ca30b507f51c59a848}{layer}};\ \ \ \ \ \ \ \textcolor{comment}{//\ linked\ list\ of\ layers}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ Excitation}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_simulation___a78c8cc4bd190a9d70defc8953a8cf87a}{omega}}[2];\ \textcolor{comment}{//\ real\ and\ imaginary\ parts\ of\ omega}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_simulation___a7ac8f95223dd3648e0dae4a54583ada3}{k}}[2];\ \textcolor{comment}{//\ xy\ components\ of\ k\ vector,\ as\ fraction\ of\ k0\ =\ omega}}
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{_s4_8h_ae3c3e6218de8ee74327441b4beaa1348}{Excitation}}\ \mbox{\hyperlink{struct_simulation___a4cb2c8bde6fe200a913dc9c9482a32dc}{exc}};}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{_s4_8h_a488a398e38edf55fe5f2b21aeec656cb}{Solution}}\ *\mbox{\hyperlink{struct_simulation___a1cce776dc075d2ed2cb2fe4e5585afe7}{solution}};\ \textcolor{comment}{//\ The\ solution\ object\ is\ not\ allocated\ until\ needed.}}
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{_s4_8h_a244a9997736c2de7120b56a16d7db0a9}{Options}}\ \mbox{\hyperlink{struct_simulation___a558d83e7945de4f16cadccac621a853f}{options}};}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_field_cache}{FieldCache}}\ *\mbox{\hyperlink{struct_simulation___aa93e59b1f3c7dc1c25d64b256d6107ee}{field\_cache}};\ \textcolor{comment}{//\ Internal\ cache\ of\ vector\ field\ FT\ when\ using\ polarization\ bases}}
+\DoxyCodeLine{00233\ \}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}};}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00236\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00242\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a1bb175b8ea03e591f65e058588ad92ba}{Layer\_Init}}(\mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *L,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{double}\ thickness,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *material,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *copy);}
+\DoxyCodeLine{00243\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a51e0e5fc83c3ad725eb2694fce22f627}{Layer\_Destroy}}(\mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *L);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00246\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_aba562b77557bcf86f3f8617bbd266f61}{Material\_Init}}(\mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}\ *M,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ eps[2]);}
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a69b8ac6ae10a1d69d792d9a73b0a32e9}{Material\_InitTensor}}(\mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}\ *M,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ abcde[10]);}
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a28ab03429e2fb358ba6725236c6e261d}{Material\_Destroy}}(\mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}\ *M);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00251\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a8d9dbdc5ad5e8b37fe765ea8c0173b38}{Simulation\_Init}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a8751f8c2f95ff7faa0940971c3e61258}{Simulation\_Destroy}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00253\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_ad7305c98fcefa94c83d1ab54f89662c5}{Simulation\_Clone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *T);}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \textcolor{comment}{//\ Destroys\ the\ solution\ belonging\ to\ a\ given\ simulation\ and\ sets}}
+\DoxyCodeLine{00256\ \textcolor{comment}{//\ S-\/>solution\ to\ NULL.}}
+\DoxyCodeLine{00257\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a8ba434f01b32286f931ff76843f2a851}{Simulation\_DestroySolution}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8h_a66bc0437006a46e46104165055cb9ee6}{Simulation\_DestroyLayerSolutions}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00262\ \textcolor{comment}{//\ These\ will\ invalidate\ any\ existing\ partially\ computed\ solutions.}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{comment}{//\ Assumes\ that\ S-\/>Lr\ is\ filled\ in,\ and\ computes\ Lk.}}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ For\ 1D\ lattices,\ S-\/>Lr[2]\ =\ S-\/>Lr[3]\ =\ 0,\ and\ the\ corresponding}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//\ Lk[2]\ and\ Lk[3]\ are\ set\ to\ 0.}}
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00268\ \textcolor{comment}{//\ \ -\/1\ if\ S\ is\ NULL}}
+\DoxyCodeLine{00269\ \textcolor{comment}{//\ \ \ 0\ on\ success}}
+\DoxyCodeLine{00270\ \textcolor{comment}{//\ \ \ 1\ if\ basis\ vectors\ are\ degenerate\ (rank\ Lr\ <\ 2)}}
+\DoxyCodeLine{00271\ \textcolor{comment}{//\ \ \ 2\ if\ basis\ vectors\ are\ zero\ (Lr\ ==\ 0)}}
+\DoxyCodeLine{00272\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a981bfb74e989cc848092d6a8c09aa5e1}{Simulation\_MakeReciprocalLattice}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}*\ \mbox{\hyperlink{_s4_8h_a9fe8bf7b89bff53b7f230028374f1534}{Simulation\_AddMaterial}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00275\ \textcolor{comment}{//\ Adds\ a\ blank\ material\ to\ the\ end\ of\ the\ linked\ list\ in\ S\ and\ returns}}
+\DoxyCodeLine{00276\ \textcolor{comment}{//\ a\ pointer\ to\ it.}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}*\ \mbox{\hyperlink{_s4_8h_afdd2c92cc4b92c9ed85b306e636d723c}{Simulation\_AddLayer}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00279\ \textcolor{comment}{//\ Adds\ a\ blank\ layer\ to\ the\ end\ of\ the\ linked\ list\ in\ S\ and\ returns}}
+\DoxyCodeLine{00280\ \textcolor{comment}{//\ a\ pointer\ to\ it.}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ae659f09f85a7c86654f6c07e0481bcda}{Simulation\_SetNumG}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}});}
+\DoxyCodeLine{00283\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_af1af7069bfd68ca51eb8baacc1fd601d}{Simulation\_GetNumG}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{int}\ **G);}
+\DoxyCodeLine{00284\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_s4_8h_a81e25e61c91b53689f952d4f86949a7b}{Simulation\_GetUnitCellSize}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \textcolor{comment}{//\ Returns\ NULL\ if\ the\ layer\ name\ could\ not\ be\ found,\ or\ on\ error.}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//\ If\ index\ is\ non-\/NULL,\ the\ offset\ of\ the\ layer\ in\ the\ list\ is\ returned.}}
+\DoxyCodeLine{00288\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}*\ \mbox{\hyperlink{_s4_8h_a617a242c93f45fd2352f63e00ae29161}{Simulation\_GetLayerByName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{int}\ *index);}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \textcolor{comment}{//\ Returns\ NULL\ if\ the\ material\ name\ could\ not\ be\ found,\ or\ on\ error.}}
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ If\ index\ is\ non-\/NULL,\ the\ offset\ of\ the\ material\ in\ the\ list\ is\ returned.}}
+\DoxyCodeLine{00292\ \mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}*\ \mbox{\hyperlink{_s4_8h_a3c9e618638958f5552eb84e01d7bfc31}{Simulation\_GetMaterialByName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{int}\ *index);}
+\DoxyCodeLine{00293\ \mbox{\hyperlink{_s4_8h_a47205d9bb898a9c4b04ae911427f2bd7}{Material}}*\ \mbox{\hyperlink{_s4_8h_afe26b68582c2a6508c4be9b7d31063bd}{Simulation\_GetMaterialByIndex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ Returns\ -\/n\ if\ the\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00296\ \textcolor{comment}{//\ S\ and\ L\ should\ be\ valid\ pointers,\ material\ is\ the\ offset\ into\ the\ material\ list\ (not\ bounds\ checked).}}
+\DoxyCodeLine{00297\ \textcolor{comment}{//\ angle\ should\ be\ in\ radians}}
+\DoxyCodeLine{00298\ \textcolor{comment}{//\ vert\ should\ be\ of\ length\ 2*nvert}}
+\DoxyCodeLine{00299\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a76dda1f8f89a36884c8149f483ad20e0}{Simulation\_AddLayerPatternCircle}}\ \ \ (\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{int}\ material,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[2],\ \textcolor{keywordtype}{double}\ radius);}
+\DoxyCodeLine{00300\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a74e70fa719e255d6bd2be6ed80a77536}{Simulation\_AddLayerPatternEllipse}}\ \ (\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{int}\ material,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[2],\ \textcolor{keywordtype}{double}\ angle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ halfwidths[2]);}
+\DoxyCodeLine{00301\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_aa2c0064e30c63bfac5b314cba46ac225}{Simulation\_AddLayerPatternRectangle}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{int}\ material,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[2],\ \textcolor{keywordtype}{double}\ angle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ halfwidths[2]);}
+\DoxyCodeLine{00302\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ac790e7c7eb5d537df856a9021d7b0cd9}{Simulation\_AddLayerPatternPolygon}}\ \ (\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{int}\ material,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[2],\ \textcolor{keywordtype}{double}\ angle,\ \textcolor{keywordtype}{int}\ nvert,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *vert);}
+\DoxyCodeLine{00303\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a55764fa0ab8ed6c16c7cd46ad308548c}{Simulation\_RemoveLayerPatterns}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}});}
+\DoxyCodeLine{00304\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a7cedb8416b77cb7709a8426e2535d0ae}{Simulation\_ChangeLayerThickness}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *thickness);}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \textcolor{comment}{//\ Returns\ 14\ if\ no\ layers\ present}}
+\DoxyCodeLine{00307\ \textcolor{comment}{//\ exg\ is\ length\ 2*n,\ pairs\ of\ G\ index\ (1-\/based\ index,\ negative\ for\ backwards\ modes),\ and\ 0,1\ polarization\ (E\ field\ x,y)}}
+\DoxyCodeLine{00308\ \textcolor{comment}{//\ ex\ is\ length\ 2*n,\ pairs\ of\ re,im\ complex\ coefficients}}
+\DoxyCodeLine{00309\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a28da596383cebf9a2234cdc5a91d4583}{Simulation\_MakeExcitationExterior}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *exg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ex);}
+\DoxyCodeLine{00310\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a276f4c5b8679c9e0e18268bf646a1cc7}{Simulation\_MakeExcitationPlanewave}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ angle[2],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pol\_s[2],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pol\_p[2],\ \textcolor{keywordtype}{size\_t}\ order);}
+\DoxyCodeLine{00311\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a83d62ae0d8d4f45906bc0954b1178394}{Simulation\_MakeExcitationDipole}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a14354d8cae7a1f74571561bffeffd23b}{k}}[2],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pos[2],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ moment[6]);}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \textcolor{comment}{//\ Internal\ functions}}
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00316\ \textcolor{comment}{//\ Field\ cache\ manipulation}}
+\DoxyCodeLine{00317\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8cpp_a9c6bfb882d4194e25013f07d2a1e8b57}{Simulation\_InvalidateFieldCache}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00318\ std::complex<double>*\ \mbox{\hyperlink{_s4_8cpp_a616e99ed4f0a9ddc92e6d14d4bd3f2ef}{Simulation\_GetCachedField}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}});}
+\DoxyCodeLine{00319\ std::complex<double>*\ \mbox{\hyperlink{_s4_8cpp_a3167b221f0c1e653292a9a72147d5846}{Simulation\_GetCachedW}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}});}
+\DoxyCodeLine{00320\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s4_8cpp_aa18ca52ec7ef429b4f08410f8dae2ca9}{Simulation\_AddFieldToCache}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{struct_field_cache_a5a795c90360ba051c171e91b9c01e48b}{P}},\ \textcolor{keywordtype}{size\_t}\ Plen,}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{struct_field_cache_a317b73cf0f90e5b8e60e0b98f171d153}{W}},\ \textcolor{keywordtype}{size\_t}\ Wlen);}
+\DoxyCodeLine{00322\ \textcolor{comment}{//\ Serializes\ the\ Solution\ struct\ and\ saves\ it\ to\ disk\ using\ Boost\ serialize}}
+\DoxyCodeLine{00323\ \textcolor{comment}{//\ functionality}}
+\DoxyCodeLine{00324\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8cpp_addcad622bfab01cc5061c2a67ba10a6f}{Simulation\_SaveSolution}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00325\ \textcolor{comment}{//\ Loads\ the\ serialized\ solution\ from\ disk\ using\ Boost\ serialize\ }}
+\DoxyCodeLine{00326\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8cpp_abedfd0713b2d9464508edcc66d9c261b}{Simulation\_LoadSolution}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00327\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00330\ \textcolor{comment}{//\ These\ functions\ try\ to\ compute\ the\ minimum\ amount\ necessary\ to}}
+\DoxyCodeLine{00331\ \textcolor{comment}{//\ obtain\ the\ desired\ result.\ All\ partial\ solutions\ are\ stored\ so}}
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ that\ later\ requerying\ of\ the\ same\ results\ returns\ the\ stored}}
+\DoxyCodeLine{00333\ \textcolor{comment}{//\ result.}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{comment}{//\ Solution\ error\ codes:}}
+\DoxyCodeLine{00336\ \textcolor{comment}{//\ -\/n\ -\/\ n-\/th\ argument\ is\ invalid}}
+\DoxyCodeLine{00337\ \textcolor{comment}{//\ 0\ \ -\/\ successful}}
+\DoxyCodeLine{00338\ \textcolor{comment}{//\ 1\ \ -\/\ allocation\ error}}
+\DoxyCodeLine{00339\ \textcolor{comment}{//\ 9\ \ -\/\ lattice\ n\_G\ not\ set}}
+\DoxyCodeLine{00340\ \textcolor{comment}{//\ 10\ -\/\ copy\ referenced\ an\ unknown\ layer\ name}}
+\DoxyCodeLine{00341\ \textcolor{comment}{//\ 11\ -\/\ a\ copy\ of\ a\ copy\ was\ made}}
+\DoxyCodeLine{00342\ \textcolor{comment}{//\ 12\ -\/\ duplicate\ layer\ name\ found}}
+\DoxyCodeLine{00343\ \textcolor{comment}{//\ 13\ -\/\ excitation\ layer\ name\ not\ found}}
+\DoxyCodeLine{00344\ \textcolor{comment}{//\ 14\ -\/\ no\ layers}}
+\DoxyCodeLine{00345\ \textcolor{comment}{//\ 15\ -\/\ material\ not\ found}}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \textcolor{comment}{//\ Sets\ up\ S-\/>solution;\ if\ one\ already\ exists,\ destroys\ it\ and\ allocates\ a\ new\ one}}
+\DoxyCodeLine{00349\ \textcolor{comment}{//\ Possibly\ reduces\ S-\/>n\_G}}
+\DoxyCodeLine{00350\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00351\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ac4bb0dad9fc01150828208b591818532}{Simulation\_InitSolution}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S);}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00354\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a2b9bf873750a27839459e613c3253173}{Simulation\_SolveLayer}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}});}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00357\ \textcolor{comment}{//\ powers[0]\ -\/\ 0.5\ real\ forw}}
+\DoxyCodeLine{00358\ \textcolor{comment}{//\ powers[1]\ -\/\ 0.5\ real\ back}}
+\DoxyCodeLine{00359\ \textcolor{comment}{//\ powers[2]\ -\/\ imag\ forw}}
+\DoxyCodeLine{00360\ \textcolor{comment}{//\ powers[3]\ -\/\ imag\ back}}
+\DoxyCodeLine{00361\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a530c94739d9e1d0a0602a7078f7d9687}{Simulation\_GetPoyntingFlux}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{double}\ powers[4]);}
+\DoxyCodeLine{00362\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ae1d5c526e61fd3c3580451a401a1fb1b}{Simulation\_GetPoyntingFluxByG}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{double}\ *powers);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \textcolor{comment}{//\ Returns\ a\ list\ of\ S-\/>n\_G\ complex\ numbers\ of\ mode\ propagation\ constants}}
+\DoxyCodeLine{00365\ \textcolor{comment}{//\ q\ should\ be\ length\ 2*S-\/>n\_G}}
+\DoxyCodeLine{00366\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a3d374bd6a983840f433445aa876b99be}{Simulation\_GetPropagationConstants}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{double}\ *q);}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \textcolor{comment}{//\ Returns\ lists\ of\ 2*S-\/>n\_G\ complex\ numbers\ of\ forward\ and\ backward\ amplitudes}}
+\DoxyCodeLine{00369\ \textcolor{comment}{//\ forw\ and\ back\ should\ each\ be\ length\ 4*S-\/>n\_G}}
+\DoxyCodeLine{00370\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ac06856481c932f084d7f5edb29860a08}{Simulation\_GetAmplitudes}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{double}\ *forw,\ \textcolor{keywordtype}{double}\ *back);}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00373\ \textcolor{comment}{//\ Tint\ is\ a\ vector\ of\ time\ averaged\ stress\ tensor\ integral}}
+\DoxyCodeLine{00374\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a244b5f794bd758f289dc97bacecb6a2d}{Simulation\_GetStressTensorIntegral}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{double}\ Tint[6]);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00377\ \textcolor{comment}{//\ which\ can\ be\ 'U',\ 'E',\ 'H',\ 'e'}}
+\DoxyCodeLine{00378\ \textcolor{comment}{//\ 'E'\ is\ epsilon*|E|\string^2,\ 'H'\ is\ |H|\string^2,\ 'e'\ is\ |E|\string^2,\ 'U'\ is\ 'E'+'H'}}
+\DoxyCodeLine{00379\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_adcf943ea374f38179b0fe12669211ab1}{Simulation\_GetLayerVolumeIntegral}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{char}\ which,\ \textcolor{keywordtype}{double}\ integral[2]);}
+\DoxyCodeLine{00380\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a5392ded8e42702b4e7208a16ebf6995f}{Simulation\_GetLayerZIntegral}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[2],\ \textcolor{keywordtype}{double}\ integral[6]);}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \textcolor{comment}{//\ Outputs\ a\ POV-\/Ray\ render\ script\ of\ a\ unit\ cell\ of\ the\ structure.}}
+\DoxyCodeLine{00383\ \textcolor{comment}{//\ Return\ value\ can\ be\ ignored\ for\ valid\ inputs.}}
+\DoxyCodeLine{00384\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a5a18826deb4793533be0516bfec70f18}{Simulation\_OutputStructurePOVRay}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ FILE\ *fp);}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \textcolor{comment}{//\ Outputs\ a\ PostScript\ rendering\ of\ the\ layer\ pattern\ to\ stdout.}}
+\DoxyCodeLine{00387\ \textcolor{comment}{//\ Return\ value\ can\ be\ ignored\ for\ valid\ inputs.}}
+\DoxyCodeLine{00388\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_ae0f69a5bc4bfd043b29ea2e5dec02239}{Simulation\_OutputLayerPatternDescription}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ FILE\ *fp);}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00391\ \textcolor{comment}{//\ Outputs\ the\ Fourier\ reconstruction\ of\ the\ layer\ pattern\ to\ stdout\ in\ Gnuplot\ splot\ format.}}
+\DoxyCodeLine{00392\ \textcolor{comment}{//\ The\ unit\ cell\ is\ discretized\ into\ nu\ and\ nv\ cells\ in\ the\ lattice\ directions.}}
+\DoxyCodeLine{00393\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_aa43545003c7c369915dad23c76eec8e7}{Simulation\_OutputLayerPatternRealization}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}}\ *\mbox{\hyperlink{struct_field_cache_a9845e8890f45a74a1d49e08451f9ef78}{layer}},\ \textcolor{keywordtype}{int}\ nu,\ \textcolor{keywordtype}{int}\ nv,\ FILE\ *fp);}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00396\ \textcolor{comment}{//\ E\ field\ is\ stored\ as\ \{Exr,Eyr,Ezr,Exi,Eyi,Ezi\}}}
+\DoxyCodeLine{00397\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a9f73c1b9aac5c90c5eb63f392024cdb1}{Simulation\_GetField}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[3],\ \textcolor{keywordtype}{double}\ fE[6],\ \textcolor{keywordtype}{double}\ fH[6]);}
+\DoxyCodeLine{00398\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a53f0740234c27f92c19d33181589d3f4}{Simulation\_GetFieldPlane}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{int}\ nxy[2],\ \textcolor{keywordtype}{double}\ z,\ \textcolor{keywordtype}{double}\ *E,\ \textcolor{keywordtype}{double}\ *H);}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00401\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_a328b41c94585800d80e9ac0888f6f4bc}{Simulation\_GetEpsilon}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[3],\ \textcolor{keywordtype}{double}\ eps[2]);\ \textcolor{comment}{//\ eps\ is\ \{real,imag\}}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \textcolor{comment}{//\ Returns\ a\ solution\ error\ code}}
+\DoxyCodeLine{00404\ \textcolor{comment}{//\ Determinant\ is\ (rmant[0]+i*rmant[1])*base\string^expo}}
+\DoxyCodeLine{00405\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_s4_8h_af2dffa1fa931e1d81c84fa384664c539}{Simulation\_GetSMatrixDeterminant}}(\mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}}\ *S,\ \textcolor{keywordtype}{double}\ rmant[2],\ \textcolor{keywordtype}{double}\ *base,\ \textcolor{keywordtype}{int}\ *expo);}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00409\ \}}
+\DoxyCodeLine{00410\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_S4\_H\_}}
+
+\end{DoxyCode}

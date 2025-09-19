@@ -1,0 +1,63 @@
+\doxysection{Spectrum\+Sampler.\+h}
+\hypertarget{_spectrum_sampler_8h_source}{}\label{_spectrum_sampler_8h_source}\index{S4/SpectrumSampler.h@{S4/SpectrumSampler.h}}
+\mbox{\hyperlink{_spectrum_sampler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ \_SPECTRUM\_SAMPLER\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ \_SPECTRUM\_SAMPLER\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_spectrum_sampler__}{SpectrumSampler\_}}*\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_spectrum_sampler___options_a147c122778e6838df545e4220ccf8cc2}{initial\_num\_points}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_spectrum_sampler___options_aeca0b39d4b4911fad427595d545d3af9}{range\_threshold}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_spectrum_sampler___options_a580ee7a007c57c4853360941fd22e92b}{max\_bend}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_spectrum_sampler___options_ab1515701ee4f6dd45efea82441271da7}{min\_dx}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_spectrum_sampler___options_a6024c4bea877f570189bc2a7a1760267}{parallelize}};}
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{struct_spectrum_sampler___options}{SpectrumSampler\_Options}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ \mbox{\hyperlink{_spectrum_sampler_8h_a85b69d82dd7fe86df2dc2b2f1635cef7}{SpectrumSampler\_New}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_spectrum_sampler___a81475157aa2151cdc24cfce18668ba2e}{x0}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_spectrum_sampler___aa256b76e7cebe707903962848e9ad8e6}{x1}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_spectrum_sampler___options}{SpectrumSampler\_Options}}\ *\mbox{\hyperlink{struct_spectrum_sampler___a1e98af9e8fb9f08f72513e4f1c8d4aa0}{options}});}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_spectrum_sampler_8h_aeb4de6295143f4f42b54af916c87f1a6}{SpectrumSampler\_Destroy}}(\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a22f22f7d33a4fcdb11083cbccce7bf1e}{SpectrumSampler\_IsDone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_aaa49f3329bd14251fc2cedcf8dd26728}{SpectrumSampler\_IsParallelized}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_spectrum_sampler_8h_aefd9590186c971c000a12068a4072c07}{SpectrumSampler\_GetFrequency}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a1a2f4707c5033d2dfadc36408b480fa1}{SpectrumSampler\_SubmitResult}}(\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a80ca98ce496d336a9a7a3971f7f2e3fc}{SpectrumSampler\_GetNumPoints}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{/*\ returns\ number\ of\ freqs\ */}}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a8cae27370124c991866a74ad6021fba0}{SpectrumSampler\_GetFrequencies}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler,\ \textcolor{keywordtype}{double}\ **freqs);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a88a186f25dfbb14535538942741bb7d1}{SpectrumSampler\_GetSubmissionBuffer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler,\ \textcolor{keywordtype}{double}\ **y);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_ab95a9b09a3fb49c1ab344a568eb49383}{SpectrumSampler\_SubmitResults}}(\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{SpectrumSampler\_Enumerator}};}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{SpectrumSampler\_Enumerator}}\ \mbox{\hyperlink{_spectrum_sampler_8h_a53bce71304cf153dc3a46640299a0104}{SpectrumSampler\_GetPointEnumerator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{SpectrumSampler}}\ sampler);}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_spectrum_sampler_8h_a98506c488bbda1a677d312fecadc0a44}{SpectrumSampler\_Enumerator\_Get}}(\mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{SpectrumSampler\_Enumerator}},\ \textcolor{keywordtype}{double}\ pt[2]);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_SPECTRUM\_SAMPLER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

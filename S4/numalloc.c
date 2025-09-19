@@ -22,7 +22,7 @@
 
 #ifdef _WIN32
 # include <malloc.h>
-// these are probably redefinitions, causing MVSC warning C4273
+// these are probably redefinitions, causing msvc warning C4273
 // void * _aligned_malloc(size_t size, size_t alignment);
 // void _aligned_free(void *ptr);
 #else

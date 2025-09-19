@@ -37,12 +37,25 @@ sys_extra_compile_args: list[str]
 extra_link_args: list[str]
 package_data: dict
 sources: list
+libraries: list
 
 if sys.platform == "win32":
-    sys_extra_compile_args = ['/O2', '/EHsc', "/DBOOST_ALL_NO_LIB"]  # MSVC optimization flag
+    sys_extra_compile_args = ['/O2', '/MD', '/EHsc', "/DBOOST_ALL_NO_LIB"]  # MD - dynamic, boost no lib - disable auto linking
     package_data = {"": ["libS4.lib"]} # win compiles to .lib
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")] # win requires cpp compilation
-    libraries = ["S4", "libboost_serialization", "cholmod"]
+    libraries = [
+        "S4",
+        "mkl_rt",
+        "cholmod",
+        "amd",
+        "colamd",
+        "camd",
+        "ccolamd",
+        "suitesparseconfig",
+        "metis",
+        "boost_serialization",
+        "libboost_exception",
+    ]
     # extra_link_args = [str(BUILD_PREFIX / "Library" / "lib" / "libboost_serialization.lib"),
     #                     str(BsUILD_PREFIX / "Library" / "lib" / "cholmod.lib")]
     

@@ -1,0 +1,65 @@
+\doxysection{S4/kiss\+\_\+fft/tools/fftutil.c File Reference}
+\hypertarget{fftutil_8c}{}\label{fftutil_8c}\index{S4/kiss\_fft/tools/fftutil.c@{S4/kiss\_fft/tools/fftutil.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include "{}../kiss\+\_\+fft.\+h"{}}\newline
+{\ttfamily \#include "{}kiss\+\_\+fftndr.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{fftutil_8c_a9c5182419a1302676dd931ed447a5410}{fft\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}}, FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}}, int \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}}, int isinverse)
+\item 
+static void \mbox{\hyperlink{fftutil_8c_a5d1435152fabe6788f44ab7a95cd503c}{fft\+\_\+filend}} (FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}}, FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}}, int \texorpdfstring{$\ast$}{*}dims, int ndims, int isinverse)
+\item 
+static void \mbox{\hyperlink{fftutil_8c_a4c54de404f38eea7c2be702af1ddd0e9}{fft\+\_\+filend\+\_\+real}} (FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}}, FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}}, int \texorpdfstring{$\ast$}{*}dims, int ndims, int isinverse)
+\item 
+static void \mbox{\hyperlink{fftutil_8c_a853bc2d537c74743dec97ce984ae4445}{fft\+\_\+file\+\_\+real}} (FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}}, FILE \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}}, int \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}}, int isinverse)
+\item 
+static int \mbox{\hyperlink{fftutil_8c_ae781bbebeac868ed2a61ffbc80e4d1b1}{get\+\_\+dims}} (char \texorpdfstring{$\ast$}{*}arg, int \texorpdfstring{$\ast$}{*}dims)
+\item 
+int \mbox{\hyperlink{fftutil_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{fftutil_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{fftutil_8c_a9c5182419a1302676dd931ed447a5410}\index{fftutil.c@{fftutil.c}!fft\_file@{fft\_file}}
+\index{fft\_file@{fft\_file}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{fft\_file()}{fft\_file()}}
+{\footnotesize\ttfamily \label{fftutil_8c_a9c5182419a1302676dd931ed447a5410} 
+void fft\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fin}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fout}{, }\item[{int}]{nfft}{, }\item[{int}]{isinverse}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{fftutil_8c_a853bc2d537c74743dec97ce984ae4445}\index{fftutil.c@{fftutil.c}!fft\_file\_real@{fft\_file\_real}}
+\index{fft\_file\_real@{fft\_file\_real}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{fft\_file\_real()}{fft\_file\_real()}}
+{\footnotesize\ttfamily \label{fftutil_8c_a853bc2d537c74743dec97ce984ae4445} 
+void fft\+\_\+file\+\_\+real (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fin}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fout}{, }\item[{int}]{nfft}{, }\item[{int}]{isinverse}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{fftutil_8c_a5d1435152fabe6788f44ab7a95cd503c}\index{fftutil.c@{fftutil.c}!fft\_filend@{fft\_filend}}
+\index{fft\_filend@{fft\_filend}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{fft\_filend()}{fft\_filend()}}
+{\footnotesize\ttfamily \label{fftutil_8c_a5d1435152fabe6788f44ab7a95cd503c} 
+void fft\+\_\+filend (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fin}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fout}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dims}{, }\item[{int}]{ndims}{, }\item[{int}]{isinverse}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{fftutil_8c_a4c54de404f38eea7c2be702af1ddd0e9}\index{fftutil.c@{fftutil.c}!fft\_filend\_real@{fft\_filend\_real}}
+\index{fft\_filend\_real@{fft\_filend\_real}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{fft\_filend\_real()}{fft\_filend\_real()}}
+{\footnotesize\ttfamily \label{fftutil_8c_a4c54de404f38eea7c2be702af1ddd0e9} 
+void fft\+\_\+filend\+\_\+real (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fin}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fout}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dims}{, }\item[{int}]{ndims}{, }\item[{int}]{isinverse}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{fftutil_8c_ae781bbebeac868ed2a61ffbc80e4d1b1}\index{fftutil.c@{fftutil.c}!get\_dims@{get\_dims}}
+\index{get\_dims@{get\_dims}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{get\_dims()}{get\_dims()}}
+{\footnotesize\ttfamily \label{fftutil_8c_ae781bbebeac868ed2a61ffbc80e4d1b1} 
+int get\+\_\+dims (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{arg}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dims}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{fftutil_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{fftutil.c@{fftutil.c}!main@{main}}
+\index{main@{main}!fftutil.c@{fftutil.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{fftutil_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+

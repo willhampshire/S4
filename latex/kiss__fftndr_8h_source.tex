@@ -1,0 +1,53 @@
+\doxysection{kiss\+\_\+fftndr.\+h}
+\hypertarget{kiss__fftndr_8h_source}{}\label{kiss__fftndr_8h_source}\index{S4/kiss\_fft/tools/kiss\_fftndr.h@{S4/kiss\_fft/tools/kiss\_fftndr.h}}
+\mbox{\hyperlink{kiss__fftndr_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KISS\_NDR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KISS\_NDR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kiss__fft_8h}{../kiss\_fft.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kiss__fftr_8h}{kiss\_fftr.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kiss__fftnd_8h}{kiss\_fftnd.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkiss__fftndr__state}{kiss\_fftndr\_state}}\ *\mbox{\hyperlink{kiss__fftndr_8h_adc323756b9320f1c1dba821a8bfce675}{kiss\_fftndr\_cfg}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \mbox{\hyperlink{kiss__fftndr_8h_adc323756b9320f1c1dba821a8bfce675}{kiss\_fftndr\_cfg}}\ \ \mbox{\hyperlink{kiss__fftndr_8h_a80c300f333f0a2b8536cc0e07fbcc8ba}{kiss\_fftndr\_alloc}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *dims,\textcolor{keywordtype}{int}\ ndims,\textcolor{keywordtype}{int}\ inverse\_fft,\textcolor{keywordtype}{void}*mem,\textcolor{keywordtype}{size\_t}*lenmem);}
+\DoxyCodeLine{00016\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ dims[0]\ must\ be\ even}}
+\DoxyCodeLine{00018\ \textcolor{comment}{}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ If\ you\ don't\ care\ to\ allocate\ space,\ use\ mem\ =\ lenmem\ =\ NULL\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kiss__fftndr_8h_a80e33af917a57d38dc3f26da0b4e1bd9}{kiss\_fftndr}}(}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kiss__fftndr_8h_adc323756b9320f1c1dba821a8bfce675}{kiss\_fftndr\_cfg}}\ cfg,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\_fft\_scalar}}\ *timedata,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *freqdata);}
+\DoxyCodeLine{00027\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ input\ timedata\ has\ dims[0]\ X\ dims[1]\ X\ ...\ X\ \ dims[ndims-\/1]\ scalar\ points}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ output\ freqdata\ has\ dims[0]\ X\ dims[1]\ X\ ...\ X\ \ dims[ndims-\/1]/2+1\ complex\ points}}
+\DoxyCodeLine{00030\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kiss__fftndr_8h_a39ec98bcf62b614555b6f9fda714b45a}{kiss\_fftndri}}(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kiss__fftndr_8h_adc323756b9320f1c1dba821a8bfce675}{kiss\_fftndr\_cfg}}\ cfg,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structkiss__fft__cpx}{kiss\_fft\_cpx}}\ *freqdata,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\_fft\_scalar}}\ *timedata);}
+\DoxyCodeLine{00036\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ input\ and\ output\ dimensions\ are\ the\ exact\ opposite\ of\ kiss\_fftndr}}
+\DoxyCodeLine{00038\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ kiss\_fftr\_free\ free}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,164 @@
+\doxysection{S4/kiss\+\_\+fft/tools/psdpng.c File Reference}
+\hypertarget{psdpng_8c}{}\label{psdpng_8c}\index{S4/kiss\_fft/tools/psdpng.c@{S4/kiss\_fft/tools/psdpng.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$png.\+h$>$}\newline
+{\ttfamily \#include "{}kiss\+\_\+fft.\+h"{}}\newline
+{\ttfamily \#include "{}kiss\+\_\+fftr.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structrgb__t}{rgb\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{psdpng_8c_a857eabb1c9c3785625887e405ed245b7}{CHECKNULL}}(p)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{psdpng_8c_ab0f22ef08799a9bf42f956c655f89cf4}{config}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+static void \mbox{\hyperlink{psdpng_8c_a49fd2af19a449f48c0cc4a6921a099da}{val2rgb}} (float \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, \mbox{\hyperlink{structrgb__t}{rgb\+\_\+t}} \texorpdfstring{$\ast$}{*}p)
+\item 
+static void \mbox{\hyperlink{psdpng_8c_a4700da93cda9f40ae5238fddb4dc1f04}{cpx2pixels}} (\mbox{\hyperlink{structrgb__t}{rgb\+\_\+t}} \texorpdfstring{$\ast$}{*}res, const float \texorpdfstring{$\ast$}{*}fbuf, size\+\_\+t \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}})
+\item 
+static void \mbox{\hyperlink{psdpng_8c_a2dc1b3dca1114e74b40fb03cc889543c}{transform\+\_\+signal}} (void)
+\item 
+static void \mbox{\hyperlink{psdpng_8c_a30e3398c388a13c21c8cf4a955c99f0a}{make\+\_\+png}} (void)
+\item 
+int \mbox{\hyperlink{psdpng_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}{nfft}} =1024
+\item 
+FILE \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}{fin}} =NULL
+\item 
+FILE \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{psdpng_8c_acec19516a59050bb447192fe318e6a9c}{fout}} =NULL
+\item 
+int \mbox{\hyperlink{psdpng_8c_a178ec1c03a79f330740bb8783c1003b8}{navg}} =20
+\item 
+int \mbox{\hyperlink{psdpng_8c_aaa4480bf8e7c1b7e96930cd4a6511d63}{remove\+\_\+dc}} =0
+\item 
+int \mbox{\hyperlink{psdpng_8c_a53e53380c64d2dcc85486da7f90794d5}{nrows}} =0
+\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{psdpng_8c_af2923a055fc8c180e3ce531dfd61eccf}{vals}} =NULL
+\item 
+int \mbox{\hyperlink{psdpng_8c_a61484db39738c72be32b4225842511d1}{stereo}} =0
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{psdpng_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{psdpng_8c_a857eabb1c9c3785625887e405ed245b7}\index{psdpng.c@{psdpng.c}!CHECKNULL@{CHECKNULL}}
+\index{CHECKNULL@{CHECKNULL}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{CHECKNULL}{CHECKNULL}}
+{\footnotesize\ttfamily \label{psdpng_8c_a857eabb1c9c3785625887e405ed245b7} 
+\#define CHECKNULL(\begin{DoxyParamCaption}\item[{}]{p}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\ (p)==NULL\ )\ \textcolor{keywordflow}{do}\ \{\ fprintf(stderr,\textcolor{stringliteral}{"{}CHECKNULL\ failed\ @\ \%s(\%d):\ \%s\(\backslash\)n"{}},\_\_FILE\_\_,\_\_LINE\_\_,\#p\ );exit(1);\}\ \textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{psdpng_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{psdpng_8c_ab0f22ef08799a9bf42f956c655f89cf4}\index{psdpng.c@{psdpng.c}!config@{config}}
+\index{config@{config}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}}
+{\footnotesize\ttfamily \label{psdpng_8c_ab0f22ef08799a9bf42f956c655f89cf4} 
+void config (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{psdpng_8c_a4700da93cda9f40ae5238fddb4dc1f04}\index{psdpng.c@{psdpng.c}!cpx2pixels@{cpx2pixels}}
+\index{cpx2pixels@{cpx2pixels}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{cpx2pixels()}{cpx2pixels()}}
+{\footnotesize\ttfamily \label{psdpng_8c_a4700da93cda9f40ae5238fddb4dc1f04} 
+void cpx2pixels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrgb__t}{rgb\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{res}{, }\item[{const float \texorpdfstring{$\ast$}{*}}]{fbuf}{, }\item[{size\+\_\+t}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{psdpng_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{psdpng.c@{psdpng.c}!main@{main}}
+\index{main@{main}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{psdpng_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{psdpng_8c_a30e3398c388a13c21c8cf4a955c99f0a}\index{psdpng.c@{psdpng.c}!make\_png@{make\_png}}
+\index{make\_png@{make\_png}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{make\_png()}{make\_png()}}
+{\footnotesize\ttfamily \label{psdpng_8c_a30e3398c388a13c21c8cf4a955c99f0a} 
+void make\+\_\+png (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{psdpng_8c_a2dc1b3dca1114e74b40fb03cc889543c}\index{psdpng.c@{psdpng.c}!transform\_signal@{transform\_signal}}
+\index{transform\_signal@{transform\_signal}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{transform\_signal()}{transform\_signal()}}
+{\footnotesize\ttfamily \label{psdpng_8c_a2dc1b3dca1114e74b40fb03cc889543c} 
+void transform\+\_\+signal (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{psdpng_8c_a49fd2af19a449f48c0cc4a6921a099da}\index{psdpng.c@{psdpng.c}!val2rgb@{val2rgb}}
+\index{val2rgb@{val2rgb}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{val2rgb()}{val2rgb()}}
+{\footnotesize\ttfamily \label{psdpng_8c_a49fd2af19a449f48c0cc4a6921a099da} 
+void val2rgb (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{\mbox{\hyperlink{structrgb__t}{rgb\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\label{doc-var-members}
+\Hypertarget{psdpng_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a}\index{psdpng.c@{psdpng.c}!fin@{fin}}
+\index{fin@{fin}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{fin}{fin}}
+{\footnotesize\ttfamily \label{psdpng_8c_ab3a82f55e648b0b12d1415a5a6c37c6a} 
+FILE\texorpdfstring{$\ast$}{*} fin =NULL}
+
+\Hypertarget{psdpng_8c_acec19516a59050bb447192fe318e6a9c}\index{psdpng.c@{psdpng.c}!fout@{fout}}
+\index{fout@{fout}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{fout}{fout}}
+{\footnotesize\ttfamily \label{psdpng_8c_acec19516a59050bb447192fe318e6a9c} 
+FILE\texorpdfstring{$\ast$}{*} fout =NULL}
+
+\Hypertarget{psdpng_8c_a178ec1c03a79f330740bb8783c1003b8}\index{psdpng.c@{psdpng.c}!navg@{navg}}
+\index{navg@{navg}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{navg}{navg}}
+{\footnotesize\ttfamily \label{psdpng_8c_a178ec1c03a79f330740bb8783c1003b8} 
+int navg =20}
+
+\Hypertarget{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234}\index{psdpng.c@{psdpng.c}!nfft@{nfft}}
+\index{nfft@{nfft}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{nfft}{nfft}}
+{\footnotesize\ttfamily \label{psdpng_8c_a5fe0c446c13b53f5c7d455b623a25234} 
+int nfft =1024}
+
+\Hypertarget{psdpng_8c_a53e53380c64d2dcc85486da7f90794d5}\index{psdpng.c@{psdpng.c}!nrows@{nrows}}
+\index{nrows@{nrows}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{nrows}{nrows}}
+{\footnotesize\ttfamily \label{psdpng_8c_a53e53380c64d2dcc85486da7f90794d5} 
+int nrows =0}
+
+\Hypertarget{psdpng_8c_aaa4480bf8e7c1b7e96930cd4a6511d63}\index{psdpng.c@{psdpng.c}!remove\_dc@{remove\_dc}}
+\index{remove\_dc@{remove\_dc}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{remove\_dc}{remove\_dc}}
+{\footnotesize\ttfamily \label{psdpng_8c_aaa4480bf8e7c1b7e96930cd4a6511d63} 
+int remove\+\_\+dc =0}
+
+\Hypertarget{psdpng_8c_a61484db39738c72be32b4225842511d1}\index{psdpng.c@{psdpng.c}!stereo@{stereo}}
+\index{stereo@{stereo}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{stereo}{stereo}}
+{\footnotesize\ttfamily \label{psdpng_8c_a61484db39738c72be32b4225842511d1} 
+int stereo =0}
+
+\Hypertarget{psdpng_8c_af2923a055fc8c180e3ce531dfd61eccf}\index{psdpng.c@{psdpng.c}!vals@{vals}}
+\index{vals@{vals}!psdpng.c@{psdpng.c}}
+\doxysubsubsection{\texorpdfstring{vals}{vals}}
+{\footnotesize\ttfamily \label{psdpng_8c_af2923a055fc8c180e3ce531dfd61eccf} 
+float\texorpdfstring{$\ast$}{*} vals =NULL}
+

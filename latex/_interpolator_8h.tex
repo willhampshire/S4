@@ -1,0 +1,91 @@
+\doxysection{S4/\+Interpolator.h File Reference}
+\hypertarget{_interpolator_8h}{}\label{_interpolator_8h}\index{S4/Interpolator.h@{S4/Interpolator.h}}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_interpolator__}{Interpolator\+\_\+}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}}
+\item 
+typedef enum \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa}{Interpolator\+\_\+type\+\_\+}} \mbox{\hyperlink{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510}{Interpolator\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa}{Interpolator\+\_\+type\+\_\+}} \{ \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faaf9f0a6b811c83402fdae005803c16ca5}{Interpolator\+\_\+\+LINEAR}}
+, \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa152def97d799f6a53b4b53bee903e5f6}{Interpolator\+\_\+\+CUBIC\+\_\+\+SPLINE}}
+, \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa5ee924d44c381ac16db1ef98df737b0d}{Interpolator\+\_\+\+CUBIC\+\_\+\+HERMITE\+\_\+\+SPLINE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}} \mbox{\hyperlink{_interpolator_8h_a93b23642e3855a4e0ac20d289048f153}{Interpolator\+\_\+\+New}} (int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, int ny, double \texorpdfstring{$\ast$}{*}xy, \mbox{\hyperlink{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510}{Interpolator\+\_\+type}} type)
+\item 
+void \mbox{\hyperlink{_interpolator_8h_ae10b91bb4b9a3a8cd76a245ec713a8c8}{Interpolator\+\_\+\+Destroy}} (\mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}} I)
+\item 
+double \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_interpolator_8h_aa595fcfbb29e9ac3f66080387d689676}{Interpolator\+\_\+\+Get}} (const \mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}} I, double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, int \texorpdfstring{$\ast$}{*}ny)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{_interpolator_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}\index{Interpolator.h@{Interpolator.h}!Interpolator@{Interpolator}}
+\index{Interpolator@{Interpolator}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator}{Interpolator}}
+{\footnotesize\ttfamily \label{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67} 
+typedef struct \mbox{\hyperlink{struct_interpolator__}{Interpolator\+\_\+}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}}}
+
+\Hypertarget{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510}\index{Interpolator.h@{Interpolator.h}!Interpolator\_type@{Interpolator\_type}}
+\index{Interpolator\_type@{Interpolator\_type}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator\_type}{Interpolator\_type}}
+{\footnotesize\ttfamily \label{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510} 
+typedef enum \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa}{Interpolator\+\_\+type\+\_\+}} \mbox{\hyperlink{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510}{Interpolator\+\_\+type}}}
+
+
+
+\label{doc-enum-members}
+\Hypertarget{_interpolator_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa}\index{Interpolator.h@{Interpolator.h}!Interpolator\_type\_@{Interpolator\_type\_}}
+\index{Interpolator\_type\_@{Interpolator\_type\_}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator\_type\_}{Interpolator\_type\_}}
+{\footnotesize\ttfamily \label{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa} 
+enum \mbox{\hyperlink{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2fa}{Interpolator\+\_\+type\+\_\+}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Interpolator\_LINEAR@{Interpolator\_LINEAR}!Interpolator.h@{Interpolator.h}}\index{Interpolator.h@{Interpolator.h}!Interpolator\_LINEAR@{Interpolator\_LINEAR}}}\Hypertarget{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faaf9f0a6b811c83402fdae005803c16ca5}\label{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faaf9f0a6b811c83402fdae005803c16ca5} 
+Interpolator\+\_\+\+LINEAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Interpolator\_CUBIC\_SPLINE@{Interpolator\_CUBIC\_SPLINE}!Interpolator.h@{Interpolator.h}}\index{Interpolator.h@{Interpolator.h}!Interpolator\_CUBIC\_SPLINE@{Interpolator\_CUBIC\_SPLINE}}}\Hypertarget{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa152def97d799f6a53b4b53bee903e5f6}\label{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa152def97d799f6a53b4b53bee903e5f6} 
+Interpolator\+\_\+\+CUBIC\+\_\+\+SPLINE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Interpolator\_CUBIC\_HERMITE\_SPLINE@{Interpolator\_CUBIC\_HERMITE\_SPLINE}!Interpolator.h@{Interpolator.h}}\index{Interpolator.h@{Interpolator.h}!Interpolator\_CUBIC\_HERMITE\_SPLINE@{Interpolator\_CUBIC\_HERMITE\_SPLINE}}}\Hypertarget{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa5ee924d44c381ac16db1ef98df737b0d}\label{_interpolator_8h_a563a176ee73a35b3dc163a3ce8b3e2faa5ee924d44c381ac16db1ef98df737b0d} 
+Interpolator\+\_\+\+CUBIC\+\_\+\+HERMITE\+\_\+\+SPLINE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{_interpolator_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_interpolator_8h_ae10b91bb4b9a3a8cd76a245ec713a8c8}\index{Interpolator.h@{Interpolator.h}!Interpolator\_Destroy@{Interpolator\_Destroy}}
+\index{Interpolator\_Destroy@{Interpolator\_Destroy}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator\_Destroy()}{Interpolator\_Destroy()}}
+{\footnotesize\ttfamily \label{_interpolator_8h_ae10b91bb4b9a3a8cd76a245ec713a8c8} 
+void Interpolator\+\_\+\+Destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}}}]{I}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_interpolator_8h_aa595fcfbb29e9ac3f66080387d689676}\index{Interpolator.h@{Interpolator.h}!Interpolator\_Get@{Interpolator\_Get}}
+\index{Interpolator\_Get@{Interpolator\_Get}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator\_Get()}{Interpolator\_Get()}}
+{\footnotesize\ttfamily \label{_interpolator_8h_aa595fcfbb29e9ac3f66080387d689676} 
+double \texorpdfstring{$\ast$}{*} Interpolator\+\_\+\+Get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}}}]{I}{, }\item[{double}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ny}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_interpolator_8h_a93b23642e3855a4e0ac20d289048f153}\index{Interpolator.h@{Interpolator.h}!Interpolator\_New@{Interpolator\_New}}
+\index{Interpolator\_New@{Interpolator\_New}!Interpolator.h@{Interpolator.h}}
+\doxysubsubsection{\texorpdfstring{Interpolator\_New()}{Interpolator\_New()}}
+{\footnotesize\ttfamily \label{_interpolator_8h_a93b23642e3855a4e0ac20d289048f153} 
+\mbox{\hyperlink{_interpolator_8h_a2fc7350481857b49998c7d9d822d2f67}{Interpolator}} Interpolator\+\_\+\+New (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{int}]{ny}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{xy}{, }\item[{\mbox{\hyperlink{_interpolator_8h_a86e5fc7c2fe2749ccf05beaf754a5510}{Interpolator\+\_\+type}}}]{type}{}\end{DoxyParamCaption})}
+

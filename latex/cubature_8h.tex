@@ -1,0 +1,50 @@
+\doxysection{S4/cubature.h File Reference}
+\hypertarget{cubature_8h}{}\label{cubature_8h}\index{S4/cubature.h@{S4/cubature.h}}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cubature_8h_abd7a747cc09d1c713e32af79a577410e}{integrand}}) (unsigned ndim, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, void \texorpdfstring{$\ast$}{*}, unsigned fdim, double \texorpdfstring{$\ast$}{*}fval)
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cubature_8h_a1554a9bd20b1fe719c50eb83f85b909f}{integrand\+\_\+v}}) (unsigned ndim, unsigned npt, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, void \texorpdfstring{$\ast$}{*}, unsigned fdim, double \texorpdfstring{$\ast$}{*}fval)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cubature_8h_a46ca0b23bfa011bb6522adc061f43214}{adapt\+\_\+integrate}} (unsigned fdim, \mbox{\hyperlink{cubature_8h_abd7a747cc09d1c713e32af79a577410e}{integrand}} f, void \texorpdfstring{$\ast$}{*}fdata, unsigned dim, const double \texorpdfstring{$\ast$}{*}xmin, const double \texorpdfstring{$\ast$}{*}xmax, unsigned max\+Eval, double req\+Abs\+Error, double req\+Rel\+Error, double \texorpdfstring{$\ast$}{*}val, double \texorpdfstring{$\ast$}{*}err)
+\item 
+int \mbox{\hyperlink{cubature_8h_a3aef1d65b78e44ad6e8e499eee81b155}{adapt\+\_\+integrate\+\_\+v}} (unsigned fdim, \mbox{\hyperlink{cubature_8h_a1554a9bd20b1fe719c50eb83f85b909f}{integrand\+\_\+v}} f, void \texorpdfstring{$\ast$}{*}fdata, unsigned dim, const double \texorpdfstring{$\ast$}{*}xmin, const double \texorpdfstring{$\ast$}{*}xmax, unsigned max\+Eval, double req\+Abs\+Error, double req\+Rel\+Error, double \texorpdfstring{$\ast$}{*}val, double \texorpdfstring{$\ast$}{*}err)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{cubature_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{cubature_8h_abd7a747cc09d1c713e32af79a577410e}\index{cubature.h@{cubature.h}!integrand@{integrand}}
+\index{integrand@{integrand}!cubature.h@{cubature.h}}
+\doxysubsubsection{\texorpdfstring{integrand}{integrand}}
+{\footnotesize\ttfamily \label{cubature_8h_abd7a747cc09d1c713e32af79a577410e} 
+typedef void(\texorpdfstring{$\ast$}{*} integrand) (unsigned ndim, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, void \texorpdfstring{$\ast$}{*}, unsigned fdim, double \texorpdfstring{$\ast$}{*}fval)}
+
+\Hypertarget{cubature_8h_a1554a9bd20b1fe719c50eb83f85b909f}\index{cubature.h@{cubature.h}!integrand\_v@{integrand\_v}}
+\index{integrand\_v@{integrand\_v}!cubature.h@{cubature.h}}
+\doxysubsubsection{\texorpdfstring{integrand\_v}{integrand\_v}}
+{\footnotesize\ttfamily \label{cubature_8h_a1554a9bd20b1fe719c50eb83f85b909f} 
+typedef void(\texorpdfstring{$\ast$}{*} integrand\+\_\+v) (unsigned ndim, unsigned npt, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, void \texorpdfstring{$\ast$}{*}, unsigned fdim, double \texorpdfstring{$\ast$}{*}fval)}
+
+
+
+\label{doc-func-members}
+\Hypertarget{cubature_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{cubature_8h_a46ca0b23bfa011bb6522adc061f43214}\index{cubature.h@{cubature.h}!adapt\_integrate@{adapt\_integrate}}
+\index{adapt\_integrate@{adapt\_integrate}!cubature.h@{cubature.h}}
+\doxysubsubsection{\texorpdfstring{adapt\_integrate()}{adapt\_integrate()}}
+{\footnotesize\ttfamily \label{cubature_8h_a46ca0b23bfa011bb6522adc061f43214} 
+int adapt\+\_\+integrate (\begin{DoxyParamCaption}\item[{unsigned}]{fdim}{, }\item[{\mbox{\hyperlink{cubature_8h_abd7a747cc09d1c713e32af79a577410e}{integrand}}}]{f}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{fdata}{, }\item[{unsigned}]{dim}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{xmin}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{xmax}{, }\item[{unsigned}]{max\+Eval}{, }\item[{double}]{req\+Abs\+Error}{, }\item[{double}]{req\+Rel\+Error}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{val}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{err}{}\end{DoxyParamCaption})}
+
+\Hypertarget{cubature_8h_a3aef1d65b78e44ad6e8e499eee81b155}\index{cubature.h@{cubature.h}!adapt\_integrate\_v@{adapt\_integrate\_v}}
+\index{adapt\_integrate\_v@{adapt\_integrate\_v}!cubature.h@{cubature.h}}
+\doxysubsubsection{\texorpdfstring{adapt\_integrate\_v()}{adapt\_integrate\_v()}}
+{\footnotesize\ttfamily \label{cubature_8h_a3aef1d65b78e44ad6e8e499eee81b155} 
+int adapt\+\_\+integrate\+\_\+v (\begin{DoxyParamCaption}\item[{unsigned}]{fdim}{, }\item[{\mbox{\hyperlink{cubature_8h_a1554a9bd20b1fe719c50eb83f85b909f}{integrand\+\_\+v}}}]{f}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{fdata}{, }\item[{unsigned}]{dim}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{xmin}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{xmax}{, }\item[{unsigned}]{max\+Eval}{, }\item[{double}]{req\+Abs\+Error}{, }\item[{double}]{req\+Rel\+Error}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{val}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{err}{}\end{DoxyParamCaption})}
+

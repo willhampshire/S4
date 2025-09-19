@@ -1,0 +1,656 @@
+\doxysection{rcwa.\+h}
+\hypertarget{rcwa_8h_source}{}\label{rcwa_8h_source}\index{S4/rcwa.h@{S4/rcwa.h}}
+\mbox{\hyperlink{rcwa_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ \_RCWA\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ \_RCWA\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ for\ size\_t}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Possible\ values\ for\ epstype:}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ EPSILON2\_TYPE\_FULL\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ EPSILON2\_TYPE\_BLKDIAG1\ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ EPSILON2\_TYPE\_BLKDIAG2\ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ EPSILON2\_TYPE\_BLKDIAG1\_SCALAR\ 5}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ EPSILON2\_TYPE\_BLKDIAG2\_SCALAR\ 6}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ The\ rcwa.h/rcwa.cpp\ files\ contain\ the\ core\ RCWA\ and\ S-\/Matrix\ logic.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ The\ details\ of\ computing\ the\ Fourier\ expansions\ of\ the\ dielectric}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ constant\ is\ done\ elsewhere.}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ A\ layer\ is\ described\ by\ a\ thickness\ and\ a\ list\ of\ Fourier}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ coefficients\ of\ its\ dielectric\ constant.}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ To\ compute\ S-\/matrices,\ we\ require\ the\ eigenvector\ and}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ eigenvalue\ matrices.}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ Computes\ the\ layer\ band\ structure\ (waveguide\ modes)\ of\ a\ layer,}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ which\ is\ assumed\ to\ be\ uniform\ in\ the\ z-\/direction.\ The\ layer's}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ dielectric\ constant\ is\ expressed\ in\ Fourier\ space.\ The\ eigen-\/}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ modes\ have\ z-\/dependence\ exp(iqz),\ where\ q\ is\ the\ propagation}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ constant\ in\ the\ z-\/direction.\ Assuming\ the\ electric\ and\ magnetic}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ fields\ have\ Fourier\ expansion\ coefficients\ ex,\ ey,\ hx,\ hy,\ the}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ eigenmode\ amplitudes\ are\ related\ to\ the\ field\ components\ by}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ [\ -\/ex\ ]\ \ \ [\ \ \ A\ \ \ \ -\/A\ \ ]\ [\ a\ ]}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ [\ \ ey\ ]\ =\ [\ \ \ \ \ \ \ \ \ \ \ \ ]\ [\ \ \ ]\ ,\ A\ =\ kp\ phi\ inv(diag(q))/omega}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ [\ \ hx\ ]\ \ \ [\ \ \ B\ \ \ \ \ B\ \ ]\ [\ b\ ]\ \ \ B\ =\ phi}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ [\ \ hy\ ]\ \ \ [\ \ \ \ \ \ \ \ \ \ \ \ ]\ [\ \ \ ]}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ a\ and\ b\ are\ the\ mode\ amplitudes\ at\ a\ particular\ z-\/location.}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders\ used\ in\ the}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dielectric\ expansion.\ We\ will\ denote\ 2*n\ as\ 2n,}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ and\ 4*n\ as\ 4n.}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ Matrix\ of\ size\ n\ x\ n.\ The\ inverse\ of\ the}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fourier\ dielectric\ constant\ coupling\ matrix.\ The\ non-\/}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverse\ version\ is\ denoted\ Epsilon:}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Epsilon\_\{ij\}\ =\ \(\backslash\)int\_\{unit\ cell\}}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)epsilon(x,y)\ \(\backslash\)exp[\ i(kx[i]-\/kx[j])x}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ i(ky[i]-\/ky[j])y]\ dx\ dy}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ Epsilon2\ \ \ \ -\/\ (INPUT)\ Matrix\ of\ size\ 2n\ x\ 2n.\ The\ in-\/plane}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fourier\ dielectric\ constant\ coupling\ matrix.}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ This\ matrix\ should\ approximately\ be}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ Epsilon\ \ \ \ \ \ \ \ \ \ ]}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ \ \ \ \ \ \ \ \ \ Epsilon\ ]}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ but\ deviates\ from\ it\ when\ taking\ into\ account\ proper}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fourier\ factorization\ rules\ for\ the\ normal\ and}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tangential\ electric\ field\ continuity\ relations.\ The}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exact\ definition\ is\ that\ for\ Fourier\ expansion}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coefficients\ of\ the\ E\ and\ D\ fields,}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ -\/dy\ ]\ =\ Epsilon2\ [\ -\/ey\ ]}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ \ dx\ ]\ \ \ \ \ \ \ \ \ \ \ \ [\ \ ex\ ]}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ q\ \ \ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Array\ of\ length\ 2n.\ The\ eigenvalues}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ corresponding\ to\ the\ eigenmodes.\ Physically,\ these}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ are\ the\ z-\/direction\ propagation\ constants.}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ kp\ \ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Matrix\ of\ size\ 2n\ x\ 2n.\ The\ matrix}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ omega\string^2\ -\/\ [\ \ ky\ ]\ Epsilon\_inv\ [\ ky\ \ -\/kx\ ]}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ -\/kx\ ]}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ kx\ and\ ky\ are\ to\ be\ interpreted\ as\ diagonal}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrices.\ This\ quantity\ is\ used\ often\ enough\ to}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merit\ returning\ it\ and\ storing\ it.}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ NULL,\ then\ this\ parameter\ is\ not\ accessed.}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ phi\ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Matrix\ of\ size\ 2n\ x\ 2n.\ The\ eigenvector}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrix\ corresponding\ to\ the\ eigensystem.\ These\ are}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ eigenvectors\ to\ the\ master\ equation}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Epsilon2\ kp\ -\/\ [\ kx\ ]\ [\ kx\ \ ky\ ]\ phi\ =\ phi\ q\string^2}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ ky\ ]}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ kx,\ ky,\ and\ q\ are\ to\ be\ interpreted\ as}}
+\DoxyCodeLine{00102\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diagonal\ matrices.}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (IN/OUT)\ Workspace.\ If\ NULL\ or\ lwork\ ==\ 0,\ then\ the}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ space\ is\ internally\ allocated.\ If\ lwork\ ==\ -\/1,\ then}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ desired\ workspace\ is\ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ rwork\ \ \ \ \ \ \ -\/\ (WORK)\ Real\ valued\ workspace.\ Should\ be\ length\ 4n.}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ NULL,\ then\ the\ space\ is\ internally\ allocated.}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ iwork\ \ \ \ \ \ \ -\/\ (WORK)\ Integer\ workspace.\ Should\ be\ length\ n.\ If\ NULL,}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ then\ the\ space\ is\ internally\ allocated.}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ lwork\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ length\ of\ the\ work\ array.\ If\ -\/1,\ then\ a}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ workspace\ query\ is\ performed\ and\ the\ optimal\ lwork}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a2ca7449092ccd3f40f048977ed7f5877}{SolveLayerEigensystem}}(}
+\DoxyCodeLine{00114\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon2,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (dielectric/normal-\/field\ matrix)}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00121\ \ \ \ \ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00122\ \ \ \ \ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)\ (optional)}}
+\DoxyCodeLine{00123\ \ \ \ \ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00124\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL,\ \textcolor{comment}{//\ length\ lwork}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}}\ =\ NULL,\ \textcolor{comment}{//\ length\ 4*n}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ 0\ \textcolor{comment}{//\ set\ to\ -\/1\ for\ query\ into\ work[0],\ at\ least\ 4*n*n+2*n}}
+\DoxyCodeLine{00127\ );}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ Same\ as\ SolveLayerEigensystem,\ but\ assumes\ Epsilon\ is\ eps*I.}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ It\ assumed\ that\ Epsilon2\ =\ diag(Epsilon,\ Epsilon).}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ See\ the\ documentation\ for\ SolveLayerEigensystem\ for\ argument}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//\ descriptions.}}
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_acc0e4f6e5034d1f13f999ab392154c74}{SolveLayerEigensystem\_uniform}}(}
+\DoxyCodeLine{00136\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00140\ \ \ \ \ std::complex<double>\ eps,}
+\DoxyCodeLine{00141\ \ \ \ \ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00142\ \ \ \ \ std::complex<double>\ *kp\ =\ NULL,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00143\ \ \ \ \ std::complex<double>\ *phi\ =\ NULL\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (optional)}}
+\DoxyCodeLine{00144\ );}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ Multiplies\ a\ matrix\ by\ the\ k-\/parallel\ matrix\ (kp),\ as\ passed}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//\ to\ SolveLayerEigensystem.}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ trans\ \ \ \ \ \ \ -\/\ (INPUT)\ If\ "{}C"{},\ multiplies\ by\ the\ conjugate\ transpose.}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ "{}N"{},\ multiplies\ by\ the\ original\ matrix.}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders\ used\ in\ the}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dielectric\ expansion.\ We\ will\ denote\ 2*n\ as\ 2n,}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ and\ 4*n\ as\ 4n.}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ Matrix\ of\ size\ n\ x\ n.\ The\ inverse\ of\ the}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fourier\ dielectric\ constant\ coupling\ matrix.\ The\ non-\/}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverse\ version\ is\ denoted\ Epsilon:}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Epsilon\_\{ij\}\ =\ \(\backslash\)int\_\{unit\ cell\}}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)epsilon(x,y)\ \(\backslash\)exp[\ i(kx[i]-\/kx[j])x}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ i(ky[i]-\/ky[j])y]\ dx\ dy}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ Epsilon2\_type\ -\/\ (INPUT)\ Ignored\ if\ kp\ is\ not\ NULL.\ When\ kp\ is\ NULL,}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ and\ Epsilon2\_type\ is\ EPSILON2\_TYPE\_BLKDIAG1\_SCALAR\ or}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EPSILON2\_TYPE\_BLKDIAG2\_SCALAR,\ Epsilon\_inv\ is\ assumed}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\ be\ a\ scalar\ value\ and\ only\ its\ first\ element\ is}}
+\DoxyCodeLine{00172\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ accessed.}}
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ kp\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Matrix\ of\ size\ 2n\ x\ 2n.\ The\ matrix}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ omega\string^2\ -\/\ [\ \ ky\ ]\ Epsilon\_inv\ [\ ky\ \ -\/kx\ ]}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ -\/kx\ ]}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ where\ kx\ and\ ky\ are\ to\ be\ interpreted\ as\ diagonal}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrices.}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ NULL,\ then\ this\ parameter\ is\ not\ accessed\ (See}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Epsilon2\_type).}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ ncols\ \ \ \ \ \ \ -\/\ (INPUT)\ Number\ of\ columns\ of\ the\ target\ matrix.}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ a\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Pointer\ to\ the\ first\ element\ of\ the\ target}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrix.\ Number\ of\ rows\ should\ be\ 2*n.}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ lda\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Leading\ dimension\ of\ matrix\ a,\ >=\ 2*n.}}
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ y\ \ \ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Pointer\ to\ first\ element\ of\ the\ resulting}}
+\DoxyCodeLine{00185\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrix.\ (y\ =\ kp.a)\ Dimension\ should\ be\ 2*n\ by\ ncols.}}
+\DoxyCodeLine{00186\ \textcolor{comment}{//\ ldy\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Leading\ dimension\ of\ matrix\ y.}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a9cc7fe28bedc8e86aa0aaecda0f6a288}{MultKPMatrix}}(}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{_linear_solve__lapack_8h_afaf570bd8980ebd7a0b208f49353f5f7}{trans}},}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ omega,}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Epsilon2\_type,}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ kp\ if\ exists.\ Can\ be\ NULL}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ ncols,}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},}
+\DoxyCodeLine{00200\ \ \ \ \ std::complex<double>\ *y,\ \textcolor{comment}{//\ same\ size\ as\ a,\ y\ <-\/\ kp*a}}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ ldy}
+\DoxyCodeLine{00202\ );}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00205\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00206\ \textcolor{comment}{//\ Initialize\ an\ S-\/Matrix\ to\ the\ identity\ matrix.}}
+\DoxyCodeLine{00207\ \textcolor{comment}{//}}
+\DoxyCodeLine{00208\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00209\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00210\ \textcolor{comment}{//\ n\ -\/\ (INPUT)\ Number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00211\ \textcolor{comment}{//\ S\ -\/\ (OUTPUT)\ Matrix\ of\ size\ 4n\ x\ 4n.\ Set\ to\ the\ identity\ matrix.}}
+\DoxyCodeLine{00212\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a07e5673bfab2f7ccb7d89b4b798ee40a}{InitSMatrix}}(}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00214\ \ \ \ \ std::complex<double>\ *S\ \textcolor{comment}{//\ size\ (4*n)\string^2}}
+\DoxyCodeLine{00215\ );}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00218\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00219\ \textcolor{comment}{//\ Computes\ the\ S-\/Matrix\ for\ a\ layer\ stack.}}
+\DoxyCodeLine{00220\ \textcolor{comment}{//}}
+\DoxyCodeLine{00221\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00222\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00223\ \textcolor{comment}{//\ nlayers\ \ \ -\/\ (INPUT)\ Number\ of\ layers\ in\ the\ stack.}}
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00225\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00226\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00227\ \textcolor{comment}{//\ thickness\ -\/\ (INPUT)\ Array\ of\ length\ nlayers.\ Thickness\ of\ each}}
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ layer,\ in\ order.}}
+\DoxyCodeLine{00229\ \textcolor{comment}{//\ q\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Array\ of\ length\ nlayers.\ Pointers\ to\ the\ q}}
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ arrays\ of\ each\ layer\ (computed\ by\ SolveLayerEigensystem*}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ functions),\ in\ the\ same\ order\ as\ thickness.}}
+\DoxyCodeLine{00232\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ size\ n\string^2\ matrix,\ inverse\ of\ dielectric\ Fourier}}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ coupling\ matrix.}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//\ epstype\ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00235\ \textcolor{comment}{//\ kp\ \ \ \ \ \ \ \ -\/\ (INPUT)\ Array\ of\ length\ nlayers.\ Pointers\ to\ the\ kp}}
+\DoxyCodeLine{00236\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ matrices\ of\ each\ layer,\ in\ the\ same\ order\ as\ thickness.}}
+\DoxyCodeLine{00237\ \textcolor{comment}{//\ phi\ \ \ \ \ \ \ -\/\ (INPUT)\ Array\ of\ length\ nlayers.\ Pointers\ to\ the\ phi}}
+\DoxyCodeLine{00238\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ matrices\ of\ each\ layer,\ in\ the\ same\ order\ as\ thickness.}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ S\ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Matrix\ of\ size\ 4n\ x\ 4n.\ The\ output\ S-\/matrix.}}
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ work\ \ \ \ \ \ -\/\ (IN/OUT)\ Workspace.\ If\ NULL\ or\ lwork\ ==\ 0,\ then\ the}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ space\ is\ internally\ allocated.\ If\ lwork\ ==\ -\/1,\ then\ the}}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ desired\ workspace\ is\ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ iwork\ \ \ \ \ -\/\ (WORK)\ Integer\ workspace,\ of\ length\ 2n.\ If\ NULL,\ the\ the}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ space\ is\ internally\ allocated.}}
+\DoxyCodeLine{00245\ \textcolor{comment}{//\ lwork\ \ \ \ \ -\/\ (INPUT)\ The\ length\ of\ the\ work\ array.\ If\ -\/1,\ then\ a}}
+\DoxyCodeLine{00246\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ workspace\ query\ is\ performed\ and\ the\ optimal\ lwork\ is}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_aa8e4cc19eb7858f954e1b5615b57fa7e}{GetSMatrix}}(\ \textcolor{comment}{//\ appends\ the\ layers\ to\ an\ existing\ S\ matrix}}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nlayers,}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00252\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *thickness,\ \textcolor{comment}{//\ list\ of\ thicknesses}}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **q,\ \textcolor{comment}{//\ list\ of\ q\ vectors}}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{int}\ *epstype,}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **kp,}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **phi,}
+\DoxyCodeLine{00259\ \ \ \ \ std::complex<double>\ *S,\ \textcolor{comment}{//\ size\ (4*n)\string^2}}
+\DoxyCodeLine{00260\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL,\ \textcolor{comment}{//\ length\ lwork}}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ *iwork\ =\ NULL,\ \textcolor{comment}{//\ length\ n2}}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ 0\ \textcolor{comment}{//\ set\ to\ -\/1\ for\ query\ into\ work[0],\ at\ least\ 4*n*(4*n+1)}}
+\DoxyCodeLine{00263\ );}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ Given\ input\ amplitudes\ to\ a\ layer\ stack,\ computes\ the\ mode}}
+\DoxyCodeLine{00268\ \textcolor{comment}{//\ amplitudes\ within\ any\ layer.\ The\ forward\ mode\ amplitudes\ a\ are}}
+\DoxyCodeLine{00269\ \textcolor{comment}{//\ assumed\ to\ have\ the\ phase\ origin\ at\ the\ start\ (z=0)\ of\ each\ layer,}}
+\DoxyCodeLine{00270\ \textcolor{comment}{//\ while\ the\ backward\ mode\ amplitudes\ b\ are\ assumed\ to\ have\ the\ phase}}
+\DoxyCodeLine{00271\ \textcolor{comment}{//\ origin\ at\ the\ end\ of\ the\ layer\ (z=thickness).}}
+\DoxyCodeLine{00272\ \textcolor{comment}{//}}
+\DoxyCodeLine{00273\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00274\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00275\ \textcolor{comment}{//\ nlayers\ \ \ \ \ -\/\ (INPUT)\ Number\ of\ layers\ in\ the\ stack.}}
+\DoxyCodeLine{00276\ \textcolor{comment}{//\ which\_layer\ -\/\ (INPUT)\ Offset\ of\ which\ layer\ in\ the\ stack\ the\ output}}
+\DoxyCodeLine{00277\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ab\ should\ be\ computed.\ 0\ <=\ which\_layer\ <\ nlayers.}}
+\DoxyCodeLine{00278\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00279\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00280\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00281\ \textcolor{comment}{//\ thickness\ \ \ -\/\ (INPUT)\ List\ of\ thicknesses.\ (See\ GetSMatrix).}}
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ q,\ kp,\ phi\ \ -\/\ (INPUT)\ List\ of\ layer\ properties.\ (See\ GetSMatrix).}}
+\DoxyCodeLine{00283\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ size\ n\string^2\ matrix,\ inverse\ of\ dielectric\ Fourier}}
+\DoxyCodeLine{00284\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ coupling\ matrix.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{//\ epstype\ \ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00286\ \textcolor{comment}{//\ a0,\ bN\ \ \ \ \ \ -\/\ (INPUT)\ Input\ mode\ amplitudes,\ each\ of\ length\ 2n.\ The}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ forward\ amplitudes\ a0\ are\ incident\ from\ the\ front\ of}}
+\DoxyCodeLine{00288\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ stack\ (layer\ offset\ 0),\ while\ the\ backward}}
+\DoxyCodeLine{00289\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amplitudes\ are\ incident\ from\ the\ back\ (layer\ offset}}
+\DoxyCodeLine{00290\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nlayers-\/1).\ If\ either\ is\ NULL,\ it\ is\ assumed\ to\ be}}
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ zero\ vector.}}
+\DoxyCodeLine{00292\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Output\ mode\ amplitudes,\ length\ 4n.\ The}}
+\DoxyCodeLine{00293\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ forward\ in\ the\ first\ 2n\ locations,\ and\ the\ backward}}
+\DoxyCodeLine{00294\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ amplitudes\ are\ stored\ in\ the\ remaining\ 2n}}
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ locations.\ The\ forward\ amplitudes\ are\ relative\ to\ the}}
+\DoxyCodeLine{00296\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ front\ of\ the\ layer,\ while\ the\ backward\ amplitudes\ are}}
+\DoxyCodeLine{00297\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ relative\ to\ the\ back\ of\ the\ layer.}}
+\DoxyCodeLine{00298\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (IN/OUT)\ Workspace.\ If\ NULL\ or\ lwork\ ==\ 0,\ then\ the}}
+\DoxyCodeLine{00299\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ space\ is\ internally\ allocated.\ If\ lwork\ ==\ -\/1,\ then}}
+\DoxyCodeLine{00300\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ desired\ workspace\ is\ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00301\ \textcolor{comment}{//\ iwork\ \ \ \ \ \ \ -\/\ (WORK)\ Integer\ workspace,\ of\ length\ 2n.\ If\ NULL,\ the\ the}}
+\DoxyCodeLine{00302\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ space\ is\ internally\ allocated.}}
+\DoxyCodeLine{00303\ \textcolor{comment}{//\ lwork\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ length\ of\ the\ work\ array.\ If\ -\/1,\ then\ a}}
+\DoxyCodeLine{00304\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ workspace\ query\ is\ performed\ and\ the\ optimal\ lwork\ is}}
+\DoxyCodeLine{00305\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ returned\ in\ work[0].real().}}
+\DoxyCodeLine{00306\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rcwa_8h_a72467bdbced9f7351cc275e2b003c064}{SolveInterior}}(}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nlayers,}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ which\_layer,}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00311\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *thickness,\ \textcolor{comment}{//\ list\ of\ thicknesses}}
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **q,\ \textcolor{comment}{//\ list\ of\ q\ vectors}}
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordtype}{int}\ *epstype,}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **kp,}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ **phi,}
+\DoxyCodeLine{00318\ \ \ \ \ std::complex<double>\ *a0,\ \textcolor{comment}{//\ length\ 2*n}}
+\DoxyCodeLine{00319\ \ \ \ \ std::complex<double>\ *bN,\ \textcolor{comment}{//\ length\ 2*n}}
+\DoxyCodeLine{00320\ \ \ \ \ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*n}}
+\DoxyCodeLine{00321\ \ \ \ \ std::complex<double>\ *work\_\ =\ NULL,\ \textcolor{comment}{//\ length\ lwork}}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ *iwork\ =\ NULL,\ \textcolor{comment}{//\ length\ n2}}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ 0\ \textcolor{comment}{//\ set\ to\ -\/1\ for\ query\ into\ work[0],\ at\ least\ 2*(4*n)\string^2\ +\ 2*(2*n)\ +\ 4*n*(4*n+1)}}
+\DoxyCodeLine{00324\ );}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00329\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00330\ \textcolor{comment}{//\ Transforms\ a\ mode\ amplitude\ vector\ from\ SolveInterior\ to\ a}}
+\DoxyCodeLine{00331\ \textcolor{comment}{//\ particular\ z-\/coordinate\ within\ the\ layer.}}
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ THIS\ MODIFIES\ THE\ POINTER\ ab.\ ALWAYS\ PASS\ IN\ A\ COPY\ TO\ RETAIN\ SOLUTION}}
+\DoxyCodeLine{00333\ \textcolor{comment}{//\ AMPLITUDES}}
+\DoxyCodeLine{00334\ \textcolor{comment}{//}}
+\DoxyCodeLine{00335\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00336\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00337\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00338\ \textcolor{comment}{//\ q\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 2n.\ The\ layer\ eigenvalues.}}
+\DoxyCodeLine{00339\ \textcolor{comment}{//\ thickness\ -\/\ (INPUT)\ The\ thickness\ of\ the\ layer.}}
+\DoxyCodeLine{00340\ \textcolor{comment}{//\ dz\ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ z-\/offset\ from\ the\ start\ of\ the\ layer\ where}}
+\DoxyCodeLine{00341\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ the\ vector\ ab\ should\ be\ translated.}}
+\DoxyCodeLine{00342\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ -\/\ (OUTPUT)\ Length\ 4n.\ On\ entry,\ the\ solution\ vector\ with}}
+\DoxyCodeLine{00343\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ mode\ amplitudes\ relative\ to\ the\ ends\ of\ the\ layer.\ On}}
+\DoxyCodeLine{00344\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ exit,\ the\ mode\ amplitudes\ at\ the\ specified\ offset.}}
+\DoxyCodeLine{00345\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_aa27a21f8895014dec583a804fcdca9fd}{TranslateAmplitudes}}(}
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordtype}{double}\ thickness,}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordtype}{double}\ dz,}
+\DoxyCodeLine{00350\ \ \ \ \ std::complex<double>\ *ab}
+\DoxyCodeLine{00351\ );}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00354\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00355\ \textcolor{comment}{//\ Returns\ the\ plane\ integral\ of\ the\ Poynting\ flux\ over\ the\ unit\ cell}}
+\DoxyCodeLine{00356\ \textcolor{comment}{//\ over\ a\ surface\ normal\ to\ the\ z-\/direction.\ The\ result\ is\ not\ time}}
+\DoxyCodeLine{00357\ \textcolor{comment}{//\ averaged\ (lacks\ a\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00358\ \textcolor{comment}{//}}
+\DoxyCodeLine{00359\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00360\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00361\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00362\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00363\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00364\ \textcolor{comment}{//\ omega\ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00365\ \textcolor{comment}{//\ q,\ kp,\ phi\ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00366\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ size\ n\string^2\ matrix,\ inverse\ of\ dielectric\ Fourier}}
+\DoxyCodeLine{00367\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ coupling\ matrix.}}
+\DoxyCodeLine{00368\ \textcolor{comment}{//\ epstype\ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00369\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00370\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ a\ particular\ z-\/offset,\ e.g.\ returned\ by}}
+\DoxyCodeLine{00371\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ TranslateAmplitudes.}}
+\DoxyCodeLine{00372\ \textcolor{comment}{//\ forward,\ \ \ -\/\ (OUTPUT)\ The\ complex\ integrated\ Poynting\ flux\ over\ the}}
+\DoxyCodeLine{00373\ \textcolor{comment}{//\ backward\ \ \ \ \ the\ unit\ cell.}}
+\DoxyCodeLine{00374\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 4*2n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00375\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00376\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_aceb97127ba714c84d65bb673c63b1f8a}{GetZPoyntingFlux}}(}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00379\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00386\ \ \ \ \ std::complex<double>\ *forward,}
+\DoxyCodeLine{00387\ \ \ \ \ std::complex<double>\ *backward,}
+\DoxyCodeLine{00388\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL\ \textcolor{comment}{//\ length\ 4*n2\ or\ NULL}}
+\DoxyCodeLine{00389\ );}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00392\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00393\ \textcolor{comment}{//\ Returns\ the\ plane\ integral\ of\ the\ Poynting\ flux\ over\ the\ unit\ cell}}
+\DoxyCodeLine{00394\ \textcolor{comment}{//\ over\ a\ surface\ normal\ to\ the\ z-\/direction\ for\ each\ diffracted\ order.}}
+\DoxyCodeLine{00395\ \textcolor{comment}{//\ The\ result\ is\ not\ time\ averaged\ (lacks\ a\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00396\ \textcolor{comment}{//}}
+\DoxyCodeLine{00397\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00398\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00399\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00400\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00401\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00402\ \textcolor{comment}{//\ omega\ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00403\ \textcolor{comment}{//\ q,\ kp,\ phi\ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00404\ \textcolor{comment}{//\ Epsilon\_inv\ -\/\ (INPUT)\ size\ n\string^2\ matrix,\ inverse\ of\ dielectric\ Fourier}}
+\DoxyCodeLine{00405\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ coupling\ matrix.}}
+\DoxyCodeLine{00406\ \textcolor{comment}{//\ epstype\ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00407\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00408\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ a\ particular\ z-\/offset,\ e.g.\ returned\ by}}
+\DoxyCodeLine{00409\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ TranslateAmplitudes.}}
+\DoxyCodeLine{00410\ \textcolor{comment}{//\ forward,\ \ \ -\/\ (OUTPUT)\ Length\ 2n.\ The\ complex\ integrated\ Poynting}}
+\DoxyCodeLine{00411\ \textcolor{comment}{//\ backward\ \ \ \ \ flux\ over\ the\ the\ unit\ cell\ for\ each\ G-\/vector.}}
+\DoxyCodeLine{00412\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 4*2n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00413\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00414\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a477b1c37d3c1a2231de4e3ffc6d60704}{GetZPoyntingFluxComponents}}(}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00417\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00418\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2;\ inv\ of\ usual\ dielectric\ Fourier\ coupling\ matrix}}
+\DoxyCodeLine{00420\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00424\ \ \ \ \ std::complex<double>\ *forward,}
+\DoxyCodeLine{00425\ \ \ \ \ std::complex<double>\ *backward,}
+\DoxyCodeLine{00426\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL\ \textcolor{comment}{//\ length\ 4*n2\ or\ NULL}}
+\DoxyCodeLine{00427\ );}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00430\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00431\ \textcolor{comment}{//\ Returns\ the\ electric\ and/or\ magnetic\ field\ at\ a\ particular\ point}}
+\DoxyCodeLine{00432\ \textcolor{comment}{//\ by\ reconstructing\ the\ Fourier\ series\ representation\ of\ the\ field.}}
+\DoxyCodeLine{00433\ \textcolor{comment}{//}}
+\DoxyCodeLine{00434\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00435\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00436\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00437\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00438\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00439\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00440\ \textcolor{comment}{//\ q,\ kp,\ phi\ \ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00441\ \textcolor{comment}{//\ epsilon\_inv\ -\/\ (INPUT)\ Inverse\ of\ Epsilon\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00442\ \textcolor{comment}{//\ epstype\ \ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00443\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00444\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ the\ desired\ z-\/offset\ within\ the\ layer,}}
+\DoxyCodeLine{00445\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.g.\ returned\ by\ TranslateAmplitudes.}}
+\DoxyCodeLine{00446\ \textcolor{comment}{//\ r\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ in-\/plane\ x-\/\ and\ y-\/coordinates\ of\ the\ point}}
+\DoxyCodeLine{00447\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ which\ the\ field\ should\ be\ obtained.}}
+\DoxyCodeLine{00448\ \textcolor{comment}{//\ efield,\ \ \ \ \ -\/\ (OUTPUT)\ The\ complex\ field\ at\ the\ desired\ point.\ Note}}
+\DoxyCodeLine{00449\ \textcolor{comment}{//\ hfield\ \ \ \ \ \ \ \ no\ time\ averaging\ is\ performed\ (no\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00450\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 8*2n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00451\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00452\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a84f502151eee8c2c2a4c40e6d82d842b}{GetFieldAtPoint}}(}
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00455\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2,\ non\ NULL\ for\ efield\ !=\ NULL\ ||\ kp\ ==\ NULL}}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00462\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[2],\ \textcolor{comment}{//\ coordinates\ within\ layer}}
+\DoxyCodeLine{00463\ \ \ \ \ std::complex<double>\ efield[3],}
+\DoxyCodeLine{00464\ \ \ \ \ std::complex<double>\ hfield[3],}
+\DoxyCodeLine{00465\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL}
+\DoxyCodeLine{00466\ );}
+\DoxyCodeLine{00467\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_af6a544ff7a82a10d3eae3291303a4021}{GetFieldAtPointImproved}}(}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00470\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2,\ non\ NULL\ for\ efield\ !=\ NULL\ ||\ kp\ ==\ NULL}}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *P,\ \textcolor{comment}{//\ the\ projection\ operator\ that\ project\ cartesian\ fields\ onto\ local\ basis}}
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *W,\ \textcolor{comment}{//\ the\ Weismann\ operator\ from\ eqn\ 9a\ in\ his\ paper.\ Same\ shape\ as\ P}}
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *Epsilon2,\ \textcolor{comment}{//\ the\ projection\ operator\ that\ project\ cartesian\ fields\ onto\ local\ basis}}
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ \mbox{\hyperlink{predicates_8c_a92508a9fbb1db78d0bbedbf68cf93d1b}{epsilon}},\ \textcolor{comment}{//\ The\ scalar,\ real\ space\ value\ of\ epsilon}}
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00480\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[2],\ \textcolor{comment}{//\ coordinates\ within\ layer}}
+\DoxyCodeLine{00482\ \ \ \ \ std::complex<double>\ efield[3],}
+\DoxyCodeLine{00483\ \ \ \ \ std::complex<double>\ hfield[3],}
+\DoxyCodeLine{00484\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL}
+\DoxyCodeLine{00485\ );}
+\DoxyCodeLine{00486\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a30ac480781f2b8d6ac0de42d95eb0ae4}{GetFieldOnGridImproved}}(}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordtype}{int}\ *G,\ \textcolor{comment}{//\ length\ 2*glist.n,\ pairs\ of\ uv\ coordinates\ of\ Lk}}
+\DoxyCodeLine{00489\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00490\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2,\ non\ NULL\ for\ efield\ !=\ NULL\ ||\ kp\ ==\ NULL}}
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *P,\ \textcolor{comment}{//\ Projection\ operator\ onto\ tangential.\ 2nx2n\ matrix,\ size\ 4n\string^2}}
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *W,\ \textcolor{comment}{//\ Weismann\ operator.\ 2nx2n\ matrix,\ size\ 4n\string^2}}
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{predicates_8c_a92508a9fbb1db78d0bbedbf68cf93d1b}{epsilon}},\ \textcolor{comment}{//\ The\ scalar,\ real\ space\ value\ of\ epsilon}}
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ nxy[2],\ \textcolor{comment}{//\ number\ of\ points\ per\ lattice\ direction}}
+\DoxyCodeLine{00501\ \ \ \ \ std::complex<double>\ *efield,}
+\DoxyCodeLine{00502\ \ \ \ \ std::complex<double>\ *hfield}
+\DoxyCodeLine{00503\ );}
+\DoxyCodeLine{00504\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a0fb89fff4ebdd2b86893657e74afea1a}{GetFieldOnGrid}}(}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordtype}{int}\ *G,\ \textcolor{comment}{//\ length\ 2*glist.n,\ pairs\ of\ uv\ coordinates\ of\ Lk}}
+\DoxyCodeLine{00507\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00508\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2,\ non\ NULL\ for\ efield\ !=\ NULL\ ||\ kp\ ==\ NULL}}
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ nxy[2],\ \textcolor{comment}{//\ number\ of\ points\ per\ lattice\ direction}}
+\DoxyCodeLine{00516\ \ \ \ \ std::complex<double>\ *efield,}
+\DoxyCodeLine{00517\ \ \ \ \ std::complex<double>\ *hfield}
+\DoxyCodeLine{00518\ );}
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00521\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00522\ \textcolor{comment}{//\ Returns\ the\ plane\ integral\ of\ the\ stress\ tensor\ over\ the\ unit\ cell}}
+\DoxyCodeLine{00523\ \textcolor{comment}{//\ over\ a\ surface\ normal\ to\ the\ z-\/direction.\ The\ result\ is\ not\ time}}
+\DoxyCodeLine{00524\ \textcolor{comment}{//\ averaged\ (lacks\ a\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00525\ \textcolor{comment}{//}}
+\DoxyCodeLine{00526\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00527\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00528\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00529\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00530\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00531\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00532\ \textcolor{comment}{//\ q,\ kp,\ phi\ \ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00533\ \textcolor{comment}{//\ epsilon\_inv\ -\/\ (INPUT)\ Inverse\ of\ Epsilon\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00534\ \textcolor{comment}{//\ epsilon2\ \ \ \ -\/\ (INPUT)\ Epsilon2\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00535\ \textcolor{comment}{//\ epstype\ \ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00536\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00537\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ a\ particular\ z-\/offset,\ e.g.\ returned\ by}}
+\DoxyCodeLine{00538\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TranslateAmplitudes.}}
+\DoxyCodeLine{00539\ \textcolor{comment}{//\ integral\ \ \ \ -\/\ (OUTPUT)\ The\ complex\ integrated\ stress\ tensor\ over\ the}}
+\DoxyCodeLine{00540\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ unit\ cell.}}
+\DoxyCodeLine{00541\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 8*2n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00542\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00543\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_af43b1cb9eb3ac3a13145ed91dfbdd974}{GetZStressTensorIntegral}}(}
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00545\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00546\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2}}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon2,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00553\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00554\ \ \ \ \ std::complex<double>\ integral[3],}
+\DoxyCodeLine{00555\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ NULL\ \textcolor{comment}{//\ length\ 8*2*glist.n}}
+\DoxyCodeLine{00556\ );}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00559\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00560\ \textcolor{comment}{//\ Returns\ the\ volume\ integral\ of\ a\ density\ over\ the\ unit\ cell}}
+\DoxyCodeLine{00561\ \textcolor{comment}{//\ throughout\ the\ entire\ thickness\ of\ the\ cell.\ The\ result\ is\ not\ time}}
+\DoxyCodeLine{00562\ \textcolor{comment}{//\ averaged\ (lacks\ a\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00563\ \textcolor{comment}{//}}
+\DoxyCodeLine{00564\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00565\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00566\ \textcolor{comment}{//\ which\ \ \ \ \ \ \ -\/\ (INPUT)\ Computes\ one\ of:}}
+\DoxyCodeLine{00567\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ U\ :\ Total\ energy\ density:}}
+\DoxyCodeLine{00568\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ epsilon\ |E|\string^2\ +\ |H|\string^2}}
+\DoxyCodeLine{00569\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ E\ :\ Electric\ energy\ density:}}
+\DoxyCodeLine{00570\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ epsilon\ |E|\string^2}}
+\DoxyCodeLine{00571\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ E\ :\ Magnetic\ energy\ density:}}
+\DoxyCodeLine{00572\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |H|\string^2}}
+\DoxyCodeLine{00573\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ :\ Electric\ field\ density:}}
+\DoxyCodeLine{00574\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |E|\string^2}}
+\DoxyCodeLine{00575\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Any\ other\ value\ is\ invalid.}}
+\DoxyCodeLine{00576\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00577\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00578\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00579\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00580\ \textcolor{comment}{//\ thickness\ \ \ -\/\ (INPUT)\ Thickness\ of\ the\ layer.}}
+\DoxyCodeLine{00581\ \textcolor{comment}{//\ q,\ kp,\ phi\ \ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00582\ \textcolor{comment}{//\ epsilon\_inv\ -\/\ (INPUT)\ Inverse\ of\ Epsilon\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00583\ \textcolor{comment}{//\ epsilon2\ \ \ \ -\/\ (INPUT)\ Epsilon2\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00584\ \textcolor{comment}{//\ epstype\ \ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00585\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00586\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ a\ particular\ z-\/offset,\ e.g.\ returned\ by}}
+\DoxyCodeLine{00587\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TranslateAmplitudes.}}
+\DoxyCodeLine{00588\ \textcolor{comment}{//\ integral\ \ \ \ -\/\ (OUTPUT)\ The\ volume\ integral\ of\ the\ specified\ quantity.}}
+\DoxyCodeLine{00589\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 4n\ x\ 4n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00590\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00591\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a7563559e22586be2666f845aa0241896}{GetLayerVolumeIntegral}}(}
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keywordtype}{char}\ which,}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00594\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00595\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00596\ \ \ \ \ \textcolor{keywordtype}{double}\ thickness,}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00599\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2}}
+\DoxyCodeLine{00601\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon2,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00602\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00604\ \ \ \ \ std::complex<double>\ *integral,}
+\DoxyCodeLine{00605\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}}
+\DoxyCodeLine{00606\ );}
+\DoxyCodeLine{00607\ }
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \textcolor{comment}{//\ Purpose}}
+\DoxyCodeLine{00610\ \textcolor{comment}{//\ =======}}
+\DoxyCodeLine{00611\ \textcolor{comment}{//\ Returns\ the\ line\ integral\ of\ the\ square\ magnitudes\ of\ electric\ and}}
+\DoxyCodeLine{00612\ \textcolor{comment}{//\ magnetic\ field\ components\ in\ the\ depth\ (z)\ direction.\ The\ result}}
+\DoxyCodeLine{00613\ \textcolor{comment}{//\ is\ not\ time\ averaged\ (lacks\ a\ factor\ of\ 0.5).}}
+\DoxyCodeLine{00614\ \textcolor{comment}{//}}
+\DoxyCodeLine{00615\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00616\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00617\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ The\ number\ of\ Fourier\ orders.}}
+\DoxyCodeLine{00618\ \textcolor{comment}{//\ kx,\ ky\ \ \ \ \ \ -\/\ (INPUT)\ Arrays\ of\ length\ n.\ The\ x-\/\ and\ y-\/components}}
+\DoxyCodeLine{00619\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ Fourier\ k-\/vectors\ of\ the\ dielectric\ expansion.}}
+\DoxyCodeLine{00620\ \textcolor{comment}{//\ omega\ \ \ \ \ \ \ -\/\ (INPUT)\ The\ operating\ angular\ frequency.}}
+\DoxyCodeLine{00621\ \textcolor{comment}{//\ thickness\ \ \ -\/\ (INPUT)\ Thickness\ of\ the\ layer.}}
+\DoxyCodeLine{00622\ \textcolor{comment}{//\ r\ \ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ x\ and\ y\ coordinates\ of\ location\ to\ integrate.}}
+\DoxyCodeLine{00623\ \textcolor{comment}{//\ q,\ kp,\ phi\ \ -\/\ (INPUT)\ Layer\ band\ structure.\ (See\ above)}}
+\DoxyCodeLine{00624\ \textcolor{comment}{//\ epsilon\_inv\ -\/\ (INPUT)\ Inverse\ of\ Epsilon\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00625\ \textcolor{comment}{//\ epsilon2\ \ \ \ -\/\ (INPUT)\ Epsilon2\ matrix.\ (See\ above)}}
+\DoxyCodeLine{00626\ \textcolor{comment}{//\ epstype\ \ \ \ \ -\/\ (INPUT)\ Type\ code\ of\ the\ Epsilon2\ matrix\ (see\ above).}}
+\DoxyCodeLine{00627\ \textcolor{comment}{//\ ab\ \ \ \ \ \ \ \ \ \ -\/\ (INPUT)\ Length\ 4n.\ The\ mode\ amplitudes\ within\ the\ layer}}
+\DoxyCodeLine{00628\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ at\ a\ particular\ z-\/offset,\ e.g.\ returned\ by}}
+\DoxyCodeLine{00629\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TranslateAmplitudes.}}
+\DoxyCodeLine{00630\ \textcolor{comment}{//\ integral\ \ \ \ -\/\ (OUTPUT)\ The\ integrals,\ in\ order,\ of}}
+\DoxyCodeLine{00631\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |Ex|\string^2,\ |Ey|\string^2,\ |Ez|\string^2,\ |Hx|\string^2,\ |Hy|\string^2,\ |Hz|\string^2}}
+\DoxyCodeLine{00632\ \textcolor{comment}{//\ work\ \ \ \ \ \ \ \ -\/\ (WORK)\ Length\ 12\ x\ 4n.\ If\ NULL,\ then\ the\ space\ is}}
+\DoxyCodeLine{00633\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ internally\ allocated.}}
+\DoxyCodeLine{00634\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rcwa_8h_a2aee8b03010364980c6b865df23b0fba}{GetLayerZIntegral}}(}
+\DoxyCodeLine{00635\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ glist.n}}
+\DoxyCodeLine{00636\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *kx,}
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *ky,}
+\DoxyCodeLine{00638\ \ \ \ \ std::complex<double>\ omega,}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&thickness,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}[2],}
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *q,\ \textcolor{comment}{//\ length\ 2*glist.n}}
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *kp,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2\ (k-\/parallel\ matrix)}}
+\DoxyCodeLine{00642\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *phi,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00643\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon\_inv,\ \textcolor{comment}{//\ size\ (glist.n)\string^2}}
+\DoxyCodeLine{00644\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *epsilon2,\ \textcolor{comment}{//\ size\ (2*glist.n)\string^2}}
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keywordtype}{int}\ epstype,}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *ab,\ \textcolor{comment}{//\ length\ 4*glist.n}}
+\DoxyCodeLine{00647\ \ \ \ \ \textcolor{keywordtype}{double}\ integral[6],}
+\DoxyCodeLine{00648\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}}
+\DoxyCodeLine{00649\ );}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_RCWA\_H\_}}
+
+\end{DoxyCode}

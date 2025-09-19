@@ -1,0 +1,100 @@
+\doxysection{S4/fmm/fmm.h File Reference}
+\hypertarget{fmm_8h}{}\label{fmm_8h}\index{S4/fmm/fmm.h@{S4/fmm/fmm.h}}
+{\ttfamily \#include $<$S4.\+h$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fmm_8h_a3eb9a84c918a25f275ed254e229be6cc}{FMMGet\+Epsilon}}) (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{fmm_8h_a8a928daefb8d6b1638234d56fcb31e04}{FMMGet\+Epsilon\+\_\+\+Kottke}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_a114bf4baa3da08045daf70435266c533}{FMMGet\+Epsilon\+\_\+\+Closed\+Form}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_ac77073c1fb7571698ec792229e9c71d1}{FMMGet\+Epsilon\+\_\+\+FFT}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_a361804f1c6be8f3f6ae3539630969465}{FMMGet\+Epsilon\+\_\+\+Experimental}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_a4ee8ed32385f63b30bf9c7214aa07258}{FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+NV}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_aadd7df2ac64e57bd54a40d8099536454}{FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+VL}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+int \mbox{\hyperlink{fmm_8h_a83c1f52ed26bcd16c297c8283fefebea}{FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+Jones}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, const int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)
+\item 
+double \mbox{\hyperlink{fmm_8h_a5dc16bc57e00f493d852c76bbee20065}{Get\+Lanczos\+Smoothing\+Order}} (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S)
+\item 
+double \mbox{\hyperlink{fmm_8h_ae0250f1ae101c3c8911e62e46e63fa8b}{Get\+Lanczos\+Smoothing\+Factor}} (double order, int power, double f\mbox{[}2\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{fmm_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{fmm_8h_a3eb9a84c918a25f275ed254e229be6cc}\index{fmm.h@{fmm.h}!FMMGetEpsilon@{FMMGetEpsilon}}
+\index{FMMGetEpsilon@{FMMGetEpsilon}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon}{FMMGetEpsilon}}
+{\footnotesize\ttfamily \label{fmm_8h_a3eb9a84c918a25f275ed254e229be6cc} 
+typedef int(\texorpdfstring{$\ast$}{*} FMMGet\+Epsilon) (const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}S, const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}L, int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon2, std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}Epsilon\+\_\+inv)}
+
+
+
+\label{doc-func-members}
+\Hypertarget{fmm_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{fmm_8h_a114bf4baa3da08045daf70435266c533}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_ClosedForm@{FMMGetEpsilon\_ClosedForm}}
+\index{FMMGetEpsilon\_ClosedForm@{FMMGetEpsilon\_ClosedForm}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_ClosedForm()}{FMMGetEpsilon\_ClosedForm()}}
+{\footnotesize\ttfamily \label{fmm_8h_a114bf4baa3da08045daf70435266c533} 
+int FMMGet\+Epsilon\+\_\+\+Closed\+Form (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_a361804f1c6be8f3f6ae3539630969465}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_Experimental@{FMMGetEpsilon\_Experimental}}
+\index{FMMGetEpsilon\_Experimental@{FMMGetEpsilon\_Experimental}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_Experimental()}{FMMGetEpsilon\_Experimental()}}
+{\footnotesize\ttfamily \label{fmm_8h_a361804f1c6be8f3f6ae3539630969465} 
+int FMMGet\+Epsilon\+\_\+\+Experimental (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_ac77073c1fb7571698ec792229e9c71d1}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_FFT@{FMMGetEpsilon\_FFT}}
+\index{FMMGetEpsilon\_FFT@{FMMGetEpsilon\_FFT}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_FFT()}{FMMGetEpsilon\_FFT()}}
+{\footnotesize\ttfamily \label{fmm_8h_ac77073c1fb7571698ec792229e9c71d1} 
+int FMMGet\+Epsilon\+\_\+\+FFT (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_a8a928daefb8d6b1638234d56fcb31e04}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_Kottke@{FMMGetEpsilon\_Kottke}}
+\index{FMMGetEpsilon\_Kottke@{FMMGetEpsilon\_Kottke}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_Kottke()}{FMMGetEpsilon\_Kottke()}}
+{\footnotesize\ttfamily \label{fmm_8h_a8a928daefb8d6b1638234d56fcb31e04} 
+int FMMGet\+Epsilon\+\_\+\+Kottke (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_a83c1f52ed26bcd16c297c8283fefebea}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_PolBasisJones@{FMMGetEpsilon\_PolBasisJones}}
+\index{FMMGetEpsilon\_PolBasisJones@{FMMGetEpsilon\_PolBasisJones}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_PolBasisJones()}{FMMGetEpsilon\_PolBasisJones()}}
+{\footnotesize\ttfamily \label{fmm_8h_a83c1f52ed26bcd16c297c8283fefebea} 
+int FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+Jones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_a4ee8ed32385f63b30bf9c7214aa07258}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_PolBasisNV@{FMMGetEpsilon\_PolBasisNV}}
+\index{FMMGetEpsilon\_PolBasisNV@{FMMGetEpsilon\_PolBasisNV}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_PolBasisNV()}{FMMGetEpsilon\_PolBasisNV()}}
+{\footnotesize\ttfamily \label{fmm_8h_a4ee8ed32385f63b30bf9c7214aa07258} 
+int FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+NV (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_aadd7df2ac64e57bd54a40d8099536454}\index{fmm.h@{fmm.h}!FMMGetEpsilon\_PolBasisVL@{FMMGetEpsilon\_PolBasisVL}}
+\index{FMMGetEpsilon\_PolBasisVL@{FMMGetEpsilon\_PolBasisVL}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{FMMGetEpsilon\_PolBasisVL()}{FMMGetEpsilon\_PolBasisVL()}}
+{\footnotesize\ttfamily \label{fmm_8h_aadd7df2ac64e57bd54a40d8099536454} 
+int FMMGet\+Epsilon\+\_\+\+Pol\+Basis\+VL (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{, }\item[{const \mbox{\hyperlink{_s4_8h_a23b6b8ebf347a82a3960abfb549fd9a3}{Layer}} \texorpdfstring{$\ast$}{*}}]{L}{, }\item[{const int}]{n}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon2}{, }\item[{std\+::complex$<$ double $>$ \texorpdfstring{$\ast$}{*}}]{Epsilon\+\_\+inv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_ae0250f1ae101c3c8911e62e46e63fa8b}\index{fmm.h@{fmm.h}!GetLanczosSmoothingFactor@{GetLanczosSmoothingFactor}}
+\index{GetLanczosSmoothingFactor@{GetLanczosSmoothingFactor}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{GetLanczosSmoothingFactor()}{GetLanczosSmoothingFactor()}}
+{\footnotesize\ttfamily \label{fmm_8h_ae0250f1ae101c3c8911e62e46e63fa8b} 
+double Get\+Lanczos\+Smoothing\+Factor (\begin{DoxyParamCaption}\item[{double}]{order}{, }\item[{int}]{power}{, }\item[{double}]{f}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{fmm_8h_a5dc16bc57e00f493d852c76bbee20065}\index{fmm.h@{fmm.h}!GetLanczosSmoothingOrder@{GetLanczosSmoothingOrder}}
+\index{GetLanczosSmoothingOrder@{GetLanczosSmoothingOrder}!fmm.h@{fmm.h}}
+\doxysubsubsection{\texorpdfstring{GetLanczosSmoothingOrder()}{GetLanczosSmoothingOrder()}}
+{\footnotesize\ttfamily \label{fmm_8h_a5dc16bc57e00f493d852c76bbee20065} 
+double Get\+Lanczos\+Smoothing\+Order (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s4_8h_a75539f19fb352c64b7876835c3f3c297}{Simulation}} \texorpdfstring{$\ast$}{*}}]{S}{}\end{DoxyParamCaption})}
+

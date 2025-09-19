@@ -1,0 +1,147 @@
+\doxysection{Eigensystems\+\_\+lapack.\+h}
+\hypertarget{_eigensystems__lapack_8h_source}{}\label{_eigensystems__lapack_8h_source}\index{S4/RNP/Eigensystems\_lapack.h@{S4/RNP/Eigensystems\_lapack.h}}
+\mbox{\hyperlink{_eigensystems__lapack_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_RNP\_EIGENSYSTEMS\_LAPACK\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_RNP\_EIGENSYSTEMS\_LAPACK\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\#define\ RNP\_FORTRAN\_NAME(LCASE,UCASE)\ LCASE\ \#\#\ \_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ RNP\_FORTRAN\_NAME}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\ define\ RNP\_FORTRAN\_NAME(LCASE,UCASE)\ F77\_FUNC(LCASE,UCASE)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgeev,ZGEEV)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *jobvl,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ }
+\DoxyCodeLine{00015\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_abc33bf9906075c0960985263d1cea9cb}{w}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}},\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a466cfca76b2ffdc591dc67bc4bb31dc5}{ldvl}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a6a3f05444d21f5304bfd07061c5f634e}{ldvr}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}},\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}},\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgees,ZGEES)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *jobvs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a8727c296fa65487b49003dc793c9bd49}{sort}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ (*\mbox{\hyperlink{_eigensystems__lapack_8h_a6c9ca79fbd2393457518e07b9d21c880}{select}})(),\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00020\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a61d8f2bc598c742227fc146169e5ddf3}{sdim}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_abc33bf9906075c0960985263d1cea9cb}{w}},}
+\DoxyCodeLine{00021\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_abaa7e403740a16905282a879fc37ca1a}{vs}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a943a55fc3c34724c60c99910515b95c3}{ldvs}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}},}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac979c5ae71d753d035c7a1ea3ebdc765}{bwork}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_r_n_p}{RNP}}\{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Eigensystem\ computes\ for\ an\ N-\/by-\/N\ complex\ nonsymmetric\ matrix\ A,\ the}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ eigenvalues\ and,\ optionally,\ the\ left\ and/or\ right\ eigenvectors.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ The\ right\ eigenvector\ v(j)\ of\ A\ satisfies}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A\ *\ v(j)\ =\ lambda(j)\ *\ v(j)}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ where\ lambda(j)\ is\ its\ eigenvalue.}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ The\ left\ eigenvector\ u(j)\ of\ A\ satisfies}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u(j)**H\ *\ A\ =\ lambda(j)\ *\ u(j)**H}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ where\ u(j)**H\ denotes\ the\ conjugate\ transpose\ of\ u(j).}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ The\ computed\ eigenvectors\ are\ normalized\ to\ have\ Euclidean\ norm}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ equal\ to\ 1\ and\ largest\ component\ real.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Arguments}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ =========}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ n\ \ \ \ \ \ \ The\ order\ of\ the\ matrix\ A.\ n\ >=\ 0.}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ a\ \ \ \ \ \ \ (input/output)\ dimension\ (lda,n)}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ On\ entry,\ the\ N-\/by-\/N\ matrix\ A.}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ On\ exit,\ A\ has\ been\ overwritten.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ lda\ \ \ \ \ The\ leading\ dimension\ of\ the\ array\ A.\ \ lda\ >=\ n.}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ eval\ \ \ \ (output)\ dimension\ (n)}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ eval\ contains\ the\ computed\ eigenvalues.}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ vl\ \ \ \ \ \ (output)\ dimension\ (ldvl,n)}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ If\ not\ NULL,\ the\ left\ eigenvectors\ u(j)\ are\ stored\ one}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ after\ another\ in\ the\ columns\ of\ vl,\ in\ the\ same\ order}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ as\ their\ eigenvalues.}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ u(j)\ =\ vl(:,j),\ the\ j-\/th\ column\ of\ vl.}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ ldvl\ \ \ \ The\ leading\ dimension\ of\ the\ array\ vl.\ If\ vl\ !=\ NULL,\ ldvl\ >=\ N.}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ vr\ \ \ \ \ \ (output)\ dimension\ (ldvr,n)}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ If\ not\ NULL,\ the\ right\ eigenvectors\ v(j)\ are\ stored\ one}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ after\ another\ in\ the\ columns\ of\ vr,\ in\ the\ same\ order}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ as\ their\ eigenvalues.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ v(j)\ =\ vr(:,j),\ the\ j-\/th\ column\ of\ vr.}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ ldvr\ \ \ \ The\ leading\ dimension\ of\ the\ array\ vr.\ vr\ !=\ NULL,\ ldvr\ >=\ n.}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ work\ \ \ \ dimension\ 2*N}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ rwork\ \ \ dimension\ 2*N}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ return\ \ =\ 0:\ \ successful\ exit}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ <\ 0:\ \ if\ INFO\ =\ -\/i,\ the\ i-\/th\ argument\ had\ an\ illegal\ value.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ >\ 0:\ \ if\ INFO\ =\ i,\ the\ QR\ algorithm\ failed\ to\ compute\ all\ the}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ eigenvalues,\ and\ no\ eigenvectors\ have\ been\ computed;}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elements\ and\ i+1:N\ of\ W\ contain\ eigenvalues\ which\ have}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ converged.}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_r_n_p_abeecac6996b6233c69f393fd8270f20c}{Eigensystem}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},}
+\DoxyCodeLine{00079\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},}
+\DoxyCodeLine{00080\ \ \ \ \ std::complex<double>\ *eval,}
+\DoxyCodeLine{00081\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a466cfca76b2ffdc591dc67bc4bb31dc5}{ldvl}},\ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a6a3f05444d21f5304bfd07061c5f634e}{ldvr}},}
+\DoxyCodeLine{00082\ \ \ \ \ std::complex<double>\ *work\_,\ \textcolor{keywordtype}{double}\ *rwork\_,\ \textcolor{keywordtype}{size\_t}\ lwork\_)}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}\ ==\ 0)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{char}\ jobvl[2]\ =\ \textcolor{stringliteral}{"{}N"{}};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}}[2]\ =\ \textcolor{stringliteral}{"{}N"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}}\ !=\ NULL)\{\ jobvl[0]\ =\ \textcolor{charliteral}{'V'};\ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}}\ !=\ NULL)\{\ \mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}}[0]\ =\ \textcolor{charliteral}{'V'};\ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{if}((\textcolor{keywordtype}{size\_t})-\/1\ ==\ lwork\_)\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__essl_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgeev,ZGEEV)(jobvl,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ eval,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a466cfca76b2ffdc591dc67bc4bb31dc5}{ldvl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a6a3f05444d21f5304bfd07061c5f634e}{ldvr}},\ work\_,\ -\/1,\ rwork\_,\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ work\_;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}}\ =\ rwork\_;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ ==\ rwork\_)\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}}\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[2*\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}];}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}(0\ ==\ lwork\_)\{\ lwork\_\ =\ 2*\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}};\ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ lwork\_;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ ==\ work\_\ ||\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ <\ (\mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}})(2*\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}))\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ -\/1;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::complex<double>\ zlen;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__essl_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgeev,ZGEEV)(jobvl,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ eval,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a466cfca76b2ffdc591dc67bc4bb31dc5}{ldvl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a6a3f05444d21f5304bfd07061c5f634e}{ldvr}},\ \&zlen,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}},\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ =\ (\mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}})(zlen.real());}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}}\ =\ \textcolor{keyword}{new}\ std::complex<double>[\mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}];}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{_eigensystems__essl_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgeev,ZGEEV)(jobvl,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a62a81e1fa1f916f0302fbd8a43a8ccf0}{jobvr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ eval,\ \mbox{\hyperlink{_eigensystems__lapack_8h_a67e5f3a566f160cab63d10a1eccd7cfb}{vl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a466cfca76b2ffdc591dc67bc4bb31dc5}{ldvl}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a045f76b230bc92e09364bde90cc2cb3f}{vr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a6a3f05444d21f5304bfd07061c5f634e}{ldvr}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}},\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}});}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ ==\ work\_\ ||\ \mbox{\hyperlink{_eigensystems__lapack_8h_a8f2086a824e2cfa5962ea085b834d60f}{lwork}}\ <\ (\mbox{\hyperlink{_eigensystems__lapack_8h_a3b6ee100a473e8866bcea6d1fc4041d9}{integer}})(2*\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}))\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ []\ \mbox{\hyperlink{_eigensystems__lapack_8h_ab70b861c55f22e43e1765f3bcdf13767}{work}};}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ ==\ rwork\_)\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ []\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac2ecbe9a748b516fb38817091878edf5}{rwork}};}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}};}
+\DoxyCodeLine{00122\ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ zheev}}
+\DoxyCodeLine{00126\ \textcolor{comment}{template\ <char\ uplo>}}
+\DoxyCodeLine{00127\ \textcolor{comment}{int\ HermitianEigensystem(size\_t\ n,\ }}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ \ std::complex<double>\ *a,\ size\_t\ lda,}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ \ std::complex<double>\ *eval,}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ std::complex<double>\ *work,\ double\ *rwork);}}
+\DoxyCodeLine{00131\ \textcolor{comment}{}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ dsyev}}
+\DoxyCodeLine{00133\ \textcolor{comment}{template\ <char\ uplo>}}
+\DoxyCodeLine{00134\ \textcolor{comment}{int\ SymmetricEigensystem(size\_t\ n,\ }}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ double\ *a,\ size\_t\ lda,}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ double\ *eval,}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ double\ *work);}}
+\DoxyCodeLine{00138\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00139\ \};\ \textcolor{comment}{//\ namespace\ RNP}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_RNP\_EIGENSYSTEMS\_LAPACK\_H\_}}
+
+\end{DoxyCode}

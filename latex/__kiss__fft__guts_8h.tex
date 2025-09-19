@@ -1,0 +1,254 @@
+\doxysection{S4/kiss\+\_\+fft/\+\_\+kiss\+\_\+fft\+\_\+guts.h File Reference}
+\hypertarget{__kiss__fft__guts_8h}{}\label{__kiss__fft__guts_8h}\index{S4/kiss\_fft/\_kiss\_fft\_guts.h@{S4/kiss\_fft/\_kiss\_fft\_guts.h}}
+{\ttfamily \#include "{}kiss\+\_\+fft.\+h"{}}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structkiss__fft__state}{kiss\+\_\+fft\+\_\+state}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_af176a125e008eb443996cf0f83cc135c}{MAXFACTORS}}~32
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a944e08f3916c56a9697bbfed458eaa94}{S\+\_\+\+MUL}}(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},  \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_ab5092aa032092f1057feca5fbea40758}{C\+\_\+\+MUL}}(m,  \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},  \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a05e11bb1e8e815dd7bdd199060b7555a}{C\+\_\+\+FIXDIV}}(\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}},  div)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a958da96ff02cad6be35cafa3019804b5}{C\+\_\+\+MULBYSCALAR}}(\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}},  s)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a664c056b2a7093f88391d7db3558aa24}{CHECK\+\_\+\+OVERFLOW\+\_\+\+OP}}(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},  op,  \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a1f70747639c855259a0965de768e030a}{C\+\_\+\+ADD}}(res,  \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},  \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a8c00bd9702f25a8514402a3779b3bdda}{C\+\_\+\+SUB}}(res,  \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},  \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a2042ee8c6fb9306eb20d62e6506446aa}{C\+\_\+\+ADDTO}}(res,  \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_aa3f448e1963492dfc145fc391cbedd27}{C\+\_\+\+SUBFROM}}(res,  \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a2e780e8fe86d9c3e7b6a469f61aaf5d1}{KISS\+\_\+\+FFT\+\_\+\+COS}}(phase)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a2d4fc93cde15512f1946f364d5271dd3}{KISS\+\_\+\+FFT\+\_\+\+SIN}}(phase)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_a0b812a30fdb0c530a90a18d1692fab6c}{HALF\+\_\+\+OF}}(\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_ac7852abdf2dc5ed4538551be6d1dd20b}{kf\+\_\+cexp}}(\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},  phase)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_ac1abb41ecdedd05dda5d1ce83b67a704}{pcpx}}(\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}})
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_abd992e9886fb74f97bf0b6e057fe08a5}{KISS\+\_\+\+FFT\+\_\+\+TMP\+\_\+\+ALLOC}}(nbytes)
+\item 
+\#define \mbox{\hyperlink{__kiss__fft__guts_8h_ab915c572fe96a51a3528b7419248b655}{KISS\+\_\+\+FFT\+\_\+\+TMP\+\_\+\+FREE}}(ptr)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{__kiss__fft__guts_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{__kiss__fft__guts_8h_a1f70747639c855259a0965de768e030a}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_ADD@{C\_ADD}}
+\index{C\_ADD@{C\_ADD}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_ADD}{C\_ADD}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a1f70747639c855259a0965de768e030a} 
+\#define C\+\_\+\+ADD(\begin{DoxyParamCaption}\item[{}]{res}{, }\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{, }\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}},+,(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}})\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i,+,(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i)\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}=(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r+(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}};\ \ (res).i=(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i+(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a2042ee8c6fb9306eb20d62e6506446aa}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_ADDTO@{C\_ADDTO}}
+\index{C\_ADDTO@{C\_ADDTO}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_ADDTO}{C\_ADDTO}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a2042ee8c6fb9306eb20d62e6506446aa} 
+\#define C\+\_\+\+ADDTO(\begin{DoxyParamCaption}\item[{}]{res}{, }\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}},+,(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}})\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((res).i,+,(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i)\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ +=\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r;\ \ (res).i\ +=\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a05e11bb1e8e815dd7bdd199060b7555a}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_FIXDIV@{C\_FIXDIV}}
+\index{C\_FIXDIV@{C\_FIXDIV}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_FIXDIV}{C\_FIXDIV}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a05e11bb1e8e815dd7bdd199060b7555a} 
+\#define C\+\_\+\+FIXDIV(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}}{, }\item[{}]{div}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{/*\ NOOP\ */}}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_ab5092aa032092f1057feca5fbea40758}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_MUL@{C\_MUL}}
+\index{C\_MUL@{C\_MUL}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_MUL}{C\_MUL}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_ab5092aa032092f1057feca5fbea40758} 
+\#define C\+\_\+\+MUL(\begin{DoxyParamCaption}\item[{}]{m}{, }\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{, }\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\{\ (m).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ =\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r*(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ -\/\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i*(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (m).i\ =\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r*(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i\ +\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i*(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}};\ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a958da96ff02cad6be35cafa3019804b5}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_MULBYSCALAR@{C\_MULBYSCALAR}}
+\index{C\_MULBYSCALAR@{C\_MULBYSCALAR}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_MULBYSCALAR}{C\_MULBYSCALAR}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a958da96ff02cad6be35cafa3019804b5} 
+\#define C\+\_\+\+MULBYSCALAR(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}}{, }\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\{\ (\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ *=\ (s);\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}).i\ *=\ (s);\ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a8c00bd9702f25a8514402a3779b3bdda}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_SUB@{C\_SUB}}
+\index{C\_SUB@{C\_SUB}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_SUB}{C\_SUB}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a8c00bd9702f25a8514402a3779b3bdda} 
+\#define C\+\_\+\+SUB(\begin{DoxyParamCaption}\item[{}]{res}{, }\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{, }\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}},-\/,(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}})\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i,-\/,(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i)\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}=(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r-\/(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}};\ \ (res).i=(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i-\/(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}).i;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_aa3f448e1963492dfc145fc391cbedd27}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!C\_SUBFROM@{C\_SUBFROM}}
+\index{C\_SUBFROM@{C\_SUBFROM}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{C\_SUBFROM}{C\_SUBFROM}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_aa3f448e1963492dfc145fc391cbedd27} 
+\#define C\+\_\+\+SUBFROM(\begin{DoxyParamCaption}\item[{}]{res}{, }\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}},-\/,(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}})\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CHECK\_OVERFLOW\_OP((res).i,-\/,(\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i)\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (res).\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ -\/=\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).r;\ \ (res).i\ -\/=\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}).i;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a664c056b2a7093f88391d7db3558aa24}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!CHECK\_OVERFLOW\_OP@{CHECK\_OVERFLOW\_OP}}
+\index{CHECK\_OVERFLOW\_OP@{CHECK\_OVERFLOW\_OP}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_OVERFLOW\_OP}{CHECK\_OVERFLOW\_OP}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a664c056b2a7093f88391d7db3558aa24} 
+\#define CHECK\+\_\+\+OVERFLOW\+\_\+\+OP(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{, }\item[{}]{op}{, }\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{/*\ noop\ */}}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a0b812a30fdb0c530a90a18d1692fab6c}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!HALF\_OF@{HALF\_OF}}
+\index{HALF\_OF@{HALF\_OF}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{HALF\_OF}{HALF\_OF}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a0b812a30fdb0c530a90a18d1692fab6c} 
+\#define HALF\+\_\+\+OF(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})*.5)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_ac7852abdf2dc5ed4538551be6d1dd20b}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!kf\_cexp@{kf\_cexp}}
+\index{kf\_cexp@{kf\_cexp}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{kf\_cexp}{kf\_cexp}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_ac7852abdf2dc5ed4538551be6d1dd20b} 
+\#define kf\+\_\+cexp(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}}{, }\item[{}]{phase}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})-\/>\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}\ =\ \mbox{\hyperlink{__kiss__fft__guts_8h_a2e780e8fe86d9c3e7b6a469f61aaf5d1}{KISS\_FFT\_COS}}(phase);\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})-\/>i\ =\ \mbox{\hyperlink{__kiss__fft__guts_8h_a2d4fc93cde15512f1946f364d5271dd3}{KISS\_FFT\_SIN}}(phase);\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a2e780e8fe86d9c3e7b6a469f61aaf5d1}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!KISS\_FFT\_COS@{KISS\_FFT\_COS}}
+\index{KISS\_FFT\_COS@{KISS\_FFT\_COS}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{KISS\_FFT\_COS}{KISS\_FFT\_COS}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a2e780e8fe86d9c3e7b6a469f61aaf5d1} 
+\#define KISS\+\_\+\+FFT\+\_\+\+COS(\begin{DoxyParamCaption}\item[{}]{phase}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\_fft\_scalar}})\ cos(phase)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a2d4fc93cde15512f1946f364d5271dd3}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!KISS\_FFT\_SIN@{KISS\_FFT\_SIN}}
+\index{KISS\_FFT\_SIN@{KISS\_FFT\_SIN}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{KISS\_FFT\_SIN}{KISS\_FFT\_SIN}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a2d4fc93cde15512f1946f364d5271dd3} 
+\#define KISS\+\_\+\+FFT\+\_\+\+SIN(\begin{DoxyParamCaption}\item[{}]{phase}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\mbox{\hyperlink{kiss__fft_8h_a4d9bf2d6a2ce1b061545a16faf77d337}{kiss\_fft\_scalar}})\ sin(phase)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_abd992e9886fb74f97bf0b6e057fe08a5}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!KISS\_FFT\_TMP\_ALLOC@{KISS\_FFT\_TMP\_ALLOC}}
+\index{KISS\_FFT\_TMP\_ALLOC@{KISS\_FFT\_TMP\_ALLOC}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{KISS\_FFT\_TMP\_ALLOC}{KISS\_FFT\_TMP\_ALLOC}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_abd992e9886fb74f97bf0b6e057fe08a5} 
+\#define KISS\+\_\+\+FFT\+\_\+\+TMP\+\_\+\+ALLOC(\begin{DoxyParamCaption}\item[{}]{nbytes}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{kiss__fft_8h_aa6e24524bfa0247ac606c950e43a9a4d}{KISS\_FFT\_MALLOC}}(nbytes)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_ab915c572fe96a51a3528b7419248b655}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!KISS\_FFT\_TMP\_FREE@{KISS\_FFT\_TMP\_FREE}}
+\index{KISS\_FFT\_TMP\_FREE@{KISS\_FFT\_TMP\_FREE}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{KISS\_FFT\_TMP\_FREE}{KISS\_FFT\_TMP\_FREE}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_ab915c572fe96a51a3528b7419248b655} 
+\#define KISS\+\_\+\+FFT\+\_\+\+TMP\+\_\+\+FREE(\begin{DoxyParamCaption}\item[{}]{ptr}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{kiss__fft_8h_a167bff53d1f15bc13289353390b7faae}{KISS\_FFT\_FREE}}(ptr)}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_af176a125e008eb443996cf0f83cc135c}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!MAXFACTORS@{MAXFACTORS}}
+\index{MAXFACTORS@{MAXFACTORS}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{MAXFACTORS}{MAXFACTORS}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_af176a125e008eb443996cf0f83cc135c} 
+\#define MAXFACTORS~32}
+
+\Hypertarget{__kiss__fft__guts_8h_ac1abb41ecdedd05dda5d1ce83b67a704}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!pcpx@{pcpx}}
+\index{pcpx@{pcpx}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{pcpx}{pcpx}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_ac1abb41ecdedd05dda5d1ce83b67a704} 
+\#define pcpx(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}\%g\ +\ \%gi\(\backslash\)n"{}},(\textcolor{keywordtype}{double})((\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}})-\/>\mbox{\hyperlink{_linear_solve__lapack_8h_ad36a1776ceae3481e8bc9f623caf275a}{r}}),(\textcolor{keywordtype}{double})((\mbox{\hyperlink{_linear_solve__lapack_8h_aa5abd369967a2cd41eae9a3acf456c66}{c}})-\/>i)\ )}
+
+\end{DoxyCode}
+\Hypertarget{__kiss__fft__guts_8h_a944e08f3916c56a9697bbfed458eaa94}\index{\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}!S\_MUL@{S\_MUL}}
+\index{S\_MUL@{S\_MUL}!\_kiss\_fft\_guts.h@{\_kiss\_fft\_guts.h}}
+\doxysubsubsection{\texorpdfstring{S\_MUL}{S\_MUL}}
+{\footnotesize\ttfamily \label{__kiss__fft__guts_8h_a944e08f3916c56a9697bbfed458eaa94} 
+\#define S\+\_\+\+MUL(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}}{, }\item[{}]{\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ (\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}})*(\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}})\ )}
+
+\end{DoxyCode}

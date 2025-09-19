@@ -1,0 +1,124 @@
+\doxysection{shape\+\_\+ Struct Reference}
+\hypertarget{structshape__}{}\label{structshape__}\index{shape\_@{shape\_}}
+
+
+{\ttfamily \#include $<$pattern.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pattern_8h_aa4a3c4b47da5b20cb0951be6c6de8942}{shape\+\_\+type}} \mbox{\hyperlink{structshape___adc1ba6ceac8f5b0d39e8e2fd03b5d25d}{type}}
+\item 
+double \mbox{\hyperlink{structshape___a6bc1151e99e94dc40bf7b14ba8e4b146}{center}} \mbox{[}2\mbox{]}
+\item 
+double \mbox{\hyperlink{structshape___a105ec60361b683fa592698b9eedb2505}{angle}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \{\\
+\>\>double \mbox{\hyperlink{structshape___a5f13225527e074a3af5d7349e149a5c2}{radius}}\\
+\>\} \mbox{\hyperlink{structshape___a39ca979ca172f953c0e592b987fbb33e}{circle}}\\
+\>struct \{\\
+\>\>double \mbox{\hyperlink{structshape___a099d447411c7c0ab03105ccadaa6b425}{halfwidth}} \mbox{[}2\mbox{]}\\
+\>\} \mbox{\hyperlink{structshape___a681ecce3c6f52c5969afb65ab7f6ec4e}{ellipse}}\\
+\>struct \{\\
+\>\>double \mbox{\hyperlink{structshape___a099d447411c7c0ab03105ccadaa6b425}{halfwidth}} \mbox{[}2\mbox{]}\\
+\>\} \mbox{\hyperlink{structshape___a1d44874c173b708332ac3100299f3b73}{rectangle}}\\
+\>struct \{\\
+\>\>int \mbox{\hyperlink{structshape___a64cfbe8bc1121d6354332b16348dab63}{n\_vertices}}\\
+\>\>double \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structshape___a0ff79719d1454704ab64a072375f7117}{vertex}}\\
+\>\} \mbox{\hyperlink{structshape___ac169ade0cb9d16ac72762d35438cc23f}{polygon}}\\
+\} \mbox{\hyperlink{structshape___a6c6e84ca887c18ddc2d7b1c9246d5a83}{vtab}}\\
+
+\end{tabbing}\item 
+int \mbox{\hyperlink{structshape___a24fbff74be69a185c35a6651e87bd6f6}{tag}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-variable-members}
+\Hypertarget{structshape___doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structshape___a105ec60361b683fa592698b9eedb2505}\index{shape\_@{shape\_}!angle@{angle}}
+\index{angle@{angle}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{angle}{angle}}
+{\footnotesize\ttfamily \label{structshape___a105ec60361b683fa592698b9eedb2505} 
+double shape\+\_\+\+::angle}
+
+\Hypertarget{structshape___a6bc1151e99e94dc40bf7b14ba8e4b146}\index{shape\_@{shape\_}!center@{center}}
+\index{center@{center}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{center}{center}}
+{\footnotesize\ttfamily \label{structshape___a6bc1151e99e94dc40bf7b14ba8e4b146} 
+double shape\+\_\+\+::center\mbox{[}2\mbox{]}}
+
+\Hypertarget{structshape___a39ca979ca172f953c0e592b987fbb33e}\index{shape\_@{shape\_}!circle@{circle}}
+\index{circle@{circle}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily \label{structshape___a39ca979ca172f953c0e592b987fbb33e} 
+struct  \{ ... \}  shape\+\_\+\+::circle}
+
+\Hypertarget{structshape___a681ecce3c6f52c5969afb65ab7f6ec4e}\index{shape\_@{shape\_}!ellipse@{ellipse}}
+\index{ellipse@{ellipse}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily \label{structshape___a681ecce3c6f52c5969afb65ab7f6ec4e} 
+struct  \{ ... \}  shape\+\_\+\+::ellipse}
+
+\Hypertarget{structshape___a099d447411c7c0ab03105ccadaa6b425}\index{shape\_@{shape\_}!halfwidth@{halfwidth}}
+\index{halfwidth@{halfwidth}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{halfwidth}{halfwidth}}
+{\footnotesize\ttfamily \label{structshape___a099d447411c7c0ab03105ccadaa6b425} 
+double shape\+\_\+\+::halfwidth\mbox{[}2\mbox{]}}
+
+\Hypertarget{structshape___a64cfbe8bc1121d6354332b16348dab63}\index{shape\_@{shape\_}!n\_vertices@{n\_vertices}}
+\index{n\_vertices@{n\_vertices}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{n\_vertices}{n\_vertices}}
+{\footnotesize\ttfamily \label{structshape___a64cfbe8bc1121d6354332b16348dab63} 
+int shape\+\_\+\+::n\+\_\+vertices}
+
+\Hypertarget{structshape___ac169ade0cb9d16ac72762d35438cc23f}\index{shape\_@{shape\_}!polygon@{polygon}}
+\index{polygon@{polygon}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily \label{structshape___ac169ade0cb9d16ac72762d35438cc23f} 
+struct  \{ ... \}  shape\+\_\+\+::polygon}
+
+\Hypertarget{structshape___a5f13225527e074a3af5d7349e149a5c2}\index{shape\_@{shape\_}!radius@{radius}}
+\index{radius@{radius}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily \label{structshape___a5f13225527e074a3af5d7349e149a5c2} 
+double shape\+\_\+\+::radius}
+
+\Hypertarget{structshape___a1d44874c173b708332ac3100299f3b73}\index{shape\_@{shape\_}!rectangle@{rectangle}}
+\index{rectangle@{rectangle}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily \label{structshape___a1d44874c173b708332ac3100299f3b73} 
+struct  \{ ... \}  shape\+\_\+\+::rectangle}
+
+\Hypertarget{structshape___a24fbff74be69a185c35a6651e87bd6f6}\index{shape\_@{shape\_}!tag@{tag}}
+\index{tag@{tag}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{tag}{tag}}
+{\footnotesize\ttfamily \label{structshape___a24fbff74be69a185c35a6651e87bd6f6} 
+int shape\+\_\+\+::tag}
+
+\Hypertarget{structshape___adc1ba6ceac8f5b0d39e8e2fd03b5d25d}\index{shape\_@{shape\_}!type@{type}}
+\index{type@{type}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{structshape___adc1ba6ceac8f5b0d39e8e2fd03b5d25d} 
+\mbox{\hyperlink{pattern_8h_aa4a3c4b47da5b20cb0951be6c6de8942}{shape\+\_\+type}} shape\+\_\+\+::type}
+
+\Hypertarget{structshape___a0ff79719d1454704ab64a072375f7117}\index{shape\_@{shape\_}!vertex@{vertex}}
+\index{vertex@{vertex}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{vertex}{vertex}}
+{\footnotesize\ttfamily \label{structshape___a0ff79719d1454704ab64a072375f7117} 
+double\texorpdfstring{$\ast$}{*} shape\+\_\+\+::vertex}
+
+\Hypertarget{structshape___a6c6e84ca887c18ddc2d7b1c9246d5a83}\index{shape\_@{shape\_}!vtab@{vtab}}
+\index{vtab@{vtab}!shape\_@{shape\_}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily \label{structshape___a6c6e84ca887c18ddc2d7b1c9246d5a83} 
+union  \{ ... \}  shape\+\_\+\+::vtab}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S4/pattern/\mbox{\hyperlink{pattern_8h}{pattern.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,338 @@
+\doxysection{pattern.\+h}
+\hypertarget{pattern_8h_source}{}\label{pattern_8h_source}\index{S4/pattern/pattern.h@{S4/pattern/pattern.h}}
+\mbox{\hyperlink{pattern_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ \_PATTERN\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ \_PATTERN\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ A\ pattern\ is\ defined\ as\ a\ set\ of\ 1D\ geometrical\ shapes\ (e.g.\ circles)}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ in\ the\ 2D\ plane.\ All\ shapes\ must\ be\ closed,\ simply\ connected\ contours.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ Available\ shapes:}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ \ \ circle}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ \ ellipse}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ \ rectangle}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ \ \ polygon}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ A\ valid\ pattern\ must\ not\ have\ any\ shapes\ that\ intersect\ with\ each\ other.}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Due\ to\ this\ requirement,\ each\ shape\ is\ either\ contained\ entirely\ within}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ another\ shape,\ or\ has\ no\ containing\ shape.\ The\ set\ of\ shapes\ then\ forms}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ a\ forest\ (a\ set\ of\ trees),\ where\ the\ parent-\/child\ relationship\ within\ a}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ tree\ is\ the\ immediate\ container-\/containee\ relationship.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ Currently,\ the\ no-\/intersection\ criterion\ is\ not\ checked\ due\ its}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ complexity,\ so\ the\ input\ shapes\ must\ be\ sanitized\ elsewhere.}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{pattern_8h_ae8846bf342b828372de5496b1124376e}{shape\_type\_}}\{}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae8846bf342b828372de5496b1124376eaa79c827759ea48f0735386c4b1188911}{CIRCLE}},}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae8846bf342b828372de5496b1124376ea59c6b7739f239fb18fe5c81692358893}{ELLIPSE}},}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae8846bf342b828372de5496b1124376eae552ab0a96c0384a6e918e726b7f6102}{RECTANGLE}},}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae8846bf342b828372de5496b1124376ead5355465780b9a6259ebbc74d47477db}{POLYGON}}}
+\DoxyCodeLine{00046\ \}\ \mbox{\hyperlink{pattern_8h_aa4a3c4b47da5b20cb0951be6c6de8942}{shape\_type}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structshape__}{shape\_}}\{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{/*\ \`{}type'\ determines\ which\ field\ in\ the\ union\ is\ used.\ */}}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{pattern_8h_aa4a3c4b47da5b20cb0951be6c6de8942}{shape\_type}}\ \mbox{\hyperlink{structshape___adc1ba6ceac8f5b0d39e8e2fd03b5d25d}{type}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{/*\ Location\ of\ the\ center\ of\ the\ shape.\ For\ circles,\ ellipses,\ and}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ *\ rectangles,\ the\ center\ is\ the\ geometric\ center\ (center\ of\ mass).}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structshape___a6bc1151e99e94dc40bf7b14ba8e4b146}{center}}[2];\ \textcolor{comment}{/*\ x\ and\ y\ coordinates\ */}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{/*\ The\ angle\ by\ which\ the\ shape\ is\ rotated,\ CCW,\ in\ radians.}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ \ \ *\ Obviously,\ the\ rotation\ is\ applied\ first,\ then\ the\ translation}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ \ \ *\ given\ in\ \`{}center'\ is\ applied.}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structshape___a105ec60361b683fa592698b9eedb2505}{angle}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{/*\ The\ proper\ choice\ of\ field\ to\ use\ is\ determined\ by\ \`{}type'\ above.}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{union}\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structshape___a5f13225527e074a3af5d7349e149a5c2}{radius}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structshape___a39ca979ca172f953c0e592b987fbb33e}{circle}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structshape___a099d447411c7c0ab03105ccadaa6b425}{halfwidth}}[2];\ \textcolor{comment}{/*\ x\ and\ y\ semimajor\ axes\ */}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structshape___a681ecce3c6f52c5969afb65ab7f6ec4e}{ellipse}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structshape___a099d447411c7c0ab03105ccadaa6b425}{halfwidth}}[2];\ \textcolor{comment}{/*\ x\ and\ y\ halfwidths\ */}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structshape___a1d44874c173b708332ac3100299f3b73}{rectangle}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structshape___a64cfbe8bc1121d6354332b16348dab63}{n\_vertices}};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Separately\ allocated,\ length\ 2*n\_vertices.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ A\ list\ of\ xy-\/pairs\ in\ CCW\ orientation.}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{structshape___a0ff79719d1454704ab64a072375f7117}{vertex}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structshape___ac169ade0cb9d16ac72762d35438cc23f}{polygon}};}
+\DoxyCodeLine{00082\ \ \ \ \ \}\ \mbox{\hyperlink{structshape___a6c6e84ca887c18ddc2d7b1c9246d5a83}{vtab}};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structshape___a24fbff74be69a185c35a6651e87bd6f6}{tag}};\ \textcolor{comment}{/*\ available\ for\ user\ defined\ purposes\ */}}
+\DoxyCodeLine{00084\ \}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{/*\ Convenience\ structure\ to\ pack\ up\ all\ the\ pattern\ information.}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ *\ Fields\ \`{}nshapes'\ and\ \`{}shapes'\ are\ to\ be\ filled\ in,\ and\ \`{}parent'}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ *\ is\ to\ be\ computed\ using\ pattern\_get\_containment\_tree\ below.}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_pattern__}{Pattern\_}}\{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_pattern___a8ea20b1ec1c4ac50384bca32b6e8680b}{nshapes}};}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *\mbox{\hyperlink{struct_pattern___a64fd3ed989283795c5ddf0c90933ed98}{shapes}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{struct_pattern___a947fae3282b2495c667195887178a341}{parent}};}
+\DoxyCodeLine{00094\ \}\ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{/*\ Computes\ the\ containment\ relationship\ of\ all\ the\ shapes.}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ *\ \ The\ shapes\ must\ not\ intersect\ one\ another,\ so\ that\ any\ shape\ is\ either}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ *\ not\ contained\ within\ any\ other\ shape,\ or\ has\ a\ unique\ immediately}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ *\ containing\ shape.\ The\ containing\ shape\ of\ shapes[i]\ is\ shapes[parent[i]]}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ *\ unless\ parent[i]\ ==\ -\/1,\ in\ which\ case\ shapes[i]\ is\ not\ contained\ within}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ *\ any\ other\ shape.}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ *\ \ \ \ nshapes\ \ IN\ \ \ \ \ \ Number\ of\ shapes;\ length\ of\ \`{}shapes'.}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ *\ \ \ \ shapes\ \ \ IN/OUT\ \ Array\ of\ \`{}shape'\ structures.\ On\ exit,\ the\ array}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\ sorted\ in\ order\ of\ decreasing\ area\ of\ shapes.}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ *\ \ \ \ parent\ \ \ OUT\ \ \ \ \ Length\ \`{}nshapes'.\ Gives\ the\ immediate\ containing}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape\ of\ each\ shape,\ or\ -\/1\ if\ none.}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0:\ If\ no\ shapes\ intersect\ each\ other\ and\ containment\ tree}}
+\DoxyCodeLine{00111\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ returned\ is\ valid.}}
+\DoxyCodeLine{00112\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ 0\ <\ n\ <=\ nshapes\ \ :\ If\ shapes[n-\/1]\ is\ invalid.}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ *\ \ \ \ nshapes\ <\ n\ <=\ 2*nshapes:\ If\ shapes[n-\/1]\ intersects\ with\ another\ shape.}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/n:\ If\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00116\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a76fd6bd4525e6def1e9116f891d0dc22}{pattern\_get\_containment\_tree}}(}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{int}\ nshapes,}
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *shapes,}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{int}\ *parent}
+\DoxyCodeLine{00120\ );}
+\DoxyCodeLine{00121\ \textcolor{comment}{/*\ Convenience\ version\ of\ the\ above.}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ *\ p-\/>nshapes\ and\ p-\/>shapes\ must\ be\ filled\ in.}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_ab8d2ba33ccad63c86125686ecccf660c}{Pattern\_GetContainmentTree}}(}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ *p}
+\DoxyCodeLine{00126\ );}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{comment}{/*\ Determines\ the\ child-\/most\ (smallest\ area)\ shape\ which\ contains\ a\ given}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ *\ point.\ Optionally\ returns\ an\ approximate\ outward\ normal\ vector\ to\ the}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ *\ shape.}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ *\ \ \ \ nshapes\ \ \ \ \ \ IN\ \ \ Number\ of\ shapes;\ length\ of\ \`{}shapes'.}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ *\ \ \ \ shapes\ \ \ \ \ \ \ IN\ \ \ Array\ of\ \`{}shape'\ structures\ in\ order\ of\ decreasing}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ area.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ *\ \ \ \ parent\ \ \ \ \ \ \ IN\ \ \ Immediate\ containing\ shape\ relationship\ for\ each}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ *\ \ \ \ x\ \ \ \ \ \ \ \ \ \ \ \ IN\ \ \ The\ point\ at\ which\ to\ determine\ the\ smallest-\/area}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape.\ (x\ and\ y\ coordinates)}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ *\ \ \ \ shape\_index\ \ OUT\ \ The\ returned\ shape\ as\ an\ index\ into\ \`{}shapes'.}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ *\ \ \ \ n\ \ \ \ \ \ \ \ \ \ \ \ OUT\ \ Optional.\ If\ non-\/NULL,\ the\ normal\ vector.}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ *\ \ \ \ 0:\ If\ *shape\_index\ contains\ the\ sought\ shape\ index.}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ *\ \ \ \ 1:\ If\ \`{}x'\ is\ not\ in\ any\ shape;\ *shape\_index\ not\ referenced.}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ *\ \ \ -\/n:\ If\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00147\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_ad87f17d849bfe91be731f5a89752196a}{pattern\_get\_shape}}(}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{int}\ nshapes,}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *shapes,}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *parent,}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}[2],}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ *shape\_index,}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}[2]}
+\DoxyCodeLine{00154\ );}
+\DoxyCodeLine{00155\ \textcolor{comment}{/*\ Convenience\ version\ of\ the\ above.\ */}}
+\DoxyCodeLine{00156\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_ac10ce1e9539fd3aa66cfb8fd15f5defa}{Pattern\_GetShape}}(}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ *p,}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}[2],}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{int}\ *shape\_index,}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}[2]}
+\DoxyCodeLine{00161\ );}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{comment}{/*\ Returns\ an\ approximate\ outward\ normal\ vector\ to\ the\ shape.}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ *\ \ \ \ shape\ \ \ \ \ \ \ \ IN\ \ \ \`{}shape'\ structure\ whose\ normal\ to\ compute}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ *\ \ \ \ x\ \ \ \ \ \ \ \ \ \ \ \ IN\ \ \ The\ point\ at\ which\ to\ determine\ the\ normal}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ *\ \ \ \ n\ \ \ \ \ \ \ \ \ \ \ \ OUT\ \ The\ normal\ vector.}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ *\ \ \ -\/n:\ If\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00171\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00172\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a5ab3c82a265883c7a1ef779259369f71}{shape\_get\_normal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *s,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}[2],\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}[2]);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{comment}{/*\ Returns\ the\ Fourier\ transform\ of\ the\ pattern,\ given\ values\ for\ the\ interior}}
+\DoxyCodeLine{00175\ \textcolor{comment}{\ *\ of\ each\ shape\ and\ the\ background.}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\ *\ \ The\ Fourier\ transform\ convention\ is}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ F(kx,ky)\ =\ Integral\ f(x,y)\ exp(-\/i*(kx*x\ +\ ky*y))\ dx\ dy}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ *\ \ \ \ nshapes\ \ \ \ \ \ IN\ \ \ Number\ of\ shapes;\ length\ of\ \`{}shapes'.}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ *\ \ \ \ shapes\ \ \ \ \ \ \ IN\ \ \ Array\ of\ \`{}shape'\ structures\ in\ order\ of\ decreasing}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ area.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ *\ \ \ \ parent\ \ \ \ \ \ \ IN\ \ \ Immediate\ containing\ shape\ relationship\ for\ each}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ *\ \ \ \ value\ \ \ \ \ \ \ \ IN\ \ \ Length\ \`{}2*(nshapes+1)'.\ Real\ and\ imaginary\ parts\ of}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ interior\ value\ of\ each\ shape.\ The\ background}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ is\ \`{}value[0]+i*value[1]',\ and\ the\ value\ of}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape[i]\ is\ \`{}value[2*(i+1)+0]+i*value[2*(i+1)+1]'.}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ *\ \ \ \ f\ \ \ \ \ \ \ \ \ \ \ \ IN\ \ \ Point\ in\ reciprocal\ space\ to\ obtain\ the\ F.T.,\ but}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coordinates\ should\ be\ divided\ by\ 2*pi\ (e.g.\ On\ a\ unit}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ square\ real\ space\ lattice,\ the\ point\ (1,0)\ should\ be}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ used\ instead\ of\ (2*pi,0).}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ *\ \ unit\_cell\_size\ IN\ Area\ of\ the\ unit\ cell\ in\ real\ space.}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ *\ \ \ \ FT\ \ \ \ \ \ \ \ \ \ \ OUT\ \ Real\ and\ imaginary\ part\ of\ the\ F.T.\ at\ \`{}2*pi*f'.}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ *\ \ \ \ 0:\ If\ successful.}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ *\ \ \ -\/n:\ If\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a6cc1ea7e787b44518344c1aeca18476e}{pattern\_get\_fourier\_transform}}(}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordtype}{int}\ nshapes,}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *shapes,}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *parent,}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *value,}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ f[2],}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ ndim,}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{double}\ unit\_cell\_size,}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{double}\ FT[2]}
+\DoxyCodeLine{00208\ );}
+\DoxyCodeLine{00209\ \textcolor{comment}{/*\ Convenience\ version\ of\ the\ above.\ */}}
+\DoxyCodeLine{00210\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a8405890a812654d8e3a13a6272976834}{Pattern\_GetFourierTransform}}(}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ *p,}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *value,}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ f[2],}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{int}\ ndim,}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{double}\ unit\_cell\_size,}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{double}\ FT[2]}
+\DoxyCodeLine{00217\ );}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{comment}{/*\ Returns\ an\ area\ weighting\ of\ each\ shape\ within\ one\ cell\ of\ a\ uniform}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ *\ discretization\ of\ the\ origin-\/centered\ unit\ square.}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ *\ \ The\ area-\/fraction\ of\ each\ shape\ within\ the\ rectangle}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ *\ [x0,x0+dx]\ x\ [y0,y0+dy]\ is\ returned\ in\ \`{}value'.\ The\ discretization\ has}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ *\ \`{}nx'\ cells\ along\ the\ x-\/direction,\ and\ \`{}ny'\ cells\ along\ the\ y-\/direction.}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ *\ The\ total\ region\ is\ the\ unit\ square\ [-\/0.5,0.5]\ x\ [-\/0.5,0.5],\ so}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ x0\ =\ -\/0.5,\ 0.5\ +\ dx,\ 0.5\ +\ 2*dx,\ ...,\ 0.5\ -\/\ dx}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ *\ where\ dx\ =\ 1/nx.\ Similarly\ for\ y0.}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\ *\ \ \ \ nshapes\ \ \ \ \ \ IN\ \ \ Number\ of\ shapes;\ length\ of\ \`{}shapes'.}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\ *\ \ \ \ shapes\ \ \ \ \ \ \ IN\ \ \ Array\ of\ \`{}shape'\ structures\ in\ order\ of\ decreasing}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ area.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ *\ \ \ \ parent\ \ \ \ \ \ \ IN\ \ \ Immediate\ containing\ shape\ relationship\ for\ each}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\ *\ \ \ \ L\ \ \ \ \ \ \ \ \ \ \ \ IN\ \ \ Lattice\ basis\ vectors,\ (L[0],L[1])\ are\ x-\/\ and\ y-\/}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coordinates\ of\ the\ first\ (u)\ basis\ vector,\ and}}
+\DoxyCodeLine{00236\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (L[2],L[3])\ are\ the\ coordinates\ of\ the\ second\ (v)}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ basis\ vector.}}
+\DoxyCodeLine{00238\ \textcolor{comment}{\ *\ \ \ \ nu,\ nv\ \ \ \ \ \ \ IN\ \ \ Number\ of\ cells\ in\ u\ and\ v\ directions.\ nu\ >\ 0,\ nv\ >\ 0.}}
+\DoxyCodeLine{00239\ \textcolor{comment}{\ *\ \ \ \ iu,\ iv\ \ \ \ \ \ \ IN\ \ \ u\ and\ v\ index\ of\ the\ cell\ at\ which\ the\ area\ fraction}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\ to\ be\ computed.\ 0\ <=\ iu\ <\ nu,\ 0\ <=\ iv\ <\ nv.}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ *\ \ \ \ value\ \ \ \ \ \ \ \ OUT\ \ Length\ \`{}nshapes+1'.\ value[0]\ is\ the\ area\ fraction\ of}}
+\DoxyCodeLine{00242\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ background\ (no\ shape).\ The\ area\ fraction\ of}}
+\DoxyCodeLine{00243\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape[i]\ is\ stored\ in\ value[i+1].}}
+\DoxyCodeLine{00244\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00245\ \textcolor{comment}{\ *\ \ \ \ 0:\ If\ successful.}}
+\DoxyCodeLine{00246\ \textcolor{comment}{\ *\ \ \ -\/n:\ If\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00247\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a8fed567321cb6216cdb238b173ec6be1}{pattern\_discretize\_cell}}(}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordtype}{int}\ nshapes,}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *shapes,}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *parent,}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ L[4],}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{int}\ nu,\ \textcolor{keywordtype}{int}\ nv,}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{int}\ iu,\ \textcolor{keywordtype}{int}\ iv,}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{double}\ *value}
+\DoxyCodeLine{00256\ );}
+\DoxyCodeLine{00257\ \textcolor{comment}{/*\ Convenience\ version\ of\ the\ above.\ */}}
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a6a29d72f0bb07456bd4b157cce0a7cdd}{Pattern\_DiscretizeCell}}(}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ *p,}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ L[4],}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{int}\ nu,\ \textcolor{keywordtype}{int}\ nv,}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{int}\ iu,\ \textcolor{keywordtype}{int}\ iv,}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordtype}{double}\ *value}
+\DoxyCodeLine{00264\ );}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \textcolor{comment}{/*\ Returns\ a\ vector\ field\ which\ is\ tangential\ or\ normal\ to\ the\ shapes.}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ *\ \ The\ field\ is\ generated\ as\ the\ minimizer\ of\ the\ Dirichlet\ 1-\/form\ energy}}
+\DoxyCodeLine{00268\ \textcolor{comment}{\ *\ on\ the\ specified\ uniform\ rectangular\ grid\ subject\ to\ the\ constraints}}
+\DoxyCodeLine{00269\ \textcolor{comment}{\ *\ that\ the\ resulting\ vector\ field\ be\ equal\ to\ the\ tangent\ or\ normal\ vectors}}
+\DoxyCodeLine{00270\ \textcolor{comment}{\ *\ of\ the\ parameterizations\ of\ the\ shape\ contours,\ with\ periodic\ boundary}}
+\DoxyCodeLine{00271\ \textcolor{comment}{\ *\ conditions\ over\ the\ origin-\/centered\ unit\ square.}}
+\DoxyCodeLine{00272\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ *\ Arguments:}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ *\ \ \ \ nshapes\ \ \ \ \ \ IN\ \ \ Number\ of\ shapes;\ length\ of\ \`{}shapes'.}}
+\DoxyCodeLine{00275\ \textcolor{comment}{\ *\ \ \ \ shapes\ \ \ \ \ \ \ IN\ \ \ Array\ of\ \`{}shape'\ structures\ in\ order\ of\ decreasing}}
+\DoxyCodeLine{00276\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ area.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00277\ \textcolor{comment}{\ *\ \ \ \ parent\ \ \ \ \ \ \ IN\ \ \ Immediate\ containing\ shape\ relationship\ for\ each}}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape.\ (as\ output\ from\ pattern\_get\_containment\_tree).}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ *\ \ \ \ type\ \ \ \ \ \ \ \ \ IN\ \ \ 0\ for\ a\ field\ tangential\ to\ shapes,\ 1\ for\ normal\ using}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shape\ centers\ as\ sources.}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ *\ \ \ \ L\ \ \ \ \ \ \ \ \ \ \ \ IN\ \ \ Lattice\ basis\ vectors,\ (L[0],L[1])\ are\ x-\/\ and\ y-\/}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coordinates\ of\ the\ first\ (u)\ basis\ vector,\ and}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (L[2],L[3])\ are\ the\ coordinates\ of\ the\ second\ (v)}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ basis\ vector.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ *\ \ \ \ nu,\ nv\ \ \ \ \ \ \ IN\ \ \ Number\ of\ cells\ in\ u\ and\ v\ directions.\ nu\ >\ 0,\ nv\ >\ 0.}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ *\ \ \ \ field\ \ \ \ \ \ \ \ OUT\ \ Length\ 2*nu*nv,\ array\ of\ xy-\/vectors.\ The\ field\ vector}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ located\ at\ uv-\/index\ (i,j)\ is}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ field[2*(i+j*nu)+0],\ field[2*(i+j*nu)+1]\ \}}}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ *\ Return\ values:}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ *\ \ \ \ 0:\ If\ successful.}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ *\ \ \ \ 1:\ If\ the\ discretization\ is\ not\ fine\ enough\ to\ properly\ apply}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ *\ \ \ \ \ \ \ constraints,\ although\ a\ best-\/attempt\ field\ was\ generated.}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ *\ \ \ -\/n:\ If\ the\ n-\/th\ argument\ is\ invalid.}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ *\ Notes:}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ *\ \ \ The\ details\ of\ implementation\ depend\ on\ the\ lattice\ type.}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ *\ \ \ \ In\ the\ case\ of\ an\ orthogonal\ lattice,\ we\ use\ a\ rectangular\ quad\ mesh.}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ *\ \ \ We\ use\ an\ interpolation\ scheme\ on\ the\ dual\ mesh\ to\ compute\ the}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ *\ \ \ constraints,\ which\ is\ piecewise\ constant\ over\ each\ edge.\ The\ Laplacian}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ *\ \ \ is\ then\ just\ a\ generalized\ (4,-\/1,-\/1,-\/1,-\/1)\ stencil.}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ *\ \ \ \ In\ the\ case\ of\ a\ non-\/orthogonal\ lattice,\ we\ split\ the\ parallelogramic}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ *\ \ \ discretization\ cells\ along\ the\ short\ diagonal\ into\ two\ triangles.\ We}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ *\ \ \ assume\ that\ the\ triangulation\ is\ well\ centered\ and\ use\ a\ circumcentric}}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ *\ \ \ dual\ mesh\ with\ a\ diagonal\ Hodge\ star\ to\ construct\ the\ Laplacian.\ The}}
+\DoxyCodeLine{00305\ \textcolor{comment}{\ *\ \ \ constraints\ are\ enforced\ using\ the\ primal\ Whitney\ 1-\/form\ interpolator.}}
+\DoxyCodeLine{00306\ \textcolor{comment}{\ *\ \ \ \ In\ both\ cases,\ the\ resulting\ field\ is\ computed\ by\ the\ proper}}
+\DoxyCodeLine{00307\ \textcolor{comment}{\ *\ \ \ interpolation\ scheme\ at\ the\ centers\ of\ the\ parallelogramic\ discretization}}
+\DoxyCodeLine{00308\ \textcolor{comment}{\ *\ \ \ cells.\ The\ constraints\ are\ enforced\ using\ weighted\ least\ squares\ with}}
+\DoxyCodeLine{00309\ \textcolor{comment}{\ *\ \ \ uniform\ weights\ per\ edge\ (not\ per\ edge-\/shape\ intersection).}}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ *\ \ \ \ To\ deal\ with\ shapes\ extending\ beyond\ the\ origin-\/centered\ fundamental}}
+\DoxyCodeLine{00311\ \textcolor{comment}{\ *\ \ \ parallelogram\ of\ the\ lattice,\ edge-\/shape\ intersections\ are\ computed\ using}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ *\ \ \ each\ shape\ and\ its\ 8\ nearest\ neighbor\ unit\ cell\ copies.}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00314\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a01aa25f95489cd69a903c9ef6cbf4ebc}{pattern\_generate\_flow\_field}}(}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordtype}{int}\ nshapes,}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}}\ *shapes,}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *parent,}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordtype}{int}\ type,}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ L[4],}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordtype}{int}\ nu,\ \textcolor{keywordtype}{int}\ nv,}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordtype}{double}\ *field}
+\DoxyCodeLine{00322\ );}
+\DoxyCodeLine{00323\ \textcolor{comment}{/*\ Convenience\ version\ of\ the\ above.\ */}}
+\DoxyCodeLine{00324\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{pattern_8h_a6ab9c6e77df7ca9f9195f6c9452c115e}{Pattern\_GenerateFlowField}}(}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}}\ *p,}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{int}\ type,}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ L[4],}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordtype}{int}\ nu,\ \textcolor{keywordtype}{int}\ nv,}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordtype}{double}\ *value}
+\DoxyCodeLine{00330\ );}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_PATTERN\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

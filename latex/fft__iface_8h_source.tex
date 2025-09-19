@@ -1,0 +1,53 @@
+\doxysection{fft\+\_\+iface.\+h}
+\hypertarget{fft__iface_8h_source}{}\label{fft__iface_8h_source}\index{S4/fmm/fft\_iface.h@{S4/fmm/fft\_iface.h}}
+\mbox{\hyperlink{fft__iface_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtag__fft__plan}{tag\_fft\_plan}}\ *\mbox{\hyperlink{fft__iface_8h_ab57f4d890dddd6e598cec92b79236a6c}{fft\_plan}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ std::complex<double>\ *\mbox{\hyperlink{fft__iface_8h_acb47a79f39f8b2265739115259eae088}{fft\_alloc\_complex}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}});}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fft__iface_8h_a38193c0a95db03f8670c325c7c7823df}{fft\_free}}(\textcolor{keywordtype}{void}\ *p);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \mbox{\hyperlink{fft__iface_8h_ab57f4d890dddd6e598cec92b79236a6c}{fft\_plan}}\ \mbox{\hyperlink{fft__iface_8h_af72245ff50ac0b2454f8ac7167b79e31}{fft\_plan\_dft\_2d}}(}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}[2],}
+\DoxyCodeLine{00030\ \ \ \ \ std::complex<double>\ *\mbox{\hyperlink{structtag__fft__plan_a29f8eb9ea246981d96c81ce343377e2f}{in}},\ std::complex<double>\ *\mbox{\hyperlink{structtag__fft__plan_afd371e54daad83c4c964bb451f356509}{out}},}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ sign}
+\DoxyCodeLine{00032\ );}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fft__iface_8h_abfe70938d90e97096b5e11dab2a73784}{fft\_plan\_exec}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{fft__iface_8h_ab57f4d890dddd6e598cec92b79236a6c}{fft\_plan}}\ plan);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fft__iface_8h_aa342569e47b2b5bbd1e5d8b63242a5f0}{fft\_plan\_destroy}}(\mbox{\hyperlink{fft__iface_8h_ab57f4d890dddd6e598cec92b79236a6c}{fft\_plan}}\ plan);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fft__iface_8h_add2a3ce73de55f7e4ad747d0f0407bd5}{fft\_next\_fast\_size}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}});}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fft__iface_8h_af116d8f8ecc12ac1d569cd4147b1109e}{fft\_init}}();}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fft__iface_8h_ab4aae476725e0f4f0ef69ef32a9e44cc}{fft\_destroy}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

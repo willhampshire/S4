@@ -5,13 +5,16 @@ set OBJDIR=%SRC_DIR%\conda_recipe\s4\build
 set CONDA_INC=%BUILD_PREFIX%\Library\include
 set CONDA_LIB=%BUILD_PREFIX%\Library\lib
 
-echo ren .c to .cpp: %SRC_DIR%\S4\main_python.c
-ren "%SRC_DIR%\S4\main_python.c" main_python.cpp
-
 REM --- Activate MSVC (may need hardcoded path if VSINSTALLDIR is undefined) ---
-call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
-echo cl
-cl
+@REM call %VSINSTALLDIR%\VC\Auxiliary\Build\vcvars64.bat
+cd C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build
+call vcvars64.bat
+cd %SRC_DIR%
+
+echo cl.exe
+where cl.exe
+echo link.exe
+where link.exe
 
 REM --- Build using nmake ---
 cd %SRC_DIR%

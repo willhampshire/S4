@@ -1,0 +1,135 @@
+\doxysection{S4/\+Spectrum\+Sampler.h File Reference}
+\hypertarget{_spectrum_sampler_8h}{}\label{_spectrum_sampler_8h}\index{S4/SpectrumSampler.h@{S4/SpectrumSampler.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_spectrum_sampler___options}{Spectrum\+Sampler\+\_\+\+Options}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_spectrum_sampler__}{Spectrum\+Sampler\+\_\+}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}
+\item 
+typedef void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} \mbox{\hyperlink{_spectrum_sampler_8h_a85b69d82dd7fe86df2dc2b2f1635cef7}{Spectrum\+Sampler\+\_\+\+New}} (double x0, double x1, const \mbox{\hyperlink{struct_spectrum_sampler___options}{Spectrum\+Sampler\+\_\+\+Options}} \texorpdfstring{$\ast$}{*}options)
+\item 
+void \mbox{\hyperlink{_spectrum_sampler_8h_aeb4de6295143f4f42b54af916c87f1a6}{Spectrum\+Sampler\+\_\+\+Destroy}} (\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a22f22f7d33a4fcdb11083cbccce7bf1e}{Spectrum\+Sampler\+\_\+\+Is\+Done}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_aaa49f3329bd14251fc2cedcf8dd26728}{Spectrum\+Sampler\+\_\+\+Is\+Parallelized}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+double \mbox{\hyperlink{_spectrum_sampler_8h_aefd9590186c971c000a12068a4072c07}{Spectrum\+Sampler\+\_\+\+Get\+Frequency}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a1a2f4707c5033d2dfadc36408b480fa1}{Spectrum\+Sampler\+\_\+\+Submit\+Result}} (\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler, double y)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a80ca98ce496d336a9a7a3971f7f2e3fc}{Spectrum\+Sampler\+\_\+\+Get\+Num\+Points}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a8cae27370124c991866a74ad6021fba0}{Spectrum\+Sampler\+\_\+\+Get\+Frequencies}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler, double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}freqs)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a88a186f25dfbb14535538942741bb7d1}{Spectrum\+Sampler\+\_\+\+Get\+Submission\+Buffer}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler, double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}y)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_ab95a9b09a3fb49c1ab344a568eb49383}{Spectrum\+Sampler\+\_\+\+Submit\+Results}} (\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+\mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}} \mbox{\hyperlink{_spectrum_sampler_8h_a53bce71304cf153dc3a46640299a0104}{Spectrum\+Sampler\+\_\+\+Get\+Point\+Enumerator}} (const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} sampler)
+\item 
+int \mbox{\hyperlink{_spectrum_sampler_8h_a98506c488bbda1a677d312fecadc0a44}{Spectrum\+Sampler\+\_\+\+Enumerator\+\_\+\+Get}} (\mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}}, double pt\mbox{[}2\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{_spectrum_sampler_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler@{SpectrumSampler}}
+\index{SpectrumSampler@{SpectrumSampler}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler}{SpectrumSampler}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a} 
+typedef struct \mbox{\hyperlink{struct_spectrum_sampler__}{Spectrum\+Sampler\+\_\+}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}
+
+\Hypertarget{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_Enumerator@{SpectrumSampler\_Enumerator}}
+\index{SpectrumSampler\_Enumerator@{SpectrumSampler\_Enumerator}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_Enumerator}{SpectrumSampler\_Enumerator}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae} 
+typedef void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{_spectrum_sampler_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_spectrum_sampler_8h_aeb4de6295143f4f42b54af916c87f1a6}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_Destroy@{SpectrumSampler\_Destroy}}
+\index{SpectrumSampler\_Destroy@{SpectrumSampler\_Destroy}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_Destroy()}{SpectrumSampler\_Destroy()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_aeb4de6295143f4f42b54af916c87f1a6} 
+void Spectrum\+Sampler\+\_\+\+Destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a98506c488bbda1a677d312fecadc0a44}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_Enumerator\_Get@{SpectrumSampler\_Enumerator\_Get}}
+\index{SpectrumSampler\_Enumerator\_Get@{SpectrumSampler\_Enumerator\_Get}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_Enumerator\_Get()}{SpectrumSampler\_Enumerator\_Get()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a98506c488bbda1a677d312fecadc0a44} 
+int Spectrum\+Sampler\+\_\+\+Enumerator\+\_\+\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}}}]{e}{, }\item[{double}]{pt}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a8cae27370124c991866a74ad6021fba0}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_GetFrequencies@{SpectrumSampler\_GetFrequencies}}
+\index{SpectrumSampler\_GetFrequencies@{SpectrumSampler\_GetFrequencies}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_GetFrequencies()}{SpectrumSampler\_GetFrequencies()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a8cae27370124c991866a74ad6021fba0} 
+int Spectrum\+Sampler\+\_\+\+Get\+Frequencies (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{, }\item[{double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{freqs}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_aefd9590186c971c000a12068a4072c07}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_GetFrequency@{SpectrumSampler\_GetFrequency}}
+\index{SpectrumSampler\_GetFrequency@{SpectrumSampler\_GetFrequency}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_GetFrequency()}{SpectrumSampler\_GetFrequency()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_aefd9590186c971c000a12068a4072c07} 
+double Spectrum\+Sampler\+\_\+\+Get\+Frequency (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a80ca98ce496d336a9a7a3971f7f2e3fc}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_GetNumPoints@{SpectrumSampler\_GetNumPoints}}
+\index{SpectrumSampler\_GetNumPoints@{SpectrumSampler\_GetNumPoints}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_GetNumPoints()}{SpectrumSampler\_GetNumPoints()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a80ca98ce496d336a9a7a3971f7f2e3fc} 
+int Spectrum\+Sampler\+\_\+\+Get\+Num\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a53bce71304cf153dc3a46640299a0104}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_GetPointEnumerator@{SpectrumSampler\_GetPointEnumerator}}
+\index{SpectrumSampler\_GetPointEnumerator@{SpectrumSampler\_GetPointEnumerator}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_GetPointEnumerator()}{SpectrumSampler\_GetPointEnumerator()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a53bce71304cf153dc3a46640299a0104} 
+\mbox{\hyperlink{_spectrum_sampler_8h_a326fff8c296f98145f29de56a9e49cae}{Spectrum\+Sampler\+\_\+\+Enumerator}} Spectrum\+Sampler\+\_\+\+Get\+Point\+Enumerator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a88a186f25dfbb14535538942741bb7d1}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_GetSubmissionBuffer@{SpectrumSampler\_GetSubmissionBuffer}}
+\index{SpectrumSampler\_GetSubmissionBuffer@{SpectrumSampler\_GetSubmissionBuffer}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_GetSubmissionBuffer()}{SpectrumSampler\_GetSubmissionBuffer()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a88a186f25dfbb14535538942741bb7d1} 
+int Spectrum\+Sampler\+\_\+\+Get\+Submission\+Buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{, }\item[{double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a22f22f7d33a4fcdb11083cbccce7bf1e}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_IsDone@{SpectrumSampler\_IsDone}}
+\index{SpectrumSampler\_IsDone@{SpectrumSampler\_IsDone}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_IsDone()}{SpectrumSampler\_IsDone()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a22f22f7d33a4fcdb11083cbccce7bf1e} 
+int Spectrum\+Sampler\+\_\+\+Is\+Done (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_aaa49f3329bd14251fc2cedcf8dd26728}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_IsParallelized@{SpectrumSampler\_IsParallelized}}
+\index{SpectrumSampler\_IsParallelized@{SpectrumSampler\_IsParallelized}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_IsParallelized()}{SpectrumSampler\_IsParallelized()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_aaa49f3329bd14251fc2cedcf8dd26728} 
+int Spectrum\+Sampler\+\_\+\+Is\+Parallelized (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a85b69d82dd7fe86df2dc2b2f1635cef7}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_New@{SpectrumSampler\_New}}
+\index{SpectrumSampler\_New@{SpectrumSampler\_New}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_New()}{SpectrumSampler\_New()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a85b69d82dd7fe86df2dc2b2f1635cef7} 
+\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}} Spectrum\+Sampler\+\_\+\+New (\begin{DoxyParamCaption}\item[{double}]{x0}{, }\item[{double}]{x1}{, }\item[{const \mbox{\hyperlink{struct_spectrum_sampler___options}{Spectrum\+Sampler\+\_\+\+Options}} \texorpdfstring{$\ast$}{*}}]{options}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_a1a2f4707c5033d2dfadc36408b480fa1}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_SubmitResult@{SpectrumSampler\_SubmitResult}}
+\index{SpectrumSampler\_SubmitResult@{SpectrumSampler\_SubmitResult}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_SubmitResult()}{SpectrumSampler\_SubmitResult()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_a1a2f4707c5033d2dfadc36408b480fa1} 
+int Spectrum\+Sampler\+\_\+\+Submit\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_spectrum_sampler_8h_ab95a9b09a3fb49c1ab344a568eb49383}\index{SpectrumSampler.h@{SpectrumSampler.h}!SpectrumSampler\_SubmitResults@{SpectrumSampler\_SubmitResults}}
+\index{SpectrumSampler\_SubmitResults@{SpectrumSampler\_SubmitResults}!SpectrumSampler.h@{SpectrumSampler.h}}
+\doxysubsubsection{\texorpdfstring{SpectrumSampler\_SubmitResults()}{SpectrumSampler\_SubmitResults()}}
+{\footnotesize\ttfamily \label{_spectrum_sampler_8h_ab95a9b09a3fb49c1ab344a568eb49383} 
+int Spectrum\+Sampler\+\_\+\+Submit\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_spectrum_sampler_8h_aa43353865bbea25b4fd6d833d886da5a}{Spectrum\+Sampler}}}]{sampler}{}\end{DoxyParamCaption})}
+

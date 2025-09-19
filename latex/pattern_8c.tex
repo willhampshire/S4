@@ -1,0 +1,305 @@
+\doxysection{S4/pattern/pattern.c File Reference}
+\hypertarget{pattern_8c}{}\label{pattern_8c}\index{S4/pattern/pattern.c@{S4/pattern/pattern.c}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}pattern.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$float.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}intersection.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pattern_8c_a525335710b53cb064ca56b936120431e}{\+\_\+\+USE\+\_\+\+MATH\+\_\+\+DEFINES}}
+\item 
+\#define \mbox{\hyperlink{pattern_8c_ae71449b1cc6e6250b91f539153a7a0d3}{M\+\_\+\+PI}}~3.\+14159265358979323846
+\item 
+\#define \mbox{\hyperlink{pattern_8c_a97f6d6514d3d3dd50c3a2a6d622673db}{M\+\_\+2\+\_\+\+PI}}~0.\+63661977236758134308
+\item 
+\#define \mbox{\hyperlink{pattern_8c_af7f4fb608f9020e4aa410551e72ac981}{DAMPING\+\_\+\+FACTOR}}~1e-\/8
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{pattern_8c_aef8921320d57215ba359c7465a61779a}{Jinc}} (double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})
+\item 
+static double \mbox{\hyperlink{pattern_8c_a2bdbcaf7e9ce4e55828ef1c7b73c732e}{my\+\_\+j0}} (double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})
+\item 
+double \mbox{\hyperlink{pattern_8c_a3a5a2171b35e8d14918e959d1671283e}{Sinc}} (double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})
+\item 
+static double \mbox{\hyperlink{pattern_8c_a2413deb13ebc39503352f8cb7611912d}{shape\+\_\+area}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s)
+\item 
+static void \mbox{\hyperlink{pattern_8c_a56c83378dd6f916d1d84688c0e5ec029}{shape\+\_\+get\+\_\+interior\+\_\+point}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}\mbox{[}2\mbox{]})
+\item 
+static int \mbox{\hyperlink{pattern_8c_abe82fba75b8d2562f5928665cc10ed89}{shape\+\_\+contains\+\_\+point}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double x\+\_\+\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_a5ab3c82a265883c7a1ef779259369f71}{shape\+\_\+get\+\_\+normal}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}\mbox{[}2\mbox{]}, double \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}\mbox{[}2\mbox{]})
+\item 
+double \mbox{\hyperlink{pattern_8c_a5aec04f7a0e2bdb939578b6abdf0eac0}{shape\+\_\+get\+\_\+intersection\+\_\+area\+\_\+quad}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double p0\mbox{[}2\mbox{]}, const double duv\mbox{[}4\mbox{]})
+\item 
+double \mbox{\hyperlink{pattern_8c_a8b404d17e52a9acc1ecf8b66f95102aa}{shape\+\_\+get\+\_\+intersection\+\_\+area}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double p0\mbox{[}2\mbox{]}, const double dp\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_adbf8d622c655639d66ebbb8f93b1fad3}{shape\+\_\+get\+\_\+tangent\+\_\+cross\+\_\+segment}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double p0\mbox{[}2\mbox{]}, const double d0\mbox{[}2\mbox{]}, double \texorpdfstring{$\ast$}{*}cross)
+\item 
+int \mbox{\hyperlink{pattern_8c_af90c5fbc90aac76ed83f264fd3488965}{shape\+\_\+get\+\_\+tangent\+\_\+cross\+\_\+segment\+\_\+tri}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s, const double p0\mbox{[}2\mbox{]}, const double d0\mbox{[}2\mbox{]}, double \texorpdfstring{$\ast$}{*}cross0, double \texorpdfstring{$\ast$}{*}cross1)
+\item 
+int \mbox{\hyperlink{pattern_8c_a6840ffed49ec88efc84615272bf3b6ce}{shape\+\_\+valid}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s)
+\item 
+int \mbox{\hyperlink{pattern_8c_aa9e00cd56fc86de5c9a383141dc0f5df}{shapes\+\_\+intersect}} (const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s0, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}s1)
+\item 
+int \mbox{\hyperlink{pattern_8c_a76fd6bd4525e6def1e9116f891d0dc22}{pattern\+\_\+get\+\_\+containment\+\_\+tree}} (int nshapes, \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, int \texorpdfstring{$\ast$}{*}parent)
+\item 
+int \mbox{\hyperlink{pattern_8c_ab8d2ba33ccad63c86125686ecccf660c}{Pattern\+\_\+\+Get\+Containment\+Tree}} (\mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}p)
+\item 
+int \mbox{\hyperlink{pattern_8c_ad87f17d849bfe91be731f5a89752196a}{pattern\+\_\+get\+\_\+shape}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, const double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}\mbox{[}2\mbox{]}, int \texorpdfstring{$\ast$}{*}shape\+\_\+index, double \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_ac10ce1e9539fd3aa66cfb8fd15f5defa}{Pattern\+\_\+\+Get\+Shape}} (const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}p, const double \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}\mbox{[}2\mbox{]}, int \texorpdfstring{$\ast$}{*}shape\+\_\+index, double \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_a45cda685a03cdad7f6950d13571a489d}{pattern\+\_\+get\+\_\+fourier\+\_\+transform}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, const double \texorpdfstring{$\ast$}{*}value, const double k\+\_\+\mbox{[}2\mbox{]}, int ndim, double unit\+\_\+cell\+\_\+size, double f\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_a87a0fbc3294f42eb1636c4e2cf441bd3}{Pattern\+\_\+\+Get\+Fourier\+Transform}} (const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}p, const double \texorpdfstring{$\ast$}{*}value, const double k\mbox{[}2\mbox{]}, int ndim, double unit\+\_\+cell\+\_\+size, double f\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{pattern_8c_a8fed567321cb6216cdb238b173ec6be1}{pattern\+\_\+discretize\+\_\+cell}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, const double L\mbox{[}4\mbox{]}, int nu, int nv, int iu, int iv, double \texorpdfstring{$\ast$}{*}value)
+\item 
+int \mbox{\hyperlink{pattern_8c_a6a29d72f0bb07456bd4b157cce0a7cdd}{Pattern\+\_\+\+Discretize\+Cell}} (const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}p, const double L\mbox{[}4\mbox{]}, int nu, int nv, int iu, int iv, double \texorpdfstring{$\ast$}{*}value)
+\item 
+static double \mbox{\hyperlink{pattern_8c_a8bea96c8ecd89b5b1b70c473297108f6}{norm}} (int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}})
+\item 
+static double \mbox{\hyperlink{pattern_8c_abed6adc596471484830c9c5ea016b6c4}{dot}} (int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, const double \texorpdfstring{$\ast$}{*}y)
+\item 
+static void \mbox{\hyperlink{pattern_8c_a60be578490e6d870dde61bebbf6de31c}{cg}} (int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const double \texorpdfstring{$\ast$}{*}M, const int \texorpdfstring{$\ast$}{*}Mcol, int Mnd, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}, double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, double anorm)
+\item 
+static void \mbox{\hyperlink{pattern_8c_a89d3b9ea795d244e223af85e08feca9e}{sparse\+\_\+linsolve\+\_\+d}} (int \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}, const double \texorpdfstring{$\ast$}{*}M, const int \texorpdfstring{$\ast$}{*}Mcol, int Mnd, const double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}, double \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}}, double anorm)
+\item 
+static int \mbox{\hyperlink{pattern_8c_a4bd03222477bdaf679a60f7cef84e063}{pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+constraints}} (int type, int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, const double p0\mbox{[}2\mbox{]}, const double dp\mbox{[}2\mbox{]}, double \texorpdfstring{$\ast$}{*}value)
+\item 
+static int \mbox{\hyperlink{pattern_8c_a107bd17b569265903488bdc1a100e711}{pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+constraints\+\_\+tri}} (int type, int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, const double p0\mbox{[}2\mbox{]}, const double dp\mbox{[}2\mbox{]}, double \texorpdfstring{$\ast$}{*}value0, double \texorpdfstring{$\ast$}{*}value1)
+\item 
+static double \mbox{\hyperlink{pattern_8c_ab8530da23ae03a3e4dff4a1e4a8a1d09}{pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+rect}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, int type, const double L\mbox{[}4\mbox{]}, int nu, int nv, double \texorpdfstring{$\ast$}{*}field)
+\item 
+static double \mbox{\hyperlink{pattern_8c_adacbb6a843dd8fa0bac041d3515409fd}{pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+tri}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, int type, const double L\mbox{[}4\mbox{]}, int nu, int nv, double \texorpdfstring{$\ast$}{*}field)
+\item 
+int \mbox{\hyperlink{pattern_8c_a01aa25f95489cd69a903c9ef6cbf4ebc}{pattern\+\_\+generate\+\_\+flow\+\_\+field}} (int nshapes, const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}shapes, const int \texorpdfstring{$\ast$}{*}parent, int type, const double L\mbox{[}4\mbox{]}, int nu, int nv, double \texorpdfstring{$\ast$}{*}field)
+\item 
+int \mbox{\hyperlink{pattern_8c_a6ab9c6e77df7ca9f9195f6c9452c115e}{Pattern\+\_\+\+Generate\+Flow\+Field}} (const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}p, int type, const double L\mbox{[}4\mbox{]}, int nu, int nv, double \texorpdfstring{$\ast$}{*}value)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{pattern_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{pattern_8c_a525335710b53cb064ca56b936120431e}\index{pattern.c@{pattern.c}!\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}}
+\index{\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{\_USE\_MATH\_DEFINES}{\_USE\_MATH\_DEFINES}}
+{\footnotesize\ttfamily \label{pattern_8c_a525335710b53cb064ca56b936120431e} 
+\#define \+\_\+\+USE\+\_\+\+MATH\+\_\+\+DEFINES}
+
+\Hypertarget{pattern_8c_af7f4fb608f9020e4aa410551e72ac981}\index{pattern.c@{pattern.c}!DAMPING\_FACTOR@{DAMPING\_FACTOR}}
+\index{DAMPING\_FACTOR@{DAMPING\_FACTOR}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{DAMPING\_FACTOR}{DAMPING\_FACTOR}}
+{\footnotesize\ttfamily \label{pattern_8c_af7f4fb608f9020e4aa410551e72ac981} 
+\#define DAMPING\+\_\+\+FACTOR~1e-\/8}
+
+\Hypertarget{pattern_8c_a97f6d6514d3d3dd50c3a2a6d622673db}\index{pattern.c@{pattern.c}!M\_2\_PI@{M\_2\_PI}}
+\index{M\_2\_PI@{M\_2\_PI}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{M\_2\_PI}{M\_2\_PI}}
+{\footnotesize\ttfamily \label{pattern_8c_a97f6d6514d3d3dd50c3a2a6d622673db} 
+\#define M\+\_\+2\+\_\+\+PI~0.\+63661977236758134308}
+
+\Hypertarget{pattern_8c_ae71449b1cc6e6250b91f539153a7a0d3}\index{pattern.c@{pattern.c}!M\_PI@{M\_PI}}
+\index{M\_PI@{M\_PI}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{M\_PI}{M\_PI}}
+{\footnotesize\ttfamily \label{pattern_8c_ae71449b1cc6e6250b91f539153a7a0d3} 
+\#define M\+\_\+\+PI~3.\+14159265358979323846}
+
+
+
+\label{doc-func-members}
+\Hypertarget{pattern_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{pattern_8c_a60be578490e6d870dde61bebbf6de31c}\index{pattern.c@{pattern.c}!cg@{cg}}
+\index{cg@{cg}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{cg()}{cg()}}
+{\footnotesize\ttfamily \label{pattern_8c_a60be578490e6d870dde61bebbf6de31c} 
+void cg (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{M}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{Mcol}{, }\item[{int}]{Mnd}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{double}]{anorm}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_abed6adc596471484830c9c5ea016b6c4}\index{pattern.c@{pattern.c}!dot@{dot}}
+\index{dot@{dot}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily \label{pattern_8c_abed6adc596471484830c9c5ea016b6c4} 
+double dot (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_aef8921320d57215ba359c7465a61779a}\index{pattern.c@{pattern.c}!Jinc@{Jinc}}
+\index{Jinc@{Jinc}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Jinc()}{Jinc()}}
+{\footnotesize\ttfamily \label{pattern_8c_aef8921320d57215ba359c7465a61779a} 
+double Jinc (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a2bdbcaf7e9ce4e55828ef1c7b73c732e}\index{pattern.c@{pattern.c}!my\_j0@{my\_j0}}
+\index{my\_j0@{my\_j0}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{my\_j0()}{my\_j0()}}
+{\footnotesize\ttfamily \label{pattern_8c_a2bdbcaf7e9ce4e55828ef1c7b73c732e} 
+double my\+\_\+j0 (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a8bea96c8ecd89b5b1b70c473297108f6}\index{pattern.c@{pattern.c}!norm@{norm}}
+\index{norm@{norm}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{norm()}{norm()}}
+{\footnotesize\ttfamily \label{pattern_8c_a8bea96c8ecd89b5b1b70c473297108f6} 
+double norm (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a8fed567321cb6216cdb238b173ec6be1}\index{pattern.c@{pattern.c}!pattern\_discretize\_cell@{pattern\_discretize\_cell}}
+\index{pattern\_discretize\_cell@{pattern\_discretize\_cell}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_discretize\_cell()}{pattern\_discretize\_cell()}}
+{\footnotesize\ttfamily \label{pattern_8c_a8fed567321cb6216cdb238b173ec6be1} 
+int pattern\+\_\+discretize\+\_\+cell (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{int}]{iu}{, }\item[{int}]{iv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a6a29d72f0bb07456bd4b157cce0a7cdd}\index{pattern.c@{pattern.c}!Pattern\_DiscretizeCell@{Pattern\_DiscretizeCell}}
+\index{Pattern\_DiscretizeCell@{Pattern\_DiscretizeCell}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Pattern\_DiscretizeCell()}{Pattern\_DiscretizeCell()}}
+{\footnotesize\ttfamily \label{pattern_8c_a6a29d72f0bb07456bd4b157cce0a7cdd} 
+int Pattern\+\_\+\+Discretize\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{int}]{iu}{, }\item[{int}]{iv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a01aa25f95489cd69a903c9ef6cbf4ebc}\index{pattern.c@{pattern.c}!pattern\_generate\_flow\_field@{pattern\_generate\_flow\_field}}
+\index{pattern\_generate\_flow\_field@{pattern\_generate\_flow\_field}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_generate\_flow\_field()}{pattern\_generate\_flow\_field()}}
+{\footnotesize\ttfamily \label{pattern_8c_a01aa25f95489cd69a903c9ef6cbf4ebc} 
+int pattern\+\_\+generate\+\_\+flow\+\_\+field (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int}]{type}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a4bd03222477bdaf679a60f7cef84e063}\index{pattern.c@{pattern.c}!pattern\_generate\_flow\_field\_constraints@{pattern\_generate\_flow\_field\_constraints}}
+\index{pattern\_generate\_flow\_field\_constraints@{pattern\_generate\_flow\_field\_constraints}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_generate\_flow\_field\_constraints()}{pattern\_generate\_flow\_field\_constraints()}}
+{\footnotesize\ttfamily \label{pattern_8c_a4bd03222477bdaf679a60f7cef84e063} 
+int pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+constraints (\begin{DoxyParamCaption}\item[{int}]{type}{, }\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{dp}{\mbox{[}2\mbox{]}, }\item[{double \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a107bd17b569265903488bdc1a100e711}\index{pattern.c@{pattern.c}!pattern\_generate\_flow\_field\_constraints\_tri@{pattern\_generate\_flow\_field\_constraints\_tri}}
+\index{pattern\_generate\_flow\_field\_constraints\_tri@{pattern\_generate\_flow\_field\_constraints\_tri}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_generate\_flow\_field\_constraints\_tri()}{pattern\_generate\_flow\_field\_constraints\_tri()}}
+{\footnotesize\ttfamily \label{pattern_8c_a107bd17b569265903488bdc1a100e711} 
+int pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+constraints\+\_\+tri (\begin{DoxyParamCaption}\item[{int}]{type}{, }\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{dp}{\mbox{[}2\mbox{]}, }\item[{double \texorpdfstring{$\ast$}{*}}]{value0}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{value1}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_ab8530da23ae03a3e4dff4a1e4a8a1d09}\index{pattern.c@{pattern.c}!pattern\_generate\_flow\_field\_rect@{pattern\_generate\_flow\_field\_rect}}
+\index{pattern\_generate\_flow\_field\_rect@{pattern\_generate\_flow\_field\_rect}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_generate\_flow\_field\_rect()}{pattern\_generate\_flow\_field\_rect()}}
+{\footnotesize\ttfamily \label{pattern_8c_ab8530da23ae03a3e4dff4a1e4a8a1d09} 
+double pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+rect (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int}]{type}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_adacbb6a843dd8fa0bac041d3515409fd}\index{pattern.c@{pattern.c}!pattern\_generate\_flow\_field\_tri@{pattern\_generate\_flow\_field\_tri}}
+\index{pattern\_generate\_flow\_field\_tri@{pattern\_generate\_flow\_field\_tri}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_generate\_flow\_field\_tri()}{pattern\_generate\_flow\_field\_tri()}}
+{\footnotesize\ttfamily \label{pattern_8c_adacbb6a843dd8fa0bac041d3515409fd} 
+double pattern\+\_\+generate\+\_\+flow\+\_\+field\+\_\+tri (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int}]{type}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a6ab9c6e77df7ca9f9195f6c9452c115e}\index{pattern.c@{pattern.c}!Pattern\_GenerateFlowField@{Pattern\_GenerateFlowField}}
+\index{Pattern\_GenerateFlowField@{Pattern\_GenerateFlowField}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Pattern\_GenerateFlowField()}{Pattern\_GenerateFlowField()}}
+{\footnotesize\ttfamily \label{pattern_8c_a6ab9c6e77df7ca9f9195f6c9452c115e} 
+int Pattern\+\_\+\+Generate\+Flow\+Field (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{int}]{type}{, }\item[{const double}]{L}{\mbox{[}4\mbox{]}, }\item[{int}]{nu}{, }\item[{int}]{nv}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a76fd6bd4525e6def1e9116f891d0dc22}\index{pattern.c@{pattern.c}!pattern\_get\_containment\_tree@{pattern\_get\_containment\_tree}}
+\index{pattern\_get\_containment\_tree@{pattern\_get\_containment\_tree}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_get\_containment\_tree()}{pattern\_get\_containment\_tree()}}
+{\footnotesize\ttfamily \label{pattern_8c_a76fd6bd4525e6def1e9116f891d0dc22} 
+int pattern\+\_\+get\+\_\+containment\+\_\+tree (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{\mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a45cda685a03cdad7f6950d13571a489d}\index{pattern.c@{pattern.c}!pattern\_get\_fourier\_transform@{pattern\_get\_fourier\_transform}}
+\index{pattern\_get\_fourier\_transform@{pattern\_get\_fourier\_transform}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_get\_fourier\_transform()}{pattern\_get\_fourier\_transform()}}
+{\footnotesize\ttfamily \label{pattern_8c_a45cda685a03cdad7f6950d13571a489d} 
+int pattern\+\_\+get\+\_\+fourier\+\_\+transform (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{value}{, }\item[{const double}]{k\+\_\+}{\mbox{[}2\mbox{]}, }\item[{int}]{ndim}{, }\item[{double}]{unit\+\_\+cell\+\_\+size}{, }\item[{double}]{f}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_ad87f17d849bfe91be731f5a89752196a}\index{pattern.c@{pattern.c}!pattern\_get\_shape@{pattern\_get\_shape}}
+\index{pattern\_get\_shape@{pattern\_get\_shape}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{pattern\_get\_shape()}{pattern\_get\_shape()}}
+{\footnotesize\ttfamily \label{pattern_8c_ad87f17d849bfe91be731f5a89752196a} 
+int pattern\+\_\+get\+\_\+shape (\begin{DoxyParamCaption}\item[{int}]{nshapes}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{shapes}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const double}]{x}{\mbox{[}2\mbox{]}, }\item[{int \texorpdfstring{$\ast$}{*}}]{shape\+\_\+index}{, }\item[{double}]{n}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_ab8d2ba33ccad63c86125686ecccf660c}\index{pattern.c@{pattern.c}!Pattern\_GetContainmentTree@{Pattern\_GetContainmentTree}}
+\index{Pattern\_GetContainmentTree@{Pattern\_GetContainmentTree}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Pattern\_GetContainmentTree()}{Pattern\_GetContainmentTree()}}
+{\footnotesize\ttfamily \label{pattern_8c_ab8d2ba33ccad63c86125686ecccf660c} 
+int Pattern\+\_\+\+Get\+Containment\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a87a0fbc3294f42eb1636c4e2cf441bd3}\index{pattern.c@{pattern.c}!Pattern\_GetFourierTransform@{Pattern\_GetFourierTransform}}
+\index{Pattern\_GetFourierTransform@{Pattern\_GetFourierTransform}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Pattern\_GetFourierTransform()}{Pattern\_GetFourierTransform()}}
+{\footnotesize\ttfamily \label{pattern_8c_a87a0fbc3294f42eb1636c4e2cf441bd3} 
+int Pattern\+\_\+\+Get\+Fourier\+Transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{value}{, }\item[{const double}]{k}{\mbox{[}2\mbox{]}, }\item[{int}]{ndim}{, }\item[{double}]{unit\+\_\+cell\+\_\+size}{, }\item[{double}]{f}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_ac10ce1e9539fd3aa66cfb8fd15f5defa}\index{pattern.c@{pattern.c}!Pattern\_GetShape@{Pattern\_GetShape}}
+\index{Pattern\_GetShape@{Pattern\_GetShape}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Pattern\_GetShape()}{Pattern\_GetShape()}}
+{\footnotesize\ttfamily \label{pattern_8c_ac10ce1e9539fd3aa66cfb8fd15f5defa} 
+int Pattern\+\_\+\+Get\+Shape (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_aadfdf0ebb7649cba0988f559e32cb736}{Pattern}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{const double}]{x}{\mbox{[}2\mbox{]}, }\item[{int \texorpdfstring{$\ast$}{*}}]{shape\+\_\+index}{, }\item[{double}]{n}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a2413deb13ebc39503352f8cb7611912d}\index{pattern.c@{pattern.c}!shape\_area@{shape\_area}}
+\index{shape\_area@{shape\_area}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_area()}{shape\_area()}}
+{\footnotesize\ttfamily \label{pattern_8c_a2413deb13ebc39503352f8cb7611912d} 
+double shape\+\_\+area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_abe82fba75b8d2562f5928665cc10ed89}\index{pattern.c@{pattern.c}!shape\_contains\_point@{shape\_contains\_point}}
+\index{shape\_contains\_point@{shape\_contains\_point}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_contains\_point()}{shape\_contains\_point()}}
+{\footnotesize\ttfamily \label{pattern_8c_abe82fba75b8d2562f5928665cc10ed89} 
+int shape\+\_\+contains\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{x\+\_\+}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a56c83378dd6f916d1d84688c0e5ec029}\index{pattern.c@{pattern.c}!shape\_get\_interior\_point@{shape\_get\_interior\_point}}
+\index{shape\_get\_interior\_point@{shape\_get\_interior\_point}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_interior\_point()}{shape\_get\_interior\_point()}}
+{\footnotesize\ttfamily \label{pattern_8c_a56c83378dd6f916d1d84688c0e5ec029} 
+void shape\+\_\+get\+\_\+interior\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{double}]{x}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{pattern_8c_a8b404d17e52a9acc1ecf8b66f95102aa}\index{pattern.c@{pattern.c}!shape\_get\_intersection\_area@{shape\_get\_intersection\_area}}
+\index{shape\_get\_intersection\_area@{shape\_get\_intersection\_area}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_intersection\_area()}{shape\_get\_intersection\_area()}}
+{\footnotesize\ttfamily \label{pattern_8c_a8b404d17e52a9acc1ecf8b66f95102aa} 
+double shape\+\_\+get\+\_\+intersection\+\_\+area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{dp}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a5aec04f7a0e2bdb939578b6abdf0eac0}\index{pattern.c@{pattern.c}!shape\_get\_intersection\_area\_quad@{shape\_get\_intersection\_area\_quad}}
+\index{shape\_get\_intersection\_area\_quad@{shape\_get\_intersection\_area\_quad}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_intersection\_area\_quad()}{shape\_get\_intersection\_area\_quad()}}
+{\footnotesize\ttfamily \label{pattern_8c_a5aec04f7a0e2bdb939578b6abdf0eac0} 
+double shape\+\_\+get\+\_\+intersection\+\_\+area\+\_\+quad (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{duv}{\mbox{[}4\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a5ab3c82a265883c7a1ef779259369f71}\index{pattern.c@{pattern.c}!shape\_get\_normal@{shape\_get\_normal}}
+\index{shape\_get\_normal@{shape\_get\_normal}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_normal()}{shape\_get\_normal()}}
+{\footnotesize\ttfamily \label{pattern_8c_a5ab3c82a265883c7a1ef779259369f71} 
+int shape\+\_\+get\+\_\+normal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{x}{\mbox{[}2\mbox{]}, }\item[{double}]{n}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_adbf8d622c655639d66ebbb8f93b1fad3}\index{pattern.c@{pattern.c}!shape\_get\_tangent\_cross\_segment@{shape\_get\_tangent\_cross\_segment}}
+\index{shape\_get\_tangent\_cross\_segment@{shape\_get\_tangent\_cross\_segment}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_tangent\_cross\_segment()}{shape\_get\_tangent\_cross\_segment()}}
+{\footnotesize\ttfamily \label{pattern_8c_adbf8d622c655639d66ebbb8f93b1fad3} 
+int shape\+\_\+get\+\_\+tangent\+\_\+cross\+\_\+segment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{d0}{\mbox{[}2\mbox{]}, }\item[{double \texorpdfstring{$\ast$}{*}}]{cross}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_af90c5fbc90aac76ed83f264fd3488965}\index{pattern.c@{pattern.c}!shape\_get\_tangent\_cross\_segment\_tri@{shape\_get\_tangent\_cross\_segment\_tri}}
+\index{shape\_get\_tangent\_cross\_segment\_tri@{shape\_get\_tangent\_cross\_segment\_tri}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_get\_tangent\_cross\_segment\_tri()}{shape\_get\_tangent\_cross\_segment\_tri()}}
+{\footnotesize\ttfamily \label{pattern_8c_af90c5fbc90aac76ed83f264fd3488965} 
+int shape\+\_\+get\+\_\+tangent\+\_\+cross\+\_\+segment\+\_\+tri (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{const double}]{p0}{\mbox{[}2\mbox{]}, }\item[{const double}]{d0}{\mbox{[}2\mbox{]}, }\item[{double \texorpdfstring{$\ast$}{*}}]{cross0}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{cross1}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a6840ffed49ec88efc84615272bf3b6ce}\index{pattern.c@{pattern.c}!shape\_valid@{shape\_valid}}
+\index{shape\_valid@{shape\_valid}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shape\_valid()}{shape\_valid()}}
+{\footnotesize\ttfamily \label{pattern_8c_a6840ffed49ec88efc84615272bf3b6ce} 
+int shape\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_aa9e00cd56fc86de5c9a383141dc0f5df}\index{pattern.c@{pattern.c}!shapes\_intersect@{shapes\_intersect}}
+\index{shapes\_intersect@{shapes\_intersect}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{shapes\_intersect()}{shapes\_intersect()}}
+{\footnotesize\ttfamily \label{pattern_8c_aa9e00cd56fc86de5c9a383141dc0f5df} 
+int shapes\+\_\+intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s0}{, }\item[{const \mbox{\hyperlink{pattern_8h_ae1522f070925dfe015cfdba0fb440c71}{shape}} \texorpdfstring{$\ast$}{*}}]{s1}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a3a5a2171b35e8d14918e959d1671283e}\index{pattern.c@{pattern.c}!Sinc@{Sinc}}
+\index{Sinc@{Sinc}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{Sinc()}{Sinc()}}
+{\footnotesize\ttfamily \label{pattern_8c_a3a5a2171b35e8d14918e959d1671283e} 
+double Sinc (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pattern_8c_a89d3b9ea795d244e223af85e08feca9e}\index{pattern.c@{pattern.c}!sparse\_linsolve\_d@{sparse\_linsolve\_d}}
+\index{sparse\_linsolve\_d@{sparse\_linsolve\_d}!pattern.c@{pattern.c}}
+\doxysubsubsection{\texorpdfstring{sparse\_linsolve\_d()}{sparse\_linsolve\_d()}}
+{\footnotesize\ttfamily \label{pattern_8c_a89d3b9ea795d244e223af85e08feca9e} 
+void sparse\+\_\+linsolve\+\_\+d (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{M}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{Mcol}{, }\item[{int}]{Mnd}{, }\item[{const double \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{double}]{anorm}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

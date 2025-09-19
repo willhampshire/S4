@@ -1,3 +1,5 @@
+{% set numpy = "1.26" %}
+
 package:
   name: s4
   version: 1.1
@@ -16,8 +18,8 @@ build:
     echo PYTHON: %PYTHON%
     %PYTHON% -m pip wheel "%SRC_DIR%\conda_recipe\s4" -w dist --no-deps --verbose
     
+    # find and install wheels
     dir %SRC_DIR%\dist
-
     for %%F in ("%SRC_DIR%\dist\*.whl") do (
     echo Installing wheel: %%F
     %PYTHON% -m pip install "%%F" --no-deps -vv
@@ -46,16 +48,18 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - python {{ python }}
     - numpy {{ numpy }}
     - libarchive
     - setuptools
     - wheel
-    - boost
+    - metis
+    - boost-cpp
     - suitesparse
-    - mkl-devel [win]
-    - openblas [unix]
+    - mkl-devel # [win]
+    - openblas # [unix]
 
 
   host:
@@ -63,7 +67,8 @@ requirements:
     - numpy {{ numpy }}
     - setuptools
     - wheel
-    - boost
+    - metis
+    - boost-cpp
     - suitesparse
     - mkl-devel # [win]
     - openblas # [unix]

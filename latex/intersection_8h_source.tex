@@ -1,0 +1,97 @@
+\doxysection{intersection.\+h}
+\hypertarget{intersection_8h_source}{}\label{intersection_8h_source}\index{S4/pattern/intersection.h@{S4/pattern/intersection.h}}
+\mbox{\hyperlink{intersection_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2009-\/2011,\ Stanford\ University}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ S4}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Written\ by\ Victor\ Liu\ (vkl@stanford.edu)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ S4\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ the\ Free\ Software\ Foundation;\ either\ version\ 2\ of\ the\ License,\ or}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ S4\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ along\ with\ this\ program;\ if\ not,\ write\ to\ the\ Free\ Software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ Foundation,\ Inc.,\ 59\ Temple\ Place,\ Suite\ 330,\ Boston,\ MA\ \ 02111-\/1307\ \ USA}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ \_INTERSECTION\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ \_INTERSECTION\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ This\ contains\ a\ bunch\ of\ routines\ for\ computing\ intersections\ between}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ shapes,\ and\ various\ other\ computational\ geometry\ functions.}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Computes\ sqrt(x*x\ +\ y*y)\ in\ a\ stable\ way}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{intersection_8h_acd68c4ed347b5144367b4f7be24a9375}{pythag2}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Assumed\ no\ self-\/crossings,\ no\ holes,\ CCW\ orientation.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ v\ is\ length\ 2*n,\ xy-\/pairs.}}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{intersection_8h_afbc950ff0dda9fc94f9b400fef0531d9}{polygon\_area}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *v);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ returns\ 0\ if\ valid,\ 1\ if\ self\ intersections,\ 2\ if\ orientation\ incorrect}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ currently\ does\ nothing\ (returns\ 0)}}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{intersection_8h_ae151b889718c691bbc8f60bd93aa5e19}{polygon\_check}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *v);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Circle\ assumed\ at\ origin}}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{intersection_8h_af7961ca2343de7fd53dde5c4bf2e4f84}{intersection\_area\_circle\_triangle}}(}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ radius,}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ triangle\ vertices:\ \{org,\ org+u,\ org+v\}\ are\ in\ CCW\ orientation}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tri\_org[2],}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tri\_u[2],}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tri\_v[2]}
+\DoxyCodeLine{00044\ );}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Computes\ the\ intersection\ of\ (assumed)\ convex\ polygons\ P\ and\ Q.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ |P|\ ==\ n,\ |Q|\ ==\ m,\ returns\ Pi\ =\ intersection(P,Q),\ |Pi|\ ==\ *ni}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ On\ entry,\ *ni\ should\ be\ the\ size\ of\ Pi.}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ If\ Pi\ is\ too\ small,\ returns\ -\/10,\ and\ *ni\ is\ the\ needed\ size.}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ If\ P\ is\ in\ Q,\ returns\ 1.}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ If\ Q\ is\ in\ P,\ returns\ 2.}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Otherwise,\ on\ success,\ returns\ 0.}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ Returns\ -\/n\ if\ there\ is\ an\ error\ with\ the\ n-\/th\ argument.}}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{intersection_8h_a2daa8eb31d35b232252a3253f5132893}{convex\_polygon\_intersection}}(}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ n\ >=\ 3}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *P,}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ m,\ \textcolor{comment}{//\ m\ >=\ 3}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *Q,}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ *ni,\ \textcolor{comment}{//\ on\ input,\ size\ of\ Pi\ (length/2),\ on\ output,\ numer\ of\ points\ in\ Pi}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ *Pi\ \textcolor{comment}{//\ output\ intersection\ polygon}}
+\DoxyCodeLine{00061\ );}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{intersection_8h_a7ced3ae1f73098ddf1efb1903e528a4b}{polygon\_triangulate}}(}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *v,\ \textcolor{comment}{//\ the\ polygon,\ v\ is\ length\ 2*n}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ *t\ \textcolor{comment}{//\ length\ 3*(n-\/2),\ stores\ the\ triangle\ as\ triples\ of\ vertex\ indices\ into\ v}}
+\DoxyCodeLine{00066\ );}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ return\ number\ of\ points\ in\ isect}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ cross0\ and\ cross1\ only\ referenced\ when\ both\ are\ non-\/NULL\ and}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ when\ cross\ is\ non-\/NULL}}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{intersection_8h_ae7dc3ddebdfec0e275dedcba2003b78b}{intersection\_polygon\_segment}}(}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{comment}{//\ n\ >=\ 3}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *P,}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seg0[2],}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ segd[2],}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{double}\ *isect,\ \textcolor{comment}{//\ length\ 2*n,\ intersection\ xy-\/pairs.\ Can\ be\ NULL.}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{double}\ *cross,\ \textcolor{comment}{//\ sum\ of\ cross\ products\ between\ tangent\ vector\ at\ intersection\ and\ segment,\ can\ be\ NULL}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{double}\ *cross0,\ \textcolor{comment}{//\ weighted\ sum\ of\ cross\ products,\ weighted\ by\ t-\/parameter\ of\ intersection}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{double}\ *cross1\ \textcolor{comment}{//\ same\ as\ cross0\ but\ for\ (1-\/t)}}
+\DoxyCodeLine{00080\ );}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ returns\ number\ of\ intersections}}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{intersection_8h_ac6b639a9f1e05c398399c23915ff29e2}{intersection\_circle\_segment}}(}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{double}\ radius,}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seg0[2],}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ segd[2],}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ isect[4],\ \textcolor{comment}{//\ intersection\ xy-\/pairs}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{double}\ t[2]\ \textcolor{comment}{//\ can\ be\ NULL;\ the\ t-\/parameter\ of\ the\ segment's\ intersection(s)}}
+\DoxyCodeLine{00089\ );}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_INTERSECTION\_H\_}}
+
+\end{DoxyCode}

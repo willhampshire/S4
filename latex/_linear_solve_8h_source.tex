@@ -1,0 +1,66 @@
+\doxysection{Linear\+Solve.\+h}
+\hypertarget{_linear_solve_8h_source}{}\label{_linear_solve_8h_source}\index{S4/RNP/LinearSolve.h@{S4/RNP/LinearSolve.h}}
+\mbox{\hyperlink{_linear_solve_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_RNP\_LINEAR\_SOLVE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_RNP\_LINEAR\_SOLVE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_t_b_l_a_s_8h}{TBLAS.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_t_l_a_support_8h}{TLASupport.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_r_n_p}{RNP}}\{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{char}\ trans='N'>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_r_n_p_1_1_linear_solve_a3ab44f02f78c7cdaaaa55130a74498aa}{LinearSolve}}\{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_linear_solve_a3ab44f02f78c7cdaaaa55130a74498aa}{LinearSolve}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keywordtype}{size\_t}\ nRHS,\ T\ *\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ T\ *\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}},\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}}\ =\ NULL,\ \textcolor{keywordtype}{size\_t}\ *pivots\ =\ NULL)\{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ !=\ \mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}})\{\ *\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}}\ =\ 0;\ \}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(0\ ==\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}\ ||\ nRHS\ ==\ 0)\{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(pivots)\{\}\ \textcolor{comment}{//\ prevent\ unused\ parameter\ warning}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ iinfo\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ LU\ decomposition}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}};\ ++j)\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jp\ =\ j\ +\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af8d0f3ef228d132cc6c7799866a02357}{RNP::TBLAS::MaximumIndex}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}-\/j,\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+j*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ 1);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(T(0)\ !=\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[jp+j*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}])\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jp\ !=\ j)\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ab82d5c06083765a10ed31224617e4b00}{RNP::TBLAS::Swap}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+0*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[jp+0*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ab82d5c06083765a10ed31224617e4b00}{RNP::TBLAS::Swap}}(nRHS,\ \&\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}[j+0*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}},\ \&\mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}}[jp+0*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}})\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9921a6854ce66b36cd46fbcae305e537}{RNP::TBLAS::Scale}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}-\/j-\/1,\ T(1)/\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+j*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+1+j*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ 1);\ \textcolor{comment}{//\ possible\ overflow\ when\ inverting\ A(j,j)}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ iinfo\ =\ j+1;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}})\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7c1c5a78f04981997f6fa3289e9afdae}{RNP::TBLAS::Rank1Update}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}-\/j-\/1,\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}}-\/j-\/1,\ T(-\/1),\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+1+j*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ 1,\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+(j+1)*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \&\mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}}[j+1+(j+1)*\mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}}],\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(0\ ==\ iinfo)\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_linear_solve__lapack_8h_afaf570bd8980ebd7a0b208f49353f5f7}{trans}}\ ==\ \textcolor{charliteral}{'T'})\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','U','T','N'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','L','T','U'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_linear_solve__lapack_8h_afaf570bd8980ebd7a0b208f49353f5f7}{trans}}\ ==\ \textcolor{charliteral}{'C'})\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','U','C','N'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','L','C','U'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','L','N','U'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_solve_tr_m}{RNP::TBLAS::SolveTrM<'L','U','N','N'>}}(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ nRHS,\ T(1),\ \mbox{\hyperlink{_eigensystems__lapack_8h_ac3d39021eb543bbf39be10e64d89fd90}{a}},\ \mbox{\hyperlink{_eigensystems__lapack_8h_a7428bdb334680d06b04c99c91f1ac8f4}{lda}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_a926020b70ecae6d477f56add52e4054a}{b}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_adfa741aa02c01b6bca0b4ade28c9c355}{ldb}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(NULL\ !=\ \mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}})\{\ *\mbox{\hyperlink{_eigensystems__lapack_8h_add502e09bfd4455a6ecb2e35e8e34381}{info}}\ =\ iinfo;\ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \};\ \textcolor{comment}{//\ namespace\ RNP}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifdef\ RNP\_HAVE\_LAPACK}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#\ include\ "{}\mbox{\hyperlink{_linear_solve__lapack_8h}{LinearSolve\_lapack.h}}"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_RNP\_LINEAR\_SOLVE\_H\_}}
+
+\end{DoxyCode}

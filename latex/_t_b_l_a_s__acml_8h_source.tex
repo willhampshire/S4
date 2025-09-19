@@ -1,0 +1,1158 @@
+\doxysection{TBLAS\+\_\+acml.\+h}
+\hypertarget{_t_b_l_a_s__acml_8h_source}{}\label{_t_b_l_a_s__acml_8h_source}\index{S4/RNP/TBLAS\_acml.h@{S4/RNP/TBLAS\_acml.h}}
+\mbox{\hyperlink{_t_b_l_a_s__acml_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_RNP\_TBLAS\_EXT\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_RNP\_TBLAS\_EXT\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ \_USE\_MATH\_DEFINES}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <acml.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_r_n_p}{RNP}}\{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }TBLAS\{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00014\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a93d660cbcd521d8f8496df97ff1ba192}{Swap<float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00015\ \ \ \ \ sswap(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00018\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9e462f3596425df09875c5a8b3b2d8d5}{Swap<double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00019\ \ \ \ \ dswap(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ab82d5c06083765a10ed31224617e4b00}{Swap<std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00023\ \ \ \ \ cswap(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00026\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ab82d5c06083765a10ed31224617e4b00}{Swap<std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00027\ \ \ \ \ zswap(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00031\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ae6727731d03d1befa9bb45264bcfb946}{Scale<float,float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \&scale,\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00032\ \ \ \ \ sscal(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ scale,\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ae0eaa584ab55293e2ff1e6fe8efaa224}{Scale<double,double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&scale,\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00036\ \ \ \ \ dscal(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ scale,\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00039\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9921a6854ce66b36cd46fbcae305e537}{Scale<std::complex<float>}},std::complex<float>\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ \&scale,\ std::complex<float>\ *\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00040\ \ \ \ \ cscal(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ scale,\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9921a6854ce66b36cd46fbcae305e537}{Scale<std::complex<double>}},std::complex<double>\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ \&scale,\ std::complex<double>\ *\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00044\ \ \ \ \ zscal(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ scale,\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9921a6854ce66b36cd46fbcae305e537}{Scale<float,std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \&scale,\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00048\ \ \ \ \ csscal(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ scale,\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00051\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9921a6854ce66b36cd46fbcae305e537}{Scale<double,std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&scale,\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00052\ \ \ \ \ zdscal(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ scale,\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00056\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a519d74b908a828813e71911b866bc49f}{Copy<float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *src,\ \textcolor{keywordtype}{size\_t}\ incsrc,\ \textcolor{keywordtype}{float}\ *dst,\ \textcolor{keywordtype}{size\_t}\ incdst)\{}
+\DoxyCodeLine{00057\ \ \ \ \ scopy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ src,\ incsrc,\ dst,\ incdst);}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00060\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a44decad27a74e1e9e07017a780ee8f7b}{Copy<double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *src,\ \textcolor{keywordtype}{size\_t}\ incsrc,\ \textcolor{keywordtype}{double}\ *dst,\ \textcolor{keywordtype}{size\_t}\ incdst)\{}
+\DoxyCodeLine{00061\ \ \ \ \ dcopy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ src,\ incsrc,\ dst,\ incdst);}
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00064\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a30f18793474dba5d79c739e403daf6b2}{Copy<std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ *src,\ \textcolor{keywordtype}{size\_t}\ incsrc,\ std::complex<float>\ *dst,\ \textcolor{keywordtype}{size\_t}\ incdst)\{}
+\DoxyCodeLine{00065\ \ \ \ \ ccopy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ src,\ incsrc,\ dst,\ incdst);}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00068\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a30f18793474dba5d79c739e403daf6b2}{Copy<std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ *src,\ \textcolor{keywordtype}{size\_t}\ incsrc,\ std::complex<double>\ *dst,\ \textcolor{keywordtype}{size\_t}\ incdst)\{}
+\DoxyCodeLine{00069\ \ \ \ \ zcopy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ src,\ incsrc,\ dst,\ incdst);}
+\DoxyCodeLine{00070\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00073\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a467fcae1a94a9e8841b543d1034275fe}{Axpy<float,float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00074\ \ \ \ \ saxpy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00077\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aba53f313951f909d727514bc6bbc2a43}{Axpy<double,double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00078\ \ \ \ \ daxpy(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00079\ \}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00081\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a37a12cb67febe2954f353785605d46c3}{Axpy<std::complex<float>}},std::complex<float>\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ std::complex<float>\ *\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00082\ \ \ \ \ caxpy(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00083\ \}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00085\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a37a12cb67febe2954f353785605d46c3}{Axpy<std::complex<double>}},std::complex<double>\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})\{}
+\DoxyCodeLine{00086\ \ \ \ \ zaxpy(\mbox{\hyperlink{_eigensystems__lapack_8h_aea17e78b0d1f319c612355b41c361b8e}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \mbox{\hyperlink{_linear_solve__lapack_8h_afd5567bd92e9c7bd0820a2473eeec85b}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00089\ \textcolor{comment}{template\ <class\ T>}}
+\DoxyCodeLine{00090\ \textcolor{comment}{T\ Dot(size\_t\ n,\ const\ T\ *x,\ size\_t\ incx,\ T\ *y,\ size\_t\ incy)\{}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ T\ sum(0);}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ while(n\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ \ \ \ \ sum\ +=\ (*x)*(*y);}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ \ \ \ x\ +=\ incx;\ y\ +=\ incy;}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ return\ sum;}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00098\ \textcolor{comment}{}}
+\DoxyCodeLine{00099\ \textcolor{comment}{template\ <class\ T>}}
+\DoxyCodeLine{00100\ \textcolor{comment}{T\ ConjugateDot(size\_t\ n,\ const\ T\ *x,\ size\_t\ incx,\ T\ *y,\ size\_t\ incy)\{}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ T\ sum(0);}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ while(n\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ \ \ \ \ sum\ +=\ \_RealOrComplexChooser<T>::\_conj(*x)*(*y);}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ \ \ \ \ x\ +=\ incx;\ y\ +=\ incy;}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ return\ sum;}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00108\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00109\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00110\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af21fd4beb49d8b5c19c10b007e68cb18}{Norm2<float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ snrm2(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00114\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a1a742943c7c635aa6bfc0dbb44435b7f}{Norm2<double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ dnrm2(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00118\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a22e9acd8fff00364e68f8af18cd599e1}{Norm2<std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{return}\ scnrm2(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00120\ \}}
+\DoxyCodeLine{00121\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00122\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a22e9acd8fff00364e68f8af18cd599e1}{Norm2<std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{return}\ dznrm2(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00124\ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00127\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a5a0fa7009c1a3fdd8ec41cca477951e4}{Asum<float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{return}\ sasum(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00129\ \}}
+\DoxyCodeLine{00130\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00131\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ab851fe359eda51cfcc692e6cf6f55339}{Asum<double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ dasum(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00135\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa6c5fe3e960b77c7c2f7be303eaf2438}{Asum<std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ scasum(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00139\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa6c5fe3e960b77c7c2f7be303eaf2438}{Asum<std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ dzasum(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}});}
+\DoxyCodeLine{00141\ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00144\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a27fb55fa2a4ce585cdc933472995e766}{MaximumIndex<float>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{return}\ isamax(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\ -\/\ 1;}
+\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00147\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00148\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ae330c5277d6c3d52b9353328463427fc}{MaximumIndex<double>}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{return}\ idamax(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\ -\/\ 1;}
+\DoxyCodeLine{00150\ \}}
+\DoxyCodeLine{00151\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00152\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af8d0f3ef228d132cc6c7799866a02357}{MaximumIndex<std::complex<float>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<float>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ icamax(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\ -\/\ 1;}
+\DoxyCodeLine{00154\ \}}
+\DoxyCodeLine{00155\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00156\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af8d0f3ef228d132cc6c7799866a02357}{MaximumIndex<std::complex<double>}}\ >(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\{}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{return}\ izamax(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}})\ -\/\ 1;}
+\DoxyCodeLine{00158\ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00163\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00164\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_mult_m_v_a27fae193b34ede20c99e58e45a2d7c44}{MultMV<'N'>::MultMV}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7df673aaa8ae93afce60327f55baa111}{m}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ std::complex<double>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a6d6dd8144d8ef77e6e6e38a896d6f582}{a}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a4440d35e17c9f6f3d6e40afbb3d254f5}{lda}},}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af63a2a19cdc9df6a1e68c8d0481d4281}{beta}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}})}
+\DoxyCodeLine{00167\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ zgemv(\textcolor{stringliteral}{"{}N"{}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7df673aaa8ae93afce60327f55baa111}{m}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a6d6dd8144d8ef77e6e6e38a896d6f582}{a}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a4440d35e17c9f6f3d6e40afbb3d254f5}{lda}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a705e453a1dd5e1c1c4886507c3df4e90}{x}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2528be75978b90bf71d711c0a5fda2d1}{incx}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af63a2a19cdc9df6a1e68c8d0481d4281}{beta}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_ad7049388b35146136de38e05fbd85f32}{y}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_aa4a5cc21547311dd6c46f4c3dbcf25a6}{incy}});}
+\DoxyCodeLine{00169\ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00172\ \textcolor{comment}{template\ <char\ uplo,\ char\ trans,\ char\ diag>}}
+\DoxyCodeLine{00173\ \textcolor{comment}{struct\ MultTrV\{\ //\ ztrmv,\ dtrmv,\ ctrmv,\ strmv}}
+\DoxyCodeLine{00174\ \textcolor{comment}{\ \ \ \ template\ <class\ T>}}
+\DoxyCodeLine{00175\ \textcolor{comment}{\ \ \ \ MultTrV(size\_t\ n,\ const\ T\ *a,\ size\_t\ lda,\ T\ *x,\ size\_t\ incx)\{}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(n\ <\ 1)\{\ return;\ \}}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ noconj\ =\ ('T'\ ==\ trans);}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ nounit\ =\ ('N'\ ==\ trans);}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ \ \ \ \ \ if('N'\ ==\ trans)\{\ //\ x\ <-\/\ A*x}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ *xx\ =\ x;}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if('U'\ ==\ uplo)\{}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ *xx)\{}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp(*xx);}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *x2\ =\ x;}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ j;\ ++i)\{}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *x2\ +=\ temp*a[i+j*lda];}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ +=\ incx;}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ *xx\ *=\ a[j+j*lda];\ \}}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ +=\ incx;}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ j\ =\ n;}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ +=\ (n-\/1)*incx;}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *x2i\ =\ xx;}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ while(j\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ *xx)\{}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp(*xx);}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *x2\ =\ x2i;}}
+\DoxyCodeLine{00203\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ n;}}
+\DoxyCodeLine{00204\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ while(i\ -\/-\/>\ j+1)\{}}
+\DoxyCodeLine{00205\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *x2\ +=\ temp*a[i+j*lda];}}
+\DoxyCodeLine{00206\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ -\/=\ incx;}}
+\DoxyCodeLine{00207\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00208\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ *xx\ *=\ a[j+j*lda];\ \}}}
+\DoxyCodeLine{00209\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00210\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ -\/=\ incx;}}
+\DoxyCodeLine{00211\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00213\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\{\ //\ x\ <-\/\ A'*x\ or\ x\ <-\/\ conj(A')*x;}}
+\DoxyCodeLine{00214\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if('U'\ ==\ uplo)\{}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xx\ =\ x\ +\ (n-\/1)*incx;}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ j\ =\ n;}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ while(j\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp(*xx);}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *x2\ =\ xx;}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ temp\ *=\ a[j+j*lda];\ \}}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ j-\/1;}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ while(i\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ -\/=\ incx;}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ a[i+j*lda]*(*x2);}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ temp\ *=\ \_RealOrComplexChooser<T>::\_conj(a[j+j*lda]);\ \}}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ j-\/1;}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ while(i\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ -\/=\ incx;}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])*(*x2);}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xx\ =\ temp;}}
+\DoxyCodeLine{00236\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ -\/=\ incx;}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00238\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00239\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xx\ =\ x;}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp(*xx);}}
+\DoxyCodeLine{00242\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *x2\ =\ xx;}}
+\DoxyCodeLine{00243\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00244\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ temp\ *=\ a[j+j*lda];\ \}}}
+\DoxyCodeLine{00245\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ j+1;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00246\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ +=\ incx;}}
+\DoxyCodeLine{00247\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ a[i+j*lda]*(*x2);}}
+\DoxyCodeLine{00248\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00249\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00250\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{\ temp\ *=\ \_RealOrComplexChooser<T>::\_conj(a[j+j*lda]);\ \}}}
+\DoxyCodeLine{00251\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ j+1;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00252\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x2\ +=\ incx;}}
+\DoxyCodeLine{00253\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])*(*x2);}}
+\DoxyCodeLine{00254\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00255\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00256\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xx\ =\ temp;}}
+\DoxyCodeLine{00257\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ +=\ incx;}}
+\DoxyCodeLine{00258\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00259\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00263\ \textcolor{comment}{}}
+\DoxyCodeLine{00264\ \textcolor{comment}{}}
+\DoxyCodeLine{00265\ \textcolor{comment}{template\ <char\ uplo>}}
+\DoxyCodeLine{00266\ \textcolor{comment}{struct\ MultHermV\{\ //\ zhemv,\ chemv,\ dsymv,\ ssymv}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ \ template\ <class\ TA,\ class\ TB,\ class\ T>}}
+\DoxyCodeLine{00268\ \textcolor{comment}{\ \ \ \ MultHermV(size\_t\ n,\ const\ TA\ \&alpha,\ const\ T\ *a,\ size\_t\ lda,\ const\ T\ *x,\ size\_t\ incx,\ const\ TB\ \&beta,\ T\ *y,\ size\_t\ incy)\{}}
+\DoxyCodeLine{00269\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00270\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ZHEMV\ \ performs\ the\ matrix-\/vector\ \ operation}}
+\DoxyCodeLine{00271\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ y\ :=\ alpha*A*x\ +\ beta*y,}}
+\DoxyCodeLine{00272\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ where\ alpha\ and\ beta\ are\ scalars,\ x\ and\ y\ are\ n\ element\ vectors\ and}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ is\ an\ n\ by\ n\ hermitian\ matrix.}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00275\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Arguments}}
+\DoxyCodeLine{00276\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ==========}}
+\DoxyCodeLine{00277\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ UPLO\ specifies\ whether\ the\ upper\ or\ lower}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ triangular\ part\ of\ the\ array\ A\ is\ to\ be\ referenced\ as}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ follows:}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO\ =\ 'U'\ or\ 'u'\ \ \ Only\ the\ upper\ triangular\ part\ of\ A}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ is\ to\ be\ referenced.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO\ =\ 'L'\ or\ 'l'\ \ \ Only\ the\ lower\ triangular\ part\ of\ A}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ is\ to\ be\ referenced.}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ N\ \ \ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ N\ specifies\ the\ order\ of\ the\ matrix\ A.}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ N\ must\ be\ at\ least\ zero.}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ALPHA\ \ -\/\ std::complex<double>\ \ \ \ \ \ .}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ ALPHA\ specifies\ the\ scalar\ alpha.}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ \ \ \ \ \ -\/\ std::complex<double>\ \ \ \ \ \ \ array\ of\ DIMENSION\ (\ LDA,\ n\ ).}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry\ with\ \ UPLO\ =\ 'U'\ or\ 'u',\ the\ leading\ n\ by\ n}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ upper\ triangular\ part\ of\ the\ array\ A\ must\ contain\ the\ upper}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ triangular\ part\ of\ the\ hermitian\ matrix\ and\ the\ strictly}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ lower\ triangular\ part\ of\ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry\ with\ UPLO\ =\ 'L'\ or\ 'l',\ the\ leading\ n\ by\ n}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ lower\ triangular\ part\ of\ the\ array\ A\ must\ contain\ the\ lower}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ triangular\ part\ of\ the\ hermitian\ matrix\ and\ the\ strictly}}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ upper\ triangular\ part\ of\ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00305\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Note\ that\ the\ imaginary\ parts\ of\ the\ diagonal\ elements\ need}}
+\DoxyCodeLine{00306\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ not\ be\ set\ and\ are\ assumed\ to\ be\ zero.}}
+\DoxyCodeLine{00307\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00308\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDA\ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00309\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ LDA\ specifies\ the\ first\ dimension\ of\ A\ as\ declared}}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ in\ the\ calling\ (sub)\ program.\ LDA\ must\ be\ at\ least}}
+\DoxyCodeLine{00311\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ max(\ 1,\ n\ ).}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Unchanged\ on\ exit.}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ X\ \ \ \ \ \ -\/\ std::complex<double>\ \ \ \ \ \ \ array\ of\ dimension\ at\ least}}
+\DoxyCodeLine{00315\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ (\ 1\ +\ (\ n\ -\/\ 1\ )*abs(\ INCX\ )\ ).}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry,\ the\ incremented\ array\ X\ must\ contain\ the\ n}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ element\ vector\ x.}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ INCX\ \ \ -\/\ int.}}
+\DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ INCX\ specifies\ the\ increment\ for\ the\ elements\ of}}
+\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ X.\ INCX\ must\ not\ be\ zero.}}
+\DoxyCodeLine{00322\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00323\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ BETA\ \ \ -\/\ std::complex<double>\ \ \ \ \ \ .}}
+\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ BETA\ specifies\ the\ scalar\ beta.\ When\ BETA\ is}}
+\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ supplied\ as\ zero\ then\ Y\ need\ not\ be\ set\ on\ input.}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00327\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Y\ \ \ \ \ \ -\/\ std::complex<double>\ \ \ \ \ \ \ array\ of\ dimension\ at\ least}}
+\DoxyCodeLine{00328\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ (\ 1\ +\ (\ n\ -\/\ 1\ )*abs(\ INCY\ )\ ).}}
+\DoxyCodeLine{00329\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry,\ the\ incremented\ array\ Y\ must\ contain\ the\ n}}
+\DoxyCodeLine{00330\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ element\ vector\ y.\ On\ exit,\ Y\ is\ overwritten\ by\ the\ updated}}
+\DoxyCodeLine{00331\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ vector\ y.}}
+\DoxyCodeLine{00332\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00333\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ INCY\ \ \ -\/\ int.}}
+\DoxyCodeLine{00334\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ INCY\ specifies\ the\ increment\ for\ the\ elements\ of}}
+\DoxyCodeLine{00335\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Y.\ INCY\ must\ not\ be\ zero.}}
+\DoxyCodeLine{00336\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00337\ \textcolor{comment}{\ \ \ \ \ \ \ \ if((n\ ==\ 0)\ ||\ ((alpha\ ==\ TA(0))\ \&\&\ (beta\ ==\ TB(1))))\{\ return;\ \}}}
+\DoxyCodeLine{00338\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(beta\ !=\ TB(1))\{\ //\ First\ form\ \ y\ :=\ beta*y.}}
+\DoxyCodeLine{00339\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ *yy\ =\ y;}}
+\DoxyCodeLine{00340\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(beta\ ==\ TB(0))\{}}
+\DoxyCodeLine{00341\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00342\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yy\ =\ 0;}}
+\DoxyCodeLine{00343\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yy\ +=\ incy;}}
+\DoxyCodeLine{00344\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00345\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00346\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00347\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yy\ *=\ beta;}}
+\DoxyCodeLine{00348\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yy\ +=\ incy;}}
+\DoxyCodeLine{00349\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00350\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00351\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00352\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(alpha\ ==\ TA(0))\ return;}}
+\DoxyCodeLine{00353\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(uplo\ ==\ 'U')\{\ //\ Form\ y\ when\ A\ is\ stored\ in\ upper\ triangle.}}
+\DoxyCodeLine{00354\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xj\ =\ x;}}
+\DoxyCodeLine{00355\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ *yj\ =\ y;}}
+\DoxyCodeLine{00356\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ \ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00357\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp1\ =\ alpha*(*xj);}}
+\DoxyCodeLine{00358\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp2\ =\ 0;}}
+\DoxyCodeLine{00359\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xi\ =\ x;}}
+\DoxyCodeLine{00360\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *yi\ =\ y;}}
+\DoxyCodeLine{00361\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ j;\ ++i)\{}}
+\DoxyCodeLine{00362\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yi\ +=\ temp1*a[i+j*lda];}}
+\DoxyCodeLine{00363\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp2\ +=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])*(*xi);}}
+\DoxyCodeLine{00364\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xi\ +=\ incx;}}
+\DoxyCodeLine{00365\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yi\ +=\ incy;}}
+\DoxyCodeLine{00366\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00367\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yj\ +=\ temp1*\_RealOrComplexChooser<T>::\_real(a[j+j*lda])\ +\ alpha*temp2;}}
+\DoxyCodeLine{00368\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xj\ +=\ incx;}}
+\DoxyCodeLine{00369\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yj\ +=\ incy;}}
+\DoxyCodeLine{00370\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00371\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\{\ //\ Form\ y\ when\ A\ is\ stored\ in\ lower\ triangle.}}
+\DoxyCodeLine{00372\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xj\ =\ x;}}
+\DoxyCodeLine{00373\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ *yj\ =\ y;}}
+\DoxyCodeLine{00374\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00375\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp1\ =\ alpha*(*xj);}}
+\DoxyCodeLine{00376\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp2\ =\ 0;}}
+\DoxyCodeLine{00377\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yj\ +=\ temp1*\_RealOrComplexChooser<T>::\_real(a[j+j*lda]);}}
+\DoxyCodeLine{00378\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xi\ =\ xj+1;}}
+\DoxyCodeLine{00379\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *yi\ =\ yj+1;}}
+\DoxyCodeLine{00380\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ j+1;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00381\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yi\ +=\ temp1*a[i+j*lda];}}
+\DoxyCodeLine{00382\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp2\ +=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])*(*xi);}}
+\DoxyCodeLine{00383\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xi\ +=\ incx;}}
+\DoxyCodeLine{00384\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yi\ +=\ incy;}}
+\DoxyCodeLine{00385\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00386\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *yj\ +=\ alpha*temp2;}}
+\DoxyCodeLine{00387\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xj\ +=\ incx;}}
+\DoxyCodeLine{00388\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yj\ +=\ incy;}}
+\DoxyCodeLine{00389\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00390\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00391\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00392\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00393\ \textcolor{comment}{}}
+\DoxyCodeLine{00394\ \textcolor{comment}{template\ <char\ uplo,\ char\ trans,\ char\ diag>}}
+\DoxyCodeLine{00395\ \textcolor{comment}{struct\ SolveTrV\{\ //\ ztrsv,\ dtrsv,\ ctrsv,\ strsv}}
+\DoxyCodeLine{00396\ \textcolor{comment}{\ \ \ \ template\ <class\ T>}}
+\DoxyCodeLine{00397\ \textcolor{comment}{\ \ \ \ SolveTrV(size\_t\ n,\ const\ T\ *a,\ size\_t\ lda,\ T\ *x,\ size\_t\ incx)\{}}
+\DoxyCodeLine{00398\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ZTRSV\ \ solves\ one\ of\ the\ systems\ of\ equations}}
+\DoxyCodeLine{00399\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ A*x\ =\ b,\ \ \ or\ \ \ A'*x\ =\ b,\ \ \ or\ \ \ conjg(\ A'\ )*x\ =\ b,}}
+\DoxyCodeLine{00400\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ where\ b\ and\ x\ are\ n\ element\ vectors\ and\ A\ is\ an\ n\ by\ n\ unit,\ or}}
+\DoxyCodeLine{00401\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ non-\/unit,\ upper\ or\ lower\ triangular\ matrix.}}
+\DoxyCodeLine{00402\ \textcolor{comment}{}}
+\DoxyCodeLine{00403\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ No\ test\ for\ singularity\ or\ near-\/singularity\ is\ included\ in\ this}}
+\DoxyCodeLine{00404\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ routine.\ Such\ tests\ must\ be\ performed\ before\ calling\ this\ routine.}}
+\DoxyCodeLine{00405\ \textcolor{comment}{}}
+\DoxyCodeLine{00406\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Arguments}}
+\DoxyCodeLine{00407\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ==========}}
+\DoxyCodeLine{00408\ \textcolor{comment}{}}
+\DoxyCodeLine{00409\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO\ \ \ -\/\ whether\ the\ matrix\ is\ an\ upper\ or}}
+\DoxyCodeLine{00410\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ lower\ triangular\ matrix\ as\ follows:}}
+\DoxyCodeLine{00411\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ UPLO\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ an\ upper\ triangular\ matrix.}}
+\DoxyCodeLine{00412\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ UPLO\ =\ 'L'\ or\ 'l'\ \ \ A\ is\ a\ lower\ triangular\ matrix.}}
+\DoxyCodeLine{00413\ \textcolor{comment}{}}
+\DoxyCodeLine{00414\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ TRANS\ \ -\/\ specifies\ the\ equations\ to\ be\ solved\ as\ follows:}}
+\DoxyCodeLine{00415\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANS\ =\ 'N'\ or\ 'n'\ \ \ A*x\ =\ b.}}
+\DoxyCodeLine{00416\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANS\ =\ 'T'\ or\ 't'\ \ \ A'*x\ =\ b.}}
+\DoxyCodeLine{00417\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANS\ =\ 'C'\ or\ 'c'\ \ \ conjg(\ A'\ )*x\ =\ b.}}
+\DoxyCodeLine{00418\ \textcolor{comment}{}}
+\DoxyCodeLine{00419\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ DIAG\ \ \ -\/\ whether\ or\ not\ A\ is\ unit\ triangular\ as\ follows:}}
+\DoxyCodeLine{00420\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ DIAG\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ assumed\ to\ be\ unit\ triangular.}}
+\DoxyCodeLine{00421\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ DIAG\ =\ 'N'\ or\ 'n'\ \ \ A\ is\ not\ assumed\ to\ be\ unit}}
+\DoxyCodeLine{00422\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ triangular.}}
+\DoxyCodeLine{00423\ \textcolor{comment}{}}
+\DoxyCodeLine{00424\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ N\ \ \ \ \ \ -\/\ the\ order\ of\ the\ matrix\ A.\ N\ must\ be\ at\ least\ zero.}}
+\DoxyCodeLine{00425\ \textcolor{comment}{}}
+\DoxyCodeLine{00426\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ \ \ \ \ \ -\/\ COMPLEX*16\ \ \ \ \ \ \ array\ of\ DIMENSION\ (\ LDA,\ n\ ).}}
+\DoxyCodeLine{00427\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry\ with\ \ UPLO\ =\ 'U'\ or\ 'u',\ the\ leading\ n\ by\ n}}
+\DoxyCodeLine{00428\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ upper\ triangular\ part\ of\ the\ array\ A\ must\ contain\ the\ upper}}
+\DoxyCodeLine{00429\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ triangular\ matrix\ and\ the\ strictly\ lower\ triangular\ part\ of}}
+\DoxyCodeLine{00430\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00431\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry\ with\ UPLO\ =\ 'L'\ or\ 'l',\ the\ leading\ n\ by\ n}}
+\DoxyCodeLine{00432\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ lower\ triangular\ part\ of\ the\ array\ A\ must\ contain\ the\ lower}}
+\DoxyCodeLine{00433\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ triangular\ matrix\ and\ the\ strictly\ upper\ triangular\ part\ of}}
+\DoxyCodeLine{00434\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00435\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Note\ that\ when\ \ DIAG\ =\ 'U'\ or\ 'u',\ the\ diagonal\ elements\ of}}
+\DoxyCodeLine{00436\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ are\ not\ referenced\ either,\ but\ are\ assumed\ to\ be\ unity.}}
+\DoxyCodeLine{00437\ \textcolor{comment}{}}
+\DoxyCodeLine{00438\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDA\ \ \ \ -\/\ the\ first\ dimension\ of\ A\ as\ declared}}
+\DoxyCodeLine{00439\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ in\ the\ calling\ (sub)\ program.\ LDA\ must\ be\ at\ least}}
+\DoxyCodeLine{00440\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ max(\ 1,\ n\ ).}}
+\DoxyCodeLine{00441\ \textcolor{comment}{}}
+\DoxyCodeLine{00442\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ X\ \ \ \ \ \ -\/\ COMPLEX*16\ \ \ \ \ \ \ array\ of\ dimension\ at\ least}}
+\DoxyCodeLine{00443\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ (\ 1\ +\ (\ n\ -\/\ 1\ )*abs(\ INCX\ )\ ).}}
+\DoxyCodeLine{00444\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry,\ the\ incremented\ array\ X\ must\ contain\ the\ n}}
+\DoxyCodeLine{00445\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ element\ right-\/hand\ side\ vector\ b.\ On\ exit,\ X\ is\ overwritten}}
+\DoxyCodeLine{00446\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ with\ the\ solution\ vector\ x.}}
+\DoxyCodeLine{00447\ \textcolor{comment}{}}
+\DoxyCodeLine{00448\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ INCX\ \ \ -\/\ the\ increment\ for\ the\ elements\ of\ X.\ INCX\ must\ not\ be\ zero.}}
+\DoxyCodeLine{00449\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00450\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(n\ ==\ 0)\{\ return;\ \}}}
+\DoxyCodeLine{00451\ \textcolor{comment}{}}
+\DoxyCodeLine{00452\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ noconj\ =\ (trans\ ==\ 'T');}}
+\DoxyCodeLine{00453\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ nounit\ =\ (diag\ ==\ 'N');}}
+\DoxyCodeLine{00454\ \textcolor{comment}{}}
+\DoxyCodeLine{00455\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Start\ the\ operations.\ In\ this\ version\ the\ elements\ of\ A\ are}}
+\DoxyCodeLine{00456\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ accessed\ sequentially\ with\ one\ pass\ through\ A.}}
+\DoxyCodeLine{00457\ \textcolor{comment}{}}
+\DoxyCodeLine{00458\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(trans\ ==\ 'N')\{\ //\ Form\ \ x\ :=\ inv(\ A\ )*x.}}
+\DoxyCodeLine{00459\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(uplo\ ==\ 'U')\{}}
+\DoxyCodeLine{00460\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xjx\ =\ x\ +\ (n-\/1)*incx;}}
+\DoxyCodeLine{00461\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ j\ =\ n;\ while(j\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00462\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(*xjx\ !=\ 0.)\{}}
+\DoxyCodeLine{00463\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00464\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xjx\ /=\ a[j+j*lda];}}
+\DoxyCodeLine{00465\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00466\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ *xjx;}}
+\DoxyCodeLine{00467\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xix\ =\ xjx;}}
+\DoxyCodeLine{00468\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ j;\ while(i\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00469\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ -\/=\ incx;}}
+\DoxyCodeLine{00470\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xix\ -\/=\ temp\ *\ a[i+j*lda];}}
+\DoxyCodeLine{00471\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00472\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00473\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xjx\ -\/=\ incx;}}
+\DoxyCodeLine{00474\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00475\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00476\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xjx\ =\ x;}}
+\DoxyCodeLine{00477\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00478\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(*xjx\ !=\ 0.)\{}}
+\DoxyCodeLine{00479\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00480\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xjx\ /=\ a[j+j*lda];}}
+\DoxyCodeLine{00481\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00482\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ *xjx;}}
+\DoxyCodeLine{00483\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xix\ =\ xjx;}}
+\DoxyCodeLine{00484\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ j;\ i\ <\ n;\ ++i)\{}}
+\DoxyCodeLine{00485\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ +=\ incx;}}
+\DoxyCodeLine{00486\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xix\ -\/=\ temp\ *\ a[i+j*lda];}}
+\DoxyCodeLine{00487\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00488\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00489\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xjx\ +=\ incx;}}
+\DoxyCodeLine{00490\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00491\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00492\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\{\ //\ Form\ \ x\ :=\ inv(\ A'\ )*x\ \ or\ \ x\ :=\ inv(\ conjg(\ A'\ )\ )*x.}}
+\DoxyCodeLine{00493\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(uplo\ ==\ 'U')\{}}
+\DoxyCodeLine{00494\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xjx\ =\ x;}}
+\DoxyCodeLine{00495\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00496\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ xix\ =\ x;}}
+\DoxyCodeLine{00497\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ *xjx;}}
+\DoxyCodeLine{00498\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00499\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ j;\ ++i)\{}}
+\DoxyCodeLine{00500\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ a[i+j*lda]\ *\ *xix;}}
+\DoxyCodeLine{00501\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ +=\ incx;}}
+\DoxyCodeLine{00502\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00503\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00504\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ a[j+j*lda];}}
+\DoxyCodeLine{00505\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00506\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00507\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ j;\ ++i)\{}}
+\DoxyCodeLine{00508\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])\ *\ *xix;}}
+\DoxyCodeLine{00509\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ +=\ incx;}}
+\DoxyCodeLine{00510\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00511\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00512\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ \_RealOrComplexChooser<T>::\_conj(a[j+j*lda]);}}
+\DoxyCodeLine{00513\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00514\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00515\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xjx\ =\ temp;}}
+\DoxyCodeLine{00516\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xjx\ +=\ incx;}}
+\DoxyCodeLine{00517\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00518\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00519\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xjx\ =\ x\ +\ (n-\/1)*incx;}}
+\DoxyCodeLine{00520\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ j\ =\ n;\ while(j\ -\/-\/>\ 0)\{}}
+\DoxyCodeLine{00521\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xix\ =\ x\ +\ (n-\/1)*incx;}}
+\DoxyCodeLine{00522\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ *xjx;}}
+\DoxyCodeLine{00523\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00524\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ n;\ while(i\ -\/-\/>\ j+2)\{}}
+\DoxyCodeLine{00525\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ a[i+j*lda]\ *\ *xix;}}
+\DoxyCodeLine{00526\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ -\/=\ incx;}}
+\DoxyCodeLine{00527\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00528\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00529\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ a[j+j*lda];}}
+\DoxyCodeLine{00530\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00531\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00532\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\_t\ i\ =\ n;\ while(i\ -\/-\/>\ j+2)\{}}
+\DoxyCodeLine{00533\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ \_RealOrComplexChooser<T>::\_conj(a[i+j*lda])\ *\ *xix;}}
+\DoxyCodeLine{00534\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xix\ -\/=\ incx;}}
+\DoxyCodeLine{00535\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00536\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00537\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ \_RealOrComplexChooser<T>::\_conj(a[j+j*lda]);}}
+\DoxyCodeLine{00538\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00539\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00540\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *xjx\ =\ temp;}}
+\DoxyCodeLine{00541\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xjx\ -\/=\ incx;}}
+\DoxyCodeLine{00542\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00543\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00544\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00545\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00546\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00547\ \textcolor{comment}{}}
+\DoxyCodeLine{00548\ \textcolor{comment}{}}
+\DoxyCodeLine{00549\ \textcolor{comment}{template\ <class\ A,\ class\ T>\ //\ zgeru,\ dgeru,\ cgeru,\ sgeru}}
+\DoxyCodeLine{00550\ \textcolor{comment}{void\ Rank1Update(size\_t\ m,\ size\_t\ n,\ const\ A\ \&alpha,\ const\ T\ *x,\ size\_t\ incx,\ const\ T\ *y,\ size\_t\ incy,\ T\ *a,\ size\_t\ lda)\{}}
+\DoxyCodeLine{00551\ \textcolor{comment}{\ \ \ \ //\ performs\ A\ +=\ alpha*x*conj(y')}}
+\DoxyCodeLine{00552\ \textcolor{comment}{\ \ \ \ if(m\ <\ 1\ ||\ n\ <\ 1\ ||\ A(0)\ ==\ alpha)\{\ return;\ \}}}
+\DoxyCodeLine{00553\ \textcolor{comment}{\ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00554\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(T(0)\ !=\ *y)\{}}
+\DoxyCodeLine{00555\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha*(*y);}}
+\DoxyCodeLine{00556\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xx\ =\ x;}}
+\DoxyCodeLine{00557\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00558\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[i+j*lda]\ +=\ (*xx)*temp;}}
+\DoxyCodeLine{00559\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ +=\ incx;}}
+\DoxyCodeLine{00560\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00561\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00562\ \textcolor{comment}{\ \ \ \ \ \ \ \ y\ +=\ incy;}}
+\DoxyCodeLine{00563\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00564\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00565\ \textcolor{comment}{}}
+\DoxyCodeLine{00566\ \textcolor{comment}{template\ <class\ A,\ class\ T>\ //\ zgerc,\ cgerc}}
+\DoxyCodeLine{00567\ \textcolor{comment}{void\ ConjugateRank1Update(size\_t\ m,\ size\_t\ n,\ const\ A\ \&alpha,\ const\ T\ *x,\ size\_t\ incx,\ const\ T\ *y,\ size\_t\ incy,\ T\ *a,\ size\_t\ lda)\{}}
+\DoxyCodeLine{00568\ \textcolor{comment}{\ \ \ \ //\ performs\ A\ +=\ alpha*x*conj(y')}}
+\DoxyCodeLine{00569\ \textcolor{comment}{\ \ \ \ if(m\ <\ 1\ ||\ n\ <\ 1\ ||\ A(0)\ ==\ alpha)\{\ return;\ \}}}
+\DoxyCodeLine{00570\ \textcolor{comment}{\ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00571\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(T(0)\ !=\ *y)\{}}
+\DoxyCodeLine{00572\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha*\_RealOrComplexChooser<T>::\_conj(*y);}}
+\DoxyCodeLine{00573\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ const\ T\ *xx\ =\ x;}}
+\DoxyCodeLine{00574\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00575\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[i+j*lda]\ +=\ (*xx)*temp;}}
+\DoxyCodeLine{00576\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xx\ +=\ incx;}}
+\DoxyCodeLine{00577\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00578\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00579\ \textcolor{comment}{\ \ \ \ \ \ \ \ y\ +=\ incy;}}
+\DoxyCodeLine{00580\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00581\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00582\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_eigensystems__essl_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgemm,ZGEMM)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *transa,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a8486c9975d519df0b977dde4a4e23a05}{transb}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7df673aaa8ae93afce60327f55baa111}{m}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&}
+\DoxyCodeLine{00586\ \ \ \ \ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a14354d8cae7a1f74571561bffeffd23b}{k}},\ \textcolor{keyword}{const}\ std::complex<double>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a6d6dd8144d8ef77e6e6e38a896d6f582}{a}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a4440d35e17c9f6f3d6e40afbb3d254f5}{lda}},\ }
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9bb14992feb6589df3c466d8e4b6bfb8}{b}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2115a86ca2dc34a84a67d3b1df09a828}{ldb}},\ \textcolor{keyword}{const}\ std::complex<double>\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af63a2a19cdc9df6a1e68c8d0481d4281}{beta}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a5fc36f2296850e4a28d0b682a0525943}{c}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a1cc8bd01e7a2e4fd186cfef477e3ec0d}{ldc}});}
+\DoxyCodeLine{00588\ \ \ \ \ }
+\DoxyCodeLine{00589\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00590\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00591\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_r_n_p_1_1_t_b_l_a_s_1_1_mult_m_m_ae00ff946e7a84e2da648b1e3fa185d9f}{MultMM<'N','N'>::MultMM}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7df673aaa8ae93afce60327f55baa111}{m}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a14354d8cae7a1f74571561bffeffd23b}{k}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}},\ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a6d6dd8144d8ef77e6e6e38a896d6f582}{a}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a4440d35e17c9f6f3d6e40afbb3d254f5}{lda}},}
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keyword}{const}\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9bb14992feb6589df3c466d8e4b6bfb8}{b}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2115a86ca2dc34a84a67d3b1df09a828}{ldb}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af63a2a19cdc9df6a1e68c8d0481d4281}{beta}},\ std::complex<double>\ *\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a5fc36f2296850e4a28d0b682a0525943}{c}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a1cc8bd01e7a2e4fd186cfef477e3ec0d}{ldc}})\{}
+\DoxyCodeLine{00593\ \ \ \ \ \mbox{\hyperlink{_eigensystems__essl_8h_a5076f0e04fa42fff93367cfe08f78a73}{RNP\_FORTRAN\_NAME}}(zgemm,ZGEMM)(\textcolor{stringliteral}{"{}N"{}},\ \textcolor{stringliteral}{"{}N"{}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a7df673aaa8ae93afce60327f55baa111}{m}},\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af1c47df7a8cbe34eebb3e1827fe36d9a}{n}},\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a14354d8cae7a1f74571561bffeffd23b}{k}},\ std::complex<double>(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a40a079772ffcaa9f7ff4ef8295668fda}{alpha}}),\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a6d6dd8144d8ef77e6e6e38a896d6f582}{a}},\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a4440d35e17c9f6f3d6e40afbb3d254f5}{lda}},\ \mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a9bb14992feb6589df3c466d8e4b6bfb8}{b}},\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a2115a86ca2dc34a84a67d3b1df09a828}{ldb}},\ std::complex<double>(\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_af63a2a19cdc9df6a1e68c8d0481d4281}{beta}}),\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a5fc36f2296850e4a28d0b682a0525943}{c}},\mbox{\hyperlink{namespace_r_n_p_1_1_t_b_l_a_s_a1cc8bd01e7a2e4fd186cfef477e3ec0d}{ldc}});}
+\DoxyCodeLine{00594\ \}}
+\DoxyCodeLine{00595\ }
+\DoxyCodeLine{00596\ }
+\DoxyCodeLine{00597\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00598\ \textcolor{comment}{}}
+\DoxyCodeLine{00599\ \textcolor{comment}{template\ <char\ side,\ char\ uplo,\ char\ transa,\ char\ diag>}}
+\DoxyCodeLine{00600\ \textcolor{comment}{struct\ MultTrM\{\ //\ ztrmm,\ dtrmm,\ ctrmm,\ strmm}}
+\DoxyCodeLine{00601\ \textcolor{comment}{\ \ \ \ template\ <class\ T,\ class\ TA>}}
+\DoxyCodeLine{00602\ \textcolor{comment}{\ \ \ \ MultTrM(size\_t\ m,\ size\_t\ n,\ const\ TA\ \&alpha,\ const\ T\ *a,\ size\_t\ lda,\ T\ *b,\ size\_t\ ldb)\{}}
+\DoxyCodeLine{00603\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Purpose}}
+\DoxyCodeLine{00604\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ =======}}
+\DoxyCodeLine{00605\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00606\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ZTRMM\ \ performs\ one\ of\ the\ matrix-\/matrix\ operations}}
+\DoxyCodeLine{00607\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ B\ :=\ alpha*op(\ A\ )*B,\ \ \ or\ \ \ B\ :=\ alpha*B*op(\ A\ )}}
+\DoxyCodeLine{00608\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ where\ \ alpha\ \ is\ a\ scalar,\ \ B\ \ is\ an\ m\ by\ n\ matrix,\ \ A\ \ is\ a\ unit,\ or}}
+\DoxyCodeLine{00609\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ non-\/unit,\ \ upper\ or\ lower\ triangular\ matrix\ \ and\ \ op(\ A\ )\ \ is\ one\ \ of}}
+\DoxyCodeLine{00610\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ op(\ A\ )\ =\ A\ \ \ or\ \ \ op(\ A\ )\ =\ A'\ \ \ or\ \ \ op(\ A\ )\ =\ conjg(\ A'\ ).}}
+\DoxyCodeLine{00611\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00612\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Arguments}}
+\DoxyCodeLine{00613\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ==========}}
+\DoxyCodeLine{00614\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00615\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ SIDE\ \ \ -\/\ char*1.}}
+\DoxyCodeLine{00616\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ \ SIDE\ specifies\ whether\ \ op(\ A\ )\ multiplies\ B\ from}}
+\DoxyCodeLine{00617\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ the\ left\ or\ right\ as\ follows:}}
+\DoxyCodeLine{00618\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ SIDE\ =\ 'L'\ or\ 'l'\ \ \ B\ :=\ alpha*op(\ A\ )*B.}}
+\DoxyCodeLine{00619\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ SIDE\ =\ 'R'\ or\ 'r'\ \ \ B\ :=\ alpha*B*op(\ A\ ).}}
+\DoxyCodeLine{00620\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00621\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO\ \ \ -\/\ char*1.}}
+\DoxyCodeLine{00622\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ UPLO\ specifies\ whether\ the\ matrix\ A\ is\ an\ upper\ or}}
+\DoxyCodeLine{00623\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ lower\ triangular\ matrix\ as\ follows:}}
+\DoxyCodeLine{00624\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ UPLO\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ an\ upper\ triangular\ matrix.}}
+\DoxyCodeLine{00625\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ UPLO\ =\ 'L'\ or\ 'l'\ \ \ A\ is\ a\ lower\ triangular\ matrix.}}
+\DoxyCodeLine{00626\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00627\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ TRANSA\ -\/\ char*1.}}
+\DoxyCodeLine{00628\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ TRANSA\ specifies\ the\ form\ of\ op(\ A\ )\ to\ be\ used\ in}}
+\DoxyCodeLine{00629\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ the\ matrix\ multiplication\ as\ follows:}}
+\DoxyCodeLine{00630\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ TRANSA\ =\ 'N'\ or\ 'n'\ \ \ op(\ A\ )\ =\ A.}}
+\DoxyCodeLine{00631\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ TRANSA\ =\ 'T'\ or\ 't'\ \ \ op(\ A\ )\ =\ A'.}}
+\DoxyCodeLine{00632\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ TRANSA\ =\ 'C'\ or\ 'c'\ \ \ op(\ A\ )\ =\ conjg(\ A'\ ).}}
+\DoxyCodeLine{00633\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00634\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ DIAG\ \ \ -\/\ char*1.}}
+\DoxyCodeLine{00635\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ DIAG\ specifies\ whether\ or\ not\ A\ is\ unit\ triangular}}
+\DoxyCodeLine{00636\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ as\ follows:}}
+\DoxyCodeLine{00637\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ DIAG\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ assumed\ to\ be\ unit\ triangular.}}
+\DoxyCodeLine{00638\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ DIAG\ =\ 'N'\ or\ 'n'\ \ \ A\ is\ not\ assumed\ to\ be\ unit\ triangular.}}
+\DoxyCodeLine{00639\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00640\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ M\ \ \ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00641\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ M\ specifies\ the\ number\ of\ rows\ of\ B.\ M\ must\ be\ at}}
+\DoxyCodeLine{00642\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ least\ zero.}}
+\DoxyCodeLine{00643\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00644\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ N\ \ \ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00645\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ N\ specifies\ the\ number\ of\ columns\ of\ B.\ \ N\ must\ be}}
+\DoxyCodeLine{00646\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ at\ least\ zero.}}
+\DoxyCodeLine{00647\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00648\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ALPHA\ \ -\/\ std::complex<double>\ \ \ \ \ \ .}}
+\DoxyCodeLine{00649\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ \ ALPHA\ specifies\ the\ scalar\ \ alpha.\ When\ \ alpha\ is}}
+\DoxyCodeLine{00650\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ zero\ then\ \ A\ is\ not\ referenced\ and\ \ B\ need\ not\ be\ set\ before}}
+\DoxyCodeLine{00651\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ entry.}}
+\DoxyCodeLine{00652\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00653\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ \ \ \ \ \ -\/\ std::complex<double>\ \ \ \ \ \ \ array\ of\ DIMENSION\ (\ LDA,\ k\ ),\ where\ k\ is\ m}}
+\DoxyCodeLine{00654\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ when\ \ SIDE\ =\ 'L'\ or\ 'l'\ \ and\ is\ \ n\ \ when\ \ SIDE\ =\ 'R'\ or\ 'r'.}}
+\DoxyCodeLine{00655\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry\ \ with\ \ UPLO\ =\ 'U'\ or\ 'u',\ \ the\ \ leading\ \ k\ by\ k}}
+\DoxyCodeLine{00656\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ upper\ triangular\ part\ of\ the\ array\ \ A\ must\ contain\ the\ upper}}
+\DoxyCodeLine{00657\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ triangular\ matrix\ \ and\ the\ strictly\ lower\ triangular\ part\ of}}
+\DoxyCodeLine{00658\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00659\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry\ \ with\ \ UPLO\ =\ 'L'\ or\ 'l',\ \ the\ \ leading\ \ k\ by\ k}}
+\DoxyCodeLine{00660\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ lower\ triangular\ part\ of\ the\ array\ \ A\ must\ contain\ the\ lower}}
+\DoxyCodeLine{00661\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ triangular\ matrix\ \ and\ the\ strictly\ upper\ triangular\ part\ of}}
+\DoxyCodeLine{00662\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00663\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Note\ that\ when\ \ DIAG\ =\ 'U'\ or\ 'u',\ \ the\ diagonal\ elements\ of}}
+\DoxyCodeLine{00664\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ \ are\ not\ referenced\ either,\ \ but\ are\ assumed\ to\ be\ \ unity.}}
+\DoxyCodeLine{00665\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Unchanged\ on\ exit.}}
+\DoxyCodeLine{00666\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00667\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDA\ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00668\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ LDA\ specifies\ the\ first\ dimension\ of\ A\ as\ declared}}
+\DoxyCodeLine{00669\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ in\ the\ calling\ (sub)\ program.\ \ When\ \ SIDE\ =\ 'L'\ or\ 'l'\ \ then}}
+\DoxyCodeLine{00670\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDA\ \ must\ be\ at\ least\ \ max(\ 1,\ m\ ),\ \ when\ \ SIDE\ =\ 'R'\ or\ 'r'}}
+\DoxyCodeLine{00671\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ then\ LDA\ must\ be\ at\ least\ max(\ 1,\ n\ ).}}
+\DoxyCodeLine{00672\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00673\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ B\ \ \ \ \ \ -\/\ std::complex<double>\ \ \ \ \ \ \ array\ of\ DIMENSION\ (\ LDB,\ n\ ).}}
+\DoxyCodeLine{00674\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Before\ entry,\ \ the\ leading\ \ m\ by\ n\ part\ of\ the\ array\ \ B\ must}}
+\DoxyCodeLine{00675\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ contain\ the\ matrix\ \ B,\ \ and\ \ on\ exit\ \ is\ overwritten\ \ by\ the}}
+\DoxyCodeLine{00676\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ transformed\ matrix.}}
+\DoxyCodeLine{00677\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00678\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDB\ \ \ \ -\/\ int.}}
+\DoxyCodeLine{00679\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ On\ entry,\ LDB\ specifies\ the\ first\ dimension\ of\ B\ as\ declared}}
+\DoxyCodeLine{00680\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ in\ \ the\ \ calling\ \ (sub)\ \ program.\ \ \ LDB\ \ must\ \ be\ \ at\ \ least}}
+\DoxyCodeLine{00681\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ max(\ 1,\ m\ ).}}
+\DoxyCodeLine{00682\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ }}
+\DoxyCodeLine{00683\ \textcolor{comment}{}}
+\DoxyCodeLine{00684\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ lside\ =\ (side\ ==\ 'L');}}
+\DoxyCodeLine{00685\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ noconj\ =\ (transa\ ==\ 'T');}}
+\DoxyCodeLine{00686\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ nounit\ =\ (diag\ ==\ 'N');}}
+\DoxyCodeLine{00687\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ upper\ =\ (uplo\ ==\ 'U');}}
+\DoxyCodeLine{00688\ \textcolor{comment}{\ \ \ \ \ }}
+\DoxyCodeLine{00689\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(m\ ==\ 0\ ||\ n\ ==\ 0)\{\ return;\ \}}}
+\DoxyCodeLine{00690\ \textcolor{comment}{}}
+\DoxyCodeLine{00691\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(alpha\ ==\ TA(0))\{}}
+\DoxyCodeLine{00692\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00693\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00694\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ T(0);}}
+\DoxyCodeLine{00695\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00696\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00697\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return;}}
+\DoxyCodeLine{00698\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00699\ \textcolor{comment}{}}
+\DoxyCodeLine{00700\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(lside)\{}}
+\DoxyCodeLine{00701\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(transa\ ==\ 'N')\{\ //\ Form\ \ B\ :=\ alpha*A*B.}}
+\DoxyCodeLine{00702\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00703\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00704\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{00705\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(b[k+j*ldb]\ !=\ T(0))\{}}
+\DoxyCodeLine{00706\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha*b[k+j*ldb];}}
+\DoxyCodeLine{00707\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ k;\ ++i)\{}}
+\DoxyCodeLine{00708\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*a[i+k*lda];}}
+\DoxyCodeLine{00709\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00710\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ a[k+k*lda];}}
+\DoxyCodeLine{00711\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[k+j*ldb]\ =\ temp;}}
+\DoxyCodeLine{00712\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00713\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00714\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00715\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00716\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00717\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ m-\/1;\ (int)k\ >=\ 0;\ -\/-\/k)\{}}
+\DoxyCodeLine{00718\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(b[k+j*ldb]\ !=\ T(0))\{}}
+\DoxyCodeLine{00719\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha*b[k+j*ldb];}}
+\DoxyCodeLine{00720\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[k+j*ldb]\ =\ temp;}}
+\DoxyCodeLine{00721\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ b[k+j*ldb]\ *=\ a[k+k*lda];}}
+\DoxyCodeLine{00722\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ k+1;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00723\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*a[i+k*lda];}}
+\DoxyCodeLine{00724\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00725\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00726\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00727\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00728\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00729\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{\ //\ Form\ \ B\ :=\ alpha*A'*B\ \ \ or\ \ \ B\ :=\ alpha*conjg(\ A'\ )*B.}}
+\DoxyCodeLine{00730\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00731\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00732\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ m-\/1;\ (int)i\ >=\ 0;\ -\/-\/i)\{}}
+\DoxyCodeLine{00733\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ b[i+j*ldb];}}
+\DoxyCodeLine{00734\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00735\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ a[i+i*lda];}}
+\DoxyCodeLine{00736\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ i;\ ++k)\{}}
+\DoxyCodeLine{00737\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ a[k+i*lda]*b[k+j*ldb];}}
+\DoxyCodeLine{00738\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00739\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00740\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ std::conj(a[i+i*lda]);}}
+\DoxyCodeLine{00741\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ i;\ ++k)\{}}
+\DoxyCodeLine{00742\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ std::conj(a[k+i*lda])*b[k+j*ldb];}}
+\DoxyCodeLine{00743\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00744\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00745\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha*temp;}}
+\DoxyCodeLine{00746\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00747\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00748\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00749\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00750\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00751\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ b[i+j*ldb];}}
+\DoxyCodeLine{00752\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00753\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ a[i+i*lda];}}
+\DoxyCodeLine{00754\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ i+1;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{00755\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ a[k+i*lda]*b[k+j*ldb];}}
+\DoxyCodeLine{00756\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00757\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00758\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ std::conj(a[i+i*lda]);}}
+\DoxyCodeLine{00759\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ i+1;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{00760\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ std::conj(a[k+i*lda])*b[k+j*ldb];}}
+\DoxyCodeLine{00761\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00762\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00763\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha*temp;}}
+\DoxyCodeLine{00764\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00765\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00766\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00767\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00768\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00769\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(transa\ ==\ 'N')\{\ //\ Form\ \ B\ :=\ alpha*B*A.}}
+\DoxyCodeLine{00770\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00771\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ n-\/1;\ (int)j\ >=\ 0;\ -\/-\/j)\{}}
+\DoxyCodeLine{00772\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha;}}
+\DoxyCodeLine{00773\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ a[j+j*lda];}}
+\DoxyCodeLine{00774\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00775\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ *=\ temp;}}
+\DoxyCodeLine{00776\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00777\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ j;\ ++k)\{}}
+\DoxyCodeLine{00778\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(a[k+j*lda]\ !=\ T(0))\{}}
+\DoxyCodeLine{00779\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*a[k+j*lda];}}
+\DoxyCodeLine{00780\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00781\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*b[i+k*ldb];}}
+\DoxyCodeLine{00782\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00783\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00784\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00785\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00786\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00787\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00788\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha;}}
+\DoxyCodeLine{00789\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\ temp\ *=\ a[j+j*lda];}}
+\DoxyCodeLine{00790\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00791\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ *=\ temp;}}
+\DoxyCodeLine{00792\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00793\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ j+1;\ k\ <\ n;\ ++k)\{}}
+\DoxyCodeLine{00794\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(a[k+j*lda]\ !=\ T(0))\{}}
+\DoxyCodeLine{00795\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*a[k+j*lda];}}
+\DoxyCodeLine{00796\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00797\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*b[i+k*ldb];}}
+\DoxyCodeLine{00798\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00799\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00800\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00801\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00802\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00803\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{\ //\ Form\ \ B\ :=\ alpha*B*A'\ \ \ or\ \ \ B\ :=\ alpha*B*conjg(\ A'\ ).}}
+\DoxyCodeLine{00804\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00805\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ n;\ ++k)\{}}
+\DoxyCodeLine{00806\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}}
+\DoxyCodeLine{00807\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ k;\ ++j)\{}}
+\DoxyCodeLine{00808\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(a[j+k*lda]\ !=\ T(0))\{}}
+\DoxyCodeLine{00809\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00810\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*a[j+k*lda];}}
+\DoxyCodeLine{00811\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00812\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*std::conj(a[j+k*lda]);}}
+\DoxyCodeLine{00813\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00814\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00815\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*b[i+k*ldb];}}
+\DoxyCodeLine{00816\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00817\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00818\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00819\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha;}}
+\DoxyCodeLine{00820\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00821\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00822\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ *=\ a[k+k*lda];}}
+\DoxyCodeLine{00823\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00824\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ *=\ std::conj(a[k+k*lda]);}}
+\DoxyCodeLine{00825\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00826\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00827\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(temp\ !=\ T(1))\{}}
+\DoxyCodeLine{00828\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00829\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ *=\ temp;}}
+\DoxyCodeLine{00830\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00831\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00832\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00833\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00834\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ n-\/1;\ (int)k\ >=\ 0;\ -\/-\/k)\{}}
+\DoxyCodeLine{00835\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}}
+\DoxyCodeLine{00836\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ k+1;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00837\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(a[j+k*lda]\ !=\ T(0))\{}}
+\DoxyCodeLine{00838\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00839\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*a[j+k*lda];}}
+\DoxyCodeLine{00840\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00841\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha*std::conj(a[j+k*lda]);}}
+\DoxyCodeLine{00842\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00843\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00844\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ +=\ temp*b[i+k*ldb];}}
+\DoxyCodeLine{00845\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00846\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00847\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00848\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ alpha;}}
+\DoxyCodeLine{00849\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00850\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00851\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ *=\ a[k+k*lda];}}
+\DoxyCodeLine{00852\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00853\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ temp*std::conj(a[k+k*lda]);}}
+\DoxyCodeLine{00854\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00855\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00856\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(temp\ !=\ T(1))\{}}
+\DoxyCodeLine{00857\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00858\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ *=\ temp;}}
+\DoxyCodeLine{00859\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00860\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00861\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00862\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00863\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00866\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00867\ \textcolor{comment}{}}
+\DoxyCodeLine{00868\ \textcolor{comment}{}}
+\DoxyCodeLine{00869\ \textcolor{comment}{template\ <char\ side='L',\ char\ uplo='L',\ char\ transa='N',\ char\ diag='N'>}}
+\DoxyCodeLine{00870\ \textcolor{comment}{struct\ SolveTrM\{\ //\ ztrsm,\ dtrsm,\ ctrsm,\ strsm}}
+\DoxyCodeLine{00871\ \textcolor{comment}{\ \ \ \ template\ <class\ TA,\ class\ T>}}
+\DoxyCodeLine{00872\ \textcolor{comment}{\ \ \ \ SolveTrM(size\_t\ m,\ size\_t\ n,\ const\ TA\ \&alpha,\ const\ T\ *a,\ size\_t\ lda,\ T\ *b,\ size\_t\ ldb)\{}}
+\DoxyCodeLine{00873\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ZTRSM\ \ solves\ one\ of\ the\ matrix\ equations}}
+\DoxyCodeLine{00874\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ op(\ A\ )*X\ =\ alpha*B,\ \ \ or\ \ \ X*op(\ A\ )\ =\ alpha*B,}}
+\DoxyCodeLine{00875\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ where\ alpha\ is\ a\ scalar,\ X\ and\ B\ are\ m\ by\ n\ matrices,\ A\ is\ a\ unit,\ or}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ non-\/unit,\ \ upper\ or\ lower\ triangular\ matrix\ \ and\ \ op(\ A\ )\ \ is\ one\ \ of}}
+\DoxyCodeLine{00877\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ op(\ A\ )\ =\ A\ \ \ or\ \ \ op(\ A\ )\ =\ A'\ \ \ or\ \ \ op(\ A\ )\ =\ conjg(\ A'\ ).}}
+\DoxyCodeLine{00878\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ The\ matrix\ X\ is\ overwritten\ on\ B.}}
+\DoxyCodeLine{00879\ \textcolor{comment}{}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Arguments}}
+\DoxyCodeLine{00881\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ==========}}
+\DoxyCodeLine{00882\ \textcolor{comment}{}}
+\DoxyCodeLine{00883\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ SIDE\ \ \ -\/\ whether\ op(\ A\ )\ appears\ on\ the\ left\ or\ right\ of\ X\ as\ follows:}}
+\DoxyCodeLine{00884\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ SIDE\ =\ 'L'\ or\ 'l'\ \ \ op(\ A\ )*X\ =\ alpha*B.}}
+\DoxyCodeLine{00885\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ SIDE\ =\ 'R'\ or\ 'r'\ \ \ X*op(\ A\ )\ =\ alpha*B.}}
+\DoxyCodeLine{00886\ \textcolor{comment}{}}
+\DoxyCodeLine{00887\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ UPLO\ \ \ -\/\ whether\ the\ matrix\ A\ is\ an\ upper\ or\ lower\ triangular\ matrix\ as\ follows:}}
+\DoxyCodeLine{00888\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ UPLO\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ an\ upper\ triangular\ matrix.}}
+\DoxyCodeLine{00889\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ UPLO\ =\ 'L'\ or\ 'l'\ \ \ A\ is\ a\ lower\ triangular\ matrix.}}
+\DoxyCodeLine{00890\ \textcolor{comment}{}}
+\DoxyCodeLine{00891\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ TRANSA\ -\/\ the\ form\ of\ op(\ A\ )\ to\ be\ used\ in\ the\ matrix\ multiplication\ as\ follows:}}
+\DoxyCodeLine{00892\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANSA\ =\ 'N'\ or\ 'n'\ \ \ op(\ A\ )\ =\ A.}}
+\DoxyCodeLine{00893\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANSA\ =\ 'T'\ or\ 't'\ \ \ op(\ A\ )\ =\ A'.}}
+\DoxyCodeLine{00894\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ TRANSA\ =\ 'C'\ or\ 'c'\ \ \ op(\ A\ )\ =\ conjg(\ A'\ ).}}
+\DoxyCodeLine{00895\ \textcolor{comment}{}}
+\DoxyCodeLine{00896\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ DIAG\ \ \ -\/\ whether\ or\ not\ A\ is\ unit\ triangular\ as\ follows:}}
+\DoxyCodeLine{00897\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ DIAG\ =\ 'U'\ or\ 'u'\ \ \ A\ is\ assumed\ to\ be\ unit\ triangular.}}
+\DoxyCodeLine{00898\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ \ DIAG\ =\ 'N'\ or\ 'n'\ \ \ A\ is\ not\ assumed\ to\ be\ unit\ triangular.}}
+\DoxyCodeLine{00899\ \textcolor{comment}{}}
+\DoxyCodeLine{00900\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ M\ \ \ \ \ \ -\/\ number\ of\ rows\ of\ B.}}
+\DoxyCodeLine{00901\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ N\ \ \ \ \ \ -\/\ number\ of\ columns\ of\ B.}}
+\DoxyCodeLine{00902\ \textcolor{comment}{}}
+\DoxyCodeLine{00903\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ ALPHA\ \ -\/\ the\ scalar\ \ alpha.\ When\ \ alpha\ is}}
+\DoxyCodeLine{00904\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ zero\ then\ \ A\ is\ not\ referenced\ and\ \ B\ need\ not\ be\ set\ before}}
+\DoxyCodeLine{00905\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ entry.}}
+\DoxyCodeLine{00906\ \textcolor{comment}{}}
+\DoxyCodeLine{00907\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ A\ \ \ \ \ \ -\/\ array\ of\ DIMENSION\ (\ LDA,\ k\ ),\ where\ k\ is\ m}}
+\DoxyCodeLine{00908\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ when\ \ SIDE\ =\ 'L'\ or\ 'l'\ \ and\ is\ \ n\ \ when\ \ SIDE\ =\ 'R'\ or\ 'r'.}}
+\DoxyCodeLine{00909\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry\ \ with\ \ UPLO\ =\ 'U'\ or\ 'u',\ \ the\ \ leading\ \ k\ by\ k}}
+\DoxyCodeLine{00910\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ upper\ triangular\ part\ of\ the\ array\ \ A\ must\ contain\ the\ upper}}
+\DoxyCodeLine{00911\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ triangular\ matrix\ \ and\ the\ strictly\ lower\ triangular\ part\ of}}
+\DoxyCodeLine{00912\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00913\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry\ \ with\ \ UPLO\ =\ 'L'\ or\ 'l',\ \ the\ \ leading\ \ k\ by\ k}}
+\DoxyCodeLine{00914\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ lower\ triangular\ part\ of\ the\ array\ \ A\ must\ contain\ the\ lower}}
+\DoxyCodeLine{00915\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ triangular\ matrix\ \ and\ the\ strictly\ upper\ triangular\ part\ of}}
+\DoxyCodeLine{00916\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ is\ not\ referenced.}}
+\DoxyCodeLine{00917\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Note\ that\ when\ \ DIAG\ =\ 'U'\ or\ 'u',\ \ the\ diagonal\ elements\ of}}
+\DoxyCodeLine{00918\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ A\ \ are\ not\ referenced\ either,\ \ but\ are\ assumed\ to\ be\ \ unity.}}
+\DoxyCodeLine{00919\ \textcolor{comment}{}}
+\DoxyCodeLine{00920\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDA\ \ \ \ -\/\ the\ first\ dimension\ of\ A\ as\ declared}}
+\DoxyCodeLine{00921\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ in\ the\ calling\ (sub)\ program.\ \ When\ \ SIDE\ =\ 'L'\ or\ 'l'\ \ then}}
+\DoxyCodeLine{00922\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ LDA\ \ must\ be\ at\ least\ \ max(\ 1,\ m\ ),\ \ when\ \ SIDE\ =\ 'R'\ or\ 'r'}}
+\DoxyCodeLine{00923\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ then\ LDA\ must\ be\ at\ least\ max(\ 1,\ n\ ).}}
+\DoxyCodeLine{00924\ \textcolor{comment}{}}
+\DoxyCodeLine{00925\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ B\ \ \ \ \ \ -\/\ array\ of\ DIMENSION\ (\ LDB,\ n\ ).}}
+\DoxyCodeLine{00926\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ Before\ entry,\ \ the\ leading\ \ m\ by\ n\ part\ of\ the\ array\ \ B\ must}}
+\DoxyCodeLine{00927\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ contain\ \ the\ \ right-\/hand\ \ side\ \ matrix\ \ B,\ \ and\ \ on\ exit\ \ is}}
+\DoxyCodeLine{00928\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ overwritten\ by\ the\ solution\ matrix\ \ X.}}
+\DoxyCodeLine{00929\ \textcolor{comment}{}}
+\DoxyCodeLine{00930\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ LDB\ \ \ \ -\/\ the\ first\ dimension\ of\ B\ as\ declared}}
+\DoxyCodeLine{00931\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ in\ \ the\ \ calling\ \ (sub)\ \ program.\ \ \ LDB\ \ must\ \ be\ \ at\ \ least}}
+\DoxyCodeLine{00932\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ max(\ 1,\ m\ ).}}
+\DoxyCodeLine{00933\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00934\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ lside\ =\ (side\ ==\ 'L');}}
+\DoxyCodeLine{00935\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ noconj\ =\ (transa\ ==\ 'T');}}
+\DoxyCodeLine{00936\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ nounit\ =\ (diag\ ==\ 'N');}}
+\DoxyCodeLine{00937\ \textcolor{comment}{\ \ \ \ \ \ \ \ const\ bool\ upper\ =\ (uplo\ ==\ 'U');}}
+\DoxyCodeLine{00938\ \textcolor{comment}{}}
+\DoxyCodeLine{00939\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(m\ ==\ 0\ ||\ n\ ==\ 0)\{\ return;\ \}}}
+\DoxyCodeLine{00940\ \textcolor{comment}{}}
+\DoxyCodeLine{00941\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(TA(0)\ ==\ alpha)\{}}
+\DoxyCodeLine{00942\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00943\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00944\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ 0;}}
+\DoxyCodeLine{00945\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00946\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00947\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return;}}
+\DoxyCodeLine{00948\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00949\ \textcolor{comment}{}}
+\DoxyCodeLine{00950\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(lside)\{}}
+\DoxyCodeLine{00951\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(transa\ ==\ 'N')\{\ //\ Form\ \ B\ :=\ alpha*inv(\ A\ )*B.}}
+\DoxyCodeLine{00952\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00953\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00954\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(TA(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{00955\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00956\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{00957\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00958\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00959\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(int\ k\ =\ (int)m-\/1;\ k\ >=\ 0;\ -\/-\/k)\{}}
+\DoxyCodeLine{00960\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ b[k+j*ldb])\{}}
+\DoxyCodeLine{00961\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00962\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[k+j*ldb]\ /=\ a[k+k*lda];}}
+\DoxyCodeLine{00963\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00964\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ (size\_t)k;\ ++i)\{}}
+\DoxyCodeLine{00965\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ b[k+j*ldb]\ *\ a[i+k*lda];}}
+\DoxyCodeLine{00966\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00967\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00968\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00969\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00970\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{00971\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00972\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(TA(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{00973\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00974\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{00975\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00976\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00977\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{00978\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ b[k+j*ldb])\{}}
+\DoxyCodeLine{00979\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00980\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[k+j*ldb]\ /=\ a[k+k*lda];}}
+\DoxyCodeLine{00981\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00982\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ k+1;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00983\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ b[k+j*ldb]\ *\ a[i+k*lda];}}
+\DoxyCodeLine{00984\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00985\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00986\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00987\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00988\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00989\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{\ //\ Form\ \ B\ :=\ alpha*inv(\ A'\ )*B\ or\ B\ :=\ alpha*inv(\ conjg(\ A'\ )\ )*B}}
+\DoxyCodeLine{00990\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{00991\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{00992\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{00993\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{00994\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{00995\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ i;\ ++k)\{}}
+\DoxyCodeLine{00996\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ a[k+i*lda]\ *\ b[k+j*ldb];}}
+\DoxyCodeLine{00997\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00998\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{00999\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ a[i+i*lda];}}
+\DoxyCodeLine{01000\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01001\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01002\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ i;\ ++k)\{}}
+\DoxyCodeLine{01003\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ \_RealOrComplexChooser<T>::\_conj(a[k+i*lda])\ *\ b[k+j*ldb];}}
+\DoxyCodeLine{01004\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01005\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01006\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ \_RealOrComplexChooser<T>::\_conj(a[i+i*lda]);}}
+\DoxyCodeLine{01007\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01008\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01009\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ temp;}}
+\DoxyCodeLine{01010\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01011\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01012\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01013\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{01014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(int\ i\ =\ (int)m-\/1;\ i\ >=\ 0;\ -\/-\/i)\{}}
+\DoxyCodeLine{01015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{01016\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{01017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ i+1;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{01018\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ a[k+i*lda]\ *\ b[k+j*ldb];}}
+\DoxyCodeLine{01019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ a[i+i*lda];}}
+\DoxyCodeLine{01022\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01023\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ i+1;\ k\ <\ m;\ ++k)\{}}
+\DoxyCodeLine{01025\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ -\/=\ \_RealOrComplexChooser<T>::\_conj(a[k+i*lda])\ *\ b[k+j*ldb];}}
+\DoxyCodeLine{01026\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01027\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01028\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ /=\ \_RealOrComplexChooser<T>::\_conj(a[i+i*lda]);}}
+\DoxyCodeLine{01029\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01030\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01031\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ temp;}}
+\DoxyCodeLine{01032\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01033\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01034\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01035\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01036\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01037\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ if(transa\ ==\ 'N')\{\ //\ Form\ \ B\ :=\ alpha*B*inv(\ A\ )}}
+\DoxyCodeLine{01038\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{01039\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{01040\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(TA(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{01041\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01042\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{01043\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01044\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01045\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ j;\ ++k)\{}}
+\DoxyCodeLine{01046\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ a[k+j*lda])\{}}
+\DoxyCodeLine{01047\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01048\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ a[k+j*lda]\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01049\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01050\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01051\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01052\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01053\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ T(1)\ /\ a[j+j*lda];}}
+\DoxyCodeLine{01054\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01055\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ temp\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{01056\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01057\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01058\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01059\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01060\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(int\ j\ =\ (int)n-\/1;\ j\ >=\ 0;\ -\/-\/j)\{}}
+\DoxyCodeLine{01061\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(TA(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{01062\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01063\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ alpha\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{01064\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01065\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ j+1;\ k\ <\ n;\ ++k)\{}}
+\DoxyCodeLine{01067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ a[k+j*lda])\{}}
+\DoxyCodeLine{01068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01069\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ a[k+j*lda]\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01070\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01071\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01072\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01074\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp\ =\ T(1)\ /\ a[j+j*lda];}}
+\DoxyCodeLine{01075\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01076\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ =\ temp\ *\ b[i+j*ldb];}}
+\DoxyCodeLine{01077\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01078\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01079\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01080\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01081\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}else\{\ //\ Form\ \ B\ :=\ alpha*B*inv(\ A'\ )\ or\ B\ :=\ alpha*B*inv(\ conjg(\ A'\ )\ )}}
+\DoxyCodeLine{01082\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(upper)\{}}
+\DoxyCodeLine{01083\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(int\ k\ =\ (int)n-\/1;\ k\ >=\ 0;\ -\/-\/k)\{}}
+\DoxyCodeLine{01084\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}}
+\DoxyCodeLine{01085\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01086\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{01087\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ T(1)\ /\ a[k+k*lda];}}
+\DoxyCodeLine{01088\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ T(1)\ /\ \_RealOrComplexChooser<T>::\_conj(a[k+k*lda]);}}
+\DoxyCodeLine{01090\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01091\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01092\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ =\ temp\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01093\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01094\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01095\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ 0;\ j\ <\ (size\_t)k;\ ++j)\{}}
+\DoxyCodeLine{01096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ a[j+k*lda])\{}}
+\DoxyCodeLine{01097\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{01098\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ a[j+k*lda];}}
+\DoxyCodeLine{01099\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01100\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ \_RealOrComplexChooser<T>::\_conj(a[j+k*lda]);}}
+\DoxyCodeLine{01101\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01102\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01103\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ temp\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01104\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01105\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01106\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01107\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{01108\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01109\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ =\ alpha\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01110\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01111\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01112\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01113\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01114\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ k\ =\ 0;\ k\ <\ n;\ ++k)\{}}
+\DoxyCodeLine{01115\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}}
+\DoxyCodeLine{01116\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(nounit)\{}}
+\DoxyCodeLine{01117\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{01118\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ T(1)\ /\ a[k+k*lda];}}
+\DoxyCodeLine{01119\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01120\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ T(1)\ /\ \_RealOrComplexChooser<T>::\_conj(a[k+k*lda]);}}
+\DoxyCodeLine{01121\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01122\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01123\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ =\ temp\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01124\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01125\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01126\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ j\ =\ k+1;\ j\ <\ n;\ ++j)\{}}
+\DoxyCodeLine{01127\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(0)\ !=\ a[j+k*lda])\{}}
+\DoxyCodeLine{01128\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(noconj)\{}}
+\DoxyCodeLine{01129\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ a[j+k*lda];}}
+\DoxyCodeLine{01130\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}else\{}}
+\DoxyCodeLine{01131\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ =\ \_RealOrComplexChooser<T>::\_conj(a[j+k*lda]);}}
+\DoxyCodeLine{01132\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01133\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01134\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+j*ldb]\ -\/=\ temp\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01135\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01136\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01137\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01138\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(T(1)\ !=\ alpha)\{}}
+\DoxyCodeLine{01139\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for(size\_t\ i\ =\ 0;\ i\ <\ m;\ ++i)\{}}
+\DoxyCodeLine{01140\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b[i+k*ldb]\ =\ alpha\ *\ b[i+k*ldb];}}
+\DoxyCodeLine{01141\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01142\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01143\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01144\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01145\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01146\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01147\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{01148\ \textcolor{comment}{\};}}
+\DoxyCodeLine{01149\ \textcolor{comment}{*/}}
+\DoxyCodeLine{01150\ }
+\DoxyCodeLine{01151\ }
+\DoxyCodeLine{01152\ \};\ \textcolor{comment}{//\ namespace\ TBLAS}}
+\DoxyCodeLine{01153\ \};\ \textcolor{comment}{//\ namespace\ RNP}}
+\DoxyCodeLine{01154\ }
+\DoxyCodeLine{01155\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_RNP\_TBLAS\_EXT\_H\_}}
+
+\end{DoxyCode}
