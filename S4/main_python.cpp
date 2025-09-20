@@ -709,7 +709,7 @@ static PyObject *S4Sim_SetMaterial(S4Sim *self, PyObject *args, PyObject *kwds){
 	Material *M;
 	if(!PyArg_ParseTupleAndKeywords(args, kwds, "sO&:SetMaterial", kwlist, &name, &epsilon_converter, &epsdata)){ return NULL; }
 	M = Simulation_GetMaterialByName(&(self->S), name, NULL);
-	if(NULL == M){
+	if(NULL == M) {
 		M = Simulation_AddMaterial(&(self->S));
 		if(NULL == M){
 			PyErr_Format(PyExc_MemoryError, "SetMaterial: There was a problem allocating the material named '%s'.", name);

@@ -19,6 +19,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #ifdef _WIN32
 # include <malloc.h>
@@ -34,8 +35,25 @@ typedef uintptr_t malloc_aligned_ULONG_PTR;
 //        The actual size of allocation will be greater than this size.
 // alignment : the alignment boundary
 void *malloc_aligned(size_t size, size_t alignment){
+	if ((alignment & (alignment - 1)) != 0 || alignment % sizeof(void*) != 0) {
+        fprintf(stderr, "Invalid alignment: %zu\n", alignment);
+        return NULL;
+    }
+
 #ifdef _WIN32
-	return _aligned_malloc(size, alignment);
+	void* p = _aligned_malloc(size, alignment);
+    if (!p) {
+        fprintf(stderr, "_aligned_malloc failed\n");
+        return NULL;
+    }
+    // Check alignment at runtime
+    if (((uintptr_t)p) % alignment != 0) {
+        fprintf(stderr, "Alignment error: %p is not %zu-byte aligned\n", p, alignment);
+    }
+    // Assign 0
+    memset(p, 0, size);
+    return p;
+
 #else
 	void *pa, *ptr;
 
@@ -46,6 +64,8 @@ void *malloc_aligned(size_t size, size_t alignment){
 
 	ptr = (void*)( ((malloc_aligned_ULONG_PTR)pa+sizeof(void*)+alignment-1)&~(alignment-1) );
 	*((void **)ptr-1) = pa;
+
+	memset(p, 0, size);
 	
 	return ptr;
 #endif

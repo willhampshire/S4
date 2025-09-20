@@ -2067,6 +2067,13 @@ int Simulation_ComputeLayerBands(Simulation *S, Layer *L, LayerBands **bands){
 	S4_TRACE("I  q[0] = %f,%f [omega=%f]\n", pB->q[0].real(), pB->q[0].imag(), S->omega[0]);
 
 	S4_TRACE("< Simulation_ComputeLayerBands [omega=%f]\n", S->omega[0]);
+
+	S4_TRACE("DEBUG: q[0] = (%e, %e), phi[0] = (%e, %e), Epsilon2[0] = (%e, %e), Epsilon_inv[0] = (%e, %e)\n",
+		pB->q[0].real(), pB->q[0].imag(),
+		pB->phi ? pB->phi[0].real() : 0.0, pB->phi ? pB->phi[0].imag() : 0.0,
+		pB->Epsilon2[0].real(), pB->Epsilon2[0].imag(),
+		pB->Epsilon_inv[0].real(), pB->Epsilon_inv[0].imag());
+
 	return 0;
 }
 
