@@ -11,8 +11,10 @@ BOOST_LIB = boost_serialization.lib libboost_exception.lib
 INCLUDES = /I. /IS4 /IS4\RNP /IS4\kiss_fft /IS4\fmm /IS4\pattern /I$(CONDA_INC) /I$(CONDA_INC)\suitesparse /I$(CONDA_INC)\fftw /DBOOST_ALL_NO_LIB
 LIBPATHS = /LIBPATH:$(CONDA_LIB)
 
-CPPFLAGS = /nologo /O2 /MD /W4 /EHsc /DWIN32 $(INCLUDES) /DENABLE_S4_TRACE
+CPPFLAGS = /nologo /O2 /MD /W4 /EHsc /DWIN32 $(INCLUDES) /DHAVE_LAPACK
 CFLAGS = $(CPPFLAGS)
+
+# CPPFLAGS += /DENABLE_S4_TRACE ### uncomment to enable debugging fprintf
 
 # compiler msvc
 CXX = cl

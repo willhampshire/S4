@@ -20,6 +20,10 @@
 #include "config.h"
 
 #define _USE_MATH_DEFINES
+#include <iostream>
+#include <vector>
+#include <utility>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -447,6 +451,9 @@ void SolveLayerEigensystem(
 #endif
 
 	for(size_t i = 0; i < n2; ++i){
+		// std::cout << "Raw eigenvalue before sqrt:\n";
+		// std::cout << "q_raw[" << i << "] = " << q[i] << "\n";
+
 		// Set the \hat{q} vector (diagonal matrix) while we're at it
 		if(0 == omega.imag()){ // Not bandsolving
 			q[i] = std::sqrt(q[i]);
@@ -464,6 +471,34 @@ void SolveLayerEigensystem(
 			}
 		}
 	}
+
+	// 2025
+	// Different eigensolvers on different platforms may return different eigenvalue orders
+	// Sort to prioritise least evanescent modes -> sort by increasing Im part
+
+	std::vector<std::pair<std::complex<double>, std::vector<std::complex<double>>>> eigpairs(n2);
+
+	for (size_t i = 0; i < n2; ++i) {
+		std::vector<std::complex<double>> vec(n2);
+		for (size_t j = 0; j < n2; ++j) {
+			vec[j] = phi[j + i * n2];  // column-major
+		}
+		eigpairs[i] = {q[i], std::move(vec)};
+	}
+
+	std::sort(eigpairs.begin(), eigpairs.end(),
+		[](const auto &a, const auto &b) {
+			return std::abs(a.first.imag()) < std::abs(b.first.imag());
+		});
+
+	for (size_t i = 0; i < n2; ++i) {
+		q[i] = eigpairs[i].first;
+		for (size_t j = 0; j < n2; ++j) {
+			phi[j + i * n2] = eigpairs[i].second[j];
+		}
+	}
+
+
 #ifdef DUMP_MATRICES
 	DUMP_STREAM << "q:" << std::endl;
 	RNP::IO::PrintVector(n2,q,1, DUMP_STREAM) << std::endl << std::endl;
@@ -776,141 +811,301 @@ void GetSMatrix(
 	}
 }
 
+// int SolveInterior(
+// 	size_t nlayers,
+// 	size_t which_layer,
+// 	size_t n, // glist.n
+// 	const double *kx, const double *ky,
+// 	std::complex<double> omega,
+// 	const double *thickness, // list of thicknesses
+// 	const std::complex<double> **q, // list of q vectors
+// 	const std::complex<double> **Epsilon_inv, // size (glist.n)^2; inv of usual dielectric Fourier coupling matrix
+// 	int *epstype,
+// 	const std::complex<double> **kp,
+// 	const std::complex<double> **phi,
+// 	std::complex<double> *a0, // length 2*n
+// 	std::complex<double> *bN, // length 2*n
+// 	std::complex<double> *ab, // length 4*n
+// 	std::complex<double> *work_, // length lwork
+// 	size_t *iwork, // length n2
+// 	size_t lwork // set to -1 for query into work[0], at least 2*(4*n)^2 + 2*(2*n) + 4*n*(4*n+1)
+// ){
+// 	if(0 == nlayers){ return-1; }
+// 	if(which_layer >= nlayers){ return -2; }
+	
+// 	const size_t n2 = 2*n;
+// 	const size_t n4 = 2*n2;
+// 	const size_t lwork_GetSMatrix = 4*n*(4*n+1);
+// 	const size_t lwork_needed = 2*n4*n4 + 2*n2 + lwork_GetSMatrix;
+
+// 	if((size_t)-1 == lwork){
+// 		work_[0] = lwork_needed;
+// 		return 0;
+// 	}
+// 	std::complex<double> *work = work_;
+// 	if(NULL == work_ || lwork < lwork_needed){
+// 		work = (std::complex<double>*)rcwa_malloc(sizeof(std::complex<double>)*lwork_needed);
+// 	}
+// 	size_t *pivots = iwork;
+// 	if(NULL == iwork){
+// 		pivots = (size_t*)rcwa_malloc(sizeof(size_t)*n2);
+// 	}
+
+// 	std::complex<double> *S0l = work;
+// 	std::complex<double> *SlN = S0l + n4*n4;
+// 	std::complex<double> *S11a0 = SlN + n4*n4;
+// 	std::complex<double> *S22bN = S11a0 + n2;
+// 	std::complex<double> *work_GetSMatrix = S22bN + n2;
+// 	std::complex<double> *al = ab;
+// 	std::complex<double> *bl = al+n2;
+// 	std::complex<double> *temp = S0l;
+// 	size_t ldtemp = n4;
+	
+// 	int info;
+
+// 	GetSMatrix(which_layer+1, n, kx, ky, omega,
+// 		thickness, q, Epsilon_inv, epstype, kp, phi,
+// 		S0l, work_GetSMatrix, pivots, lwork_GetSMatrix);
+// 	GetSMatrix(nlayers-which_layer, n, kx, ky, omega,
+// 		thickness+which_layer, q+which_layer, Epsilon_inv+which_layer, epstype+which_layer, kp+which_layer, phi+which_layer,
+// 		SlN, work_GetSMatrix, pivots, lwork_GetSMatrix);
+
+// #ifdef DUMP_MATRICES
+// 	DUMP_STREAM << "S0l(0," << which_layer << ") = " << std::endl;
+// # ifdef DUMP_MATRICES_LARGE
+// 	RNP::IO::PrintMatrix(n4,n4,S0l,n4, DUMP_STREAM) << std::endl << std::endl;
+// # else
+// 	RNP::IO::PrintVector(n4,S0l,1, DUMP_STREAM) << std::endl << std::endl;
+// # endif
+// 	DUMP_STREAM << "SlN(" << which_layer << "," << nlayers-1 << ") = " << std::endl;
+// # ifdef DUMP_MATRICES_LARGE
+// 	RNP::IO::PrintMatrix(n4,n4,SlN,n4, DUMP_STREAM) << std::endl << std::endl;
+// # else
+// 	RNP::IO::PrintVector(n4,SlN,1, DUMP_STREAM) << std::endl << std::endl;
+// # endif
+// #endif
+
+// 	// both solutions only depend on the products S11(0,l)*a0 and S22(l,N)*bN
+// 	if(NULL != a0){
+// 		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0+0*n4], n4,
+// 			a0, 1,
+// 			std::complex<double>(0.0), S11a0, 1);
+// 	}else{
+// 		RNP::TBLAS::Fill(n2, 0., S11a0, 1);
+// 	}
+// 	if(NULL != bN){
+// 		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2+n2*n4], n4,
+// 			bN, 1,
+// 			std::complex<double>(0.0), S22bN, 1);
+// 	}else{
+// 		RNP::TBLAS::Fill(n2, 0., S22bN, 1);
+// 	}
+	
+// 	// We overwrite the upper left submatrix S11(0,l) since it's not needed anymore
+// 	// temp is set to S0l for this reason.
+	
+// 	// Compute -S_12(0,l)S_21(l,N)
+// 	RNP::TBLAS::MultMM<'N','N'>(n2, n2, n2, std::complex<double>(-1.0), &S0l[0+n2*n4], n4,
+// 		&SlN[n2+0*n4], n4,
+// 		std::complex<double>(0.0), temp, ldtemp);
+// 	for(size_t i = 0; i < n2; ++i){
+// 		temp[i+i*ldtemp] += 1.;
+// 	} // temp = (1 - S_12(0,l)S_21(l,N))
+
+// 	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0+n2*n4], n4,
+// 		S22bN, 1,
+// 		std::complex<double>(0.0), al, 1); // al = S_12(0,l)S_22(l,N)bN
+// 	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S11a0, 1, al, 1); // al = S_11(0,l)*a0 + S_12(0,l)S_22(l,N)bN
+
+// 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, al, n2, &info, pivots);
+// 	// al done
+
+// 	// Make the other matrix
+// 	// Compute S_21(l,N)S_12(0,l)
+// 	RNP::TBLAS::MultMM<'N','N'>(n2, n2, n2, std::complex<double>(-1.0), &SlN[n2+0*n4], n4,
+// 		&S0l[0+n2*n4], n4,
+// 		std::complex<double>(0.0), temp, ldtemp);
+// 	for(size_t i = 0; i < n2; ++i){
+// 		temp[i+i*ldtemp] += 1.;
+// 	} // temp = (1 - S_21(l,N)S_12(0,l))
+
+// 	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2+0*n4], n4,
+// 		S11a0, 1,
+// 		std::complex<double>(0.0), bl, 1); // bl = S_21(l,N)S_11(0,l)a0
+// 	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S22bN, 1, bl, 1); // bl = S_21(l,N)S_11(0,l)a0 + S_22(l,N)bN
+// 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, bl, n2, &info, pivots);
+
+// #ifdef DUMP_MATRICES
+// 	DUMP_STREAM << "al:" << std::endl;
+// 	RNP::IO::PrintVector(n2,al,1, DUMP_STREAM) << std::endl << std::endl;
+// 	DUMP_STREAM << "bl:" << std::endl;
+// 	RNP::IO::PrintVector(n2,bl,1, DUMP_STREAM) << std::endl << std::endl;
+// #endif
+
+// 	if(NULL == work_ || lwork < lwork_needed){
+// 		rcwa_free(work);
+// 	}
+// 	if(NULL == iwork){
+// 		rcwa_free(pivots);
+// 	}
+// 	return 0;
+// }
+
 int SolveInterior(
 	size_t nlayers,
 	size_t which_layer,
 	size_t n, // glist.n
 	const double *kx, const double *ky,
 	std::complex<double> omega,
-	const double *thickness, // list of thicknesses
-	const std::complex<double> **q, // list of q vectors
-	const std::complex<double> **Epsilon_inv, // size (glist.n)^2; inv of usual dielectric Fourier coupling matrix
+	const double *thickness,
+	const std::complex<double> **q,
+	const std::complex<double> **Epsilon_inv,
 	int *epstype,
 	const std::complex<double> **kp,
 	const std::complex<double> **phi,
-	std::complex<double> *a0, // length 2*n
-	std::complex<double> *bN, // length 2*n
-	std::complex<double> *ab, // length 4*n
-	std::complex<double> *work_, // length lwork
-	size_t *iwork, // length n2
-	size_t lwork // set to -1 for query into work[0], at least 2*(4*n)^2 + 2*(2*n) + 4*n*(4*n+1)
+	std::complex<double> *a0,
+	std::complex<double> *bN,
+	std::complex<double> *ab,
+	std::complex<double> *work_,
+	size_t *iwork,
+	size_t lwork
 ){
-	if(0 == nlayers){ return-1; }
-	if(which_layer >= nlayers){ return -2; }
-	
-	const size_t n2 = 2*n;
-	const size_t n4 = 2*n2;
-	const size_t lwork_GetSMatrix = 4*n*(4*n+1);
-	const size_t lwork_needed = 2*n4*n4 + 2*n2 + lwork_GetSMatrix;
+	if (0 == nlayers) return -1;
+	if (which_layer >= nlayers) return -2;
 
-	if((size_t)-1 == lwork){
+	const size_t n2 = 2 * n;
+	const size_t n4 = 2 * n2;
+	const size_t lwork_GetSMatrix = 4 * n * (4 * n + 1);
+	const size_t lwork_needed = 2 * n4 * n4 + 2 * n2 + lwork_GetSMatrix;
+
+	if ((size_t)-1 == lwork) {
 		work_[0] = lwork_needed;
 		return 0;
 	}
+
 	std::complex<double> *work = work_;
-	if(NULL == work_ || lwork < lwork_needed){
-		work = (std::complex<double>*)rcwa_malloc(sizeof(std::complex<double>)*lwork_needed);
+	if (NULL == work_ || lwork < lwork_needed) {
+		work = (std::complex<double>*)rcwa_malloc(sizeof(std::complex<double>) * lwork_needed);
 	}
 	size_t *pivots = iwork;
-	if(NULL == iwork){
-		pivots = (size_t*)rcwa_malloc(sizeof(size_t)*n2);
+	if (NULL == iwork) {
+		pivots = (size_t*)rcwa_malloc(sizeof(size_t) * n2);
 	}
 
 	std::complex<double> *S0l = work;
-	std::complex<double> *SlN = S0l + n4*n4;
-	std::complex<double> *S11a0 = SlN + n4*n4;
+	std::complex<double> *SlN = S0l + n4 * n4;
+	std::complex<double> *S11a0 = SlN + n4 * n4;
 	std::complex<double> *S22bN = S11a0 + n2;
 	std::complex<double> *work_GetSMatrix = S22bN + n2;
 	std::complex<double> *al = ab;
-	std::complex<double> *bl = al+n2;
+	std::complex<double> *bl = al + n2;
 	std::complex<double> *temp = S0l;
 	size_t ldtemp = n4;
-	
+
 	int info;
 
-	GetSMatrix(which_layer+1, n, kx, ky, omega,
+	GetSMatrix(which_layer + 1, n, kx, ky, omega,
 		thickness, q, Epsilon_inv, epstype, kp, phi,
 		S0l, work_GetSMatrix, pivots, lwork_GetSMatrix);
-	GetSMatrix(nlayers-which_layer, n, kx, ky, omega,
-		thickness+which_layer, q+which_layer, Epsilon_inv+which_layer, epstype+which_layer, kp+which_layer, phi+which_layer,
+
+	GetSMatrix(nlayers - which_layer, n, kx, ky, omega,
+		thickness + which_layer, q + which_layer, Epsilon_inv + which_layer, epstype + which_layer,
+		kp + which_layer, phi + which_layer,
 		SlN, work_GetSMatrix, pivots, lwork_GetSMatrix);
 
-#ifdef DUMP_MATRICES
-	DUMP_STREAM << "S0l(0," << which_layer << ") = " << std::endl;
-# ifdef DUMP_MATRICES_LARGE
-	RNP::IO::PrintMatrix(n4,n4,S0l,n4, DUMP_STREAM) << std::endl << std::endl;
-# else
-	RNP::IO::PrintVector(n4,S0l,1, DUMP_STREAM) << std::endl << std::endl;
-# endif
-	DUMP_STREAM << "SlN(" << which_layer << "," << nlayers-1 << ") = " << std::endl;
-# ifdef DUMP_MATRICES_LARGE
-	RNP::IO::PrintMatrix(n4,n4,SlN,n4, DUMP_STREAM) << std::endl << std::endl;
-# else
-	RNP::IO::PrintVector(n4,SlN,1, DUMP_STREAM) << std::endl << std::endl;
-# endif
-#endif
-
-	// both solutions only depend on the products S11(0,l)*a0 and S22(l,N)*bN
-	if(NULL != a0){
-		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0+0*n4], n4,
+	if (NULL != a0) {
+		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0 + 0 * n4], n4,
 			a0, 1,
 			std::complex<double>(0.0), S11a0, 1);
-	}else{
+	} else {
 		RNP::TBLAS::Fill(n2, 0., S11a0, 1);
 	}
-	if(NULL != bN){
-		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2+n2*n4], n4,
+
+	if (NULL != bN) {
+		RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2 + n2 * n4], n4,
 			bN, 1,
 			std::complex<double>(0.0), S22bN, 1);
-	}else{
+	} else {
 		RNP::TBLAS::Fill(n2, 0., S22bN, 1);
 	}
-	
-	// We overwrite the upper left submatrix S11(0,l) since it's not needed anymore
-	// temp is set to S0l for this reason.
-	
-	// Compute -S_12(0,l)S_21(l,N)
-	RNP::TBLAS::MultMM<'N','N'>(n2, n2, n2, std::complex<double>(-1.0), &S0l[0+n2*n4], n4,
-		&SlN[n2+0*n4], n4,
-		std::complex<double>(0.0), temp, ldtemp);
-	for(size_t i = 0; i < n2; ++i){
-		temp[i+i*ldtemp] += 1.;
-	} // temp = (1 - S_12(0,l)S_21(l,N))
 
-	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0+n2*n4], n4,
+	// Compute -S12(0,l)*S21(l,N) and store in temp
+	RNP::TBLAS::MultMM<'N', 'N'>(n2, n2, n2, std::complex<double>(-1.0),
+		&S0l[0 + n2 * n4], n4,
+		&SlN[n2 + 0 * n4], n4,
+		std::complex<double>(0.0), temp, ldtemp);
+
+	for (size_t i = 0; i < n2; ++i) {
+		temp[i + i * ldtemp] += 1.0;
+	}
+
+	// NaN check on temp matrix
+	for (size_t i = 0; i < n2 * n2; ++i) {
+		if (std::isnan(temp[i].real()) || std::isnan(temp[i].imag())) {
+			std::cerr << "ERROR: temp matrix contains NaN at index " << i << " during al solve\n";
+			break;
+		}
+	}
+
+	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &S0l[0 + n2 * n4], n4,
 		S22bN, 1,
-		std::complex<double>(0.0), al, 1); // al = S_12(0,l)S_22(l,N)bN
-	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S11a0, 1, al, 1); // al = S_11(0,l)*a0 + S_12(0,l)S_22(l,N)bN
+		std::complex<double>(0.0), al, 1);
+	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S11a0, 1, al, 1);
 
 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, al, n2, &info, pivots);
-	// al done
+	if (info != 0) {
+		std::cerr << "WARNING: LinearSolve (al) failed with info = " << info << "\n";
+	}
 
-	// Make the other matrix
-	// Compute S_21(l,N)S_12(0,l)
-	RNP::TBLAS::MultMM<'N','N'>(n2, n2, n2, std::complex<double>(-1.0), &SlN[n2+0*n4], n4,
-		&S0l[0+n2*n4], n4,
+	// Compute -S21(l,N)*S12(0,l)
+	RNP::TBLAS::MultMM<'N', 'N'>(n2, n2, n2, std::complex<double>(-1.0),
+		&SlN[n2 + 0 * n4], n4,
+		&S0l[0 + n2 * n4], n4,
 		std::complex<double>(0.0), temp, ldtemp);
-	for(size_t i = 0; i < n2; ++i){
-		temp[i+i*ldtemp] += 1.;
-	} // temp = (1 - S_21(l,N)S_12(0,l))
 
-	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2+0*n4], n4,
+	for (size_t i = 0; i < n2; ++i) {
+		temp[i + i * ldtemp] += 1.0;
+	}
+
+	// NaN check again
+	for (size_t i = 0; i < n2 * n2; ++i) {
+		if (std::isnan(temp[i].real()) || std::isnan(temp[i].imag())) {
+			std::cerr << "ERROR: temp matrix contains NaN at index " << i << " during bl solve\n";
+			break;
+		}
+	}
+
+	RNP::TBLAS::MultMV<'N'>(n2, n2, std::complex<double>(1.0), &SlN[n2 + 0 * n4], n4,
 		S11a0, 1,
-		std::complex<double>(0.0), bl, 1); // bl = S_21(l,N)S_11(0,l)a0
-	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S22bN, 1, bl, 1); // bl = S_21(l,N)S_11(0,l)a0 + S_22(l,N)bN
+		std::complex<double>(0.0), bl, 1);
+	RNP::TBLAS::Axpy(n2, std::complex<double>(1.0), S22bN, 1, bl, 1);
+
 	RNP::LinearSolve<'N'>(n2, 1, temp, ldtemp, bl, n2, &info, pivots);
+	if (info != 0) {
+		std::cerr << "WARNING: LinearSolve (bl) failed with info = " << info << "\n";
+	}
+
+	// DEBUG: Log norm of ab
+	double ab_norm = 0.0;
+	for (size_t i = 0; i < 2 * n2; ++i) {
+		ab_norm += std::norm(ab[i]);
+	}
+	// std::cerr << "DEBUG: ab norm = " << ab_norm << "\n";
+
+	// Optional: dump a few values
+	// std::cerr << "DEBUG: ab[0] = " << ab[0] << ", ab[1] = " << ab[1] << "\n";
 
 #ifdef DUMP_MATRICES
 	DUMP_STREAM << "al:" << std::endl;
-	RNP::IO::PrintVector(n2,al,1, DUMP_STREAM) << std::endl << std::endl;
+	RNP::IO::PrintVector(n2, al, 1, DUMP_STREAM) << std::endl << std::endl;
 	DUMP_STREAM << "bl:" << std::endl;
-	RNP::IO::PrintVector(n2,bl,1, DUMP_STREAM) << std::endl << std::endl;
+	RNP::IO::PrintVector(n2, bl, 1, DUMP_STREAM) << std::endl << std::endl;
 #endif
 
-	if(NULL == work_ || lwork < lwork_needed){
+	if (NULL == work_ || lwork < lwork_needed) {
 		rcwa_free(work);
 	}
-	if(NULL == iwork){
+	if (NULL == iwork) {
 		rcwa_free(pivots);
 	}
 	return 0;

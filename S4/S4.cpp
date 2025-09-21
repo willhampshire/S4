@@ -1486,7 +1486,8 @@ int Simulation_GetLayerSolution(Simulation *S, Layer *layer, LayerBands **layer_
 	LayerSolution** Lsoln = (LayerSolution**)sol->layer_solution;
 	Layer *L = S->layer;
 	while(NULL != L){
-		if(L == layer){
+		// if(L == layer){
+		if(L == layer || (L->name && layer->name && 0 == strcmp(L->name, layer->name))){
             S4_TRACE(">> Solution inside loop: %p\n", *Lsoln);
 			if(NULL == *Lsoln){
 				error = Simulation_ComputeLayerSolution(S, L, layer_bands, layer_solution);
@@ -1507,6 +1508,10 @@ int Simulation_GetLayerSolution(Simulation *S, Layer *layer, LayerBands **layer_
 					*layer_bands = *Lbands;
 				}
 				*layer_solution = *Lsoln;
+			}
+			if (NULL == *layer_solution || NULL == (*layer_solution)->ab) {
+				S4_TRACE("< Simulation_GetLayerSolution (FAILED: layer_solution or ab is NULL) [omega=%f]\n", S->omega[0]);
+				return -3;
 			}
 
 			S4_TRACE("< Simulation_GetLayerSolution [omega=%f]\n", S->omega[0]);
@@ -1586,7 +1591,8 @@ int Simulation_ComputeLayerSolution(Simulation *S, Layer *L, LayerBands **layer_
 		if(NULL == *Lbands && NULL == SL->copy){
 			Simulation_ComputeLayerBands(S, SL, Lbands);
 		}
-		if(L == SL){
+		// if(L == SL){ // looks for identical pointer addresses only!
+		if(L == SL || (L->name && SL->name && 0 == strcmp(L->name, SL->name))){ 
 			found_layer = true;
 			which_layer = layer_count;
 			*Lsoln = (LayerSolution*)S4_malloc(sizeof(LayerSolution));
