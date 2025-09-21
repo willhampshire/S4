@@ -21,10 +21,12 @@ It is possible to run into dependancy issues with `numpy`, in which case simply 
 
 ## Developer Build Instructions
 
+Create ```conda create -n "build-env" python=3.12``` and install `conda-build`.
+
 ### Windows
 
 Install Visual Studio developer tools to access ```nmake```, ```cl``` and ```lib```.
-Create ```conda create -n "build-env" python=3.12```.
+
 Activate build-env.
 
 My working conda build environment uses the following packages (`conda list`):

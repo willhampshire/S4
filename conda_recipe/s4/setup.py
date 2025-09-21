@@ -1,4 +1,5 @@
 """
+Builds the Python extension, not all source code (Makefile does that)
 Shim setup.py, remove redundant gensetup.py.sh in favour of this file.
 Uses config in setup.cfg (toml file)
 
@@ -63,7 +64,7 @@ else:
     sys_extra_compile_args=["-Wall", "-O3", "-fPIC"]
     package_data = {"": ["libS4.a"]} # unix compiles to .a
     sources=[str(SRC_DIR / "S4" / "main_python.cpp")]
-    libraries = ["S4", "boost_serialization", "cholmod", "stdc++"]
+    libraries = ["S4", "openblas", "boost_serialization", "cholmod", "stdc++"]
 
 ext_modules = [
     Extension(
