@@ -1,8 +1,10 @@
 """
 Single-point test case for debugging solver value issues
 
-"""
+This script should numerically produce
+lbda=0.92 R=0.1494408578053402 T=0.6968687749374614 A=0.15369036725719842
 
+"""
 
 import numpy as np
 import math
@@ -10,7 +12,8 @@ import S4 as S4
 
 def RCWA_spectrum(lbda,phi,theta,polar,pattern):
     
-    scalar_permittivity = (3.8 + 0.5j)**2                                
+    scalar_permittivity = (3.8 + 0.01j)**2
+    silicon_permittivity = (1.46 + 0j)**2
     
     A_p,A_s,phase_p,phase_s=get_sp_Amplitude_Phase(polar,phi) #  Set the polarization
 
@@ -25,8 +28,12 @@ def RCWA_spectrum(lbda,phi,theta,polar,pattern):
             (0, scalar_permittivity, 0),
             (0, 0, scalar_permittivity),
         ))
-        
-    S.AddLayer(Name ="TestLayer", Thickness = 0.03, Material = "test") 
+    S.SetMaterial(Name="silicon", Epsilon = ((1.46 + 0j)**2))
+    S.SetMaterial(Name='air', Epsilon=((1+0j)**2))
+
+    S.AddLayer(Name="Air", Thickness=0, Material="air")
+    S.AddLayer(Name = "TestLayer", Thickness = 0.03, Material = "test")
+    S.AddLayer(Name = "SiO2", Thickness = 2., Material = "silicon")
 
     # set the pattern
     if len(pattern)>0: # There is some pattern
@@ -44,7 +51,7 @@ def RCWA_spectrum(lbda,phi,theta,polar,pattern):
     S.SetFrequency(freq)
     
     (forward,backward)=S.GetPowerFlux(Layer="TestLayer",zOffset=-1)
-    (transmitted,useless)=S.GetPowerFlux(Layer="TestLayer",zOffset=1)
+    (transmitted,useless)=S.GetPowerFlux(Layer="SiO2",zOffset=1)
     
     print(f"{forward=}\n{backward=}\n{transmitted=}")
 

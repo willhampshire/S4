@@ -65,7 +65,7 @@ void *malloc_aligned(size_t size, size_t alignment){
 	ptr = (void*)( ((malloc_aligned_ULONG_PTR)pa+sizeof(void*)+alignment-1)&~(alignment-1) );
 	*((void **)ptr-1) = pa;
 
-	memset(p, 0, size);
+	memset(ptr, 0, size);
 	
 	return ptr;
 #endif

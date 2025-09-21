@@ -40,7 +40,7 @@ extern "C" {
 # else
 #  include <stdio.h>
 # endif
-# define S4_TRACE(...) fprintf(stderr, __VA_ARGS__)
+# define S4_TRACE(...) fprintf(stdout, __VA_ARGS__)
 # define S4_CHECK if(1)
 #else
 # define S4_TRACE(...)
